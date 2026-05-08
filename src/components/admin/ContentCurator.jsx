@@ -8,12 +8,14 @@ export default function ContentCurator() {
     const [items, setItems] = useState([]);
     const [isSaving, setIsSaving] = useState(false);
     const [saved, setSaved] = useState(false);
+    const [hasLoaded, setHasLoaded] = useState(false);
 
     useEffect(() => {
-        if (recipes && recipes.length > 0 && items.length === 0) {
-            setItems(recipes.filter(r => r.status === 'published' || !r.status).slice(0, 10)); // just load top 10 for demo
+        if (recipes && recipes.length > 0 && !hasLoaded) {
+            setItems(recipes.filter(r => r.status === 'published' || !r.status).slice(0, 10)); 
+            setHasLoaded(true);
         }
-    }, [recipes]);
+    }, [recipes, hasLoaded]);
 
     const handleSave = () => {
         setIsSaving(true);
