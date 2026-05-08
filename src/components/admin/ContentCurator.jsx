@@ -11,7 +11,7 @@ export default function ContentCurator() {
 
     useEffect(() => {
         if (recipes && recipes.length > 0 && items.length === 0) {
-            setItems(recipes.filter(r => r.status === 'published').slice(0, 10)); // just load top 10 for demo
+            setItems(recipes.filter(r => r.status === 'published' || !r.status).slice(0, 10)); // just load top 10 for demo
         }
     }, [recipes]);
 
