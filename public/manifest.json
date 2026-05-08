@@ -1,0 +1,17 @@
+{
+  "name": "CWC+ | Cooking With Cattitude",
+  "short_name": "CWC+",
+  "description": "Premium Culinary Masterclasses & Recipes",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070B14",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "/CWC.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
