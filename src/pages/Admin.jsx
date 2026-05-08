@@ -14,6 +14,10 @@ import { useAppSettings } from '../hooks/useAppSettings';
 import { useUser } from '../hooks/useUser';
 import { useMerch } from '../hooks/useMerch';
 import { supabase } from '../lib/supabase';
+import AnalyticsDashboard from '../components/admin/AnalyticsDashboard';
+import OrdersManager from '../components/admin/OrdersManager';
+import ContentCurator from '../components/admin/ContentCurator';
+import { TrendingUp, GripVertical } from 'lucide-react';
 
 const ImageUploader = ({ value, onChange, label = "Image (JPG, PNG, SVG)" }) => {
   const [isUploading, setIsUploading] = useState(false);
@@ -404,6 +408,9 @@ export default function Admin() {
         </div>
         <nav className="flex-1 px-4 space-y-2 overflow-y-auto custom-scrollbar pb-8">
           {renderNavItem("dashboard", "Home Base", LayoutDashboard)}
+          {renderNavItem("analytics", "Analytics", TrendingUp)}
+          {renderNavItem("orders", "Orders & Payments", DollarSign)}
+          {renderNavItem("curation", "Curation", GripVertical)}
           {renderNavItem("recipes", "Meals & Recipes", ChefHat)}
           {renderNavItem("classes", "Masterclasses", Video)}
           {renderNavItem("merch", "Merchandise", ShoppingBag)}
@@ -523,6 +530,10 @@ export default function Admin() {
 
             </div>
           )}
+
+          {activeTab === 'analytics' && <AnalyticsDashboard />}
+          {activeTab === 'orders' && <OrdersManager />}
+          {activeTab === 'curation' && <ContentCurator />}
 
           {/* RECIPES */}
           {activeTab === 'recipes' && (
