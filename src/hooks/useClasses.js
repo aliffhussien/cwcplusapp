@@ -54,7 +54,8 @@ export function useClasses() {
 
         fetchClasses();
 
-        const channel = supabase.channel('classes_changes')
+        const channelName = 'classes_changes_' + Math.random().toString(36).substring(2, 9);
+        const channel = supabase.channel(channelName)
             .on('postgres_changes', { event: '*', schema: 'public', table: 'classes' }, () => {
                 fetchClasses();
             })
@@ -101,13 +102,18 @@ export function useClasses() {
         });
     };
 
-    const publicClasses = classes.filter(c => {
+    const isGodAdmin = user?.email === 'ononeline30@gmail.com';
+    
+    const visibleClasses = classes.filter(c => {
+        const isMock = typeof c.id === 'number' || (typeof c.id === 'string' && c.id.length < 5);
+        if (isMock && !isGodAdmin) return false;
+        return true;
+    });
+
+    const publicClasses = visibleClasses.filter(c => {
         if (c.status === 'draft') return false;
         
-        // Hide mock data from regular users
-        const isMock = typeof c.id === 'number' || (typeof c.id === 'string' && c.id.length < 5);
         const isAdmin = ['admin', 'management', 'employee'].includes(user?.role);
-        if (isMock && !isAdmin) return false;
         
         if (!isAdmin && c.scheduled_post_date) {
             if (new Date(c.scheduled_post_date) > new Date()) return false;
@@ -116,5 +122,5 @@ export function useClasses() {
         return true;
     });
 
-    return { classes, publicClasses, addClass, updateClass, deleteClass };
+    return { classes: visibleClasses, publicClasses, addClass, updateClass, deleteClass };
 }

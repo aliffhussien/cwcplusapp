@@ -53,10 +53,14 @@ CREATE TABLE IF NOT EXISTS classes (
 ALTER TABLE public.recipes ADD COLUMN IF NOT EXISTS ingredients JSONB DEFAULT '[]'::jsonb;
 ALTER TABLE public.recipes ADD COLUMN IF NOT EXISTS steps JSONB DEFAULT '[]'::jsonb;
 ALTER TABLE public.recipes ADD COLUMN IF NOT EXISTS notes TEXT;
+ALTER TABLE public.recipes ADD COLUMN IF NOT EXISTS tags JSONB DEFAULT '[]'::jsonb;
 ALTER TABLE public.classes ADD COLUMN IF NOT EXISTS notes TEXT;
 ALTER TABLE public.classes ADD COLUMN IF NOT EXISTS attachments JSONB DEFAULT '[]'::jsonb;
 ALTER TABLE public.classes ADD COLUMN IF NOT EXISTS ingredients JSONB DEFAULT '[]'::jsonb;
 ALTER TABLE public.classes ADD COLUMN IF NOT EXISTS steps JSONB DEFAULT '[]'::jsonb;
+ALTER TABLE public.classes ADD COLUMN IF NOT EXISTS tags JSONB DEFAULT '[]'::jsonb;
+ALTER TABLE public.classes ADD COLUMN IF NOT EXISTS category TEXT;
+ALTER TABLE public.classes ADD COLUMN IF NOT EXISTS live_link TEXT;
 
 -- People / Users Table (linked to Supabase Auth via auth.users.id)
 CREATE TABLE IF NOT EXISTS people (

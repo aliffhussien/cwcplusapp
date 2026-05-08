@@ -4,7 +4,7 @@ import {
   LayoutDashboard, ChefHat, Settings, Plus, Save, Image as ImageIcon, 
   DollarSign, Trash2, Edit3, X, Video, Users, UserPlus, 
   Search, Star, Clock, Flame, CreditCard, Mail, Zap, Puzzle, Key, Link2, Wand2,
-  Package, ShoppingBag, Eye, EyeOff, PlayCircle, ShieldAlert, Book, Bell, Send, CheckCircle2, Lock, Unlock
+  Package, ShoppingBag, Eye, EyeOff, PlayCircle, ShieldAlert, Book, Bell, Send, CheckCircle2, Lock, Unlock, MessageCircle, BarChart, Smartphone
 } from 'lucide-react';
 
 import { useRecipes } from '../hooks/useRecipes';
@@ -62,8 +62,12 @@ const ImageUploader = ({ value, onChange, label = "Image (JPG, PNG, SVG)" }) => 
 };
 
 const AVAILABLE_PLUGINS = [
-  { id: 'hitpay', name: 'HitPay Gateway', icon: CreditCard, desc: 'Process payments via PayNow, Cards, & FPX.', color: 'text-rose-400' },
-  { id: 'mailchimp', name: 'Mailchimp Sync', icon: Mail, desc: 'Auto-sync new members to mailing lists.', color: 'text-yellow-400' },
+  { id: 'stripe', name: 'Stripe Payments', icon: CreditCard, desc: 'Process credit cards globally.', color: 'text-indigo-400' },
+  { id: 'hitpay', name: 'HitPay Gateway', icon: Smartphone, desc: 'Process payments via PayNow & FPX.', color: 'text-rose-400' },
+  { id: 'whatsapp', name: 'WhatsApp Bot', icon: MessageCircle, desc: 'Send automated alerts to members.', color: 'text-emerald-400' },
+  { id: 'discord', name: 'Discord Sync', icon: Zap, desc: 'Sync premium members to roles.', color: 'text-indigo-500' },
+  { id: 'google_analytics', name: 'Google Analytics', icon: BarChart, desc: 'Track visitor traffic & behavior.', color: 'text-amber-500' },
+  { id: 'mailchimp', name: 'Mailchimp Sync', icon: Mail, desc: 'Auto-sync members to mailing lists.', color: 'text-yellow-400' },
   { id: 'zapier', name: 'Zapier Webhooks', icon: Zap, desc: 'Connect platform events to 5,000+ apps.', color: 'text-orange-500' }
 ];
 
@@ -138,8 +142,8 @@ export default function Admin() {
   const { merch, addProduct, updateProduct, deleteProduct } = useMerch();
 
   const [isCreating, setIsCreating] = useState(false);
-  const [recipeForm, setRecipeForm] = useState({ title: '', author: '', time: '', image: '', video: '', category: 'Mains', difficulty: 'Beginner', baseServings: 2, ingredients: [{name: '', amount: ''}], steps: [''], notes: '', status: 'published', isFeatured: false, volume: 'CWC Original', scheduled_post_date: '' });
-  const [classForm, setClassForm] = useState({ title: '', instructor: '', duration: '', price: '15.00', image: '', video: '', status: 'published', isFeatured: false, tierRequired: settings.premiumTiers?.[0]?.name || 'Premium', ingredients: [{name: '', amount: ''}], steps: [''], notes: '', attachments: [], scheduled_post_date: '', live_date: '' });
+  const [recipeForm, setRecipeForm] = useState({ title: '', author: 'Abid Nasa', time: '30 min', image: '', video: '', category: 'Mains', difficulty: 'Beginner', baseServings: 2, ingredients: [{name: '', amount: ''}], steps: [''], notes: [''], tags: [], status: 'published', isFeatured: false, volume: 'CWC Original', scheduled_post_date: '' });
+  const [classForm, setClassForm] = useState({ title: '', instructor: 'Abid Nasa', duration: '', price: '19.99', category: 'Masterclass', image: '', video: '', live_link: '', status: 'published', isFeatured: false, tierRequired: settings.premiumTiers?.[0]?.name || 'Premium', ingredients: [{name: '', amount: ''}], steps: [''], notes: [''], tags: [], attachments: [], scheduled_post_date: '', live_date: '' });
   const [merchForm, setMerchForm] = useState({ title: '', price: '', image: '', description: '', status: 'published', stock: 10, scheduled_post_date: '' });
   const [personForm, setPersonForm] = useState({ id: null, name: '', email: '', subscriptionTier: 'Free', role: 'user', unlockedVolumes: [], unlockedClasses: [] });
   const [broadcastForm, setBroadcastForm] = useState({ title: '', message: '', type: 'system', attachmentType: 'none', attachmentId: '', scheduled_post_date: '' });
@@ -152,7 +156,8 @@ export default function Admin() {
   useEffect(() => {
      if (activeTab === 'broadcasts') {
          fetchAdminBroadcasts();
-         const channel = supabase.channel('admin_broadcasts_changes')
+         const channelName = 'admin_broadcasts_changes_' + Math.random().toString(36).substring(2, 9);
+         const channel = supabase.channel(channelName)
             .on('postgres_changes', { event: '*', schema: 'public', table: 'notifications' }, () => {
                 fetchAdminBroadcasts();
             })
@@ -299,8 +304,10 @@ export default function Admin() {
     e.preventDefault();
     const cleanIngredients = recipeForm.ingredients.filter(i => i.name.trim() !== '');
     const cleanSteps = recipeForm.steps.filter(s => s.trim() !== '');
+    const cleanNotes = (recipeForm.notes || []).filter(s => typeof s === 'string' && s.trim() !== '');
+    const cleanTags = (recipeForm.tags || []).filter(t => t && t.trim() !== '').slice(0, 10);
     const { id, ...dataToSave } = recipeForm;
-    const data = { ...dataToSave, ingredients: cleanIngredients, steps: cleanSteps };
+    const data = { ...dataToSave, ingredients: cleanIngredients, steps: cleanSteps, notes: JSON.stringify(cleanNotes), tags: cleanTags };
     
     if (id) updateRecipe(id, data); else addRecipe(data);
     setIsCreating(false);
@@ -546,7 +553,7 @@ export default function Admin() {
                         <Package size={24} /> Bulk JSON
                         <input type="file" accept=".json" className="hidden" onChange={handleBulkUploadRecipes} />
                      </label>
-                     <button onClick={() => { setRecipeForm({ title: '', author: '', time: '', image: '', video: '', category: 'Mains', difficulty: 'Beginner', baseServings: 2, ingredients: [{name: '', amount: ''}], steps: [''], status: 'published', isFeatured: false, tierRequired: 'Free', scheduled_post_date: '' }); setIsCreating(true); }} className="px-8 py-4 bg-indigo-600 rounded-full font-black text-lg shadow-xl flex items-center gap-3 hover:scale-105 active:scale-95 transition-all w-full sm:w-auto justify-center"><Plus size={24} /> Create a Recipe</button>
+                     <button onClick={() => { setRecipeForm({ title: '', author: 'Abid Nasa', time: '30 min', image: '', video: '', category: 'Mains', difficulty: 'Beginner', baseServings: 2, ingredients: [{name: '', amount: ''}], steps: [''], notes: [''], tags: [], status: 'published', isFeatured: false, tierRequired: 'Free', volume: 'CWC Original', scheduled_post_date: '' }); setIsCreating(true); }} className="px-8 py-4 bg-indigo-600 rounded-full font-black text-lg shadow-xl flex items-center gap-3 hover:scale-105 active:scale-95 transition-all w-full sm:w-auto justify-center"><Plus size={24} /> Create a Recipe</button>
                    </div>
                 )}
               </div>
@@ -584,7 +591,17 @@ export default function Admin() {
                       <div className="h-64 relative">
                         {r.image ? <img src={r.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" /> : <div className="w-full h-full bg-slate-800 flex items-center justify-center"><ChefHat size={48} className="text-slate-600"/></div>}
                         <div className="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4 backdrop-blur-sm">
-                           <button onClick={() => { setRecipeForm(r); setIsCreating(true); }} className="w-16 h-16 bg-white text-slate-900 rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-xl"><Edit3 size={28}/></button>
+                           <button onClick={() => { 
+                               let parsedNotes = [''];
+                               try { parsedNotes = r.notes ? JSON.parse(r.notes) : ['']; } catch(e) { parsedNotes = [r.notes]; }
+                               if (!Array.isArray(parsedNotes) || parsedNotes.length === 0) parsedNotes = [''];
+                               let parsedTags = r.tags || [];
+                               if (typeof r.tags === 'string') {
+                                   try { parsedTags = JSON.parse(r.tags); } catch(e) { parsedTags = []; }
+                               }
+                               setRecipeForm({ ...r, notes: parsedNotes, tags: parsedTags }); 
+                               setIsCreating(true); 
+                           }} className="w-16 h-16 bg-white text-slate-900 rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-xl"><Edit3 size={28}/></button>
                            <button onClick={() => requestDelete('recipes', r.id, r.title)} className="w-16 h-16 bg-rose-500 text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-xl"><Trash2 size={28}/></button>
                         </div>
                         <div className={`absolute top-4 left-4 px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest backdrop-blur-md border ${tierMeta.bg} ${tierMeta.color} ${tierMeta.border}`} style={tierMeta.customColor ? {backgroundColor: `${tierMeta.customColor}20`, borderColor: `${tierMeta.customColor}40`, color: tierMeta.customColor} : {}}>{tierMeta.label}</div>
@@ -651,9 +668,57 @@ export default function Admin() {
                             <div className="space-y-2">
                                 <ImageUploader label="Recipe Video (MP4) Optional" value={recipeForm.video} onChange={(val) => setRecipeForm({...recipeForm, video: val})} />
                             </div>
+                            <div className="space-y-2">
+                                <label className="text-sm font-black uppercase text-slate-500 ml-2">Author / Chef</label>
+                                <input type="text" value={recipeForm.author || ''} onChange={e => setRecipeForm({...recipeForm, author: e.target.value})} className="w-full bg-slate-950 border-2 border-slate-800 rounded-full px-6 py-4 text-lg font-bold outline-none text-white focus:border-indigo-500" placeholder="e.g. Chef John" />
+                            </div>
+                            <div className="space-y-2">
+                                <label className="text-sm font-black uppercase text-slate-500 ml-2">Time to Cook</label>
+                                <input type="text" value={recipeForm.time || ''} onChange={e => setRecipeForm({...recipeForm, time: e.target.value})} className="w-full bg-slate-950 border-2 border-slate-800 rounded-full px-6 py-4 text-lg font-bold outline-none text-white focus:border-indigo-500" placeholder="e.g. 30 min" />
+                            </div>
+                            <div className="space-y-2">
+                                <label className="text-sm font-black uppercase text-slate-500 ml-2">Category</label>
+                                <input type="text" list="recipe-categories" value={recipeForm.category || ''} onChange={e => setRecipeForm({...recipeForm, category: e.target.value})} className="w-full bg-slate-950 border-2 border-slate-800 rounded-full px-6 py-4 text-lg font-bold outline-none text-white focus:border-indigo-500" placeholder="Type or select a category..." />
+                                <datalist id="recipe-categories">
+                                    <option value="Mains" />
+                                    <option value="Breakfast" />
+                                    <option value="Desserts" />
+                                    <option value="Drinks" />
+                                    <option value="Appetizers" />
+                                </datalist>
+                            </div>
+                            <div className="space-y-2">
+                                <label className="text-sm font-black uppercase text-slate-500 ml-2">Difficulty</label>
+                                <select value={recipeForm.difficulty || 'Beginner'} onChange={e => setRecipeForm({...recipeForm, difficulty: e.target.value})} className="w-full bg-slate-950 border-2 border-slate-800 rounded-full px-6 py-4 text-lg font-bold outline-none text-white cursor-pointer appearance-none focus:border-indigo-500">
+                                    <option value="Beginner">Beginner</option>
+                                    <option value="Easy">Easy</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Hard">Hard</option>
+                                    <option value="Pro">Pro</option>
+                                </select>
+                            </div>
                             <div className="space-y-2 lg:col-span-2">
-                                <label className="text-sm font-black uppercase text-slate-500 ml-2">Notes & Tips (Optional)</label>
-                                <textarea rows={3} value={recipeForm.notes || ''} onChange={e => setRecipeForm({...recipeForm, notes: e.target.value})} className="w-full bg-slate-950 border-2 border-slate-800 rounded-[24px] px-6 py-4 text-lg font-bold outline-none text-white focus:border-indigo-500 custom-scrollbar" placeholder="Any special tips, secrets or equipment needed?" />
+                                <label className="text-sm font-black uppercase text-slate-500 ml-2">Tags (Max 10)</label>
+                                <input type="text" value={(recipeForm.tags || []).join(', ')} onChange={e => {
+                                    const val = e.target.value;
+                                    const tagsArray = val.split(',').map(t => t.trim()).filter(t => t !== '').slice(0, 10);
+                                    if (val.endsWith(',')) tagsArray.push(''); // Keep trailing comma for UX
+                                    setRecipeForm({...recipeForm, tags: val.split(',').map(t => t.trimStart()).slice(0, 10)});
+                                }} className="w-full bg-slate-950 border-2 border-slate-800 rounded-full px-6 py-4 text-lg font-bold outline-none text-white focus:border-indigo-500" placeholder="e.g. Bread, Soup, Vegan (comma separated)" />
+                            </div>
+                            <div className="space-y-2 lg:col-span-2">
+                                <div className="flex items-center justify-between mb-2 px-2">
+                                    <label className="text-sm font-black uppercase text-slate-500">Notes & Tips (Optional)</label>
+                                    <button type="button" onClick={() => setRecipeForm({...recipeForm, notes: [...(recipeForm.notes || []), '']})} className="text-xs font-black text-indigo-400 flex items-center gap-1 hover:text-indigo-300 px-3 py-1 bg-indigo-500/10 rounded-full"><Plus size={14}/> Add Note</button>
+                                </div>
+                                <div className="space-y-3">
+                                    {(recipeForm.notes || []).map((note, idx) => (
+                                        <div key={idx} className="flex gap-2 relative">
+                                            <input value={note} onChange={e => { const n = [...(recipeForm.notes || [])]; n[idx] = e.target.value; setRecipeForm({...recipeForm, notes: n}); }} className="w-full bg-slate-950 border-2 border-slate-800 rounded-2xl px-6 py-4 text-sm font-bold outline-none focus:border-indigo-500 text-white" placeholder="Any special tips, secrets or equipment needed?" />
+                                            <button type="button" onClick={() => setRecipeForm({...recipeForm, notes: recipeForm.notes.filter((_, i) => i !== idx)})} className="w-14 bg-rose-500/10 text-rose-500 rounded-2xl flex items-center justify-center hover:bg-rose-500 hover:text-white transition-colors flex-shrink-0"><Trash2 size={20}/></button>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                             <div className="space-y-2 lg:col-span-2">
                                 <label className="text-sm font-black uppercase text-slate-500 ml-2">Scheduled Post Date (Optional)</label>
@@ -716,7 +781,7 @@ export default function Admin() {
                         <Package size={24} /> Bulk JSON
                         <input type="file" accept=".json" className="hidden" onChange={handleBulkUploadClasses} />
                      </label>
-                     <button onClick={() => { setClassForm({ title: '', instructor: '', duration: '', price: '15.00', image: '', video: '', status: 'published', tierRequired: settings.premiumTiers?.[0]?.name || 'Premium', ingredients: [{name: '', amount: ''}], steps: [''], notes: '', attachments: [], scheduled_post_date: '', live_date: '' }); setIsCreating(true); }} className="px-8 py-4 bg-indigo-600 rounded-full font-black text-lg shadow-xl flex items-center gap-3 hover:scale-105 active:scale-95 transition-all w-full sm:w-auto justify-center"><Plus size={24} /> Add Masterclass</button>
+                     <button onClick={() => { setClassForm({ title: '', instructor: 'Abid Nasa', duration: '', price: '19.99', category: 'Masterclass', image: '', video: '', live_link: '', status: 'published', isFeatured: false, tierRequired: settings.premiumTiers?.[0]?.name || 'Premium', ingredients: [{name: '', amount: ''}], steps: [''], notes: [''], tags: [], attachments: [], scheduled_post_date: '', live_date: '' }); setIsCreating(true); }} className="px-8 py-4 bg-indigo-600 rounded-full font-black text-lg shadow-xl flex items-center gap-3 hover:scale-105 active:scale-95 transition-all w-full sm:w-auto justify-center"><Plus size={24} /> Add Masterclass</button>
                    </div>
                 )}
               </div>
@@ -754,7 +819,17 @@ export default function Admin() {
                       <div className="aspect-video relative">
                         {c.image ? <img src={c.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" /> : <div className="w-full h-full bg-slate-800 flex items-center justify-center"><Video size={48} className="text-slate-600"/></div>}
                         <div className="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4 backdrop-blur-sm">
-                           <button onClick={() => { setClassForm({ ingredients: [{name: '', amount: ''}], steps: [''], attachments: [], ...c }); setIsCreating(true); }} className="w-16 h-16 bg-white text-slate-900 rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-xl"><Edit3 size={28}/></button>
+                           <button onClick={() => { 
+                               let parsedNotes = [''];
+                               try { parsedNotes = c.notes ? JSON.parse(c.notes) : ['']; } catch(e) { parsedNotes = [c.notes]; }
+                               if (!Array.isArray(parsedNotes) || parsedNotes.length === 0) parsedNotes = [''];
+                               let parsedTags = c.tags || [];
+                               if (typeof c.tags === 'string') {
+                                   try { parsedTags = JSON.parse(c.tags); } catch(e) { parsedTags = []; }
+                               }
+                               setClassForm({ ingredients: [{name: '', amount: ''}], steps: [''], attachments: [], ...c, notes: parsedNotes, tags: parsedTags }); 
+                               setIsCreating(true); 
+                           }} className="w-16 h-16 bg-white text-slate-900 rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-xl"><Edit3 size={28}/></button>
                            <button onClick={() => requestDelete('classes', c.id, c.title)} className="w-16 h-16 bg-rose-500 text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-xl"><Trash2 size={28}/></button>
                         </div>
                         <div className={`absolute top-4 left-4 px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest backdrop-blur-md border ${tierMeta.bg} ${tierMeta.color} ${tierMeta.border}`} style={tierMeta.customColor ? {backgroundColor: `${tierMeta.customColor}20`, borderColor: `${tierMeta.customColor}40`, color: tierMeta.customColor} : {}}>{tierMeta.label}+ Level</div>
@@ -791,12 +866,14 @@ export default function Admin() {
                      e.preventDefault();
                      const cleanIngredients = classForm.ingredients ? classForm.ingredients.filter(i => i.name.trim() !== '') : [];
                      const cleanSteps = classForm.steps ? classForm.steps.filter(s => s.trim() !== '') : [];
+                     const cleanNotes = (classForm.notes || []).filter(s => typeof s === 'string' && s.trim() !== '');
+                     const cleanTags = (classForm.tags || []).filter(t => t && t.trim() !== '').slice(0, 10);
                      const { id, ...dataToSave } = classForm;
                      
                      if (!dataToSave.scheduled_post_date) dataToSave.scheduled_post_date = null;
                      if (!dataToSave.live_date) dataToSave.live_date = null;
 
-                     const data = { ...dataToSave, ingredients: cleanIngredients, steps: cleanSteps };
+                     const data = { ...dataToSave, ingredients: cleanIngredients, steps: cleanSteps, notes: JSON.stringify(cleanNotes), tags: cleanTags };
                      if (id) updateClass(id, data); else addClass(data);
                      setIsCreating(false); showToast(`Class ${dataToSave.status === 'published' ? 'Published' : 'Drafted'}! 🎬`);
                    }} className="p-6 md:p-10 space-y-8">
@@ -821,11 +898,55 @@ export default function Admin() {
                             <div className="space-y-3"><label className="text-sm font-black uppercase text-slate-500 ml-2">Who can watch?</label>
                                 <select value={classForm.tierRequired} onChange={e => setClassForm({...classForm, tierRequired: e.target.value})} className="w-full bg-slate-950 border-2 border-slate-800 rounded-full px-6 py-4 text-lg font-bold outline-none cursor-pointer text-white">
                                     {(settings.premiumTiers || []).map(t => <option key={t.id} value={t.name}>{t.name} Level</option>)}
+                                    <option value="Free">Free (All Users)</option>
                                 </select>
                             </div>
                         </div>
-                        <div className="space-y-3"><label className="text-sm font-black uppercase text-slate-500 ml-2">Video Link (YouTube, MP4)</label><input required type="text" placeholder="https://..." value={classForm.video} onChange={e => setClassForm({...classForm, video: e.target.value})} className="w-full bg-slate-950 border-2 border-slate-800 rounded-full px-6 py-4 text-lg font-bold outline-none text-white" /></div>
-                        <div className="space-y-3"><label className="text-sm font-black uppercase text-slate-500 ml-2">Notes & Tips (Optional)</label><textarea rows={3} placeholder="Any special tips?" value={classForm.notes || ''} onChange={e => setClassForm({...classForm, notes: e.target.value})} className="w-full bg-slate-950 border-2 border-slate-800 rounded-[24px] px-6 py-4 text-lg font-bold outline-none text-white custom-scrollbar" /></div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div className="space-y-3">
+                                <label className="text-sm font-black uppercase text-slate-500 ml-2">Category</label>
+                                <input type="text" list="class-categories" value={classForm.category || ''} onChange={e => setClassForm({...classForm, category: e.target.value})} className="w-full bg-slate-950 border-2 border-slate-800 rounded-full px-6 py-4 text-lg font-bold outline-none text-white" placeholder="e.g. Masterclass, Live Event..." />
+                                <datalist id="class-categories">
+                                    <option value="Masterclass" />
+                                    <option value="Live Event" />
+                                    <option value="Workshop" />
+                                    <option value="Q&A Session" />
+                                </datalist>
+                            </div>
+                            <div className="space-y-3">
+                                <label className="text-sm font-black uppercase text-slate-500 ml-2">Price ($) - 0 for Free</label>
+                                <input type="text" value={classForm.price || ''} onChange={e => setClassForm({...classForm, price: e.target.value})} className="w-full bg-slate-950 border-2 border-slate-800 rounded-full px-6 py-4 text-lg font-bold outline-none text-white" placeholder="19.99" />
+                            </div>
+                        </div>
+
+                        <div className="space-y-3"><label className="text-sm font-black uppercase text-slate-500 ml-2">Video Link (YouTube, MP4)</label><input type="text" placeholder="https://..." value={classForm.video} onChange={e => setClassForm({...classForm, video: e.target.value})} className="w-full bg-slate-950 border-2 border-slate-800 rounded-full px-6 py-4 text-lg font-bold outline-none text-white" /></div>
+                        <div className="space-y-3"><label className="text-sm font-black uppercase text-slate-500 ml-2">Live Stream Link (Zoom/YouTube Live)</label><input type="text" placeholder="https://..." value={classForm.live_link || ''} onChange={e => setClassForm({...classForm, live_link: e.target.value})} className="w-full bg-slate-950 border-2 border-slate-800 rounded-full px-6 py-4 text-lg font-bold outline-none text-white" /></div>
+                        
+                        <div className="space-y-3">
+                            <label className="text-sm font-black uppercase text-slate-500 ml-2">Tags (Max 10)</label>
+                            <input type="text" value={(classForm.tags || []).join(', ')} onChange={e => {
+                                const val = e.target.value;
+                                const tagsArray = val.split(',').map(t => t.trim()).filter(t => t !== '').slice(0, 10);
+                                if (val.endsWith(',')) tagsArray.push('');
+                                setClassForm({...classForm, tags: val.split(',').map(t => t.trimStart()).slice(0, 10)});
+                            }} className="w-full bg-slate-950 border-2 border-slate-800 rounded-full px-6 py-4 text-lg font-bold outline-none text-white" placeholder="e.g. Baking, Sourdough (comma separated)" />
+                        </div>
+
+                        <div className="space-y-2 lg:col-span-2">
+                            <div className="flex items-center justify-between mb-2 px-2">
+                                <label className="text-sm font-black uppercase text-slate-500">Notes & Tips (Optional)</label>
+                                <button type="button" onClick={() => setClassForm({...classForm, notes: [...(classForm.notes || []), '']})} className="text-xs font-black text-indigo-400 flex items-center gap-1 hover:text-indigo-300 px-3 py-1 bg-indigo-500/10 rounded-full"><Plus size={14}/> Add Note</button>
+                            </div>
+                            <div className="space-y-3">
+                                {(classForm.notes || []).map((note, idx) => (
+                                    <div key={idx} className="flex gap-2 relative">
+                                        <input value={note} onChange={e => { const n = [...(classForm.notes || [])]; n[idx] = e.target.value; setClassForm({...classForm, notes: n}); }} className="w-full bg-slate-950 border-2 border-slate-800 rounded-2xl px-6 py-4 text-sm font-bold outline-none text-white" placeholder="Any special tips, secrets or equipment needed?" />
+                                        <button type="button" onClick={() => setClassForm({...classForm, notes: classForm.notes.filter((_, i) => i !== idx)})} className="w-14 bg-rose-500/10 text-rose-500 rounded-2xl flex items-center justify-center hover:bg-rose-500 hover:text-white transition-colors flex-shrink-0"><Trash2 size={20}/></button>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                         
                         <div className="space-y-4">
                             <div className="flex items-center justify-between ml-2">

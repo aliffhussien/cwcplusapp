@@ -43,7 +43,8 @@ export function useAppSettings() {
 
         fetchSettings();
 
-        const channel = supabase.channel('settings_changes')
+        const channelName = 'settings_changes_' + Math.random().toString(36).substring(2, 9);
+        const channel = supabase.channel(channelName)
             .on('postgres_changes', { event: '*', schema: 'public', table: 'settings', filter: 'id=eq.platform' }, () => {
                 fetchSettings();
             })

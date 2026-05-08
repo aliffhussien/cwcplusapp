@@ -54,7 +54,8 @@ export function useRecipes() {
         fetchRecipes();
 
         // Optional: Subscribe to changes
-        const channel = supabase.channel('recipes_changes')
+        const channelName = 'recipes_changes_' + Math.random().toString(36).substring(2, 9);
+        const channel = supabase.channel(channelName)
             .on('postgres_changes', { event: '*', schema: 'public', table: 'recipes' }, () => {
                 fetchRecipes();
             })
@@ -101,13 +102,18 @@ export function useRecipes() {
         });
     };
 
-    const publicRecipes = recipes.filter(r => {
+    const isGodAdmin = user?.email === 'ononeline30@gmail.com';
+    
+    const visibleRecipes = recipes.filter(r => {
+        const isMock = typeof r.id === 'number' || (typeof r.id === 'string' && r.id.length < 5);
+        if (isMock && !isGodAdmin) return false;
+        return true;
+    });
+
+    const publicRecipes = visibleRecipes.filter(r => {
         if (r.status === 'draft') return false;
         
-        // Hide mock data from regular users
-        const isMock = typeof r.id === 'number' || (typeof r.id === 'string' && r.id.length < 5);
         const isAdmin = ['admin', 'management', 'employee'].includes(user?.role);
-        if (isMock && !isAdmin) return false;
         
         if (!isAdmin && r.scheduled_post_date) {
             if (new Date(r.scheduled_post_date) > new Date()) return false;
@@ -116,5 +122,5 @@ export function useRecipes() {
         return true;
     });
 
-    return { recipes, publicRecipes, addRecipe, updateRecipe, deleteRecipe };
+    return { recipes: visibleRecipes, publicRecipes, addRecipe, updateRecipe, deleteRecipe };
 }

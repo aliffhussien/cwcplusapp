@@ -40,7 +40,8 @@ export function useMerch() {
 
         fetchMerch();
 
-        const channel = supabase.channel('merch_changes')
+        const channelName = 'merch_changes_' + Math.random().toString(36).substring(2, 9);
+        const channel = supabase.channel(channelName)
             .on('postgres_changes', { event: '*', schema: 'public', table: 'merch' }, () => {
                 fetchMerch();
             })
@@ -73,7 +74,15 @@ export function useMerch() {
         setMerch(prev => prev.filter(m => m.id !== id));
     };
 
-    const publicMerch = merch.filter(m => {
+    const isGodAdmin = user?.email === 'ononeline30@gmail.com';
+    
+    const visibleMerch = merch.filter(m => {
+        const isMock = typeof m.id === 'number' || (typeof m.id === 'string' && m.id.length < 5);
+        if (isMock && !isGodAdmin) return false;
+        return true;
+    });
+
+    const publicMerch = visibleMerch.filter(m => {
         if (m.status === 'draft') return false;
         
         const isAdmin = ['admin', 'management', 'employee'].includes(user?.role);
@@ -84,5 +93,5 @@ export function useMerch() {
         return true;
     });
 
-    return { merch, publicMerch, addProduct, updateProduct, deleteProduct };
+    return { merch: visibleMerch, publicMerch, addProduct, updateProduct, deleteProduct };
 }

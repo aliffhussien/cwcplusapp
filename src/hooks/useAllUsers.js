@@ -30,7 +30,8 @@ export function useAllUsers() {
 
         fetchUsers();
 
-        const channel = supabase.channel('people_changes')
+        const channelName = 'people_changes_' + Math.random().toString(36).substring(2, 9);
+        const channel = supabase.channel(channelName)
             .on('postgres_changes', { event: '*', schema: 'public', table: 'people' }, () => {
                 fetchUsers();
             })

@@ -8,14 +8,20 @@ export default function ContentCurator() {
     const [items, setItems] = useState([]);
     const [isSaving, setIsSaving] = useState(false);
     const [saved, setSaved] = useState(false);
-    const [hasLoaded, setHasLoaded] = useState(false);
 
     useEffect(() => {
-        if (recipes && recipes.length > 0 && !hasLoaded) {
-            setItems(recipes.filter(r => r.status === 'published' || !r.status).slice(0, 10)); 
-            setHasLoaded(true);
+        if (recipes) {
+            const published = recipes.filter(r => r.status === 'published' || !r.status).slice(0, 10);
+            setItems(prev => {
+                // Only overwrite if the lengths differ or the set of IDs differ
+                // This prevents resetting order while the user is dragging or has reordered
+                const prevIds = prev.map(p => p.id || '').sort().join(',');
+                const newIds = published.map(p => p.id || '').sort().join(',');
+                if (prevIds !== newIds) return published;
+                return prev;
+            });
         }
-    }, [recipes, hasLoaded]);
+    }, [recipes]);
 
     const handleSave = () => {
         setIsSaving(true);
@@ -49,9 +55,9 @@ export default function ContentCurator() {
 
             <div className="bg-slate-900 border-2 border-slate-800 rounded-[32px] p-6 shadow-2xl">
                 <Reorder.Group axis="y" values={items} onReorder={setItems} className="space-y-3">
-                    {items.map((item) => (
+                    {items.map((item, index) => (
                         <Reorder.Item 
-                            key={item.id} 
+                            key={item.id || `item-${index}`} 
                             value={item} 
                             className="bg-slate-950 border border-slate-800 rounded-2xl p-4 flex items-center gap-4 cursor-grab active:cursor-grabbing shadow-sm"
                         >
