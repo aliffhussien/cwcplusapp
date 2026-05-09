@@ -523,6 +523,9 @@ ALTER TABLE public.orders
 -- Ensure orders.id has a UUID default (for existing tables created without it)
 ALTER TABLE public.orders ALTER COLUMN id SET DEFAULT gen_random_uuid()::TEXT;
 
+-- Add live_duration_hours to classes (admin controls how long the live window stays open)
+ALTER TABLE public.classes ADD COLUMN IF NOT EXISTS live_duration_hours INTEGER DEFAULT 2;
+
 -- ── Secure content RPC: get_recipe_content ────────────────────
 -- Replaces direct SELECT on ingredients/steps/notes/video.
 -- Enforces tier access server-side before returning content.
@@ -570,8 +573,9 @@ END;
 $$;
 
 -- ── Secure content RPC: get_class_content ────────────────────
+-- live_link is included here (not in public metadata) so only tier-authorized users get the stream URL
 CREATE OR REPLACE FUNCTION public.get_class_content(p_id BIGINT)
-RETURNS TABLE(video TEXT, ingredients JSONB, steps JSONB, notes TEXT, attachments JSONB, tags JSONB)
+RETURNS TABLE(video TEXT, live_link TEXT, ingredients JSONB, steps JSONB, notes TEXT, attachments JSONB, tags JSONB)
 LANGUAGE plpgsql SECURITY DEFINER
 AS $$
 DECLARE
@@ -584,7 +588,7 @@ BEGIN
 
   -- Free tier: open to all
   IF v_tier_required IS NULL OR v_tier_required = 'Free' THEN
-    RETURN QUERY SELECT c.video, c.ingredients, c.steps, c.notes, c.attachments, c.tags
+    RETURN QUERY SELECT c.video, c.live_link, c.ingredients, c.steps, c.notes, c.attachments, c.tags
                  FROM public.classes c WHERE c.id = p_id;
     RETURN;
   END IF;
@@ -592,7 +596,7 @@ BEGIN
   IF auth.uid() IS NULL THEN RAISE EXCEPTION 'Authentication required'; END IF;
 
   IF public.is_team_member() THEN
-    RETURN QUERY SELECT c.video, c.ingredients, c.steps, c.notes, c.attachments, c.tags
+    RETURN QUERY SELECT c.video, c.live_link, c.ingredients, c.steps, c.notes, c.attachments, c.tags
                  FROM public.classes c WHERE c.id = p_id;
     RETURN;
   END IF;
@@ -602,7 +606,7 @@ BEGIN
     FROM public.people WHERE id = auth.uid();
 
   IF v_user_tier != 'Free' OR p_id = ANY(v_unlocked_classes) THEN
-    RETURN QUERY SELECT c.video, c.ingredients, c.steps, c.notes, c.attachments, c.tags
+    RETURN QUERY SELECT c.video, c.live_link, c.ingredients, c.steps, c.notes, c.attachments, c.tags
                  FROM public.classes c WHERE c.id = p_id;
   ELSE
     RAISE EXCEPTION 'Access denied: upgrade your membership to unlock this class';

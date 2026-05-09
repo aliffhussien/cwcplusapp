@@ -167,7 +167,7 @@ export default function EmpireCommandCenter() {
 
   const [isCreating, setIsCreating] = useState(false);
   const [recipeForm, setRecipeForm] = useState({ title: '', author: 'Abid Nasa', time: '30 min', image: null, video: '', category: 'Mains', difficulty: 'Beginner', baseServings: 2, ingredients: [{ name: '', amount: '' }], steps: [''], notes: [''], tags: [], status: 'published', isFeatured: false, volume: 'CWC Original', scheduled_post_date: '' });
-  const [classForm, setClassForm] = useState({ title: '', instructor: 'Abid Nasa', duration: '', price: '19.99', category: 'Masterclass', image: null, video: '', live_link: '', status: 'published', isFeatured: false, tierRequired: settings.premiumTiers?.[0]?.name || 'Premium', ingredients: [{ name: '', amount: '' }], steps: [''], notes: [''], tags: [], attachments: [], scheduled_post_date: '', live_date: '' });
+  const [classForm, setClassForm] = useState({ title: '', instructor: 'Abid Nasa', duration: '', price: '19.99', category: 'Masterclass', image: null, video: '', live_link: '', status: 'published', isFeatured: false, tierRequired: settings.premiumTiers?.[0]?.name || 'Premium', ingredients: [{ name: '', amount: '' }], steps: [''], notes: [''], tags: [], attachments: [], scheduled_post_date: '', live_date: '', live_duration_hours: 2 });
   const [merchForm, setMerchForm] = useState({ title: '', price: '', image: null, description: '', status: 'published', stock: 10, scheduled_post_date: '' });
   const [personForm, setPersonForm] = useState({ id: null, name: '', email: '', subscriptionTier: 'Free', role: 'user', unlockedVolumes: [], unlockedClasses: [] });
   const [broadcastForm, setBroadcastForm] = useState({ title: '', message: '', type: 'system', attachmentType: 'none', attachmentId: '', scheduled_post_date: '' });
@@ -1494,7 +1494,7 @@ export default function EmpireCommandCenter() {
                     </label>
                     <button
                       onClick={() => {
-                        setClassForm({ title: '', instructor: 'Abid Nasa', duration: '', price: '19.99', category: 'Masterclass', image: '', video: '', live_link: '', status: 'published', isFeatured: false, tierRequired: settings.premiumTiers?.[0]?.name || 'Premium', ingredients: [{ name: '', amount: '' }], steps: [''], notes: [''], tags: [], attachments: [], scheduled_post_date: '', live_date: '' });
+                        setClassForm({ title: '', instructor: 'Abid Nasa', duration: '', price: '19.99', category: 'Masterclass', image: '', video: '', live_link: '', status: 'published', isFeatured: false, tierRequired: settings.premiumTiers?.[0]?.name || 'Premium', ingredients: [{ name: '', amount: '' }], steps: [''], notes: [''], tags: [], attachments: [], scheduled_post_date: '', live_date: '', live_duration_hours: 2 });
                         setIsCreating(true);
                         setClassFormSection('identity');
                       }}
@@ -1655,7 +1655,8 @@ export default function EmpireCommandCenter() {
                       is_featured: formData.isFeatured !== undefined ? formData.isFeatured : (formData.is_featured ?? false),
                       tier_required: formData.tierRequired !== undefined ? formData.tierRequired : (formData.tier_required ?? 'Premium'),
                       scheduled_post_date: formData.scheduled_post_date || null,
-                      live_date: formData.live_date || null
+                      live_date: formData.live_date || null,
+                      live_duration_hours: formData.live_duration_hours || 2
                     };
 
                     // Deep clean keys to prevent persistence of old values or incorrect schema
@@ -1787,6 +1788,15 @@ export default function EmpireCommandCenter() {
                               <div className="space-y-4">
                                 <label className="text-xs font-black uppercase text-slate-500 ml-4 tracking-[0.2em]">Live Stream Date</label>
                                 <input type="datetime-local" value={classForm.live_date || ''} onChange={e => setClassForm({ ...classForm, live_date: e.target.value })} className="w-full bg-slate-950/50 border-2 border-slate-800 rounded-[2rem] px-8 py-6 text-lg font-bold outline-none text-white focus:border-indigo-500/50 transition-all" />
+                              </div>
+                              <div className="space-y-4">
+                                <label className="text-xs font-black uppercase text-slate-500 ml-4 tracking-[0.2em]">Live Session Duration</label>
+                                <div className="relative">
+                                  <select value={classForm.live_duration_hours || 2} onChange={e => setClassForm({ ...classForm, live_duration_hours: parseInt(e.target.value) })} className="w-full bg-slate-950/50 border-2 border-slate-800 rounded-[2rem] px-8 py-6 text-lg font-bold outline-none text-white appearance-none cursor-pointer focus:border-indigo-500/50 transition-all">
+                                    {[1,2,3,4,6,8].map(h => <option key={h} value={h}>{h} hour{h > 1 ? 's' : ''}</option>)}
+                                  </select>
+                                  <ChevronDown className="absolute right-8 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
+                                </div>
                               </div>
                               <div className="md:col-span-2 space-y-4">
                                 <label className="text-xs font-black uppercase text-slate-500 ml-4 tracking-[0.2em]">Search Tags (Production Metadata)</label>

@@ -94,7 +94,8 @@ function useClassesState(user) {
 
     useEffect(() => {
         let cancelled = false;
-        const cols = 'id, title, instructor, duration, price, image, status, tier_required, is_featured, created_at, category, live_link, thumbnail_image_id, hero_image, hero_image_id, scheduled_post_date, live_date';
+        // live_link intentionally excluded — it's gated behind get_class_content RPC (tier-checked)
+        const cols = 'id, title, instructor, duration, price, image, status, tier_required, is_featured, created_at, category, live_duration_hours, thumbnail_image_id, hero_image, hero_image_id, scheduled_post_date, live_date';
 
         const fetch = async () => {
             const { data, error } = await supabase.from('classes').select(cols).order('created_at', { ascending: false });

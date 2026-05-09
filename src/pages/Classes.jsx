@@ -12,13 +12,23 @@ import { APP_COPY } from '../config/appCopy';
 import { formatPrice } from '../lib/currency';
 import { supabase } from '../lib/supabase';
 
-const ClassCard = ({ cls, onClick, mediaList }) => {
+// Parses "2h", "90m", "1h 30m", "120" → milliseconds
+function parseDurationMs(dur, fallbackHours = 2) {
+    if (!dur && !fallbackHours) return fallbackHours * 3600000;
+    if (typeof dur === 'number') return dur * 3600000; // treat as hours
+    const h = String(dur).match(/(\d+)\s*h/i);
+    const m = String(dur).match(/(\d+)\s*m/i);
+    const total = (h ? parseInt(h[1]) * 60 : 0) + (m ? parseInt(m[1]) : 0);
+    return (total || fallbackHours * 60) * 60000;
+}
+
+const ClassCard = ({ cls, onClick, mediaList, now }) => {
     const mediaAsset = (cls.thumbnail_image_id && Array.isArray(mediaList)) ? mediaList.find(m => m.id === cls.thumbnail_image_id) : null;
     const cardImage = mediaAsset ? (mediaAsset.card_url || mediaAsset.thumb_url || mediaAsset.hero_url || mediaAsset.url) : (cls.image || null);
 
-    const now = new Date();
     const liveDate = cls.live_date ? new Date(cls.live_date) : null;
-    const isLive = liveDate && now >= liveDate && now <= new Date(liveDate.getTime() + 2 * 60 * 60 * 1000);
+    const liveDurationMs = parseDurationMs(cls.live_duration_hours || 2);
+    const isLive = liveDate && now >= liveDate && now <= new Date(liveDate.getTime() + liveDurationMs);
     const isUpcoming = liveDate && now < liveDate;
 
     return (
@@ -81,6 +91,13 @@ export default function Classes() {
 
     const hasLoadedInitialUrl = useRef(false);
     const userHasAccess = selectedClass ? hasAccessToClass(selectedClass) : false;
+
+    // Real-time clock — updates every second so LIVE/UPCOMING status flips without a refresh
+    const [now, setNow] = useState(new Date());
+    useEffect(() => {
+        const timer = setInterval(() => setNow(new Date()), 1000);
+        return () => clearInterval(timer);
+    }, []);
 
     // Verify payment server-side using the Stripe session_id in the redirect URL
     useEffect(() => {
@@ -183,8 +200,8 @@ export default function Classes() {
 
     // --- Netflix Catalogue Logic ---
 
-    // 1. Isolate the Featured Billboard (First class)
-    const featuredClass = publicClasses.length > 0 ? publicClasses[0] : null;
+    // 1. Use the actually-featured class for the billboard; fall back to first
+    const featuredClass = publicClasses.find(c => c.is_featured || c.isFeatured) || publicClasses[0] || null;
     const featuredMediaAsset = (featuredClass?.thumbnail_image_id && Array.isArray(media)) ? media.find(m => m.id === featuredClass.thumbnail_image_id) : null;
     const featuredHeroImage = featuredMediaAsset ? (featuredMediaAsset.hero_url || featuredMediaAsset.url) : (featuredClass?.image || null);
 
@@ -204,9 +221,9 @@ export default function Classes() {
     const selectedMediaAsset = (selectedClass?.thumbnail_image_id && Array.isArray(media)) ? media.find(m => m.id === selectedClass.thumbnail_image_id) : null;
     const heroImage = selectedMediaAsset ? (selectedMediaAsset.hero_url || selectedMediaAsset.url) : (selectedClass?.image || null);
 
-    const now = new Date();
     const liveDate = selectedClass?.live_date ? new Date(selectedClass.live_date) : null;
-    const isLive = liveDate && now >= liveDate && now <= new Date(liveDate.getTime() + 2 * 60 * 60 * 1000);
+    const liveDurationMs = parseDurationMs(selectedClass?.live_duration_hours || 2);
+    const isLive = liveDate && now >= liveDate && now <= new Date(liveDate.getTime() + liveDurationMs);
     const isUpcoming = liveDate && now < liveDate;
 
     return (
@@ -307,7 +324,7 @@ export default function Classes() {
                                         <div className="flex overflow-x-auto gap-4 md:gap-6 px-6 md:px-12 pb-6 pt-2 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                                             {classes.map((cls) => (
                                                 <div key={cls.id} className="w-[280px] sm:w-[320px] shrink-0 snap-start">
-                                                    <ClassCard cls={cls} onClick={handleClassClick} mediaList={media} />
+                                                    <ClassCard cls={cls} onClick={handleClassClick} mediaList={media} now={now} />
                                                 </div>
                                             ))}
                                             <div className="w-4 md:w-8 shrink-0" />
@@ -369,7 +386,13 @@ export default function Classes() {
                                 </div>
                             ) : (
                                 <div className="absolute inset-0 w-full h-full">
-                                    {isLive && selectedClass.live_link ? (
+                                    {isLive && !selectedClass.live_link ? (
+                                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80">
+                                            <div className="w-4 h-4 bg-rose-500 rounded-full animate-pulse mb-4" />
+                                            <p className="text-sm font-black text-white uppercase tracking-widest">Class is Live</p>
+                                            <p className="text-xs text-slate-400 font-bold mt-2">Stream link coming shortly...</p>
+                                        </div>
+                                    ) : isLive && selectedClass.live_link ? (
                                         <div className="absolute inset-0 flex flex-col items-center justify-center bg-cover bg-center" style={{ backgroundImage: heroImage ? `url(${heroImage})` : 'none' }}>
                                             <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
                                             <div className="relative z-10 text-center flex flex-col items-center">
@@ -391,22 +414,43 @@ export default function Classes() {
                                     ) : isUpcoming ? (
                                         <div className="absolute inset-0 flex flex-col items-center justify-center bg-cover bg-center" style={{ backgroundImage: heroImage ? `url(${heroImage})` : 'none' }}>
                                             <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
-                                            <div className="relative z-10 text-center flex flex-col items-center">
+                                            <div className="relative z-10 text-center flex flex-col items-center px-6">
                                                 <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center border border-white/20 mb-6 backdrop-blur-xl">
                                                     <Clock size={36} className="text-white" />
                                                 </div>
                                                 <h4 className="text-4xl font-black text-white italic tracking-tighter mb-3 uppercase">Upcoming Class</h4>
-                                                <p className="text-slate-300 text-sm font-bold uppercase tracking-widest mb-10">{liveDate.toLocaleString()}</p>
+                                                <p className="text-slate-400 text-xs font-bold uppercase tracking-widest mb-4">{liveDate.toLocaleString(undefined, { weekday: 'long', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
+                                                {/* Live countdown */}
+                                                {(() => {
+                                                    const diff = liveDate - now;
+                                                    const d = Math.floor(diff / 86400000);
+                                                    const h = Math.floor((diff % 86400000) / 3600000);
+                                                    const m = Math.floor((diff % 3600000) / 60000);
+                                                    const s = Math.floor((diff % 60000) / 1000);
+                                                    return (
+                                                        <div className="flex items-center gap-3 mb-10">
+                                                            {d > 0 && <div className="text-center"><p className="text-4xl font-black text-white">{d}</p><p className="text-[9px] font-black uppercase tracking-widest text-slate-400">Days</p></div>}
+                                                            {d > 0 && <p className="text-2xl font-black text-slate-600">:</p>}
+                                                            <div className="text-center"><p className="text-4xl font-black text-white">{String(h).padStart(2,'0')}</p><p className="text-[9px] font-black uppercase tracking-widest text-slate-400">Hrs</p></div>
+                                                            <p className="text-2xl font-black text-slate-600">:</p>
+                                                            <div className="text-center"><p className="text-4xl font-black text-white">{String(m).padStart(2,'0')}</p><p className="text-[9px] font-black uppercase tracking-widest text-slate-400">Min</p></div>
+                                                            <p className="text-2xl font-black text-slate-600">:</p>
+                                                            <div className="text-center"><p className="text-4xl font-black text-indigo-400">{String(s).padStart(2,'0')}</p><p className="text-[9px] font-black uppercase tracking-widest text-slate-400">Sec</p></div>
+                                                        </div>
+                                                    );
+                                                })()}
                                                 <button
                                                     onClick={() => {
                                                         const title = encodeURIComponent(`Masterclass: ${selectedClass.title}`);
-                                                        const date = liveDate.toISOString().replace(/-|:|\.\d\d\d/g, "");
-                                                        const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${date}/${date}&details=Join via CWC+ Dashboard`;
-                                                        window.open(url, '_blank');
+                                                        const start = liveDate.toISOString().replace(/-|:|\.\d\d\d/g, "");
+                                                        const endMs = liveDate.getTime() + liveDurationMs;
+                                                        const end = new Date(endMs).toISOString().replace(/-|:|\.\d\d\d/g, "");
+                                                        const details = encodeURIComponent(`Join via CWC+ Dashboard\nInstructor: ${selectedClass.instructor || ''}`);
+                                                        window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&details=${details}`, '_blank');
                                                     }}
                                                     className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-lg font-black text-xs uppercase tracking-widest transition-all flex items-center gap-3 backdrop-blur-md"
                                                 >
-                                                    <Calendar size={18} /> Sync Calendar
+                                                    <Calendar size={18} /> Add to Calendar
                                                 </button>
                                             </div>
                                         </div>
@@ -455,6 +499,7 @@ export default function Classes() {
                                 </div>
                             </div>
 
+                            {userHasAccess && (
                             <div className="border-b border-white/10 mb-8 flex gap-8 overflow-x-auto custom-scrollbar [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                                 {[
                                     { id: 'video', label: 'Class Resources' },
@@ -473,8 +518,9 @@ export default function Classes() {
                                     </button>
                                 ))}
                             </div>
+                            )}
 
-                            <div className="min-h-[400px]">
+                            {userHasAccess && <div className="min-h-[400px]">
                                 {activeTab === 'video' && (
                                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12">
                                         <div className="lg:col-span-2 space-y-6">
@@ -562,7 +608,7 @@ export default function Classes() {
                                         )}
                                     </div>
                                 )}
-                            </div>
+                            </div>}
                         </div>
                     </motion.div>
                 )}
