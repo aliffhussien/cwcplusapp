@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS settings (
 
 -- Orders Table
 CREATE TABLE IF NOT EXISTS orders (
-  id           TEXT PRIMARY KEY,
+  id           TEXT PRIMARY KEY DEFAULT gen_random_uuid()::TEXT,
   user_id      UUID REFERENCES auth.users(id),
   customer     TEXT,
   email        TEXT,
@@ -300,11 +300,11 @@ CREATE POLICY "Admin full access to settings"
   USING (public.is_team_member());
 
 -- ── NOTIFICATIONS policies ────────────────────────────────────────
--- Users can read their own notifications or global notifications (user_id IS NULL)
+-- Authenticated users can read their own notifications or global broadcasts
 DROP POLICY IF EXISTS "Users can read their own or global notifications" ON notifications;
 CREATE POLICY "Users can read their own or global notifications"
   ON notifications FOR SELECT
-  USING (auth.uid() = user_id OR user_id IS NULL);
+  USING (auth.uid() IS NOT NULL AND (auth.uid() = user_id OR user_id IS NULL));
 
 -- Users can update their own notifications (e.g. mark as read)
 DROP POLICY IF EXISTS "Users can update their own notifications" ON notifications;
@@ -520,6 +520,9 @@ ALTER TABLE public.orders
   ADD COLUMN IF NOT EXISTS item_type         TEXT,
   ADD COLUMN IF NOT EXISTS item_id           TEXT;
 
+-- Ensure orders.id has a UUID default (for existing tables created without it)
+ALTER TABLE public.orders ALTER COLUMN id SET DEFAULT gen_random_uuid()::TEXT;
+
 -- ── Secure content RPC: get_recipe_content ────────────────────
 -- Replaces direct SELECT on ingredients/steps/notes/video.
 -- Enforces tier access server-side before returning content.
@@ -607,6 +610,7 @@ BEGIN
 END;
 $$;
 
--- Grant execute to authenticated users (RLS inside the functions handles access)
-GRANT EXECUTE ON FUNCTION public.get_recipe_content(BIGINT) TO authenticated;
-GRANT EXECUTE ON FUNCTION public.get_class_content(BIGINT)  TO authenticated;
+-- Grant execute to all roles: anon (logged-out) for free content, authenticated for paid
+-- The functions enforce tier checks internally, so granting to anon is safe
+GRANT EXECUTE ON FUNCTION public.get_recipe_content(BIGINT) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.get_class_content(BIGINT)  TO anon, authenticated;
