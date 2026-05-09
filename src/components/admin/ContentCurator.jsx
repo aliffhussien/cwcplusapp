@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Reorder, motion } from 'framer-motion';
 import { GripVertical, Eye, EyeOff, Save, CheckCircle2 } from 'lucide-react';
 import { useRecipes } from '../../hooks/useRecipes';
+import { useMedia } from '../../hooks/useMedia';
 
 export default function ContentCurator() {
     const { recipes } = useRecipes();
+    const { media } = useMedia();
     const [items, setItems] = useState([]);
     const [isSaving, setIsSaving] = useState(false);
     const [saved, setSaved] = useState(false);
@@ -63,11 +65,15 @@ export default function ContentCurator() {
                         >
                             <GripVertical className="text-slate-600" size={20} />
                             <div className="w-12 h-12 rounded-xl overflow-hidden bg-slate-800 flex-shrink-0">
-                                {item.image ? (
-                                    <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
-                                ) : (
-                                    <div className="w-full h-full bg-indigo-500/20" />
-                                )}
+                                {(() => {
+                                    const mediaAsset = item.cover_image_id ? media?.find(m => m.id === item.cover_image_id) : null;
+                                    const cardImage = mediaAsset ? (mediaAsset.thumb_url || mediaAsset.url) : item.image;
+                                    return cardImage ? (
+                                        <img src={cardImage} alt={item.title} className="w-full h-full object-cover" />
+                                    ) : (
+                                        <div className="w-full h-full bg-indigo-500/20" />
+                                    );
+                                })()}
                             </div>
                             <div className="flex-1">
                                 <h4 className="font-bold text-white text-sm md:text-base line-clamp-1">{item.title}</h4>

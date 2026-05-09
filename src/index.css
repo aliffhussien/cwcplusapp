@@ -1,30 +1,146 @@
 @import "tailwindcss";
 
+:root {
+    --brand-primary: #ffffff;
+    --brand-secondary: #94a3b8;
+    --border-subtle: rgba(226, 232, 240, 0.1); /* border-slate-200 equivalent at 10% opacity for dark mode */
+    --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
 body {
     margin: 0;
     overflow-x: hidden;
     background-color: #070B14;
-    color: white;
+    color: #F8FAFC;
     font-family: 'Inter', system-ui, sans-serif;
     min-height: 100vh;
+    overscroll-behavior-y: auto;
+    touch-action: pan-y;
 }
 
-/* Base Dark Theme */
-.glass-card {
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.5);
+/* Fluid Grid System - 2 Column Catalogue Default */
+.fluid-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 per row on mobile */
+    gap: 0.75rem; /* Tighter gap for catalogue feel */
+    width: 100%;
+    padding: 0 0.75rem;
+}
+
+@media (min-width: 768px) {
+    .fluid-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+        padding: 0 2rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    .fluid-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+/* Compact & Breathable Cards */
+.cwc-card {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid var(--border-subtle);
+    border-radius: 1rem;
+    padding: 0.75rem; /* Tighter padding for mobile */
+    box-shadow: var(--shadow-soft);
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    .cwc-card {
+        padding: 1rem;
+    }
+}
+
+.cwc-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-md);
+}
+
+/* High Contrast Buttons */
+.btn-primary {
+    background: #FFFFFF;
+    color: #070B14;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem; /* rounded-xl (12px) */
+    min-height: 44px; /* Mobile touch target */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s active;
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    color: #F8FAFC;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Text Scaling */
+.hero-title {
+    font-size: 1.875rem; /* text-3xl mobile */
+    line-height: 2.25rem;
+    font-weight: 800;
+}
+
+@media (min-width: 1024px) {
+    .hero-title {
+        font-size: 3rem; /* text-5xl desktop */
+        line-height: 1;
+    }
 }
 
 .glass-nav {
-    background: linear-gradient(180deg, rgba(7, 11, 20, 0.95) 0%, rgba(7, 11, 20, 0) 100%);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    background: rgba(7, 11, 20, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+    position: sticky;
+    top: 0;
+    z-index: 50;
 }
 
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Legacy overrides for transition */
+.glass-card {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid var(--border-subtle);
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 3D Interface Styles */
 .card-3d-base {
     background: linear-gradient(180deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 1) 100%);
     box-shadow:
@@ -32,10 +148,6 @@ body {
         inset 0px -4px 8px 0px rgba(0, 0, 0, 0.6),
         0px 8px 20px -4px rgba(0, 0, 0, 0.8),
         0px 0px 0px 1px rgba(255, 255, 255, 0.05);
-}
-
-.card-3d-glare {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
 }
 
 .btn-3d-active {
@@ -61,27 +173,7 @@ body {
         0px 2px 1px rgba(0, 0, 0, 0.7),
         0px 4px 8px rgba(0, 0, 0, 0.9);
 }
-
-.no-scrollbar::-webkit-scrollbar {
-    display: none;
-}
-
-.no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-.custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
-}
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0.2);
-    border-radius: 4px;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.1);
-    border-radius: 4px;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgba(255,255,255,0.2);
-}
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }

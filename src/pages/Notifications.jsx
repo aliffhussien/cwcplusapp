@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bell, ChefHat, ShoppingBag, Star, Info, CheckCircle2, X, Play, FileText, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import { useAppSettings } from '../hooks/useAppSettings';
 import { useNotifications } from '../hooks/useNotifications';
+import { timeAgo } from '../lib/dateUtils';
 
 const AnimatedBackground = ({ settings }) => (
     <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none bg-[#070B14]">
@@ -16,19 +17,11 @@ const NotificationItem = ({ notif, onDismiss }) => {
     const icons = {
         alert: <Bell size={20} className="text-rose-400" />,
         class: <Star size={20} className="text-amber-400" />,
-        shop: <ShoppingBag size={20} className="text-emerald-400" />,
+        shop: <ShoppingBag size={20} className="text-indigo-400" />,
         system: <Info size={20} className="text-indigo-400" />,
-        success: <CheckCircle2 size={20} className="text-emerald-400" />
+        success: <CheckCircle2 size={20} className="text-indigo-400" />
     };
 
-    const timeAgo = (dateStr) => {
-        const diff = Date.now() - new Date(dateStr).getTime();
-        const minutes = Math.floor(diff / 60000);
-        if (minutes < 60) return `${minutes}m ago`;
-        const hours = Math.floor(minutes / 60);
-        if (hours < 24) return `${hours}h ago`;
-        return `${Math.floor(hours / 24)}d ago`;
-    };
 
     return (
         <motion.div 
@@ -117,12 +110,17 @@ export default function Notifications() {
                             <NotificationItem key={notif.id} notif={notif} onDismiss={handleDismiss} />
                         ))
                     ) : (
-                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20 bg-white/5 border border-white/10 rounded-[32px]">
-                            <div className="w-20 h-20 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-6">
-                                <Bell size={32} className="text-slate-500" />
+                        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-16 px-8 bg-white/[0.02] border border-white/5 rounded-[40px] relative overflow-hidden group">
+                            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-transparent opacity-50" />
+                            <div className="relative z-10">
+                                <div className="w-24 h-24 bg-indigo-500/5 rounded-full flex items-center justify-center mx-auto mb-8 border border-indigo-500/10 shadow-[0_0_30px_rgba(99,102,241,0.1)]">
+                                    <CheckCircle2 size={40} className="text-indigo-400/50" />
+                                </div>
+                                <h3 className="text-2xl font-black text-white italic tracking-tighter uppercase mb-4 leading-none">All Caught Up</h3>
+                                <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] max-w-xs mx-auto leading-relaxed">
+                                    No new notifications in the CWC+ kitchen.
+                                </p>
                             </div>
-                            <h3 className="text-xl font-bold text-white mb-2">All caught up!</h3>
-                            <p className="text-sm text-slate-400">You have no new notifications right now.</p>
                         </motion.div>
                     )}
                 </AnimatePresence>

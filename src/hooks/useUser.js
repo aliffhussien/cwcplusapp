@@ -73,12 +73,14 @@ export function useUser() {
                 name: data.name || authUser.email?.split('@')[0] || 'Chef',
                 subscriptionTier: data.subscription_tier || "Free",
                 role: authUser.email === 'ononeline30@gmail.com' ? 'admin' : (data.role || "user"),
+                isGod: authUser.email === 'ononeline30@gmail.com',
                 unlockedVolumes: data.unlocked_volumes || [],
                 unlockedClasses: data.unlocked_classes || [],
                 avatarUrl: data.avatar_url || authUser.user_metadata?.avatar_url || null,
                 coverUrl: data.cover_url || null,
                 dietaryPreferences: data.dietary_preferences || [],
                 favoriteFood: data.favorite_food || null,
+                pushSubscription: data.push_subscription || null,
             };
             setUser(profile);
             localStorage.setItem('cwc_user', JSON.stringify(profile));
@@ -99,6 +101,7 @@ export function useUser() {
                 email: authUser.email,
                 name: newProfile.name,
                 role: authUser.email === 'ononeline30@gmail.com' ? 'admin' : 'user',
+                isGod: authUser.email === 'ononeline30@gmail.com',
                 avatarUrl: newProfile.avatar_url,
                 dietaryPreferences: [],
                 favoriteFood: null,
@@ -118,7 +121,13 @@ export function useUser() {
                 if (!parsed.id) {
                     setUser(defaultUser);
                 } else {
-                    setUser({ ...defaultUser, ...parsed }); 
+                    setUser({ 
+                        ...defaultUser, 
+                        ...parsed,
+                        unlockedVolumes: Array.isArray(parsed.unlockedVolumes) ? parsed.unlockedVolumes : [],
+                        unlockedClasses: Array.isArray(parsed.unlockedClasses) ? parsed.unlockedClasses : [],
+                        dietaryPreferences: Array.isArray(parsed.dietaryPreferences) ? parsed.dietaryPreferences : []
+                    }); 
                 }
             }
             catch (e) { setUser(defaultUser); }
@@ -145,6 +154,7 @@ export function useUser() {
             if (updates.coverUrl !== undefined) dbUpdates.cover_url = updates.coverUrl;
             if (updates.dietaryPreferences !== undefined) dbUpdates.dietary_preferences = updates.dietaryPreferences;
             if (updates.favoriteFood !== undefined) dbUpdates.favorite_food = updates.favoriteFood;
+            if (updates.pushSubscription !== undefined) dbUpdates.push_subscription = updates.pushSubscription;
             
             if (Object.keys(dbUpdates).length > 0) {
                 await supabase.from('people').update(dbUpdates).eq('id', session.user.id);
@@ -189,5 +199,5 @@ export function useUser() {
         localStorage.removeItem('cwc_user');
     };
 
-    return { session, user, loading, updateUser, unlockVolume, unlockClass, hasAccessToRecipe, hasAccessToClass, signOut };
+    return { session, user, loading, updateUser, unlockVolume, unlockClass, hasAccessToRecipe, hasAccessToClass, signOut, isGod: user?.isGod };
 }

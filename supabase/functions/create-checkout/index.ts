@@ -1,5 +1,9 @@
+// @ts-ignore
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+// @ts-ignore
 import Stripe from "https://esm.sh/stripe@12.1.1?target=deno"
+
+declare const Deno: any;
 
 const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY') || '', {
     apiVersion: '2022-11-15',
@@ -11,7 +15,7 @@ const corsHeaders = {
     'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
-serve(async (req) => {
+serve(async (req: Request) => {
     // Handle CORS preflight request
     if (req.method === 'OPTIONS') {
         return new Response('ok', { headers: corsHeaders })
@@ -48,7 +52,7 @@ serve(async (req) => {
                 status: 200,
             }
         )
-    } catch (error) {
+    } catch (error: any) {
         return new Response(
             JSON.stringify({ error: error.message }),
             {

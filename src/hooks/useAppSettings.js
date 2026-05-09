@@ -7,11 +7,18 @@ const defaultSettings = {
     maintenanceMode: false,
     bannerEnabled: false,
     bannerText: "New Masterclass dropping this Friday! 🚀",
+    youtubeLiveUrl: "",
+    tiktokLiveUrl: "",
+    classesHeroTitle: "",
+    classesHeroDesc: "",
+    classesHeroClassId: "",
+    classesHeroImageUrl: "",
     premiumTiers: [
         { id: 'tier1', name: 'Basic Premium', price: '5.99', discount: 0, benefits: 'Ad-free experience, 10 Recipes/mo' },
         { id: 'tier2', name: 'Pro Premium', price: '12.99', discount: 0, benefits: 'All Recipes, 1 Masterclass/mo, Priority Support' },
         { id: 'tier3', name: 'Elite Premium', price: '29.99', discount: 0, benefits: 'All Access, Live Q&A, VIP Community' }
     ],
+    accentColor: '#4f46e5',
     plugins: { stripe: false, mailchimp: false, zapier: false },
     apiKeys: [],
     volumes: [

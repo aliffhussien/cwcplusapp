@@ -4,7 +4,8 @@ export function useFavorites() {
     const [favorites, setFavorites] = useState(() => {
         try {
             const item = window.localStorage.getItem('cwc_favorites');
-            return item ? JSON.parse(item) : [];
+            const parsed = item ? JSON.parse(item) : [];
+            return Array.isArray(parsed) ? parsed : [];
         } catch (error) {
             console.warn("Error reading localStorage", error);
             return [];

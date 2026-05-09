@@ -1,36 +1,36 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Package, Search, DollarSign, ExternalLink, RefreshCw, CheckCircle2, XCircle, Truck, Phone, MapPin, ChevronDown, ChevronUp } from 'lucide-react';
-
-const mockOrders = [
-    { id: 'ORD-8923', customer: 'Alice Wong', email: 'alice@example.com', phone: '+60 12-345 6789', address: '123 Jalan Ampang, 50450 Kuala Lumpur', product: 'Chef Knife Pro', amount: 120.00, status: 'paid', fulfillment: 'pending', date: '2026-05-08' },
-    { id: 'ORD-8924', customer: 'John Doe', email: 'john@example.com', phone: '+60 19-876 5432', address: '45 Jalan Bangsar, 59100 Kuala Lumpur', product: 'CWC Apron', amount: 45.00, status: 'paid', fulfillment: 'shipped', date: '2026-05-07' },
-    { id: 'ORD-8925', customer: 'Sarah Miller', email: 'sarah@example.com', phone: '+1 555-0198', address: 'Digital Delivery', product: 'Premium Subscription (1 yr)', amount: 150.00, status: 'refunded', fulfillment: 'fulfilled', date: '2026-05-05' },
-    { id: 'ORD-8926', customer: 'Michael Chen', email: 'mike@example.com', phone: '+60 11-2345 6789', address: '88 Taman Tun Dr Ismail, 60000 KL', product: 'Ceramic Pan Set', amount: 200.00, status: 'paid', fulfillment: 'delivered', date: '2026-05-01' },
-];
+import { Package, Search, DollarSign, ExternalLink, RefreshCw, CheckCircle2, XCircle, Truck, Phone, MapPin, ChevronDown, ChevronUp, Loader2 } from 'lucide-react';
+import { useOrders } from '../../hooks/useOrders';
 
 export default function OrdersManager() {
-    const [orders, setOrders] = useState(mockOrders);
+    const { orders, isLoading, updateOrder } = useOrders();
     const [search, setSearch] = useState('');
     const [loadingId, setLoadingId] = useState(null);
     const [expandedId, setExpandedId] = useState(null);
 
-    const handleAction = (id, actionType) => {
+    const handleAction = async (id, actionType) => {
         setLoadingId(id);
-        setTimeout(() => {
-            setOrders(orders.map(o => {
-                if (o.id === id) {
-                    if (actionType === 'refund') return { ...o, status: 'refunded' };
-                    if (actionType === 'ship') return { ...o, fulfillment: 'shipped' };
-                    if (actionType === 'deliver') return { ...o, fulfillment: 'delivered' };
-                }
-                return o;
-            }));
+        try {
+            let updates = {};
+            if (actionType === 'refund') updates = { status: 'refunded' };
+            if (actionType === 'ship') updates = { fulfillment: 'shipped' };
+            if (actionType === 'deliver') updates = { fulfillment: 'delivered' };
+            
+            await updateOrder(id, updates);
+        } catch (error) {
+            console.error(error);
+            alert("Action failed. Please try again.");
+        } finally {
             setLoadingId(null);
-        }, 800);
+        }
     };
 
-    const filtered = orders.filter(o => o.id.includes(search) || o.customer.toLowerCase().includes(search.toLowerCase()) || o.email.toLowerCase().includes(search.toLowerCase()));
+    const filtered = orders.filter(o => 
+        o.id.toLowerCase().includes(search.toLowerCase()) || 
+        (o.customer || '').toLowerCase().includes(search.toLowerCase()) || 
+        (o.email || '').toLowerCase().includes(search.toLowerCase())
+    );
 
     const getStatusColor = (status) => {
         switch(status) {
@@ -71,7 +71,12 @@ export default function OrdersManager() {
                 </div>
             </div>
 
-            <div className="bg-slate-900 border-2 border-slate-800 rounded-[32px] overflow-hidden shadow-2xl">
+            <div className="bg-slate-900 border-2 border-slate-800 rounded-[32px] overflow-hidden shadow-2xl relative min-h-[400px]">
+                {isLoading && (
+                    <div className="absolute inset-0 z-10 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center">
+                        <Loader2 className="w-10 h-10 text-emerald-500 animate-spin" />
+                    </div>
+                )}
                 <div className="overflow-x-auto custom-scrollbar">
                     <table className="w-full text-left border-collapse min-w-[800px]">
                         <thead>
@@ -90,7 +95,7 @@ export default function OrdersManager() {
                                     <motion.tr initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`transition-colors ${expandedId === order.id ? 'bg-slate-800/50' : 'hover:bg-slate-800/30'}`}>
                                         <td className="px-6 py-5 font-bold text-white whitespace-nowrap">
                                             {order.id}
-                                            <div className="text-xs text-slate-500 font-normal mt-1">{order.date}</div>
+                                            <div className="text-xs text-slate-500 font-normal mt-1">{new Date(order.created_at).toLocaleDateString()}</div>
                                         </td>
                                         <td className="px-6 py-5">
                                             <div className="font-bold text-white">{order.customer}</div>
@@ -105,7 +110,7 @@ export default function OrdersManager() {
                                         </td>
                                         <td className="px-6 py-5">
                                             <div className="font-bold text-indigo-400 line-clamp-1">{order.product}</div>
-                                            <div className="text-sm font-black text-white">${order.amount.toFixed(2)}</div>
+                                            <div className="text-sm font-black text-white">${parseFloat(order.amount || 0).toFixed(2)}</div>
                                         </td>
                                         <td className="px-6 py-5">
                                             <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-black uppercase border ${getStatusColor(order.status)}`}>
