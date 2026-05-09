@@ -246,6 +246,12 @@ CREATE POLICY "Users can update their own profile"
   USING (auth.uid() = id)
   WITH CHECK (auth.uid() = id);
 
+-- Users can insert their own profile (needed for client-side upsert fallback)
+DROP POLICY IF EXISTS "Users can insert their own profile" ON people;
+CREATE POLICY "Users can insert their own profile"
+  ON people FOR INSERT
+  WITH CHECK (auth.uid() = id);
+
 -- Admin can view all users
 DROP POLICY IF EXISTS "Admin can view all users" ON people;
 CREATE POLICY "Admin can view all users"
@@ -280,11 +286,12 @@ CREATE POLICY "Admin full access to orders"
   USING (public.is_team_member());
 
 -- ── SETTINGS policies ────────────────────────────────────────
--- Anyone authenticated can read settings
+-- Settings are PUBLIC — currency, tiers, banner, site name must load for all visitors
 DROP POLICY IF EXISTS "Authenticated can read settings" ON settings;
-CREATE POLICY "Authenticated can read settings"
+DROP POLICY IF EXISTS "Public can read settings" ON settings;
+CREATE POLICY "Public can read settings"
   ON settings FOR SELECT
-  USING (auth.role() = 'authenticated');
+  USING (true);
 
 -- Only admins can modify settings
 DROP POLICY IF EXISTS "Admin full access to settings" ON settings;
@@ -487,16 +494,23 @@ FOR EACH ROW EXECUTE FUNCTION public.handle_broadcast_push();
 -- ============================================================
 
 -- ── Block role self-promotion ─────────────────────────────────
--- Users cannot elevate their own role to admin/management via the API.
--- Only a team member (admin) can change another person's role.
+-- Helper: reads the caller's current role without triggering RLS recursion.
+-- SECURITY DEFINER bypasses RLS on the subquery, preventing recursive policy evaluation.
+CREATE OR REPLACE FUNCTION public.current_user_role()
+RETURNS TEXT
+LANGUAGE sql SECURITY DEFINER STABLE
+AS $$
+  SELECT role FROM public.people WHERE id = auth.uid();
+$$;
+
 DROP POLICY IF EXISTS "Users can update their own profile" ON people;
 CREATE POLICY "Users can update their own profile"
   ON people FOR UPDATE
   USING (auth.uid() = id)
   WITH CHECK (
     auth.uid() = id AND
-    -- Prevent self-promotion: role must stay the same unless a team member is editing
-    (role = (SELECT role FROM public.people WHERE id = auth.uid()) OR public.is_team_member())
+    -- Prevent self-promotion: new role must match current role unless a team member is making the change
+    (role = public.current_user_role() OR public.is_team_member())
   );
 
 -- ── Add stripe_session_id, item_type, item_id to orders ──────
@@ -580,8 +594,7 @@ BEGIN
     RETURN;
   END IF;
 
-  SELECT subscription_tier,
-         ARRAY(SELECT jsonb_array_elements_text(to_jsonb(unlocked_classes)))::BIGINT[]
+  SELECT subscription_tier, unlocked_classes
     INTO v_user_tier, v_unlocked_classes
     FROM public.people WHERE id = auth.uid();
 
