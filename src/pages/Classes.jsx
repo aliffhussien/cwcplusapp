@@ -362,24 +362,41 @@ export default function Classes() {
                                     {heroImage && (
                                         <img src={heroImage} alt={selectedClass.title} className="w-full h-full object-cover opacity-40 blur-md scale-105" />
                                     )}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[#070B14] via-[#070B14]/60 to-transparent" />
+                                    <div className={`absolute inset-0 bg-gradient-to-t ${isLive ? 'from-[#070B14] via-rose-950/40 to-rose-950/20' : 'from-[#070B14] via-[#070B14]/60 to-transparent'} transition-colors duration-1000`} />
+
+                                    {/* Live urgency banner for non-members */}
+                                    {isLive && (
+                                        <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2.5 px-5 py-2.5 bg-rose-600 rounded-full shadow-[0_0_40px_rgba(225,29,72,0.6)] animate-pulse">
+                                            <div className="w-2 h-2 bg-white rounded-full" />
+                                            <span className="text-white text-xs font-black uppercase tracking-widest">Happening Right Now</span>
+                                        </div>
+                                    )}
 
                                     <div className="absolute inset-0 flex items-center justify-center z-10 px-4">
                                         <div className="max-w-md w-full flex flex-col items-center text-center">
-                                            <div className="w-20 h-20 bg-rose-600/20 rounded-full flex items-center justify-center border border-rose-500/30 mb-6 backdrop-blur-md">
+                                            <div className={`w-20 h-20 rounded-full flex items-center justify-center border mb-6 backdrop-blur-md ${isLive ? 'bg-rose-600/40 border-rose-500/60 shadow-[0_0_60px_rgba(225,29,72,0.4)]' : 'bg-rose-600/20 border-rose-500/30'}`}>
                                                 <Lock size={32} className="text-white" />
                                             </div>
                                             <h2 className="text-4xl md:text-5xl font-black text-white italic tracking-tighter uppercase mb-4 leading-none">{selectedClass.title}</h2>
-                                            <p className="text-slate-300 text-sm font-medium mb-8 leading-relaxed max-w-sm">
-                                                This class curriculum is secured for <span className="text-rose-400 font-bold">{selectedClass.tier_required || 'Elite'}</span> members.
+                                            <p className="text-slate-300 text-sm font-medium mb-2 leading-relaxed max-w-sm">
+                                                {isLive
+                                                    ? <><span className="text-rose-400 font-bold">This class is LIVE right now.</span> Unlock instantly to join the session.</>
+                                                    : <>This class curriculum is secured for <span className="text-rose-400 font-bold">{selectedClass.tier_required || 'Elite'}</span> members.</>
+                                                }
                                             </p>
+                                            {isLive && isUpcoming === false && (
+                                                <p className="text-rose-400/70 text-[10px] font-black uppercase tracking-widest mb-6">
+                                                    Don't miss it — class ends soon
+                                                </p>
+                                            )}
+                                            {!isLive && <div className="mb-6" />}
 
                                             <button
                                                 disabled={isUnlocking}
                                                 onClick={handleUnlockClass}
-                                                className="w-full py-4 bg-white text-black rounded-lg font-black text-sm uppercase tracking-widest shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:scale-105 transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:hover:scale-100"
+                                                className={`w-full py-4 rounded-lg font-black text-sm uppercase tracking-widest transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:hover:scale-100 ${isLive ? 'bg-rose-600 hover:bg-rose-500 text-white shadow-[0_0_60px_rgba(225,29,72,0.5)] hover:scale-105' : 'bg-white text-black shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:scale-105'}`}
                                             >
-                                                <Lock size={18} /> {isUnlocking ? 'Authorizing...' : `Unlock for ${formatPrice(selectedClass.price || '29.99', settings.currency || 'MYR')}`}
+                                                <Lock size={18} /> {isUnlocking ? 'Authorizing...' : isLive ? `Join Live Now — ${formatPrice(selectedClass.price || '29.99', settings.currency || 'MYR')}` : `Unlock for ${formatPrice(selectedClass.price || '29.99', settings.currency || 'MYR')}`}
                                             </button>
                                         </div>
                                     </div>

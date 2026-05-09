@@ -1654,8 +1654,8 @@ export default function EmpireCommandCenter() {
                       tags: cleanTags,
                       is_featured: formData.isFeatured !== undefined ? formData.isFeatured : (formData.is_featured ?? false),
                       tier_required: formData.tierRequired !== undefined ? formData.tierRequired : (formData.tier_required ?? 'Premium'),
-                      scheduled_post_date: formData.scheduled_post_date || null,
-                      live_date: formData.live_date || null,
+                      scheduled_post_date: formData.scheduled_post_date ? new Date(formData.scheduled_post_date).toISOString() : null,
+                      live_date: formData.live_date ? new Date(formData.live_date).toISOString() : null,
                       live_duration_hours: formData.live_duration_hours || 2
                     };
 
@@ -1788,6 +1788,7 @@ export default function EmpireCommandCenter() {
                               <div className="space-y-4">
                                 <label className="text-xs font-black uppercase text-slate-500 ml-4 tracking-[0.2em]">Live Stream Date</label>
                                 <input type="datetime-local" value={classForm.live_date || ''} onChange={e => setClassForm({ ...classForm, live_date: e.target.value })} className="w-full bg-slate-950/50 border-2 border-slate-800 rounded-[2rem] px-8 py-6 text-lg font-bold outline-none text-white focus:border-indigo-500/50 transition-all" />
+                                <p className="text-[10px] font-bold text-amber-400/80 ml-4">Your timezone: {Intl.DateTimeFormat().resolvedOptions().timeZone} — time will be saved correctly for all users</p>
                               </div>
                               <div className="space-y-4">
                                 <label className="text-xs font-black uppercase text-slate-500 ml-4 tracking-[0.2em]">Live Session Duration</label>
