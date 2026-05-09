@@ -9,6 +9,8 @@ import { useMedia } from '../hooks/useMedia';
 import { useAppSettings } from '../hooks/useAppSettings';
 import { createStripeCheckout } from '../lib/stripe';
 import { APP_COPY } from '../config/appCopy';
+import { formatPrice } from '../lib/currency';
+import { supabase } from '../lib/supabase';
 
 const ClassCard = ({ cls, onClick, mediaList }) => {
     const mediaAsset = (cls.thumbnail_image_id && Array.isArray(mediaList)) ? mediaList.find(m => m.id === cls.thumbnail_image_id) : null;
@@ -58,7 +60,7 @@ const ClassCard = ({ cls, onClick, mediaList }) => {
                 <h4 className="text-base md:text-lg font-black text-white group-hover:text-rose-400 transition-colors line-clamp-2 leading-tight drop-shadow-md">{cls.title}</h4>
                 <div className="flex items-center justify-between mt-3">
                     <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest truncate mr-2">{cls.instructor}</p>
-                    <span className="text-[11px] font-black text-white bg-white/10 px-2.5 py-1 rounded-md shrink-0 border border-white/5">{cls.price ? `$${cls.price}` : '$19.99'}</span>
+                    <span className="text-[11px] font-black text-white bg-white/10 px-2.5 py-1 rounded-md shrink-0 border border-white/5">{formatPrice(cls.price || '29.99', settings.currency || 'MYR')}</span>
                 </div>
             </div>
         </motion.div>
@@ -68,9 +70,9 @@ const ClassCard = ({ cls, onClick, mediaList }) => {
 export default function Classes() {
     const navigate = useNavigate();
     const { publicClasses, fetchClassContent } = useClasses();
-    const { user, loading: userLoading, hasAccessToClass, unlockClass } = useUser();
-    const { media } = useMedia();
+    const { user, loading: userLoading, hasAccessToClass, refreshUserFromDB } = useUser();
     const { settings } = useAppSettings();
+    const { media } = useMedia();
 
     const [selectedClass, setSelectedClass] = useState(null);
     const [activeTab, setActiveTab] = useState('video');
@@ -80,17 +82,27 @@ export default function Classes() {
     const hasLoadedInitialUrl = useRef(false);
     const userHasAccess = selectedClass ? hasAccessToClass(selectedClass) : false;
 
-    // Handle Stripe Success on Mount
+    // Verify payment server-side using the Stripe session_id in the redirect URL
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('payment') === 'success' || urlParams.get('status') === 'success') {
-            const classId = urlParams.get('classId');
-            if (classId) {
-                unlockClass(classId);
+        const sessionId = urlParams.get('session_id');
+        const classId = urlParams.get('classId');
+        if (!sessionId || !classId || !user?.id) return;
+
+        window.history.replaceState({}, document.title, window.location.pathname);
+
+        (async () => {
+            try {
+                const { data, error } = await supabase.functions.invoke('verify-payment', {
+                    body: { session_id: sessionId, type: 'class', item_id: classId, user_id: user.id },
+                });
+                if (error || !data?.success) throw new Error(error?.message || 'Verification failed');
+                await refreshUserFromDB();
+            } catch (err) {
+                console.error('Payment verification failed:', err);
             }
-            window.history.replaceState({}, document.title, window.location.pathname);
-        }
-    }, [unlockClass]);
+        })();
+    }, [user?.id]);
 
     // Handle Deep Link / Auto-open
     useEffect(() => {
@@ -152,19 +164,18 @@ export default function Classes() {
     const handleUnlockClass = async () => {
         setIsUnlocking(true);
         try {
+            const currency = settings.currency || 'MYR';
+            const successUrl = `${window.location.origin}/classes?session_id={CHECKOUT_SESSION_ID}&classId=${selectedClass.id}`;
             const checkoutUrl = await createStripeCheckout(
-                selectedClass.price || '19.99',
-                'USD',
+                selectedClass.price || '29.99',
+                currency,
                 `CLASS-${selectedClass.id}-${Date.now()}`,
-                `${window.location.origin}/classes?payment=success&classId=${selectedClass.id}`
+                successUrl,
+                `${selectedClass.title} — CWC+`
             );
-            if (checkoutUrl) {
-                window.location.href = checkoutUrl;
-            } else {
-                unlockClass(selectedClass.id);
-            }
+            if (checkoutUrl) window.location.href = checkoutUrl;
         } catch (error) {
-            console.error("Payment failed", error);
+            console.error('Payment failed', error);
         } finally {
             setIsUnlocking(false);
         }
@@ -351,7 +362,7 @@ export default function Classes() {
                                                 onClick={handleUnlockClass}
                                                 className="w-full py-4 bg-white text-black rounded-lg font-black text-sm uppercase tracking-widest shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:scale-105 transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:hover:scale-100"
                                             >
-                                                <Lock size={18} /> {isUnlocking ? 'Authorizing...' : `Unlock for $${selectedClass.price || '19.99'}`}
+                                                <Lock size={18} /> {isUnlocking ? 'Authorizing...' : `Unlock for ${formatPrice(selectedClass.price || '29.99', settings.currency || 'MYR')}`}
                                             </button>
                                         </div>
                                     </div>

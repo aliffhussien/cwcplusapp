@@ -24,6 +24,7 @@ import ContentCurator from '../components/admin/ContentCurator';
 import MediaStudio from '../components/admin/MediaStudio';
 import MediaPickerModal from '../components/admin/MediaPickerModal';
 import { TrendingUp, GripVertical } from 'lucide-react';
+import { CURRENCIES, CURRENCY_GROUPS } from '../lib/currency';
 
 const MediaUploader = ({ value, onChange, label = "Select Media Asset" }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -2476,9 +2477,29 @@ export default function EmpireCommandCenter() {
                 <div className="p-6 md:p-8 rounded-2xl bg-[#0F172A]/30 border-[0.5px] border-white/10 space-y-6 shadow-2xl">
                   <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4">
                     <h4 className="font-black text-xs uppercase tracking-[0.3em] text-slate-500 flex items-center gap-3"><DollarSign size={16} className="text-indigo-400" /> Membership Tiers</h4>
-                    <div className="flex items-center gap-4">
-                      <span className="text-[10px] font-black uppercase text-slate-500">Global Accent</span>
-                      <input type="color" value={settings.accentColor || '#4f46e5'} onChange={e => updateSettings({ ...settings, accentColor: e.target.value })} className="w-8 h-8 rounded-lg cursor-pointer bg-slate-900 border-none outline-none overflow-hidden" />
+                    <div className="flex items-center gap-6 flex-wrap">
+                      {/* Currency selector */}
+                      <div className="flex items-center gap-3">
+                        <span className="text-[10px] font-black uppercase text-slate-500">Currency</span>
+                        <select
+                          value={settings.currency || 'MYR'}
+                          onChange={e => updateSettings({ ...settings, currency: e.target.value })}
+                          className="bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-black text-white outline-none cursor-pointer focus:border-indigo-500 transition-all"
+                        >
+                          {Object.entries(CURRENCY_GROUPS).map(([region, list]) => (
+                            <optgroup key={region} label={region}>
+                              {list.map(c => (
+                                <option key={c.code} value={c.code}>{c.symbol} {c.code} — {c.name}</option>
+                              ))}
+                            </optgroup>
+                          ))}
+                        </select>
+                      </div>
+                      {/* Accent colour */}
+                      <div className="flex items-center gap-3">
+                        <span className="text-[10px] font-black uppercase text-slate-500">Accent</span>
+                        <input type="color" value={settings.accentColor || '#4f46e5'} onChange={e => updateSettings({ ...settings, accentColor: e.target.value })} className="w-8 h-8 rounded-lg cursor-pointer bg-slate-900 border-none outline-none overflow-hidden" />
+                      </div>
                     </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

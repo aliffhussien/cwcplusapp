@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
 
+// The one true owner. isGod is ALWAYS computed from this — never trusted from localStorage.
+export const GOD_ADMIN_EMAIL = 'ononeline30@gmail.com';
+
+const PRIVILEGED_ROLES = ['admin', 'management', 'employee'];
+
 const defaultUser = {
     id: null,
     email: null,
@@ -15,45 +20,47 @@ const defaultUser = {
     favoriteFood: null
 };
 
+// Fields we never persist to localStorage — always recomputed from the server
+const STRIP_FROM_STORAGE = ['isGod'];
+
+function toStorage(profile) {
+    const copy = { ...profile };
+    STRIP_FROM_STORAGE.forEach(k => delete copy[k]);
+    return copy;
+}
+
 export function useUser() {
     const [session, setSession] = useState(null);
     const [user, setUser] = useState(() => {
         const stored = localStorage.getItem('cwc_user');
         if (stored) {
-            try { return JSON.parse(stored); } catch(e) {}
+            try {
+                const parsed = JSON.parse(stored);
+                // Never trust isGod from storage — always false until server confirms
+                return { ...parsed, isGod: false };
+            } catch(e) {}
         }
         return defaultUser;
     });
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Initial session check
         supabase.auth.getSession().then(({ data: { session } }) => {
             setSession(session);
-            if (session?.user) {
-                fetchUserProfile(session.user);
-            } else {
-                loadLocalUser();
-            }
+            if (session?.user) fetchUserProfile(session.user);
+            else loadLocalUser();
         });
 
-        // Listen for auth changes
         const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
             setSession(session);
-            if (session?.user) {
-                fetchUserProfile(session.user);
-            } else {
-                loadLocalUser();
-            }
+            if (session?.user) fetchUserProfile(session.user);
+            else loadLocalUser();
         });
 
-        // Listen for cross-component user updates
         const handleUserUpdate = () => {
             const stored = localStorage.getItem('cwc_user');
             if (stored) {
-                try {
-                    setUser(JSON.parse(stored));
-                } catch(e) {}
+                try { setUser({ ...JSON.parse(stored), isGod: false }); } catch(e) {}
             }
         };
         window.addEventListener('cwc_user_updated', handleUserUpdate);
@@ -65,15 +72,19 @@ export function useUser() {
     }, []);
 
     const fetchUserProfile = async (authUser) => {
-        const { data, error } = await supabase.from('people').select('*').eq('id', authUser.id).single();
+        // isGod is determined solely by email match against the auth server — not the DB
+        const isGod = authUser.email === GOD_ADMIN_EMAIL;
+
+        const { data } = await supabase.from('people').select('*').eq('id', authUser.id).single();
         if (data) {
             const profile = {
                 id: authUser.id,
                 email: authUser.email,
                 name: data.name || authUser.email?.split('@')[0] || 'Chef',
-                subscriptionTier: data.subscription_tier || "Free",
-                role: authUser.email === 'ononeline30@gmail.com' ? 'admin' : (data.role || "user"),
-                isGod: authUser.email === 'ononeline30@gmail.com',
+                subscriptionTier: data.subscription_tier || 'Free',
+                // God admin always gets admin role regardless of DB value
+                role: isGod ? 'admin' : (data.role || 'user'),
+                isGod,
                 unlockedVolumes: data.unlocked_volumes || [],
                 unlockedClasses: data.unlocked_classes || [],
                 avatarUrl: data.avatar_url || authUser.user_metadata?.avatar_url || null,
@@ -83,16 +94,15 @@ export function useUser() {
                 pushSubscription: data.push_subscription || null,
             };
             setUser(profile);
-            localStorage.setItem('cwc_user', JSON.stringify(profile));
+            localStorage.setItem('cwc_user', JSON.stringify(toStorage(profile)));
         } else {
-            // Trigger should have already created the row; try an upsert as fallback
             const newProfile = {
                 id: authUser.id,
                 email: authUser.email,
                 name: authUser.user_metadata?.full_name || authUser.email?.split('@')[0] || 'Chef',
                 avatar_url: authUser.user_metadata?.avatar_url || authUser.user_metadata?.picture || null,
                 subscription_tier: 'Free',
-                role: 'user',
+                role: isGod ? 'admin' : 'user',
             };
             await supabase.from('people').upsert([newProfile], { onConflict: 'id' });
             const finalProfile = {
@@ -100,14 +110,12 @@ export function useUser() {
                 id: authUser.id,
                 email: authUser.email,
                 name: newProfile.name,
-                role: authUser.email === 'ononeline30@gmail.com' ? 'admin' : 'user',
-                isGod: authUser.email === 'ononeline30@gmail.com',
+                role: newProfile.role,
+                isGod,
                 avatarUrl: newProfile.avatar_url,
-                dietaryPreferences: [],
-                favoriteFood: null,
             };
             setUser(finalProfile);
-            localStorage.setItem('cwc_user', JSON.stringify(finalProfile));
+            localStorage.setItem('cwc_user', JSON.stringify(toStorage(finalProfile)));
         }
         setLoading(false);
     };
@@ -115,22 +123,21 @@ export function useUser() {
     const loadLocalUser = () => {
         const stored = localStorage.getItem('cwc_user');
         if (stored) {
-            try { 
+            try {
                 const parsed = JSON.parse(stored);
-                // If id is null, they are a guest. Don't trust local storage as it may have the old 'admin' bug.
                 if (!parsed.id) {
                     setUser(defaultUser);
                 } else {
-                    setUser({ 
-                        ...defaultUser, 
+                    setUser({
+                        ...defaultUser,
                         ...parsed,
+                        isGod: false, // Never trust from storage
                         unlockedVolumes: Array.isArray(parsed.unlockedVolumes) ? parsed.unlockedVolumes : [],
                         unlockedClasses: Array.isArray(parsed.unlockedClasses) ? parsed.unlockedClasses : [],
                         dietaryPreferences: Array.isArray(parsed.dietaryPreferences) ? parsed.dietaryPreferences : []
-                    }); 
+                    });
                 }
-            }
-            catch (e) { setUser(defaultUser); }
+            } catch(e) { setUser(defaultUser); }
         } else {
             setUser(defaultUser);
         }
@@ -138,28 +145,40 @@ export function useUser() {
     };
 
     const updateUser = async (updates) => {
-        const updatedUser = { ...user, ...updates };
+        // Prevent client from elevating their own role or faking isGod
+        const safeUpdates = { ...updates };
+        delete safeUpdates.isGod;
+        if (!user.isGod && safeUpdates.role && ['admin', 'management'].includes(safeUpdates.role)) {
+            delete safeUpdates.role;
+        }
+
+        const updatedUser = { ...user, ...safeUpdates };
         setUser(updatedUser);
-        localStorage.setItem('cwc_user', JSON.stringify(updatedUser));
+        localStorage.setItem('cwc_user', JSON.stringify(toStorage(updatedUser)));
         window.dispatchEvent(new Event('cwc_user_updated'));
-        
+
         if (session?.user) {
-            // sync to supabase
             const dbUpdates = {};
-            if (updates.name !== undefined) dbUpdates.name = updates.name;
-            if (updates.subscriptionTier !== undefined) dbUpdates.subscription_tier = updates.subscriptionTier;
-            if (updates.unlockedVolumes !== undefined) dbUpdates.unlocked_volumes = updates.unlockedVolumes;
-            if (updates.unlockedClasses !== undefined) dbUpdates.unlocked_classes = updates.unlockedClasses;
-            if (updates.avatarUrl !== undefined) dbUpdates.avatar_url = updates.avatarUrl;
-            if (updates.coverUrl !== undefined) dbUpdates.cover_url = updates.coverUrl;
-            if (updates.dietaryPreferences !== undefined) dbUpdates.dietary_preferences = updates.dietaryPreferences;
-            if (updates.favoriteFood !== undefined) dbUpdates.favorite_food = updates.favoriteFood;
-            if (updates.pushSubscription !== undefined) dbUpdates.push_subscription = updates.pushSubscription;
-            
+            if (safeUpdates.name !== undefined)               dbUpdates.name = safeUpdates.name;
+            if (safeUpdates.subscriptionTier !== undefined)   dbUpdates.subscription_tier = safeUpdates.subscriptionTier;
+            if (safeUpdates.unlockedVolumes !== undefined)    dbUpdates.unlocked_volumes = safeUpdates.unlockedVolumes;
+            if (safeUpdates.unlockedClasses !== undefined)    dbUpdates.unlocked_classes = safeUpdates.unlockedClasses;
+            if (safeUpdates.avatarUrl !== undefined)          dbUpdates.avatar_url = safeUpdates.avatarUrl;
+            if (safeUpdates.coverUrl !== undefined)           dbUpdates.cover_url = safeUpdates.coverUrl;
+            if (safeUpdates.dietaryPreferences !== undefined) dbUpdates.dietary_preferences = safeUpdates.dietaryPreferences;
+            if (safeUpdates.favoriteFood !== undefined)       dbUpdates.favorite_food = safeUpdates.favoriteFood;
+            if (safeUpdates.pushSubscription !== undefined)   dbUpdates.push_subscription = safeUpdates.pushSubscription;
+            // Only god admin can change roles via admin panel (handled server-side by admin actions)
             if (Object.keys(dbUpdates).length > 0) {
                 await supabase.from('people').update(dbUpdates).eq('id', session.user.id);
             }
         }
+    };
+
+    // Called after server-side payment verification to refresh access from DB
+    const refreshUserFromDB = async () => {
+        if (!session?.user) return;
+        await fetchUserProfile(session.user);
     };
 
     const unlockVolume = (volumeName) => {
@@ -176,21 +195,21 @@ export function useUser() {
 
     const hasAccessToRecipe = (recipe) => {
         const volume = recipe?.volume || 'Free';
-        if (volume === 'Free') return true;
-        if (['admin', 'management', 'employee'].includes(user?.role)) return true;
-        if (user.subscriptionTier === 'Premium') return true;
-        
-        return user.unlockedVolumes?.includes(volume);
+        if (volume === 'Free' || !volume) return true;
+        if (PRIVILEGED_ROLES.includes(user?.role)) return true;
+        // Any paid subscription tier (not 'Free') grants access to all recipe volumes
+        if (user?.subscriptionTier && user.subscriptionTier !== 'Free') return true;
+        return user?.unlockedVolumes?.includes(volume) ?? false;
     };
 
     const hasAccessToClass = (cls) => {
-        const tier = cls?.tierRequired || 'Free';
-        if (tier === 'Free') return true;
-        if (['admin', 'management', 'employee'].includes(user?.role)) return true;
-        if (user.subscriptionTier === 'Premium') return true;
-        if (user.subscriptionTier === tier) return true;
-
-        return user.unlockedClasses?.includes(cls.id);
+        const tier = cls?.tier_required || cls?.tierRequired || 'Free';
+        if (!tier || tier === 'Free') return true;
+        if (PRIVILEGED_ROLES.includes(user?.role)) return true;
+        // Any paid subscription tier grants access, or the specific tier matches
+        if (user?.subscriptionTier && user.subscriptionTier !== 'Free') return true;
+        if (user?.subscriptionTier === tier) return true;
+        return user?.unlockedClasses?.includes(cls.id) ?? false;
     };
 
     const signOut = async () => {
@@ -199,5 +218,15 @@ export function useUser() {
         localStorage.removeItem('cwc_user');
     };
 
-    return { session, user, loading, updateUser, unlockVolume, unlockClass, hasAccessToRecipe, hasAccessToClass, signOut, isGod: user?.isGod };
+    // isGod is always computed live from the current user object, never from storage
+    const isGod = user?.email === GOD_ADMIN_EMAIL && !!user?.id;
+
+    return {
+        session, user: { ...user, isGod }, loading,
+        updateUser, refreshUserFromDB,
+        unlockVolume, unlockClass,
+        hasAccessToRecipe, hasAccessToClass,
+        signOut,
+        isGod,
+    };
 }

@@ -61,6 +61,8 @@ ALTER TABLE public.classes ADD COLUMN IF NOT EXISTS steps JSONB DEFAULT '[]'::js
 ALTER TABLE public.classes ADD COLUMN IF NOT EXISTS tags JSONB DEFAULT '[]'::jsonb;
 ALTER TABLE public.classes ADD COLUMN IF NOT EXISTS category TEXT;
 ALTER TABLE public.classes ADD COLUMN IF NOT EXISTS live_link TEXT;
+ALTER TABLE public.recipes ADD COLUMN IF NOT EXISTS views INTEGER DEFAULT 0;
+ALTER TABLE public.classes ADD COLUMN IF NOT EXISTS views INTEGER DEFAULT 0;
 
 -- People / Users Table (linked to Supabase Auth via auth.users.id)
 CREATE TABLE IF NOT EXISTS people (
@@ -87,6 +89,7 @@ ALTER TABLE public.people ADD COLUMN IF NOT EXISTS avatar_url TEXT;
 ALTER TABLE public.people ADD COLUMN IF NOT EXISTS cover_url TEXT;
 ALTER TABLE public.people ADD COLUMN IF NOT EXISTS dietary_preferences TEXT[] DEFAULT '{}';
 ALTER TABLE public.people ADD COLUMN IF NOT EXISTS favorite_food TEXT;
+ALTER TABLE public.people ADD COLUMN IF NOT EXISTS push_subscription JSONB;
 
 -- Merch Table
 CREATE TABLE IF NOT EXISTS merch (
@@ -107,6 +110,21 @@ CREATE TABLE IF NOT EXISTS settings (
   id         TEXT PRIMARY KEY,
   config     JSONB DEFAULT '{}'::jsonb,
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Orders Table
+CREATE TABLE IF NOT EXISTS orders (
+  id           TEXT PRIMARY KEY,
+  user_id      UUID REFERENCES auth.users(id),
+  customer     TEXT,
+  email        TEXT,
+  phone        TEXT,
+  address      TEXT,
+  product      TEXT,
+  amount       NUMERIC(10,2),
+  status       TEXT DEFAULT 'pending',
+  fulfillment  TEXT DEFAULT 'pending',
+  created_at   TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
 -- Notifications Table
@@ -178,6 +196,7 @@ ALTER TABLE people   ENABLE ROW LEVEL SECURITY;
 ALTER TABLE merch    ENABLE ROW LEVEL SECURITY;
 ALTER TABLE settings ENABLE ROW LEVEL SECURITY;
 ALTER TABLE notifications ENABLE ROW LEVEL SECURITY;
+ALTER TABLE orders ENABLE ROW LEVEL SECURITY;
 
 -- Create is_team_member function
 CREATE OR REPLACE FUNCTION public.is_team_member()
@@ -249,6 +268,17 @@ CREATE POLICY "Admin full access to merch"
   ON merch FOR ALL
   USING (public.is_team_member());
 
+-- ── ORDERS policies ──────────────────────────────────────────
+DROP POLICY IF EXISTS "Users can read their own orders" ON orders;
+CREATE POLICY "Users can read their own orders"
+  ON orders FOR SELECT
+  USING (auth.uid() = user_id);
+
+DROP POLICY IF EXISTS "Admin full access to orders" ON orders;
+CREATE POLICY "Admin full access to orders"
+  ON orders FOR ALL
+  USING (public.is_team_member());
+
 -- ── SETTINGS policies ────────────────────────────────────────
 -- Anyone authenticated can read settings
 DROP POLICY IF EXISTS "Authenticated can read settings" ON settings;
@@ -302,120 +332,12 @@ INSERT INTO settings (id, config) VALUES (
 
 
 -- ============================================================
--- STEP 5: SEED SAMPLE RECIPES (DRAFTS - ADMIN ONLY)
+-- STEP 5: SEED SAMPLE RECIPES (REMOVED - NO MOCK DATA)
 -- ============================================================
 
-INSERT INTO recipes (title, author, time, image, category, difficulty, rating, base_servings, ingredients, steps, status, is_featured, tier_required, volume) VALUES
-(
-  'Creamy Garlic Butter Pasta',
-  'Chef Maria',
-  '25 min',
-  'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&q=80&w=800',
-  'Pasta',
-  'Easy',
-  4.8,
-  2,
-  '[{"name":"Spaghetti","amount":"200g"},{"name":"Garlic cloves","amount":"4"},{"name":"Butter","amount":"60g"},{"name":"Parmesan","amount":"50g"},{"name":"Cream","amount":"100ml"},{"name":"Parsley","amount":"handful"},{"name":"Salt & pepper","amount":"to taste"}]',
-  '["Boil salted water and cook spaghetti until al dente.","In a pan, melt butter and gently sauté minced garlic for 2 minutes.","Add cream and simmer for 3 minutes until slightly thickened.","Drain pasta, reserving ½ cup pasta water.","Toss pasta in the sauce, adding pasta water to loosen.","Stir in parmesan, season generously, and top with fresh parsley."]',
-  'draft', true, 'Free', 'CWC Original'
-),
-(
-  'Smoked Salmon Eggs Benedict',
-  'Chef James',
-  '35 min',
-  'https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&q=80&w=800',
-  'Breakfast',
-  'Medium',
-  4.9,
-  2,
-  '[{"name":"English muffins","amount":"2"},{"name":"Smoked salmon","amount":"120g"},{"name":"Eggs","amount":"4"},{"name":"Egg yolks","amount":"3"},{"name":"Butter","amount":"150g"},{"name":"Lemon juice","amount":"1 tbsp"},{"name":"Capers","amount":"1 tbsp"},{"name":"Dill","amount":"to garnish"}]',
-  '["Make hollandaise: whisk yolks over double boiler, slowly add melted butter, add lemon juice, season.","Toast muffins until golden.","Poach eggs in simmering water with a splash of vinegar for 3-4 minutes.","Layer muffin with salmon, poached egg, hollandaise.","Garnish with capers and dill. Serve immediately."]',
-  'draft', true, 'Free', 'CWC Original'
-),
-(
-  'Thai Green Curry',
-  'Chef Nong',
-  '40 min',
-  'https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?auto=format&fit=crop&q=80&w=800',
-  'Curry',
-  'Medium',
-  4.7,
-  4,
-  '[{"name":"Chicken thighs","amount":"500g"},{"name":"Coconut milk","amount":"400ml"},{"name":"Green curry paste","amount":"3 tbsp"},{"name":"Thai eggplant","amount":"200g"},{"name":"Kaffir lime leaves","amount":"4"},{"name":"Fish sauce","amount":"2 tbsp"},{"name":"Palm sugar","amount":"1 tbsp"},{"name":"Thai basil","amount":"handful"},{"name":"Jasmine rice","amount":"to serve"}]',
-  '["Heat oil in wok, fry curry paste for 2 minutes until fragrant.","Add half the coconut milk, stir and cook until oil separates.","Add chicken and cook through.","Pour remaining coconut milk, add eggplant and lime leaves.","Season with fish sauce and sugar. Simmer 10 minutes.","Stir in Thai basil. Serve over jasmine rice."]',
-  'draft', false, 'Free', 'CWC Original'
-),
-(
-  'Wagyu Beef Steak with Truffle Butter',
-  'Chef Antoine',
-  '30 min',
-  'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&q=80&w=800',
-  'Mains',
-  'Hard',
-  5.0,
-  2,
-  '[{"name":"Wagyu ribeye","amount":"400g"},{"name":"Truffle butter","amount":"40g"},{"name":"Fresh thyme","amount":"4 sprigs"},{"name":"Garlic","amount":"3 cloves"},{"name":"Sea salt flakes","amount":"generous"},{"name":"Black pepper","amount":"freshly cracked"}]',
-  '["Rest steak at room temp 30 mins. Pat very dry and season generously.","Heat cast iron skillet until smoking hot. Add minimal oil.","Sear 2-3 minutes each side for medium-rare.","Add butter, thyme, garlic and baste continuously for 90 seconds.","Rest on a wire rack for 8 minutes — critical step.","Slice against the grain. Top with truffle butter. Serve immediately."]',
-  'draft', true, 'Premium', 'Volume 2'
-),
-(
-  'Matcha Soufflé Pancakes',
-  'Chef Yuki',
-  '45 min',
-  'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&q=80&w=800',
-  'Desserts',
-  'Hard',
-  4.6,
-  2,
-  '[{"name":"Egg yolks","amount":"2"},{"name":"Egg whites","amount":"3"},{"name":"Matcha powder","amount":"2 tsp"},{"name":"Milk","amount":"2 tbsp"},{"name":"Flour","amount":"4 tbsp"},{"name":"Baking powder","amount":"½ tsp"},{"name":"Caster sugar","amount":"3 tbsp"},{"name":"Cream of tartar","amount":"¼ tsp"}]',
-  '["Whisk yolks, milk, matcha, flour and baking powder until smooth.","Whip egg whites with cream of tartar until foamy, add sugar gradually to stiff peaks.","Gently fold ⅓ whites into yolk mixture, then fold in remaining.","Heat pan on lowest setting, lightly grease. Spoon batter into tall rounds.","Cook 4-5 min with lid on. Gently flip. Cook 3 more minutes.","Stack high, dust with matcha, serve with whipped cream."]',
-  'draft', false, 'Plus', 'Volume 1'
-)
-ON CONFLICT DO NOTHING;
-
-
 -- ============================================================
--- STEP 6: SEED SAMPLE MASTERCLASSES (DRAFTS - ADMIN ONLY)
+-- STEP 6: SEED SAMPLE MASTERCLASSES (REMOVED - NO MOCK DATA)
 -- ============================================================
-
-INSERT INTO classes (title, instructor, duration, price, image, status, tier_required) VALUES
-(
-  'The Art of French Sauces',
-  'Chef Antoine Dubois',
-  '1h 45m',
-  '24.99',
-  'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=800',
-  'draft',
-  'Plus'
-),
-(
-  'Japanese Knife Skills & Sushi',
-  'Chef Hiroshi Tanaka',
-  '2h 10m',
-  '29.99',
-  'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&q=80&w=800',
-  'draft',
-  'Plus'
-),
-(
-  'Baking Masterclass: Sourdough',
-  'Chef Emma Wilson',
-  '1h 30m',
-  '19.99',
-  'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=800',
-  'draft',
-  'Basic'
-),
-(
-  'Modern Pastry & Plating',
-  'Chef Sophie Laurent',
-  '2h 00m',
-  '34.99',
-  'https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&q=80&w=800',
-  'draft',
-  'Premium'
-)
-ON CONFLICT DO NOTHING;
 
 -- ============================================================
 -- STORAGE & NEW FIELDS FOR CLASS SCHEDULES
@@ -488,3 +410,190 @@ WHERE email = 'ononeline30@gmail.com';
 --    - http://localhost:5173/auth/callback  (local dev)
 --    - https://yourdomain.com/auth/callback (production)
 -- ============================================================
+
+-- ============================================================
+-- STEP 7: MEDIA LIBRARY (CENTRALIZED ASSETS)
+-- ============================================================
+
+CREATE TABLE IF NOT EXISTS media_library (
+  id             BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+  filename       TEXT NOT NULL,
+  hero_url       TEXT NOT NULL,
+  thumb_url      TEXT,
+  card_url       TEXT,
+  dominant_color TEXT,
+  seo_schema     TEXT,
+  type           TEXT DEFAULT 'image',
+  created_at     TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Alter existing tables to link to media
+ALTER TABLE public.recipes ADD COLUMN IF NOT EXISTS cover_image_id BIGINT REFERENCES media_library(id);
+ALTER TABLE public.recipes ADD COLUMN IF NOT EXISTS hero_image TEXT;
+ALTER TABLE public.recipes ADD COLUMN IF NOT EXISTS hero_image_id BIGINT REFERENCES media_library(id);
+
+ALTER TABLE public.classes ADD COLUMN IF NOT EXISTS thumbnail_image_id BIGINT REFERENCES media_library(id);
+ALTER TABLE public.classes ADD COLUMN IF NOT EXISTS hero_image TEXT;
+ALTER TABLE public.classes ADD COLUMN IF NOT EXISTS hero_image_id BIGINT REFERENCES media_library(id);
+ALTER TABLE public.merch ADD COLUMN IF NOT EXISTS media_id BIGINT REFERENCES media_library(id);
+
+-- Support for generic files and metadata
+ALTER TABLE public.media_library ADD COLUMN IF NOT EXISTS meta_data JSONB DEFAULT '{}'::jsonb;
+
+ALTER TABLE media_library ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "Public can read media" ON media_library;
+CREATE POLICY "Public can read media"
+  ON media_library FOR SELECT
+  USING (true);
+
+DROP POLICY IF EXISTS "Admin full access to media" ON media_library;
+CREATE POLICY "Admin full access to media"
+  ON media_library FOR ALL
+  USING (public.is_team_member());
+
+-- --- PUSH NOTIFICATION AUTOMATION ---
+-- This trigger automatically calls the Edge Function whenever a new notification is created
+
+-- 1. Enable pg_net for HTTP requests
+CREATE EXTENSION IF NOT EXISTS "pg_net";
+
+-- 2. Trigger Function
+CREATE OR REPLACE FUNCTION public.handle_broadcast_push()
+RETURNS TRIGGER AS $$
+BEGIN
+  -- We call the edge function with the new record data
+  PERFORM
+    net.http_post(
+      url := 'https://kkfctwmrgvrinoythhqb.supabase.co/functions/v1/send-push',
+      headers := jsonb_build_object(
+        'Content-Type', 'application/json'
+      ),
+      body := jsonb_build_object('record', row_to_json(NEW))
+    );
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- 3. The Trigger
+DROP TRIGGER IF EXISTS tr_send_push_on_broadcast ON public.notifications;
+CREATE TRIGGER tr_send_push_on_broadcast
+AFTER INSERT ON public.notifications
+FOR EACH ROW EXECUTE FUNCTION public.handle_broadcast_push();
+
+
+-- ============================================================
+-- STEP 8: SECURITY HARDENING (run after initial setup)
+-- ============================================================
+
+-- ── Block role self-promotion ─────────────────────────────────
+-- Users cannot elevate their own role to admin/management via the API.
+-- Only a team member (admin) can change another person's role.
+DROP POLICY IF EXISTS "Users can update their own profile" ON people;
+CREATE POLICY "Users can update their own profile"
+  ON people FOR UPDATE
+  USING (auth.uid() = id)
+  WITH CHECK (
+    auth.uid() = id AND
+    -- Prevent self-promotion: role must stay the same unless a team member is editing
+    (role = (SELECT role FROM public.people WHERE id = auth.uid()) OR public.is_team_member())
+  );
+
+-- ── Add stripe_session_id, item_type, item_id to orders ──────
+-- Allows verify-payment Edge Function to record what was purchased.
+ALTER TABLE public.orders
+  ADD COLUMN IF NOT EXISTS stripe_session_id TEXT,
+  ADD COLUMN IF NOT EXISTS item_type         TEXT,
+  ADD COLUMN IF NOT EXISTS item_id           TEXT;
+
+-- ── Secure content RPC: get_recipe_content ────────────────────
+-- Replaces direct SELECT on ingredients/steps/notes/video.
+-- Enforces tier access server-side before returning content.
+CREATE OR REPLACE FUNCTION public.get_recipe_content(p_id BIGINT)
+RETURNS TABLE(ingredients JSONB, steps JSONB, notes TEXT, video TEXT, tags JSONB)
+LANGUAGE plpgsql SECURITY DEFINER
+AS $$
+DECLARE
+  v_volume TEXT;
+  v_tier   TEXT;
+  v_unlocked_volumes TEXT[];
+BEGIN
+  SELECT volume INTO v_volume FROM public.recipes WHERE id = p_id AND status = 'published';
+  IF NOT FOUND THEN RAISE EXCEPTION 'Recipe not found'; END IF;
+
+  -- Free volume: open to all
+  IF v_volume IS NULL OR v_volume = 'Free' THEN
+    RETURN QUERY SELECT r.ingredients, r.steps, r.notes, r.video, r.tags
+                 FROM public.recipes r WHERE r.id = p_id;
+    RETURN;
+  END IF;
+
+  -- Unauthenticated: deny
+  IF auth.uid() IS NULL THEN RAISE EXCEPTION 'Authentication required'; END IF;
+
+  -- Team members: full access
+  IF public.is_team_member() THEN
+    RETURN QUERY SELECT r.ingredients, r.steps, r.notes, r.video, r.tags
+                 FROM public.recipes r WHERE r.id = p_id;
+    RETURN;
+  END IF;
+
+  -- Check user's tier and individual unlocks
+  SELECT subscription_tier, unlocked_volumes
+    INTO v_tier, v_unlocked_volumes
+    FROM public.people WHERE id = auth.uid();
+
+  IF v_tier != 'Free' OR v_volume = ANY(v_unlocked_volumes) THEN
+    RETURN QUERY SELECT r.ingredients, r.steps, r.notes, r.video, r.tags
+                 FROM public.recipes r WHERE r.id = p_id;
+  ELSE
+    RAISE EXCEPTION 'Access denied: upgrade your membership to unlock this recipe';
+  END IF;
+END;
+$$;
+
+-- ── Secure content RPC: get_class_content ────────────────────
+CREATE OR REPLACE FUNCTION public.get_class_content(p_id BIGINT)
+RETURNS TABLE(video TEXT, ingredients JSONB, steps JSONB, notes TEXT, attachments JSONB, tags JSONB)
+LANGUAGE plpgsql SECURITY DEFINER
+AS $$
+DECLARE
+  v_tier_required  TEXT;
+  v_user_tier      TEXT;
+  v_unlocked_classes BIGINT[];
+BEGIN
+  SELECT tier_required INTO v_tier_required FROM public.classes WHERE id = p_id AND status = 'published';
+  IF NOT FOUND THEN RAISE EXCEPTION 'Class not found'; END IF;
+
+  -- Free tier: open to all
+  IF v_tier_required IS NULL OR v_tier_required = 'Free' THEN
+    RETURN QUERY SELECT c.video, c.ingredients, c.steps, c.notes, c.attachments, c.tags
+                 FROM public.classes c WHERE c.id = p_id;
+    RETURN;
+  END IF;
+
+  IF auth.uid() IS NULL THEN RAISE EXCEPTION 'Authentication required'; END IF;
+
+  IF public.is_team_member() THEN
+    RETURN QUERY SELECT c.video, c.ingredients, c.steps, c.notes, c.attachments, c.tags
+                 FROM public.classes c WHERE c.id = p_id;
+    RETURN;
+  END IF;
+
+  SELECT subscription_tier,
+         ARRAY(SELECT jsonb_array_elements_text(to_jsonb(unlocked_classes)))::BIGINT[]
+    INTO v_user_tier, v_unlocked_classes
+    FROM public.people WHERE id = auth.uid();
+
+  IF v_user_tier != 'Free' OR p_id = ANY(v_unlocked_classes) THEN
+    RETURN QUERY SELECT c.video, c.ingredients, c.steps, c.notes, c.attachments, c.tags
+                 FROM public.classes c WHERE c.id = p_id;
+  ELSE
+    RAISE EXCEPTION 'Access denied: upgrade your membership to unlock this class';
+  END IF;
+END;
+$$;
+
+-- Grant execute to authenticated users (RLS inside the functions handles access)
+GRANT EXECUTE ON FUNCTION public.get_recipe_content(BIGINT) TO authenticated;
+GRANT EXECUTE ON FUNCTION public.get_class_content(BIGINT)  TO authenticated;

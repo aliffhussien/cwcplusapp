@@ -26,6 +26,7 @@ import { useRecipes } from '../hooks/useRecipes';
 import { useUser } from '../hooks/useUser';
 import { useAppSettings } from '../hooks/useAppSettings';
 import { createStripeCheckout } from '../lib/stripe';
+import { formatPrice } from '../lib/currency';
 
 // --- Smart Parser Logic ---
 const cleanText = (text) => {
@@ -468,7 +469,7 @@ export default function RecipeView() {
     const { id } = useParams();
     const navigate = useNavigate();
     const { publicRecipes, fetchRecipeContent } = useRecipes();
-    const { unlockVolume, hasAccessToRecipe, user, loading: userLoading } = useUser();
+    const { hasAccessToRecipe, user, loading: userLoading, refreshUserFromDB } = useUser();
     const { settings } = useAppSettings();
     const { isFavorite, toggleFavorite } = useFavorites();
     const [recipe, setRecipe] = useState(null);
@@ -509,17 +510,27 @@ export default function RecipeView() {
         if (recipe?.base_servings) setServings(recipe.base_servings);
     }, [recipe]);
 
+    // Verify payment server-side using the Stripe session_id Stripe appended to the redirect URL
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('payment') === 'success' || urlParams.get('status') === 'success') {
-            const volumeName = urlParams.get('volume');
-            if (volumeName) {
-                unlockVolume(volumeName);
-                alert(`Payment successful! ${volumeName} unlocked.`);
+        const sessionId = urlParams.get('session_id');
+        const volumeName = urlParams.get('volume');
+        if (!sessionId || !volumeName || !user?.id) return;
+
+        window.history.replaceState({}, document.title, window.location.pathname);
+
+        (async () => {
+            try {
+                const { data, error } = await supabase.functions.invoke('verify-payment', {
+                    body: { session_id: sessionId, type: 'volume', item_id: volumeName, user_id: user.id },
+                });
+                if (error || !data?.success) throw new Error(error?.message || 'Verification failed');
+                await refreshUserFromDB();
+            } catch (err) {
+                console.error('Payment verification failed:', err);
             }
-            window.history.replaceState({}, document.title, window.location.pathname);
-        }
-    }, [unlockVolume]);
+        })();
+    }, [user?.id]);
 
     // Find the recipe - wait for data to load
     const isAdmin = user?.role === 'admin' || user?.role === 'owner';
@@ -609,30 +620,27 @@ export default function RecipeView() {
 
 
     
-    const recipeVolume = settings.volumes?.find(v => v.id === recipe.volume || v.name === recipe.volume) || { name: recipe.volume || 'Premium Collection', price: '9.99', discount: 0 };
-    const basePrice = parseFloat(recipeVolume.price) || 9.99;
+    const recipeVolume = settings.volumes?.find(v => v.id === recipe.volume || v.name === recipe.volume) || { name: recipe.volume || 'Premium Collection', price: '29.99', discount: 0 };
+    const currency = settings.currency || 'MYR';
+    const basePrice = parseFloat(recipeVolume.price) || 29.99;
     const discount = parseFloat(recipeVolume.discount) || 0;
-    const finalPrice = discount > 0 ? (basePrice * (1 - discount/100)).toFixed(2) : basePrice.toFixed(2);
-
+    const finalPrice = discount > 0 ? (basePrice * (1 - discount / 100)) : basePrice;
+    const displayPrice = formatPrice(finalPrice, currency);
 
     const handleUnlockVolume = async (volumeName, price) => {
         setIsUnlocking(true);
         try {
+            const successUrl = `${window.location.origin}/recipe/${id}?session_id={CHECKOUT_SESSION_ID}&volume=${encodeURIComponent(volumeName)}`;
             const checkoutUrl = await createStripeCheckout(
                 price,
-                'USD',
+                currency,
                 `VOL-${volumeName.replace(/\s+/g, '')}-${Date.now()}`,
-                `${window.location.origin}/recipe/${id}?payment=success&volume=${encodeURIComponent(volumeName)}`
+                successUrl,
+                `${recipeVolume.name} — CWC+`
             );
-            if (checkoutUrl) {
-                window.location.href = checkoutUrl;
-            } else {
-                unlockVolume(volumeName);
-                alert(`Unlocked ${volumeName}!`);
-            }
+            if (checkoutUrl) window.location.href = checkoutUrl;
         } catch (error) {
-            console.error("Payment failed", error);
-            alert("Unable to initiate payment. Please try again.");
+            console.error('Payment failed', error);
         } finally {
             setIsUnlocking(false);
         }
@@ -859,7 +867,7 @@ export default function RecipeView() {
                                     onClick={() => handleUnlockVolume(recipeVolume.name, finalPrice)} 
                                     className="w-full py-5 bg-white text-[#070B14] rounded-2xl font-black text-xs uppercase tracking-[0.3em] shadow-[0_20px_40px_rgba(255,255,255,0.1)] transition-all active:scale-95 flex items-center justify-center gap-3 disabled:opacity-50"
                                 >
-                                    <ShoppingBag size={18} /> {isUnlocking ? 'Authorizing...' : `Unlock for $${finalPrice}`}
+                                    <ShoppingBag size={18} /> {isUnlocking ? 'Authorizing...' : `Unlock for ${displayPrice}`}
                                 </button>
                                 <button 
                                     onClick={() => navigate('/profile')} 

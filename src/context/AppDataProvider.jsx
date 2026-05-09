@@ -71,9 +71,9 @@ function useRecipesState(user) {
     };
 
     const fetchRecipeContent = useCallback(async (id) => {
-        const { data, error } = await supabase.from('recipes').select('ingredients, steps, notes, video, tags').eq('id', id).single();
+        const { data, error } = await supabase.rpc('get_recipe_content', { p_id: Number(id) });
         if (error) { console.error('Error fetching recipe content:', error); return null; }
-        return data;
+        return data?.[0] ?? null;
     }, []);
 
     const publicRecipes = (Array.isArray(recipes) ? recipes : []).filter(r => {
@@ -146,9 +146,9 @@ function useClassesState(user) {
     };
 
     const fetchClassContent = useCallback(async (id) => {
-        const { data, error } = await supabase.from('classes').select('video, ingredients, steps, notes, attachments, tags').eq('id', id).single();
+        const { data, error } = await supabase.rpc('get_class_content', { p_id: Number(id) });
         if (error) { console.error('Error fetching class content:', error); return null; }
-        return data;
+        return data?.[0] ?? null;
     }, []);
 
     const publicClasses = (Array.isArray(classes) ? classes : []).filter(c => {

@@ -23,6 +23,8 @@ import { useMedia } from '../hooks/useMedia';
 import { useUser } from '../hooks/useUser';
 import { APP_COPY } from '../config/appCopy';
 import { createStripeCheckout } from '../lib/stripe';
+import { useAppSettings } from '../hooks/useAppSettings';
+import { formatPrice } from '../lib/currency';
 import { OptimizedImage } from '../components/PerformanceUI';
 import { getMediaAssetUrl } from '../lib/mediaUtils';
 
@@ -385,7 +387,7 @@ const ProductCard = ({ product, mediaList, isAdmin, onEdit, onDelete }) => {
 
             <div className="flex justify-between items-start mb-1">
                 <h3 className="text-sm font-bold text-white group-hover:text-indigo-400 transition-colors line-clamp-1">{product.title}</h3>
-                <span className="text-sm font-black text-indigo-400 ml-2">${product.price}</span>
+                <span className="text-sm font-black text-indigo-400 ml-2">{formatPrice(product.price, currency)}</span>
             </div>
             <p className="text-[11px] text-slate-500 mb-4 line-clamp-2">{product.description}</p>
 
@@ -406,6 +408,8 @@ export default function Shop() {
     const { user } = useUser();
 
     const isAdmin = user?.isGod === true;
+    const { settings } = useAppSettings();
+    const currency = settings.currency || 'MYR';
 
     const [videoData, setVideoData] = useState({ title: '', subtitle: '', url: '' });
     const [activeCategory, setActiveCategory] = useState("All");

@@ -13,18 +13,19 @@ const defaultSettings = {
     classesHeroDesc: "",
     classesHeroClassId: "",
     classesHeroImageUrl: "",
+    currency: 'MYR',
     premiumTiers: [
-        { id: 'tier1', name: 'Basic Premium', price: '5.99', discount: 0, benefits: 'Ad-free experience, 10 Recipes/mo' },
-        { id: 'tier2', name: 'Pro Premium', price: '12.99', discount: 0, benefits: 'All Recipes, 1 Masterclass/mo, Priority Support' },
-        { id: 'tier3', name: 'Elite Premium', price: '29.99', discount: 0, benefits: 'All Access, Live Q&A, VIP Community' }
+        { id: 'tier1', name: 'Basic Premium', price: '19.99', discount: 0, benefits: 'Ad-free experience, 10 Recipes/mo' },
+        { id: 'tier2', name: 'Pro Premium', price: '49.99', discount: 0, benefits: 'All Recipes, 1 Masterclass/mo, Priority Support' },
+        { id: 'tier3', name: 'Elite Premium', price: '99.99', discount: 0, benefits: 'All Access, Live Q&A, VIP Community' }
     ],
     accentColor: '#4f46e5',
     plugins: { stripe: false, mailchimp: false, zapier: false },
     apiKeys: [],
     volumes: [
-        { id: 'v1', name: 'Volume 1', price: '9.99', discount: 0 },
-        { id: 'v2', name: 'Volume 2', price: '14.99', discount: 10 },
-        { id: 'cwc', name: 'CWC Original', price: '4.99', discount: 0 }
+        { id: 'v1', name: 'Volume 1', price: '29.99', discount: 0 },
+        { id: 'v2', name: 'Volume 2', price: '39.99', discount: 10 },
+        { id: 'cwc', name: 'CWC Original', price: '9.99', discount: 0 }
     ]
 };
 
