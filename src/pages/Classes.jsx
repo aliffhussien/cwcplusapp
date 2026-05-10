@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { Play, Info, Star, Lock as LockIcon, Clock, Download, FileText, ChevronRight, ShoppingBag, Calendar, ListChecks, PlayCircle, ArrowLeft } from 'lucide-react';
+import { Play, Info, Star, LockKeyhole as LockIcon, Clock, Download, FileText, ChevronRight, ShoppingBag, Calendar, ListChecks, PlayCircle, ArrowLeft } from 'lucide-react';
 import Header from '../components/Header';
 import { useClasses } from '../hooks/useClasses';
 import { useUser } from '../hooks/useUser';
@@ -33,43 +33,84 @@ const ClassCard = ({ cls, onClick, mediaList, now, currency }) => {
     return (
         <motion.div
             onClick={() => onClick(cls)}
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            className="group cursor-pointer flex flex-col relative rounded-xl overflow-hidden bg-[#0F1423] border border-white/5 shadow-xl hover:shadow-2xl hover:border-white/20 transition-all duration-300 hover:-translate-y-1 h-full"
+            whileHover={{ y: -8 }}
+            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+            className="group cursor-pointer flex flex-col relative rounded-[28px] overflow-hidden bg-[#0A0F1C] border border-white/[0.04] hover:border-indigo-500/30 shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:shadow-[0_30px_60px_rgba(79,70,229,0.2)] transition-all duration-500 h-full"
         >
-            <div className="aspect-video w-full relative overflow-hidden bg-[#0a0f1d] shrink-0">
+            {/* Image Section */}
+            <div className="aspect-[16/10] w-full relative overflow-hidden bg-[#050810] shrink-0">
                 {cardImage ? (
-                    <img src={cardImage} alt={cls.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" />
+                    <img 
+                        src={cardImage} 
+                        alt={cls.title} 
+                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-90 group-hover:opacity-100" 
+                    />
                 ) : (
-                    <div className="w-full h-full bg-white/5 flex items-center justify-center"><Play size={24} className="text-slate-700" /></div>
+                    <div className="w-full h-full bg-gradient-to-br from-indigo-900/20 to-slate-900/40 flex items-center justify-center">
+                        <Play size={28} className="text-slate-700 opacity-50" />
+                    </div>
                 )}
 
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0F1423] via-transparent to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500" />
+                {/* Cinema Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1C] via-[#0A0F1C]/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
+                
+                {/* Floating Status Badges */}
+                <div className="absolute top-4 left-4 flex flex-col gap-2 z-20">
+                    {isLive ? (
+                        <div className="flex items-center gap-2 px-3 py-1.5 bg-rose-600 rounded-xl shadow-[0_8px_16px_rgba(225,29,72,0.5)] border border-rose-500/50">
+                            <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                            <span className="text-[10px] font-black uppercase text-white tracking-[0.1em]">LIVE</span>
+                        </div>
+                    ) : isUpcoming ? (
+                        <div className="flex items-center gap-2 px-3 py-1.5 bg-indigo-600/80 backdrop-blur-md rounded-xl shadow-lg border border-indigo-500/30">
+                            <Clock size={12} className="text-white" />
+                            <span className="text-[10px] font-black uppercase text-white tracking-[0.1em]">UPCOMING</span>
+                        </div>
+                    ) : (
+                         <div className="px-2.5 py-1.5 bg-black/40 backdrop-blur-md rounded-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-x-2 group-hover:translate-x-0">
+                             <span className="text-[10px] font-black uppercase text-slate-300 tracking-[0.1em]">{cls.category || 'Masterclass'}</span>
+                         </div>
+                    )}
+                </div>
 
-                {isLive ? (
-                    <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2 py-1 bg-rose-600 rounded-md shadow-lg">
-                        <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
-                        <span className="text-[9px] font-black uppercase text-white tracking-widest">LIVE</span>
-                    </div>
-                ) : isUpcoming ? (
-                    <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2 py-1 bg-indigo-600/90 backdrop-blur-sm rounded-md shadow-lg">
-                        <Clock size={10} className="text-white" />
-                        <span className="text-[9px] font-black uppercase text-white tracking-widest">UPCOMING</span>
-                    </div>
-                ) : null}
-
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-14 h-14 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center border border-white/30 transition-transform group-hover:scale-110">
+                {/* Interaction Indicator */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                    <div className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl flex items-center justify-center border border-white/20 shadow-2xl transform scale-75 group-hover:scale-100 transition-transform">
                         <Play size={24} className="text-white fill-white ml-1" />
                     </div>
                 </div>
+                
+                {/* Duration Badge Bottom Right */}
+                {cls.duration && (
+                    <div className="absolute bottom-4 right-4 z-20 px-2 py-1 bg-black/60 backdrop-blur-md rounded-md border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <span className="text-[9px] font-black text-slate-300 uppercase tracking-widest">{cls.duration}</span>
+                    </div>
+                )}
             </div>
 
-            <div className="p-5 z-10 relative bg-gradient-to-t from-[#0F1423] via-[#0F1423] to-transparent -mt-8 flex-1 flex flex-col justify-end">
-                <h4 className="text-base md:text-lg font-black text-white group-hover:text-rose-400 transition-colors line-clamp-2 leading-tight drop-shadow-md">{cls.title}</h4>
-                <div className="flex items-center justify-between mt-3">
-                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest truncate mr-2">{cls.instructor}</p>
-                    <span className="text-[11px] font-black text-white bg-white/10 px-2.5 py-1 rounded-md shrink-0 border border-white/5">{formatPrice(cls.price || '29.99', currency || 'MYR')}</span>
+            {/* Details Section */}
+            <div className="p-6 flex-1 flex flex-col relative bg-gradient-to-b from-[#0A0F1C] to-[#0D1224]">
+                <div className="flex items-center gap-2 mb-3">
+                    <div className="w-1 h-4 bg-indigo-500 rounded-full" />
+                    <span className="text-[9px] font-black text-indigo-400 uppercase tracking-[0.4em]">{cls.category || 'Masterclass'}</span>
+                </div>
+                
+                <h4 className="text-lg font-black text-white group-hover:text-indigo-300 transition-colors line-clamp-2 leading-[1.2] mb-4 tracking-tight">
+                    {cls.title}
+                </h4>
+                
+                <div className="mt-auto pt-4 border-t border-white/[0.03] flex items-center justify-between">
+                    <div className="flex flex-col">
+                        <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-0.5">Instruction</p>
+                        <p className="text-xs text-slate-300 font-black uppercase tracking-wider truncate max-w-[140px]">{cls.instructor}</p>
+                    </div>
+                    <div className="px-3 py-1.5 bg-white/5 rounded-xl border border-white/10 group-hover:bg-indigo-600 group-hover:border-indigo-500 transition-all duration-300">
+                         <span className="text-[11px] font-black text-white tracking-wide">
+                            {formatPrice(cls.price || '29.99', currency || 'MYR')}
+                         </span>
+                    </div>
                 </div>
             </div>
         </motion.div>

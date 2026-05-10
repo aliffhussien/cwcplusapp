@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Mail, Lock as LockIcon, Loader2, ArrowRight } from 'lucide-react';
+import { X, Mail, LockKeyhole as LockIcon, Loader2, ArrowRight } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
 // Google SVG Icon

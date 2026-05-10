@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { ChefHat, Camera, Send, Mail, ShieldCheck, Globe, Lock as LockIcon, Shield, Award } from 'lucide-react';
+import { ChefHat, Camera, Send, Mail, ShieldCheck, Globe, LockKeyhole as LockIcon, Shield, Award } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { APP_COPY } from '../config/appCopy';

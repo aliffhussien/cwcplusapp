@@ -4,7 +4,7 @@ import {
   LayoutDashboard, ChefHat, Settings, Plus, Save, Image as ImageIcon,
   DollarSign, Trash2, Edit3, X, Video, Users, UserPlus,
   Search, Star, Clock, Flame, CreditCard, Mail, Zap, Puzzle, Key, Link2, Wand2,
-  Package, ShoppingBag, Eye, EyeOff, PlayCircle, ShieldAlert, Book, Bell, Send, CheckCircle2, Lock as LockIcon, Unlock, MessageCircle, BarChart, Smartphone, Loader2,
+  Package, ShoppingBag, Eye, EyeOff, PlayCircle, ShieldAlert, Book, Bell, Send, CheckCircle2, LockKeyhole as LockIcon, Unlock, MessageCircle, BarChart, Smartphone, Loader2,
   ChevronDown, Layout, Film, BookOpen, Layers, Globe, Library
 } from 'lucide-react';
 
