@@ -619,8 +619,18 @@ export default function RecipeView() {
         );
     }
 
+    if (!recipe) {
+        return (
+            <div className="min-h-screen bg-[#070B14] flex items-center justify-center">
+                <div className="text-white text-center">
+                    <p className="text-2xl font-black mb-2">Recipe Not Found</p>
+                    <p className="text-slate-400 text-sm mb-6">This recipe doesn't exist or has been removed.</p>
+                    <button onClick={() => navigate('/recipes')} className="px-6 py-3 bg-indigo-600 rounded-2xl font-bold text-sm">Browse Recipes</button>
+                </div>
+            </div>
+        );
+    }
 
-    
     const recipeVolume = settings.volumes?.find(v => v.id === recipe.volume || v.name === recipe.volume) || { name: recipe.volume || 'Premium Collection', price: '29.99', discount: 0 };
     const currency = settings.currency || 'MYR';
     const basePrice = parseFloat(recipeVolume.price) || 29.99;
@@ -990,13 +1000,15 @@ export default function RecipeView() {
             </main>
 
             {/* Floating Action Button Bottom */}
-            <div className="fixed bottom-6 left-0 right-0 px-4 flex justify-center z-50 pointer-events-none">
-                <button 
-                    onClick={() => setIsCookingMode(true)}
-                    className="pointer-events-auto w-full max-w-sm py-3.5 rounded-[18px] btn-3d-active text-white text-[13px] md:text-sm font-extrabold flex items-center justify-center gap-2 shadow-[0_8px_24px_rgba(99,102,241,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-transform">
-                    <Play size={16} className="fill-white" /> Start Cooking Mode
-                </button>
-            </div>
+            {hasAccess && structuredSteps.some(g => g.items.length > 0) && (
+                <div className="fixed bottom-6 left-0 right-0 px-4 flex justify-center z-50 pointer-events-none">
+                    <button
+                        onClick={() => setIsCookingMode(true)}
+                        className="pointer-events-auto w-full max-w-sm py-3.5 rounded-[18px] btn-3d-active text-white text-[13px] md:text-sm font-extrabold flex items-center justify-center gap-2 shadow-[0_8px_24px_rgba(99,102,241,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-transform">
+                        <Play size={16} className="fill-white" /> Start Cooking Mode
+                    </button>
+                </div>
+            )}
 
             <AnimatePresence>
                 {isCookingMode && (
