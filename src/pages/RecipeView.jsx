@@ -16,7 +16,8 @@ import {
     Save,
     RotateCcw,
     List,
-    ShoppingBag
+    ShoppingBag,
+    Lock as LockIcon
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -852,7 +853,7 @@ export default function RecipeView() {
 
                         <div className="relative z-10 flex flex-col items-center justify-center py-16 px-8 text-center bg-[#0A0F1C]/80 border border-white/10 rounded-[2.5rem] backdrop-blur-3xl shadow-[0_32px_64px_rgba(0,0,0,0.6)]">
                             <div className="w-20 h-20 mb-8 rounded-3xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center rotate-3">
-                                <Lock size={32} className="text-indigo-400" />
+                                <LockIcon size={32} className="text-indigo-400" />
                             </div>
                             
                             <h2 className="text-3xl font-black text-white italic tracking-tighter uppercase mb-4 leading-none">Initialize Signature Mastery</h2>

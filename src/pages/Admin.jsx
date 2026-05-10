@@ -4,7 +4,7 @@ import {
   LayoutDashboard, ChefHat, Settings, Plus, Save, Image as ImageIcon,
   DollarSign, Trash2, Edit3, X, Video, Users, UserPlus,
   Search, Star, Clock, Flame, CreditCard, Mail, Zap, Puzzle, Key, Link2, Wand2,
-  Package, ShoppingBag, Eye, EyeOff, PlayCircle, ShieldAlert, Book, Bell, Send, CheckCircle2, Lock, Unlock, MessageCircle, BarChart, Smartphone, Loader2,
+  Package, ShoppingBag, Eye, EyeOff, PlayCircle, ShieldAlert, Book, Bell, Send, CheckCircle2, Lock as LockIcon, Unlock, MessageCircle, BarChart, Smartphone, Loader2,
   ChevronDown, Layout, Film, BookOpen, Layers, Globe, Library
 } from 'lucide-react';
 
@@ -916,7 +916,7 @@ export default function EmpireCommandCenter() {
         onCancel={() => setUnlockContext({ ...unlockContext, isOpen: false })}
         confirmText={unlockContext.action === 'unlock' ? 'Yes, Grant Access' : 'Yes, Revoke Access'}
         confirmColor={unlockContext.action === 'unlock' ? 'bg-indigo-500 hover:bg-indigo-400' : 'bg-rose-500 hover:bg-rose-400'}
-        icon={unlockContext.action === 'unlock' ? Unlock : Lock}
+        icon={unlockContext.action === 'unlock' ? Unlock : LockIcon}
         iconColor={unlockContext.action === 'unlock' ? 'text-indigo-500' : 'text-rose-500'}
         iconBg={unlockContext.action === 'unlock' ? 'bg-indigo-500/20' : 'bg-rose-500/20'}
       />
@@ -2200,7 +2200,7 @@ export default function EmpireCommandCenter() {
                                 <div key={v.id} className="flex items-center justify-between bg-slate-950 p-4 rounded-2xl border border-slate-800">
                                   <span className="font-bold text-slate-300">{v.name}</span>
                                   <button type="button" onClick={() => setUnlockContext({ isOpen: true, itemType: 'volume', itemId: v.name, itemName: v.name, action: isUnlocked ? 'lock' : 'unlock' })} className={`px-4 py-2 rounded-full text-xs font-black uppercase flex items-center gap-2 transition-colors ${isUnlocked ? 'bg-indigo-500/20 text-indigo-400 hover:bg-indigo-500/30' : 'bg-rose-500/20 text-rose-400 hover:bg-rose-500/30'}`}>
-                                    {isUnlocked ? <><Unlock size={14} /> Unlocked</> : <><Lock size={14} /> Locked</>}
+                                    {isUnlocked ? <><Unlock size={14} /> Unlocked</> : <><LockIcon size={14} /> Locked</>}
                                   </button>
                                 </div>
                               )
@@ -2216,7 +2216,7 @@ export default function EmpireCommandCenter() {
                                 <div key={c.id} className="flex items-center justify-between bg-slate-950 p-4 rounded-2xl border border-slate-800">
                                   <span className="font-bold text-slate-300 truncate pr-4">{c.title}</span>
                                   <button type="button" onClick={() => setUnlockContext({ isOpen: true, itemType: 'class', itemId: c.id, itemName: c.title, action: isUnlocked ? 'lock' : 'unlock' })} className={`px-4 py-2 rounded-full text-xs font-black uppercase flex items-center gap-2 transition-colors ${isUnlocked ? 'bg-indigo-500/20 text-indigo-400 hover:bg-indigo-500/30' : 'bg-rose-500/20 text-rose-400 hover:bg-rose-500/30'}`}>
-                                    {isUnlocked ? <><Unlock size={14} /> Unlocked</> : <><Lock size={14} /> Locked</>}
+                                    {isUnlocked ? <><Unlock size={14} /> Unlocked</> : <><LockIcon size={14} /> Locked</>}
                                   </button>
                                 </div>
                               )
