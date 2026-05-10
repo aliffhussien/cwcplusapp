@@ -7,30 +7,33 @@ export default function AuthCallback() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Supabase exchanges the code automatically via onAuthStateChange.
-        // We just need to wait for the session to be established then redirect home.
-        supabase.auth.getSession().then(({ data: { session } }) => {
-            if (session) {
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+            if (event === 'PASSWORD_RECOVERY') {
+                // User clicked the reset link — send them to profile to set new password
+                subscription.unsubscribe();
+                navigate('/profile?reset=true', { replace: true });
+                return;
+            }
+            if (event === 'SIGNED_IN' && session) {
+                subscription.unsubscribe();
                 navigate('/', { replace: true });
-            } else {
-                // Wait for the auth state change to fire (handles code exchange)
-                const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-                    if (event === 'SIGNED_IN' && session) {
-                        subscription.unsubscribe();
-                        navigate('/', { replace: true });
-                    }
-                });
-                // Safety timeout – if nothing fires, go home anyway
-                const timeout = setTimeout(() => {
-                    subscription.unsubscribe();
-                    navigate('/', { replace: true });
-                }, 5000);
-                return () => {
-                    clearTimeout(timeout);
-                    subscription.unsubscribe();
-                };
             }
         });
+
+        // Also check if there's already a session (e.g. Google redirect)
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            if (session) {
+                subscription.unsubscribe();
+                navigate('/', { replace: true });
+            }
+        });
+
+        const timeout = setTimeout(() => {
+            subscription.unsubscribe();
+            navigate('/', { replace: true });
+        }, 8000);
+
+        return () => { clearTimeout(timeout); subscription.unsubscribe(); };
     }, [navigate]);
 
     return (

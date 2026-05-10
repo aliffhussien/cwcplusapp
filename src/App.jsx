@@ -1,6 +1,6 @@
 import { useState, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { ChefHat, LogIn, Shield } from 'lucide-react';
+import { ChefHat, LogIn } from 'lucide-react';
 import { useUser } from './hooks/useUser';
 import AuthModal from './components/AuthModal';
 
@@ -40,8 +40,8 @@ const GlobalAuthGuard = ({ children }) => {
                 <InstallPWA />
                 <div className="w-full max-w-md bg-[#0A0F1C] border border-white/5 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden shadow-2xl">
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent" />
-                    <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center mx-auto mb-8">
-                        <Shield size={32} className="text-white" />
+                    <div className="flex items-center justify-center mx-auto mb-8">
+                        <img src="/logo-2.png" alt="CWC+" className="h-28 w-auto" />
                     </div>
                     <h1 className="text-3xl font-bold text-white mb-2 tracking-tight">CWC<span className="text-indigo-400">+</span></h1>
                     <p className="text-xs font-bold text-slate-500 uppercase tracking-[0.3em] mb-6">Culinary Archive Access</p>

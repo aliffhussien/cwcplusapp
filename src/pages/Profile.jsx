@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { Clock, Star, Heart, LockKeyhole, LogIn, LogOut, Refrigerator, Camera, User, X, Save, Edit3, Shield, Award, Zap, BellRing, Calendar, Wand2, ChefHat, ChevronRight, ChevronLeft, Globe, CheckCircle2 } from 'lucide-react';
+import { Clock, Star, Heart, LockKeyhole, LogIn, LogOut, Refrigerator, Camera, User, X, Save, Edit3, Shield, Award, Zap, BellRing, Calendar, Wand2, ChefHat, ChevronRight, ChevronLeft, Globe, CheckCircle2, KeyRound, Eye, EyeOff } from 'lucide-react';
 
 import Header from '../components/Header';
 import { useFavorites } from '../hooks/useFavorites';
@@ -186,11 +186,39 @@ export default function Profile() {
     const { media } = useMedia();
     const { plan, updatePlan, autoGenerate, clearPlan } = usePlanner();
     const navigate = useNavigate();
-    
+
     const [activeTab, setActiveTab] = useState('recipes');
     const [isAuthModalOpen, setAuthModalOpen] = useState(false);
     const [isEditModalOpen, setEditModalOpen] = useState(false);
     const [isUploading, setIsUploading] = useState(false);
+
+    // Password change state
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [pwLoading, setPwLoading] = useState(false);
+    const [pwError, setPwError] = useState(null);
+    const [pwSuccess, setPwSuccess] = useState(false);
+    const isEmailUser = session?.user?.identities?.some(i => i.provider === 'email');
+
+    // Auto-switch to Security tab when coming from reset email link
+    useEffect(() => {
+        if (new URLSearchParams(window.location.search).get('reset') === 'true') {
+            setActiveTab('security');
+            window.history.replaceState({}, '', window.location.pathname);
+        }
+    }, []);
+
+    const handlePasswordChange = async (e) => {
+        e.preventDefault();
+        if (newPassword.length < 6) { setPwError('Password must be at least 6 characters.'); return; }
+        if (newPassword !== confirmPassword) { setPwError('Passwords do not match.'); return; }
+        setPwLoading(true); setPwError(null); setPwSuccess(false);
+        const { error } = await supabase.auth.updateUser({ password: newPassword });
+        setPwLoading(false);
+        if (error) { setPwError(error.message); }
+        else { setPwSuccess(true); setNewPassword(''); setConfirmPassword(''); }
+    };
 
     // Planner Logic
     const [baseDate, setBaseDate] = useState(new Date());
@@ -540,6 +568,50 @@ export default function Profile() {
                                                         <span className="text-[8px] font-black text-indigo-400 uppercase tracking-widest">Secure</span>
                                                     </div>
                                                 </div>
+                                                {/* Change Password — email/password users only */}
+                                                {isEmailUser && (
+                                                    <div className="mt-2 pt-6 border-t border-white/5">
+                                                        <div className="flex items-center gap-3 mb-4">
+                                                            <div className="w-10 h-10 bg-indigo-500/10 rounded-xl flex items-center justify-center border border-indigo-500/20">
+                                                                <KeyRound size={18} className="text-indigo-400" />
+                                                            </div>
+                                                            <div>
+                                                                <p className="text-[10px] font-black text-white uppercase tracking-tighter">Change Password</p>
+                                                                <p className="text-[8px] font-bold text-slate-500 uppercase tracking-widest">Min. 6 characters</p>
+                                                            </div>
+                                                        </div>
+                                                        <form onSubmit={handlePasswordChange} className="space-y-3">
+                                                            <div className="relative">
+                                                                <input
+                                                                    type={showPassword ? 'text' : 'password'}
+                                                                    value={newPassword}
+                                                                    onChange={e => setNewPassword(e.target.value)}
+                                                                    placeholder="New password"
+                                                                    required
+                                                                    className="w-full bg-slate-950 border border-white/10 rounded-2xl px-4 py-3 pr-12 text-sm font-bold text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500/60 transition-all"
+                                                                />
+                                                                <button type="button" onClick={() => setShowPassword(p => !p)} className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white transition-colors">
+                                                                    {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
+                                                                </button>
+                                                            </div>
+                                                            <input
+                                                                type={showPassword ? 'text' : 'password'}
+                                                                value={confirmPassword}
+                                                                onChange={e => setConfirmPassword(e.target.value)}
+                                                                placeholder="Confirm new password"
+                                                                required
+                                                                className="w-full bg-slate-950 border border-white/10 rounded-2xl px-4 py-3 text-sm font-bold text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500/60 transition-all"
+                                                            />
+                                                            {pwError && <p className="text-[10px] font-bold text-rose-400 px-1">{pwError}</p>}
+                                                            {pwSuccess && <p className="text-[10px] font-bold text-emerald-400 px-1">Password updated successfully!</p>}
+                                                            <button type="submit" disabled={pwLoading}
+                                                                className="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2">
+                                                                {pwLoading ? 'Updating...' : <><KeyRound size={13} /> Update Password</>}
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                )}
+
                                                 <div className="mt-8 pt-8 border-t border-white/5 grid grid-cols-2 gap-4">
                                                     <button onClick={() => navigate('/pantry')} className="py-4 bg-white/5 hover:bg-white/10 border border-white/5 rounded-2xl text-[9px] font-black uppercase tracking-widest text-slate-400 hover:text-white transition-all flex items-center justify-center gap-3">
                                                         <Refrigerator size={16}/> Pantry
