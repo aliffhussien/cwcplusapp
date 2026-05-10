@@ -1,14 +1,13 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { Play, Info, Star, Lock, Clock, Download, FileText, ChevronRight, ShoppingBag, Calendar, ListChecks, PlayCircle, ArrowLeft } from 'lucide-react';
+import { Play, Info, Star, Lock as LockIcon, Clock, Download, FileText, ChevronRight, ShoppingBag, Calendar, ListChecks, PlayCircle, ArrowLeft } from 'lucide-react';
 import Header from '../components/Header';
 import { useClasses } from '../hooks/useClasses';
 import { useUser } from '../hooks/useUser';
 import { useMedia } from '../hooks/useMedia';
 import { useAppSettings } from '../hooks/useAppSettings';
 import { createStripeCheckout } from '../lib/stripe';
-import { APP_COPY } from '../config/appCopy';
 import { formatPrice } from '../lib/currency';
 import { supabase } from '../lib/supabase';
 
@@ -22,7 +21,7 @@ function parseDurationMs(dur, fallbackHours = 2) {
     return (total || fallbackHours * 60) * 60000;
 }
 
-const ClassCard = ({ cls, onClick, mediaList, now }) => {
+const ClassCard = ({ cls, onClick, mediaList, now, currency }) => {
     const mediaAsset = (cls.thumbnail_image_id && Array.isArray(mediaList)) ? mediaList.find(m => m.id === cls.thumbnail_image_id) : null;
     const cardImage = mediaAsset ? (mediaAsset.card_url || mediaAsset.thumb_url || mediaAsset.hero_url || mediaAsset.url) : (cls.image || null);
 
@@ -70,7 +69,7 @@ const ClassCard = ({ cls, onClick, mediaList, now }) => {
                 <h4 className="text-base md:text-lg font-black text-white group-hover:text-rose-400 transition-colors line-clamp-2 leading-tight drop-shadow-md">{cls.title}</h4>
                 <div className="flex items-center justify-between mt-3">
                     <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest truncate mr-2">{cls.instructor}</p>
-                    <span className="text-[11px] font-black text-white bg-white/10 px-2.5 py-1 rounded-md shrink-0 border border-white/5">{formatPrice(cls.price || '29.99', settings.currency || 'MYR')}</span>
+                    <span className="text-[11px] font-black text-white bg-white/10 px-2.5 py-1 rounded-md shrink-0 border border-white/5">{formatPrice(cls.price || '29.99', currency || 'MYR')}</span>
                 </div>
             </div>
         </motion.div>
@@ -324,7 +323,7 @@ export default function Classes() {
                                         <div className="flex overflow-x-auto gap-4 md:gap-6 px-6 md:px-12 pb-6 pt-2 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                                             {classes.map((cls) => (
                                                 <div key={cls.id} className="w-[280px] sm:w-[320px] shrink-0 snap-start">
-                                                    <ClassCard cls={cls} onClick={handleClassClick} mediaList={media} now={now} />
+                                                    <ClassCard cls={cls} onClick={handleClassClick} mediaList={media} now={now} currency={settings.currency} />
                                                 </div>
                                             ))}
                                             <div className="w-4 md:w-8 shrink-0" />
@@ -375,7 +374,7 @@ export default function Classes() {
                                     <div className="absolute inset-0 flex items-center justify-center z-10 px-4">
                                         <div className="max-w-md w-full flex flex-col items-center text-center">
                                             <div className={`w-20 h-20 rounded-full flex items-center justify-center border mb-6 backdrop-blur-md ${isLive ? 'bg-rose-600/40 border-rose-500/60 shadow-[0_0_60px_rgba(225,29,72,0.4)]' : 'bg-rose-600/20 border-rose-500/30'}`}>
-                                                <Lock size={32} className="text-white" />
+                                                <LockIcon size={32} className="text-white" />
                                             </div>
                                             <h2 className="text-4xl md:text-5xl font-black text-white italic tracking-tighter uppercase mb-4 leading-none">{selectedClass.title}</h2>
                                             <p className="text-slate-300 text-sm font-medium mb-2 leading-relaxed max-w-sm">
@@ -396,7 +395,7 @@ export default function Classes() {
                                                 onClick={handleUnlockClass}
                                                 className={`w-full py-4 rounded-lg font-black text-sm uppercase tracking-widest transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:hover:scale-100 ${isLive ? 'bg-rose-600 hover:bg-rose-500 text-white shadow-[0_0_60px_rgba(225,29,72,0.5)] hover:scale-105' : 'bg-white text-black shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:scale-105'}`}
                                             >
-                                                <Lock size={18} /> {isUnlocking ? 'Authorizing...' : isLive ? `Join Live Now — ${formatPrice(selectedClass.price || '29.99', settings.currency || 'MYR')}` : `Unlock for ${formatPrice(selectedClass.price || '29.99', settings.currency || 'MYR')}`}
+                                                <LockIcon size={18} /> {isUnlocking ? 'Authorizing...' : isLive ? `Join Live Now — ${formatPrice(selectedClass.price || '29.99', settings.currency || 'MYR')}` : `Unlock for ${formatPrice(selectedClass.price || '29.99', settings.currency || 'MYR')}`}
                                             </button>
                                         </div>
                                     </div>
@@ -480,7 +479,7 @@ export default function Classes() {
                                         <iframe
                                             src={selectedClass.video.includes('http') ? selectedClass.video : `https://www.youtube.com/embed/${selectedClass.video}?autoplay=1&modestbranding=1&rel=0`}
                                             className="w-full h-full relative z-10"
-                                            frameBorder="0"
+                                            style={{ border: 'none' }}
                                             allowFullScreen
                                         ></iframe>
                                     ) : (

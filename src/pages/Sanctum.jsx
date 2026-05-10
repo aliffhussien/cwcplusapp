@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { ChefHat, Camera, Send, Mail, ShieldCheck, Globe, Lock, Shield, Award } from 'lucide-react';
+import { ChefHat, Camera, Send, Mail, ShieldCheck, Globe, Lock as LockIcon, Shield, Award } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { APP_COPY } from '../config/appCopy';
@@ -49,7 +49,7 @@ export default function Sanctum() {
                         <h2 className="text-[10px] font-black text-white uppercase tracking-[0.4em] mb-6">Meal Planner</h2>
                         <div className="space-y-4 relative z-10">
                             <div className="flex items-center gap-4 p-4 bg-white/5 border border-white/5 rounded-2xl">
-                                <Lock size={16} className="text-indigo-400" />
+                                <LockIcon size={16} className="text-indigo-400" />
                                 <span className="text-[10px] font-black uppercase tracking-widest text-slate-300">End-to-End Encryption</span>
                             </div>
                             <div className="flex items-center gap-4 p-4 bg-white/5 border border-white/5 rounded-2xl">
