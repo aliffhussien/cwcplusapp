@@ -8,15 +8,18 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "engines": {
+    "node": ">=18.17.0"
+  },
   "dependencies": {
-    "next": "14.2.3",
-    "react": "^18",
-    "react-dom": "^18"
+    "next": "^15.3.2",
+    "react": "^19",
+    "react-dom": "^19"
   },
   "devDependencies": {
     "typescript": "^5",
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18"
+    "@types/react": "^19",
+    "@types/react-dom": "^19"
   }
 }
