@@ -6,7 +6,7 @@ export function useAllUsers() {
 
     useEffect(() => {
         const fetchUsers = async () => {
-            const { data, error } = await supabase.from('people').select('id, name, email, subscription_tier, role, created_at, avatar_url').order('created_at', { ascending: false });
+            const { data, error } = await supabase.from('people').select('id, name, email, subscription_tier, role, created_at, avatar_url, unlocked_volumes, unlocked_classes').order('created_at', { ascending: false });
 
             if (error) {
                 console.error("Error fetching users:", error);

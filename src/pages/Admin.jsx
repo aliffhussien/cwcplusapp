@@ -2511,13 +2511,35 @@ export default function EmpireCommandCenter() {
                         <span className="text-[10px] font-black uppercase text-slate-500">Accent</span>
                         <input type="color" value={settings.accentColor || '#4f46e5'} onChange={e => updateSettings({ ...settings, accentColor: e.target.value })} className="w-8 h-8 rounded-lg cursor-pointer bg-slate-900 border-none outline-none overflow-hidden" />
                       </div>
+                      {/* Add Tier */}
+                      <button
+                        onClick={() => {
+                          const newId = 'tier_' + Date.now();
+                          const newTiers = [...(settings.premiumTiers || []), { id: newId, name: 'New Tier', price: '9.99', discount: 0, benefits: '', color: '#6366f1' }];
+                          updateSettings({ ...settings, premiumTiers: newTiers });
+                        }}
+                        className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-black text-[10px] uppercase tracking-widest transition-all shadow-lg"
+                      >
+                        <Plus size={14} /> Add Tier
+                      </button>
                     </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {(settings.premiumTiers || []).map((tier, idx) => {
                       const style = getTierMeta(tier.name);
                       return (
-                        <div key={tier.id} className="p-6 rounded-2xl border-4 bg-slate-950" style={{ borderColor: style.customColor ? `${style.customColor}40` : style.border.replace('border-', '').replace('/20', ''), boxShadow: style.customColor ? `0 10px 40px ${style.customColor}10` : 'none' }}>
+                        <div key={tier.id} className="p-6 rounded-2xl border-4 bg-slate-950 relative group/tier" style={{ borderColor: style.customColor ? `${style.customColor}40` : style.border.replace('border-', '').replace('/20', ''), boxShadow: style.customColor ? `0 10px 40px ${style.customColor}10` : 'none' }}>
+                          <button
+                            onClick={() => {
+                              if (confirm(`Delete the "${tier.name}" tier? This won't affect existing members.`)) {
+                                updateSettings({ ...settings, premiumTiers: settings.premiumTiers.filter((_, i) => i !== idx) });
+                              }
+                            }}
+                            className="absolute top-3 right-3 p-1.5 bg-rose-500/10 hover:bg-rose-500 text-rose-500 hover:text-white rounded-lg transition-all opacity-0 group-hover/tier:opacity-100"
+                            title="Delete tier"
+                          >
+                            <Trash2 size={13} />
+                          </button>
                           <div className="mb-4 space-y-4">
                             <div className="flex justify-between items-center border-b border-slate-800 pb-2">
                               <input type="text" value={tier.name} onChange={e => {

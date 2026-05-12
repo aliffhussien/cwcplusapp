@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ChevronLeft, Bell, ChefHat, User, RefreshCcw, Search } from 'lucide-react';
+import { ChevronLeft, Bell, ChefHat, User, Search } from 'lucide-react';
 import { useUser } from '../hooks/useUser';
 import { useClasses } from '../hooks/useClasses';
 import { useNotifications } from '../hooks/useNotifications';

@@ -1,38 +1,58 @@
 import React, { useState, useEffect } from 'react';
 import { Reorder, motion } from 'framer-motion';
-import { GripVertical, Eye, EyeOff, Save, CheckCircle2 } from 'lucide-react';
+import { GripVertical, Eye, Save, CheckCircle2 } from 'lucide-react';
 import { useRecipes } from '../../hooks/useRecipes';
 import { useMedia } from '../../hooks/useMedia';
+import { useAppSettings } from '../../hooks/useAppSettings';
 
 export default function ContentCurator() {
     const { recipes } = useRecipes();
     const { media } = useMedia();
+    const { settings, updateSettings } = useAppSettings();
     const [items, setItems] = useState([]);
     const [isSaving, setIsSaving] = useState(false);
     const [saved, setSaved] = useState(false);
 
     useEffect(() => {
-        if (recipes) {
-            const published = recipes.filter(r => r.status === 'published' || !r.status).slice(0, 10);
+        if (!recipes) return;
+        const published = recipes.filter(r => r.status === 'published' || !r.status);
+
+        const savedOrder = settings.curatedOrder;
+        if (savedOrder?.length) {
+            // Re-apply saved order: put known IDs first in their saved sequence, append any new recipes at the end
+            const orderedById = new Map(published.map(r => [r.id, r]));
+            const reordered = savedOrder
+                .filter(id => orderedById.has(id))
+                .map(id => orderedById.get(id));
+            const alreadyIn = new Set(savedOrder);
+            published.forEach(r => { if (!alreadyIn.has(r.id)) reordered.push(r); });
             setItems(prev => {
-                // Only overwrite if the lengths differ or the set of IDs differ
-                // This prevents resetting order while the user is dragging or has reordered
+                const prevIds = prev.map(p => p.id).sort().join(',');
+                const newIds = reordered.map(r => r.id).sort().join(',');
+                if (prevIds === newIds) return prev; // don't reset while user is dragging
+                return reordered;
+            });
+        } else {
+            setItems(prev => {
                 const prevIds = prev.map(p => p.id || '').sort().join(',');
                 const newIds = published.map(p => p.id || '').sort().join(',');
-                if (prevIds !== newIds) return published;
-                return prev;
+                if (prevIds === newIds) return prev;
+                return published;
             });
         }
-    }, [recipes]);
+    }, [recipes, settings.curatedOrder]);
 
-    const handleSave = () => {
+    const handleSave = async () => {
         setIsSaving(true);
-        // Here you would typically map through items and update their 'sort_order' in Supabase
-        setTimeout(() => {
-            setIsSaving(false);
+        try {
+            await updateSettings({ curatedOrder: items.map(i => i.id) });
             setSaved(true);
             setTimeout(() => setSaved(false), 3000);
-        }, 800);
+        } catch (err) {
+            console.error('Failed to save curation order:', err);
+        } finally {
+            setIsSaving(false);
+        }
     };
 
     if (items.length === 0) return <div className="text-center p-12 text-slate-500 font-bold">No published recipes available to curate.</div>;
@@ -44,9 +64,9 @@ export default function ContentCurator() {
                     <h2 className="text-2xl font-black text-white flex items-center gap-3">
                         Drag & Drop Curation
                     </h2>
-                    <p className="text-slate-400 text-sm">Reorder how recipes appear on the homepage.</p>
+                    <p className="text-slate-400 text-sm">Reorder how recipes appear on the homepage. Changes are saved to the platform settings.</p>
                 </div>
-                <button 
+                <button
                     onClick={handleSave}
                     disabled={isSaving}
                     className="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full font-black text-sm shadow-xl flex items-center gap-2 transition-all disabled:opacity-50"
@@ -58,12 +78,15 @@ export default function ContentCurator() {
             <div className="bg-slate-900 border-2 border-slate-800 rounded-[32px] p-6 shadow-2xl">
                 <Reorder.Group axis="y" values={items} onReorder={setItems} className="space-y-3">
                     {items.map((item, index) => (
-                        <Reorder.Item 
-                            key={item.id || `item-${index}`} 
-                            value={item} 
+                        <Reorder.Item
+                            key={item.id || `item-${index}`}
+                            value={item}
                             className="bg-slate-950 border border-slate-800 rounded-2xl p-4 flex items-center gap-4 cursor-grab active:cursor-grabbing shadow-sm"
                         >
                             <GripVertical className="text-slate-600" size={20} />
+                            <div className="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-slate-500 text-xs font-black flex-shrink-0">
+                                {index + 1}
+                            </div>
                             <div className="w-12 h-12 rounded-xl overflow-hidden bg-slate-800 flex-shrink-0">
                                 {(() => {
                                     const mediaAsset = item.cover_image_id ? media?.find(m => m.id === item.cover_image_id) : null;
