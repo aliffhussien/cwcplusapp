@@ -30,7 +30,7 @@ export default function CWCPlusCommandCenter() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [godMode, setGodMode] = useState(false);
-  const [selectedItems, setSelectedItems] = useState(new Set());
+  const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set());
   const [isSavingMedia, setIsSavingMedia] = useState(false);
   const [adminBroadcasts, setAdminBroadcasts] = useState<any[]>([]);
   const [wipeConfirm, setWipeConfirm] = useState(false);
@@ -51,7 +51,7 @@ export default function CWCPlusCommandCenter() {
     setTimeout(() => setToasts(prev => prev.filter(t => t.id !== id)), 4000);
   };
 
-  const toggleSelection = (id: any) => {
+  const toggleSelection = (id: string) => {
     const next = new Set(selectedItems);
     if (next.has(id)) next.delete(id);
     else next.add(id);
