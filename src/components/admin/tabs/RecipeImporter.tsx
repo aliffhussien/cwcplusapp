@@ -194,7 +194,8 @@ export default function RecipeImporter({ showToast }: { showToast: (msg: string,
           // Dynamic import — pdfjs-dist is an optional dependency.
           // Install it with: npm install pdfjs-dist
           // @ts-ignore — module may not be installed yet
-          const pdfjsLib = await import(/* @vite-ignore */ 'pdfjs-dist') as any;
+          const pdfLibName = 'pdfjs-dist';
+          const pdfjsLib = await import(/* @vite-ignore */ pdfLibName) as any;
           pdfjsLib.GlobalWorkerOptions.workerSrc =
             `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.mjs`;
           const buffer = await file.arrayBuffer();
