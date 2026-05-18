@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ChefHat, PlayCircle, VolumeX, Volume2, Edit2, Loader2, Heart, LockKeyhole, Printer } from 'lucide-react';
+import { ChefHat, PlayCircle, VolumeX, Volume2, Edit2, Loader2, Heart, LockKeyhole, Printer, X } from 'lucide-react';
 import Header from '../components/Header';
 import { useRecipes } from '../hooks/useRecipes';
 import { useUser } from '../hooks/useUser';
@@ -147,7 +147,9 @@ export default function RecipeView() {
 
     return (
         <div className="min-h-screen bg-base text-text-1 selection:bg-accent/30 pb-28 md:pb-20">
-            <Header variant="back" title={recipe.title} rightAction={isAdmin ? (<button onClick={() => setIsEditing(true)} className="w-10 h-10 flex items-center justify-center rounded-xl bg-base/40 backdrop-blur-md border border-glass-border hover:bg-elevated transition-colors text-text-1 shadow-xl"><Edit2 size={16} /></button>) : null} />
+            <div className={`transition-all duration-300 ${isPlaying ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+                <Header variant="back" title={recipe.title} rightAction={isAdmin ? (<button onClick={() => setIsEditing(true)} className="w-10 h-10 flex items-center justify-center rounded-xl bg-base/40 backdrop-blur-md border border-glass-border hover:bg-elevated transition-colors text-text-1 shadow-xl"><Edit2 size={16} /></button>) : null} />
+            </div>
             {!hasAccess && <AccessDeniedModal volume={recipe.volume} price={priceDisplay} onPurchase={handlePurchase} loading={checkoutLoading} />}
 
             <div className="relative h-[52vh] md:h-[65vh] w-full overflow-hidden">
@@ -161,18 +163,27 @@ export default function RecipeView() {
                     {heroVideo && !isYouTube && isPlaying && (
                         <motion.video key="hero-video" ref={videoRef} src={heroVideo} autoPlay loop muted={isMuted} playsInline initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }} className="absolute inset-0 w-full h-full object-cover" />
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-base via-base/30 to-transparent" style={{ pointerEvents: isPlaying ? 'none' : undefined }} />
+                    <div className={`absolute inset-0 bg-gradient-to-t from-base via-base/30 to-transparent transition-opacity duration-500 ${isPlaying ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} />
                 </div>
                 {heroVideo && !isPlaying && (
                     <button onClick={() => setIsPlaying(true)} className="absolute inset-0 z-10 flex items-center justify-center group">
                         <div className="relative flex items-center justify-center"><div className="absolute w-16 h-16 rounded-full bg-glass-border animate-ping" /><div className="w-14 h-14 rounded-full bg-base/50 backdrop-blur-md border border-glass-border flex items-center justify-center group-hover:bg-base/70 group-hover:scale-110 transition-all shadow-2xl"><PlayCircle size={26} className="text-text-1 ml-0.5" /></div></div>
                     </button>
                 )}
+                {/* Floating Close Video button at the top-left */}
+                {isPlaying && (
+                    <button 
+                        onClick={() => setIsPlaying(false)} 
+                        className="absolute top-16 left-4 z-20 px-3.5 py-1.5 rounded-full bg-base/60 backdrop-blur-md border border-glass-border flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-text-1 hover:bg-base/80 hover:text-accent transition-all active:scale-95 shadow-xl"
+                    >
+                        <X size={10} className="text-accent" /> Close Video
+                    </button>
+                )}
                 {/* Mute button only for direct video files (not YouTube) */}
                 {heroVideo && !isYouTube && isPlaying && (
                     <button onClick={() => setIsMuted(m => !m)} className="absolute top-16 right-4 z-20 w-9 h-9 rounded-full bg-base/50 backdrop-blur-md border border-glass-border flex items-center justify-center text-text-3 hover:text-text-1 transition-colors">{isMuted ? <VolumeX size={15} /> : <Volume2 size={15} />}</button>
                 )}
-                <div className="absolute bottom-0 left-0 right-0 px-5 pb-6 pt-16 z-10">
+                <div className={`absolute bottom-0 left-0 right-0 px-5 pb-6 pt-16 z-10 transition-all duration-500 ${isPlaying ? 'opacity-0 pointer-events-none translate-y-6' : 'opacity-100 translate-y-0'}`}>
                     <div className="flex items-center gap-2 mb-2.5">
                         {recipe.volume && <span className="px-2.5 py-1 bg-accent/90 backdrop-blur-md rounded-lg text-[9px] font-black uppercase tracking-widest text-text-1">{recipe.volume}</span>}
                         {recipe.difficulty && <span className="px-2 py-1 bg-elevated backdrop-blur-md rounded-lg text-[9px] font-bold uppercase tracking-widest text-text-3">{recipe.difficulty}</span>}
