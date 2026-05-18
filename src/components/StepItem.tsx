@@ -5,12 +5,28 @@ import { toStepText } from '../lib/recipeUtils';
 interface StepItemProps {
     step: any;
     index: number;
+    stepNumber?: number;
     active: boolean;
     onClick: () => void;
 }
 
-export default function StepItem({ step, index, active, onClick }: StepItemProps) {
+export default function StepItem({ step, index, stepNumber, active, onClick }: StepItemProps) {
     const text = toStepText(step);
+    const isSection = text.startsWith('──') && text.endsWith('──');
+
+    if (isSection) {
+        const cleanTitle = text.replace(/^──\s*|\s*──$/g, '');
+        return (
+            <div className="pt-6 pb-2 first:pt-2 px-1">
+                <h4 className="text-xs font-black uppercase tracking-[0.2em] text-accent italic">
+                    {cleanTitle}
+                </h4>
+            </div>
+        );
+    }
+
+    const displayNum = stepNumber !== undefined ? stepNumber : index + 1;
+
     return (
         <motion.div
             layout
@@ -25,7 +41,7 @@ export default function StepItem({ step, index, active, onClick }: StepItemProps
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-black transition-all duration-300 shadow-md ${
                     active ? 'bg-accent text-text-1 scale-110' : 'bg-glass-bg border border-glass-border text-text-3'
                 }`}>
-                    {index + 1}
+                    {displayNum}
                 </div>
                 <p className={`text-sm leading-relaxed transition-colors duration-300 mt-1 ${
                     active ? 'text-text-1 font-semibold' : 'text-text-2'

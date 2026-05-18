@@ -8,7 +8,7 @@ interface RecipeEditorIngredientsProps {
     removeIngredient: (idx: number) => void;
 }
 
-const inputCls = "bg-glass-bg border border-glass-border rounded-xl px-3 py-2.5 text-sm text-text-1 outline-none focus:border-accent/60 transition-colors w-full";
+const baseInputCls = "bg-glass-bg border border-glass-border rounded-xl px-3 py-2.5 text-sm text-text-1 outline-none focus:border-accent/60 transition-colors";
 
 export default function RecipeEditorIngredients({ ingredients, updateIngredient, addIngredient, removeIngredient }: RecipeEditorIngredientsProps) {
     return (
@@ -25,19 +25,19 @@ export default function RecipeEditorIngredients({ ingredients, updateIngredient,
                         <input
                             value={ing.name || ''}
                             onChange={e => updateIngredient(idx, 'name', e.target.value)}
-                            className={`${inputCls} flex-1`}
+                            className={`${baseInputCls} flex-1 min-w-0`}
                             placeholder="Ingredient"
                         />
                         <input
                             value={ing.amount || ''}
                             onChange={e => updateIngredient(idx, 'amount', e.target.value)}
-                            className={`${inputCls} w-20`}
+                            className={`${baseInputCls} w-24 shrink-0`}
                             placeholder="Qty"
                         />
                         <input
                             value={ing.unit || ''}
                             onChange={e => updateIngredient(idx, 'unit', e.target.value)}
-                            className={`${inputCls} w-14`}
+                            className={`${baseInputCls} w-20 shrink-0`}
                             placeholder="Unit"
                         />
                         <button type="button" onClick={() => removeIngredient(idx)} className="w-9 flex items-center justify-center bg-danger/10 text-danger hover:bg-danger hover:text-text-1 rounded-xl transition-colors shrink-0">

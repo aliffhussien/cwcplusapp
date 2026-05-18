@@ -174,7 +174,32 @@ export default function RecipeView() {
                             </div>
                             <div className={`md:col-span-7 ${activeTab !== 'steps' ? 'hidden md:block' : ''}`}>
                                 <h3 className="text-sm font-black italic uppercase tracking-tight text-text-3 mb-4">Langkah</h3>
-                                {stepCount > 0 ? <div className="space-y-2.5">{steps.map((step: any, i: number) => <StepItem key={i} step={step} index={i} active={activeStep === i} onClick={() => setActiveStep(i)} />)}</div> : <p className="text-sm text-text-3 py-6 text-center">Tiada langkah disenaraikan.</p>}
+                                {stepCount > 0 ? (
+                                    <div className="space-y-2.5">
+                                        {(() => {
+                                            let actualStepNum = 0;
+                                            return steps.map((step: any, i: number) => {
+                                                const text = typeof step === 'string' ? step : step?.instruction || String(step);
+                                                const isSection = text.startsWith('──') && text.endsWith('──');
+                                                if (!isSection) {
+                                                    actualStepNum++;
+                                                }
+                                                return (
+                                                    <StepItem 
+                                                        key={i} 
+                                                        step={step} 
+                                                        index={i} 
+                                                        stepNumber={isSection ? undefined : actualStepNum} 
+                                                        active={activeStep === i} 
+                                                        onClick={() => setActiveStep(i)} 
+                                                    />
+                                                );
+                                            });
+                                        })()}
+                                    </div>
+                                ) : (
+                                    <p className="text-sm text-text-3 py-6 text-center">Tiada langkah disenaraikan.</p>
+                                )}
                                 {parsedNotes.length > 0 && (
                                     <div className="hidden md:block mt-8 pt-6 border-t border-glass-border">
                                         <h3 className="text-sm font-black italic uppercase tracking-tight text-text-3 mb-3">Nota Chef</h3>
