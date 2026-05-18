@@ -109,7 +109,7 @@ function useRecipesState(user) {
 
     useEffect(() => {
         let cancelled = false;
-        const cols = 'id, title, author, time, image, category, difficulty, rating, status, is_featured, tier_required, volume, scheduled_post_date, created_at, cover_image_id, hero_image, hero_image_id, ingredients, steps, notes, tags, base_servings, video, description, cover:media_library!cover_image_id(*), hero:media_library!hero_image_id(*)';
+        const cols = 'id, title, author, time, image, category, difficulty, rating, status, is_featured, tier_required, volume, scheduled_post_date, created_at, cover_image_id, hero_image, hero_image_id, ingredients, steps, notes, tags, base_servings, video, cover:media_library!cover_image_id(*), hero:media_library!hero_image_id(*)';
 
         const fetch = async () => {
             setIsLoading(true);

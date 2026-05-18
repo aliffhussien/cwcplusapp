@@ -207,7 +207,6 @@ export default function RecipeView() {
                     <div className="flex items-center gap-2 mb-2.5">
                         {recipe.volume && <span className="px-2.5 py-1 bg-accent/90 backdrop-blur-md rounded-lg text-[9px] font-black uppercase tracking-widest text-text-1">{recipe.volume}</span>}
                         {recipe.difficulty && <span className="px-2 py-1 bg-elevated backdrop-blur-md rounded-lg text-[9px] font-bold uppercase tracking-widest text-text-3">{recipe.difficulty}</span>}
-                        <span className="text-[9px] font-bold text-text-3 uppercase tracking-widest">{recipe.category || 'Signature'}</span>
                     </div>
                     <div className="flex items-start justify-between gap-4">
                         <h1 className="flex-1 text-4xl md:text-6xl font-black italic tracking-tighter uppercase leading-[0.9] text-text-1 drop-shadow-2xl">{recipe.title}</h1>
