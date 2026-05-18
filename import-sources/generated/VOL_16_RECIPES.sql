@@ -7,7 +7,7 @@
 -- ZESTY BLONDIES (LEMON BROWNIES)
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'ZESTY BLONDIES (LEMON BROWNIES)',
   'zesty-blondies-lemon-brownies',
@@ -29,7 +29,7 @@ VALUES (
 -- UBI KELEDEK (ICE BATH)
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'UBI KELEDEK (ICE BATH)',
   'ubi-keledek-ice-bath',
@@ -51,7 +51,7 @@ VALUES (
 -- THAI SPICY CHICKEN RICE BOWL
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'THAI SPICY CHICKEN RICE BOWL',
   'thai-spicy-chicken-rice-bowl',
@@ -73,7 +73,7 @@ VALUES (
 -- BROWN SUGAR COOKIES
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'BROWN SUGAR COOKIES',
   'brown-sugar-cookies',
@@ -95,7 +95,7 @@ VALUES (
 -- EASY BUTTER COOKIES
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'EASY BUTTER COOKIES',
   'easy-butter-cookies',
@@ -117,7 +117,7 @@ VALUES (
 -- MONGOLIAN BEEF (VERSI MUDAH)
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'MONGOLIAN BEEF (VERSI MUDAH)',
   'mongolian-beef-versi-mudah',
@@ -139,7 +139,7 @@ VALUES (
 -- UDANG SWEET SOUR SEMPOI
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'UDANG SWEET SOUR SEMPOI',
   'udang-sweet-sour-sempoi',
@@ -161,7 +161,7 @@ VALUES (
 -- EASY SOY MARINATED EGGS
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'EASY SOY MARINATED EGGS',
   'easy-soy-marinated-eggs',
@@ -183,7 +183,7 @@ VALUES (
 -- HONEY GARLIC CRISPY CHICKEN
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'HONEY GARLIC CRISPY CHICKEN',
   'honey-garlic-crispy-chicken',
@@ -205,7 +205,7 @@ VALUES (
 -- EASY PEASY CHOCOLATE MOUSSE
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'EASY PEASY CHOCOLATE MOUSSE',
   'easy-peasy-chocolate-mousse',
@@ -227,7 +227,7 @@ VALUES (
 -- CLASSIC BEEF LASAGNA
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'CLASSIC BEEF LASAGNA',
   'classic-beef-lasagna',
@@ -249,7 +249,7 @@ VALUES (
 -- TELUR ITIK MASAK LEMAK CILI PADI CWC
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'TELUR ITIK MASAK LEMAK CILI PADI CWC',
   'telur-itik-masak-lemak-cili-padi-cwc',
@@ -271,7 +271,7 @@ VALUES (
 -- KACANG PANJANG GORENG MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'KACANG PANJANG GORENG MUDAH',
   'kacang-panjang-goreng-mudah',
@@ -293,7 +293,7 @@ VALUES (
 -- NASI GORENG ALA INDONESIAN STYLE
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'NASI GORENG ALA INDONESIAN STYLE',
   'nasi-goreng-ala-indonesian-style',
@@ -315,7 +315,7 @@ VALUES (
 -- AIR FRYER ONION RING
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'AIR FRYER ONION RING',
   'air-fryer-onion-ring',
@@ -337,7 +337,7 @@ VALUES (
 -- SOS MENTAIKO STYLE
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SOS MENTAIKO STYLE',
   'sos-mentaiko-style',
@@ -359,7 +359,7 @@ VALUES (
 -- ROTI CANAI 2.0 (EXPRESS)
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'ROTI CANAI 2.0 (EXPRESS)',
   'roti-canai-20-express',
@@ -381,7 +381,7 @@ VALUES (
 -- AYAM PARATTAL SEMPOI
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'AYAM PARATTAL SEMPOI',
   'ayam-parattal-sempoi',
@@ -403,7 +403,7 @@ VALUES (
 -- DAGING MASAK KICAP PALING SIMPLE
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'DAGING MASAK KICAP PALING SIMPLE',
   'daging-masak-kicap-paling-simple',
@@ -425,7 +425,7 @@ VALUES (
 -- SAYUR BAYAM EXPRESS
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SAYUR BAYAM EXPRESS',
   'sayur-bayam-express',
@@ -447,7 +447,7 @@ VALUES (
 -- SPAGHETTI MEATBALL CWC
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SPAGHETTI MEATBALL CWC',
   'spaghetti-meatball-cwc',
@@ -469,7 +469,7 @@ VALUES (
 -- IKAN SIAKAP BERLADA ALA THAI
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'IKAN SIAKAP BERLADA ALA THAI',
   'ikan-siakap-berlada-ala-thai',
@@ -491,7 +491,7 @@ VALUES (
 -- IKAN BAWAL MASAK KICAP
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'IKAN BAWAL MASAK KICAP',
   'ikan-bawal-masak-kicap',
@@ -513,7 +513,7 @@ VALUES (
 -- CUCUR IKAN BILIS OLD SCHOOL
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'CUCUR IKAN BILIS OLD SCHOOL',
   'cucur-ikan-bilis-old-school',
@@ -535,7 +535,7 @@ VALUES (
 -- SOS PENCICAH PALING SEMPOI
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SOS PENCICAH PALING SEMPOI',
   'sos-pencicah-paling-sempoi',
@@ -557,7 +557,7 @@ VALUES (
 -- FLUFFY CHOCOLATE PANCAKE
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'FLUFFY CHOCOLATE PANCAKE',
   'fluffy-chocolate-pancake',
@@ -579,7 +579,7 @@ VALUES (
 -- CLASSIC MOIST VANILA CUPCAKE
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'CLASSIC MOIST VANILA CUPCAKE',
   'classic-moist-vanila-cupcake',
@@ -601,7 +601,7 @@ VALUES (
 -- LAKSA KARI NUMEE SEDAP
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'LAKSA KARI NUMEE SEDAP',
   'laksa-kari-numee-sedap',
@@ -623,7 +623,7 @@ VALUES (
 -- BUKAN AYAM GORENG
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'BUKAN AYAM GORENG',
   'bukan-ayam-goreng',
@@ -645,7 +645,7 @@ VALUES (
 -- CRISPY POTATO CHIPS SEMPOI
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'CRISPY POTATO CHIPS SEMPOI',
   'crispy-potato-chips-sempoi',
@@ -667,7 +667,7 @@ VALUES (
 -- NASI BERIANI EXPRESS
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'NASI BERIANI EXPRESS',
   'nasi-beriani-express',
@@ -689,7 +689,7 @@ VALUES (
 -- DAGING KURMA CWC
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'DAGING KURMA CWC',
   'daging-kurma-cwc',

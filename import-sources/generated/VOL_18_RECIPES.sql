@@ -7,7 +7,7 @@
 -- QUESADILLA MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'QUESADILLA MUDAH',
   'quesadilla-mudah',
@@ -29,7 +29,7 @@ VALUES (
 -- ASAM PEDAS AYAM
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'ASAM PEDAS AYAM',
   'asam-pedas-ayam',
@@ -51,7 +51,7 @@ VALUES (
 -- RENDANG AYAM MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'RENDANG AYAM MUDAH',
   'rendang-ayam-mudah',
@@ -73,7 +73,7 @@ VALUES (
 -- PULUT KUNING MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'PULUT KUNING MUDAH',
   'pulut-kuning-mudah',
@@ -95,7 +95,7 @@ VALUES (
 -- EASY DELICIOUS BREAKFAST
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'EASY DELICIOUS BREAKFAST',
   'easy-delicious-breakfast',
@@ -117,7 +117,7 @@ VALUES (
 -- DAGING MASAK MERAH ALA THAI
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'DAGING MASAK MERAH ALA THAI',
   'daging-masak-merah-ala-thai',
@@ -139,7 +139,7 @@ VALUES (
 -- BANANA OATMEAL MUFFIN
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'BANANA OATMEAL MUFFIN',
   'banana-oatmeal-muffin',
@@ -161,7 +161,7 @@ VALUES (
 -- KERABU IKAN BILIS MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'KERABU IKAN BILIS MUDAH',
   'kerabu-ikan-bilis-mudah',
@@ -183,7 +183,7 @@ VALUES (
 -- HOMEMADE BAGELS
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'HOMEMADE BAGELS',
   'homemade-bagels',
@@ -205,7 +205,7 @@ VALUES (
 -- UDANG MASAK ALA DI RAJA
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'UDANG MASAK ALA DI RAJA',
   'udang-masak-ala-di-raja',
@@ -227,7 +227,7 @@ VALUES (
 -- SUP AYAM BERSANTAN ALA THAI (TOM KHA GAI)
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SUP AYAM BERSANTAN ALA THAI (TOM KHA GAI)',
   'sup-ayam-bersantan-ala-thai-tom-kha-gai',
@@ -249,7 +249,7 @@ VALUES (
 -- TAUHU BERLAUK CWC
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'TAUHU BERLAUK CWC',
   'tauhu-berlauk-cwc',
@@ -271,7 +271,7 @@ VALUES (
 -- SAMBAL KICAP PADU
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SAMBAL KICAP PADU',
   'sambal-kicap-padu',
@@ -293,7 +293,7 @@ VALUES (
 -- CRAZY NUTTY COOKIES
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'CRAZY NUTTY COOKIES',
   'crazy-nutty-cookies',
@@ -315,7 +315,7 @@ VALUES (
 -- DAGING BERLADO ALA PADANG
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'DAGING BERLADO ALA PADANG',
   'daging-berlado-ala-padang',
@@ -337,7 +337,7 @@ VALUES (
 -- SAMBAL IKAN BILIS GARING
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SAMBAL IKAN BILIS GARING',
   'sambal-ikan-bilis-garing',
@@ -359,7 +359,7 @@ VALUES (
 -- CREAMY TOMYAM PASTA 2.0
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'CREAMY TOMYAM PASTA 2.0',
   'creamy-tomyam-pasta-2-0',
@@ -381,7 +381,7 @@ VALUES (
 -- EASY LOVE COOKIES
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'EASY LOVE COOKIES',
   'easy-love-cookies',
@@ -403,7 +403,7 @@ VALUES (
 -- SOTONG KAM HEONG
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SOTONG KAM HEONG',
   'sotong-kam-heong',
@@ -425,7 +425,7 @@ VALUES (
 -- SAYUR KAILAN TUMIS SEMPOI
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SAYUR KAILAN TUMIS SEMPOI',
   'sayur-kailan-tumis-sempoi',
@@ -447,7 +447,7 @@ VALUES (
 -- SAMBAL GORENG JAWA VERSI SIMPLE
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SAMBAL GORENG JAWA VERSI SIMPLE',
   'sambal-goreng-jawa-versi-simple',

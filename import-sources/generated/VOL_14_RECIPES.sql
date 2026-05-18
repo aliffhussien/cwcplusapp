@@ -7,7 +7,7 @@
 -- AYAM GORENG BERLENGAS PADU
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'AYAM GORENG BERLENGAS PADU',
   'ayam-goreng-berlengas-padu',
@@ -29,7 +29,7 @@ VALUES (
 -- FILLET O FISH BURGER
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'FILLET O FISH BURGER',
   'fillet-o-fish-burger',
@@ -51,7 +51,7 @@ VALUES (
 -- SAMBAL SOTONG CWC
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SAMBAL SOTONG CWC',
   'sambal-sotong-cwc',
@@ -73,7 +73,7 @@ VALUES (
 -- KOBIS MASAK LEMAK MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'KOBIS MASAK LEMAK MUDAH',
   'kobis-masak-lemak-mudah',
@@ -95,7 +95,7 @@ VALUES (
 -- SERAWA DURIAN SAMPOI
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SERAWA DURIAN SAMPOI',
   'serawa-durian-sampoi',
@@ -117,7 +117,7 @@ VALUES (
 -- PULUT KUKUS PALING MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'PULUT KUKUS PALING MUDAH',
   'pulut-kukus-paling-mudah',
@@ -139,7 +139,7 @@ VALUES (
 -- MINI DONUT EXPRESS (5 MINIT)
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'MINI DONUT EXPRESS (5 MINIT)',
   'mini-donut-express-5-minit',
@@ -161,7 +161,7 @@ VALUES (
 -- THE BEST CHOC CHIPS COOKIES
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'THE BEST CHOC CHIPS COOKIES',
   'the-best-choc-chips-cookies',
@@ -183,7 +183,7 @@ VALUES (
 -- DAGING MASAK KICAP PADU
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'DAGING MASAK KICAP PADU',
   'daging-masak-kicap-padu',
@@ -205,7 +205,7 @@ VALUES (
 -- KEK COKLAT PALING MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'KEK COKLAT PALING MUDAH',
   'kek-coklat-paling-mudah',
@@ -227,7 +227,7 @@ VALUES (
 -- COKLAT FROSTING PALING MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'COKLAT FROSTING PALING MUDAH',
   'coklat-frosting-paling-mudah',
@@ -249,7 +249,7 @@ VALUES (
 -- SOUFFLÉ OMELETTE GEBU
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SOUFFLÉ OMELETTE GEBU',
   'souffle-omelette-gebu',
@@ -271,7 +271,7 @@ VALUES (
 -- SIMPLE BAKED BEANS
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SIMPLE BAKED BEANS',
   'simple-baked-beans',
@@ -293,7 +293,7 @@ VALUES (
 -- BIHUN GORENG KICAP MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'BIHUN GORENG KICAP MUDAH',
   'bihun-goreng-kicap-mudah',
@@ -315,7 +315,7 @@ VALUES (
 -- LABU MASAK LEMAK PUTIH BERSAMA BAYAM
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'LABU MASAK LEMAK PUTIH BERSAMA BAYAM',
   'labu-masak-lemak-putih-bersama-bayam',
@@ -337,7 +337,7 @@ VALUES (
 -- SAMBAL TUMIS IKAN BILIS SEMPOI
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SAMBAL TUMIS IKAN BILIS SEMPOI',
   'sambal-tumis-ikan-bilis-sempoi',
@@ -359,7 +359,7 @@ VALUES (
 -- IKAN SIAKAP MASAK ASAM JAWA SEMPOI
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'IKAN SIAKAP MASAK ASAM JAWA SEMPOI',
   'ikan-siakap-masak-asam-jawa-sempoi',
@@ -381,7 +381,7 @@ VALUES (
 -- TELUR DADAR BENDI SPECIAL
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'TELUR DADAR BENDI SPECIAL',
   'telur-dadar-bendi-special',
@@ -403,7 +403,7 @@ VALUES (
 -- BAKWAN JAGUNG RANGUP
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'BAKWAN JAGUNG RANGUP',
   'bakwan-jagung-rangup',
@@ -425,7 +425,7 @@ VALUES (
 -- SOS CILI HOMEMADE
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SOS CILI HOMEMADE',
   'sos-cili-homemade',
@@ -447,7 +447,7 @@ VALUES (
 -- IKAN MASAK HALIA MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'IKAN MASAK HALIA MUDAH',
   'ikan-masak-halia-mudah',
@@ -469,7 +469,7 @@ VALUES (
 -- SAMBAL TERUNG BERLADO
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SAMBAL TERUNG BERLADO',
   'sambal-terung-berlado',
@@ -491,7 +491,7 @@ VALUES (
 -- SUP TELUR PALING SIMPLE
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SUP TELUR PALING SIMPLE',
   'sup-telur-paling-simple',
@@ -513,7 +513,7 @@ VALUES (
 -- UDANG MASAK SOS TIRAM
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'UDANG MASAK SOS TIRAM',
   'udang-masak-sos-tiram',
@@ -535,7 +535,7 @@ VALUES (
 -- BEBOLA UBI KELEDEK MANIS MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'BEBOLA UBI KELEDEK MANIS MUDAH',
   'bebola-ubi-keledek-manis-mudah',
@@ -557,7 +557,7 @@ VALUES (
 -- DAGING BAWANG PUTIH PATTANI
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'DAGING BAWANG PUTIH PATTANI',
   'daging-bawang-putih-pattani',
@@ -579,7 +579,7 @@ VALUES (
 -- BURGER SALMON MUDAH (PATTY)
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'BURGER SALMON MUDAH (PATTY)',
   'burger-salmon-mudah-patty',
@@ -601,7 +601,7 @@ VALUES (
 -- SLAW MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SLAW MUDAH',
   'slaw-mudah',
@@ -623,7 +623,7 @@ VALUES (
 -- NASI BRIYANI TELUR
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'NASI BRIYANI TELUR',
   'nasi-briyani-telur',
@@ -645,7 +645,7 @@ VALUES (
 -- RAITAR MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'RAITAR MUDAH',
   'raitar-mudah',
@@ -667,7 +667,7 @@ VALUES (
 -- CRÈME BRÛLÉE MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'CRÈME BRÛLÉE MUDAH',
   'creme-brulee-mudah',
@@ -689,7 +689,7 @@ VALUES (
 -- NASI GORENG DAGING MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'NASI GORENG DAGING MUDAH',
   'nasi-goreng-daging-mudah',
@@ -711,7 +711,7 @@ VALUES (
 -- CRISPY TOFU
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'CRISPY TOFU',
   'crispy-tofu',
@@ -733,7 +733,7 @@ VALUES (
 -- SOS KACANG PEDAS MANIS
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SOS KACANG PEDAS MANIS',
   'sos-kacang-pedas-manis',

@@ -7,7 +7,7 @@
 -- CHOCOLATE CUPCAKES (TANPA TELUR) & WHIPPED CREAM
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'CHOCOLATE CUPCAKES (TANPA TELUR) & WHIPPED CREAM',
   'chocolate-cupcakes-tanpa-telur',
@@ -29,7 +29,7 @@ VALUES (
 -- CRISPY CHEESE SCALLION PANCAKE & DIPPING SAUCE
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'CRISPY CHEESE SCALLION PANCAKE & DIPPING SAUCE',
   'crispy-cheese-scallion-pancake',
@@ -51,7 +51,7 @@ VALUES (
 -- KUAH LADA CWC
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'KUAH LADA CWC',
   'kuah-lada-cwc',
@@ -73,7 +73,7 @@ VALUES (
 -- CHEWY FRUITY COOKIES
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'CHEWY FRUITY COOKIES',
   'chewy-fruity-cookies',
@@ -95,7 +95,7 @@ VALUES (
 -- KELADI SWISS ROLL
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'KELADI SWISS ROLL',
   'keladi-swiss-roll',
@@ -117,7 +117,7 @@ VALUES (
 -- AYAM GORENG TOMYAM THAI
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'AYAM GORENG TOMYAM THAI',
   'ayam-goreng-tomyam-thai',
@@ -139,7 +139,7 @@ VALUES (
 -- SAYUR PETOLA TUMIS AIR
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SAYUR PETOLA TUMIS AIR',
   'sayur-petola-tumis-air',
@@ -161,7 +161,7 @@ VALUES (
 -- PAD THAI CWC
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'PAD THAI CWC',
   'pad-thai-cwc',
@@ -183,7 +183,7 @@ VALUES (
 -- EXPRESS BANANA PANCAKES (THAI ROTI)
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'EXPRESS BANANA PANCAKES (THAI ROTI)',
   'express-banana-pancakes-thai-roti',
@@ -205,7 +205,7 @@ VALUES (
 -- AYAM GORENG PEDAS MANIS ALA KOREAN
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'AYAM GORENG PEDAS MANIS ALA KOREAN',
   'ayam-goreng-pedas-manis-ala-korean',
@@ -227,7 +227,7 @@ VALUES (
 -- ASAM PEDAS PALING MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'ASAM PEDAS PALING MUDAH',
   'asam-pedas-paling-mudah',
@@ -249,7 +249,7 @@ VALUES (
 -- CINCALOK MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'CINCALOK MUDAH',
   'cincalok-mudah',
@@ -271,7 +271,7 @@ VALUES (
 -- IKAN/SOTONG BAKAR SAMBAL PORTUGIS & AIR ASAM
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'IKAN/SOTONG BAKAR SAMBAL PORTUGIS & AIR ASAM',
   'ikan-bakar-sambal-portugis',
@@ -293,7 +293,7 @@ VALUES (
 -- NASI AYAM 1 PERIUK (ALA THAI) & SOS SPECIAL
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'NASI AYAM 1 PERIUK (ALA THAI) & SOS SPECIAL',
   'nasi-ayam-1-periuk-ala-thai',
@@ -315,7 +315,7 @@ VALUES (
 -- LEMON LOAF CWC
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'LEMON LOAF CWC',
   'lemon-loaf-cwc',
@@ -337,7 +337,7 @@ VALUES (
 -- SHRIMP GARLIC HOMEMADE PASTA
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SHRIMP GARLIC HOMEMADE PASTA',
   'shrimp-garlic-homemade-pasta',
@@ -359,7 +359,7 @@ VALUES (
 -- BUBUR KACANG HIJAU BERSAMA DURIAN
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'BUBUR KACANG HIJAU BERSAMA DURIAN',
   'bubur-kacang-hijau-bersama-durian',
@@ -381,7 +381,7 @@ VALUES (
 -- ROTI PAUNG EXPRESS
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'ROTI PAUNG EXPRESS',
   'roti-paung-express',
@@ -403,7 +403,7 @@ VALUES (
 -- PINDANG SERANI PALING MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'PINDANG SERANI PALING MUDAH',
   'pindang-serani-paling-mudah',
@@ -425,7 +425,7 @@ VALUES (
 -- EXPRESS PIZZA
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'EXPRESS PIZZA',
   'express-pizza',
@@ -447,7 +447,7 @@ VALUES (
 -- NASI BERINGIN CARA CWC
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'NASI BERINGIN CARA CWC',
   'nasi-beringin-cara-cwc',
@@ -469,7 +469,7 @@ VALUES (
 -- AYAM ROS PALING MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'AYAM ROS PALING MUDAH',
   'ayam-ros-paling-mudah',
@@ -491,7 +491,7 @@ VALUES (
 -- KUIH SIPUT KLASIK
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'KUIH SIPUT KLASIK',
   'kuih-siput-klasik',
@@ -513,7 +513,7 @@ VALUES (
 -- SAMBAL TELUR HANCUR CWC
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SAMBAL TELUR HANCUR CWC',
   'sambal-telur-hancur-cwc',
@@ -535,7 +535,7 @@ VALUES (
 -- MEE HAILAM SEMPOI
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'MEE HAILAM SEMPOI',
   'mee-hailam-sempoi',
@@ -557,7 +557,7 @@ VALUES (
 -- EASY CHURROS & CHOCOLATE DIPPING SAUCE
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'EASY CHURROS & CHOCOLATE DIPPING SAUCE',
   'easy-churros',
@@ -579,7 +579,7 @@ VALUES (
 -- DAGING GORENG KUNYIT SIMPLE
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'DAGING GORENG KUNYIT SIMPLE',
   'daging-goreng-kunyit-simple',
@@ -601,7 +601,7 @@ VALUES (
 -- SAMBAL BELACAN PALING PADU
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SAMBAL BELACAN PALING PADU',
   'sambal-belacan-paling-padu',

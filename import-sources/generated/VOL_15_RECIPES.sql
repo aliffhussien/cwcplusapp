@@ -7,7 +7,7 @@
 -- TORTILLA MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'TORTILLA MUDAH',
   'tortilla-mudah',
@@ -29,7 +29,7 @@ VALUES (
 -- BEEF DONER KEBAB
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'BEEF DONER KEBAB',
   'beef-doner-kebab',
@@ -51,7 +51,7 @@ VALUES (
 -- SOS KEBAB ISTIMEWA
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SOS KEBAB ISTIMEWA',
   'sos-kebab-istimewa',
@@ -73,7 +73,7 @@ VALUES (
 -- SANDWICH CHOCOLATE CAKE
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SANDWICH CHOCOLATE CAKE',
   'sandwich-chocolate-cake',
@@ -95,7 +95,7 @@ VALUES (
 -- AYAM BAWANG CWC
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'AYAM BAWANG CWC',
   'ayam-bawang-cwc',
@@ -117,7 +117,7 @@ VALUES (
 -- NASI PANDAN SIMPLE
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'NASI PANDAN SIMPLE',
   'nasi-pandan-simple',
@@ -139,7 +139,7 @@ VALUES (
 -- KATSU CURRY
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'KATSU CURRY',
   'katsu-curry',
@@ -161,7 +161,7 @@ VALUES (
 -- CHICKEN KATSU
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'CHICKEN KATSU',
   'chicken-katsu',
@@ -183,7 +183,7 @@ VALUES (
 -- SPECIAL KATSU RICE
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SPECIAL KATSU RICE',
   'special-katsu-rice',
@@ -205,7 +205,7 @@ VALUES (
 -- ACAR KUBIS PURPLE
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'ACAR KUBIS PURPLE',
   'acar-kubis-purple',
@@ -227,7 +227,7 @@ VALUES (
 -- KUEY TEOW GORENG KERANG MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'KUEY TEOW GORENG KERANG MUDAH',
   'kuey-teow-goreng-kerang-mudah',
@@ -249,7 +249,7 @@ VALUES (
 -- CHICKEN SANDWICH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'CHICKEN SANDWICH',
   'chicken-sandwich',
@@ -271,7 +271,7 @@ VALUES (
 -- IKAN JAKET MASAK LEMAK CILI PADI BERSAMA REBUNG
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'IKAN JAKET MASAK LEMAK CILI PADI BERSAMA REBUNG',
   'ikan-jaket-masak-lemak-cili-padi-bersama-rebung',
@@ -293,7 +293,7 @@ VALUES (
 -- EASY FLAN (CRÈME CARAMEL)
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'EASY FLAN (CRÈME CARAMEL)',
   'easy-flan-crème-caramel',
@@ -315,7 +315,7 @@ VALUES (
 -- CHICKEN ALFREDO MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'CHICKEN ALFREDO MUDAH',
   'chicken-alfredo-mudah',
@@ -337,7 +337,7 @@ VALUES (
 -- SARDIN TUMIS ALA THAI
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SARDIN TUMIS ALA THAI',
   'sardin-tumis-ala-thai',
@@ -359,7 +359,7 @@ VALUES (
 -- LEMAK SOHUN & FUCUK MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'LEMAK SOHUN & FUCUK MUDAH',
   'lemak-sohun-fucuk-mudah',
@@ -381,7 +381,7 @@ VALUES (
 -- ROASTED CHICKEN ALA KR
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'ROASTED CHICKEN ALA KR',
   'roasted-chicken-ala-kr',
@@ -403,7 +403,7 @@ VALUES (
 -- SPECIAL GRAVY (ROASTED CHICKEN)
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SPECIAL GRAVY (ROASTED CHICKEN)',
   'special-gravy-roasted-chicken',
@@ -425,7 +425,7 @@ VALUES (
 -- EASY GARLIC HERB RICE
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'EASY GARLIC HERB RICE',
   'easy-garlic-herb-rice',
@@ -447,7 +447,7 @@ VALUES (
 -- CRISPY PURPLE SWEET POTATO FRIES
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'CRISPY PURPLE SWEET POTATO FRIES',
   'crispy-purple-sweet-potato-fries',
@@ -469,7 +469,7 @@ VALUES (
 -- SAMBAL SOTONG BERSANTAN
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SAMBAL SOTONG BERSANTAN',
   'sambal-sotong-bersantan',
@@ -491,7 +491,7 @@ VALUES (
 -- LABU MASAK LEMAK SEMPOI
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'LABU MASAK LEMAK SEMPOI',
   'labu-masak-lemak-sempoi',
@@ -513,7 +513,7 @@ VALUES (
 -- CRUNCHY CAULIFLOWER CWC
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'CRUNCHY CAULIFLOWER CWC',
   'crunchy-cauliflower-cwc',
@@ -535,7 +535,7 @@ VALUES (
 -- SPECIAL RANCH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'SPECIAL RANCH',
   'special-ranch',
@@ -557,7 +557,7 @@ VALUES (
 -- BROWNIE PUDDING
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'BROWNIE PUDDING',
   'brownie-pudding',
@@ -579,7 +579,7 @@ VALUES (
 -- YEE MEE GORENG MUDAH
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'YEE MEE GORENG MUDAH',
   'yee-mee-goreng-mudah',
@@ -601,7 +601,7 @@ VALUES (
 -- EASY SHAKSHUKA
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'EASY SHAKSHUKA',
   'easy-shakshuka',
@@ -623,7 +623,7 @@ VALUES (
 -- CREAMY LEMONADE
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'CREAMY LEMONADE',
   'creamy-lemonade',
@@ -645,7 +645,7 @@ VALUES (
 -- EASY CORDON BLEU
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'EASY CORDON BLEU',
   'easy-cordon-bleu',
@@ -667,7 +667,7 @@ VALUES (
 -- CREAM SAUCE (CORDON BLEU)
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'CREAM SAUCE (CORDON BLEU)',
   'cream-sauce-cordon-bleu',
@@ -689,7 +689,7 @@ VALUES (
 -- EXPRESS SALAD
 INSERT INTO public.recipes
   (title, slug, category, volume, status, difficulty, base_servings, rating,
-   image, video_url, ingredients, steps, notes, tags, is_featured)
+   image, video, ingredients, steps, notes, tags, is_featured)
 VALUES (
   'EXPRESS SALAD',
   'express-salad',
