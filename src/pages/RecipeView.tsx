@@ -113,7 +113,7 @@ export default function RecipeView() {
     const tags = Array.isArray(recipe.tags) ? recipe.tags : [];
 
     return (
-        <div className="min-h-screen bg-base text-text-1 selection:bg-accent/30 pb-[env(safe-area-bottom,32px)]">
+        <div className="min-h-screen bg-base text-text-1 selection:bg-accent/30 pb-28 md:pb-20">
             <Header variant="back" title={recipe.title} rightAction={isAdmin ? (<button onClick={() => setIsEditing(true)} className="w-10 h-10 flex items-center justify-center rounded-xl bg-base/40 backdrop-blur-md border border-glass-border hover:bg-elevated transition-colors text-text-1 shadow-xl"><Edit2 size={16} /></button>) : null} />
             {!hasAccess && <AccessDeniedModal volume={recipe.volume} price={priceDisplay} onPurchase={handlePurchase} loading={checkoutLoading} />}
 
@@ -152,7 +152,7 @@ export default function RecipeView() {
             {hasAccess && (
                 <>
                     <div className="md:hidden flex border-b border-glass-border">
-                        {[{ key: 'ingredients', label: `Ingredients${ingredientCount ? ` (${ingredientCount})` : ''}` }, { key: 'steps', label: `Steps${stepCount ? ` (${stepCount})` : ''}` }, ...(parsedNotes.length > 0 ? [{ key: 'notes', label: 'Notes' }] : [])].map(({ key, label }) => (
+                        {[{ key: 'ingredients', label: `Bahan-bahan${ingredientCount ? ` (${ingredientCount})` : ''}` }, { key: 'steps', label: `Langkah${stepCount ? ` (${stepCount})` : ''}` }, ...(parsedNotes.length > 0 ? [{ key: 'notes', label: 'Nota Chef' }] : [])].map(({ key, label }) => (
                             <button key={key} onClick={() => setActiveTab(key)} className={`flex-1 py-3.5 text-[10px] font-black uppercase tracking-widest border-b-2 transition-colors ${activeTab === key ? 'border-accent text-accent' : 'border-transparent text-text-3'}`}>{label}</button>
                         ))}
                     </div>
@@ -162,29 +162,29 @@ export default function RecipeView() {
                             <div className={`md:col-span-5 ${activeTab !== 'ingredients' ? 'hidden md:block' : ''}`}>
                                 <div className="md:sticky md:top-24">
                                     <div className="flex items-center justify-between mb-4">
-                                        <h3 className="text-sm font-black italic uppercase tracking-tight text-text-3">Ingredients</h3>
+                                        <h3 className="text-sm font-black italic uppercase tracking-tight text-text-3">Bahan-bahan</h3>
                                         <div className="flex items-center gap-1 bg-glass-bg rounded-full p-1 border border-glass-border">
                                             <button onClick={() => setServings(s => Math.max(1, s - 1))} className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-elevated text-text-3 hover:text-text-1 transition-colors">−</button>
                                             <span className="text-[10px] font-black w-6 text-center text-text-1">{servings}</span>
                                             <button onClick={() => setServings(s => s + 1)} className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-elevated text-text-3 hover:text-text-1 transition-colors">+</button>
                                         </div>
                                     </div>
-                                    {ingredientCount > 0 ? (recipe.ingredients || []).map((ing: any, i: number) => <IngredientLine key={i} {...ing} ratio={ratio} />) : <p className="text-sm text-text-3 py-6 text-center">No ingredients listed.</p>}
+                                    {ingredientCount > 0 ? (recipe.ingredients || []).map((ing: any, i: number) => <IngredientLine key={i} {...ing} ratio={ratio} />) : <p className="text-sm text-text-3 py-6 text-center">Tiada bahan disenaraikan.</p>}
                                 </div>
                             </div>
                             <div className={`md:col-span-7 ${activeTab !== 'steps' ? 'hidden md:block' : ''}`}>
-                                <h3 className="text-sm font-black italic uppercase tracking-tight text-text-3 mb-4">Execution</h3>
-                                {stepCount > 0 ? <div className="space-y-2.5">{steps.map((step: any, i: number) => <StepItem key={i} step={step} index={i} active={activeStep === i} onClick={() => setActiveStep(i)} />)}</div> : <p className="text-sm text-text-3 py-6 text-center">No steps listed.</p>}
+                                <h3 className="text-sm font-black italic uppercase tracking-tight text-text-3 mb-4">Langkah</h3>
+                                {stepCount > 0 ? <div className="space-y-2.5">{steps.map((step: any, i: number) => <StepItem key={i} step={step} index={i} active={activeStep === i} onClick={() => setActiveStep(i)} />)}</div> : <p className="text-sm text-text-3 py-6 text-center">Tiada langkah disenaraikan.</p>}
                                 {parsedNotes.length > 0 && (
                                     <div className="hidden md:block mt-8 pt-6 border-t border-glass-border">
-                                        <h3 className="text-sm font-black italic uppercase tracking-tight text-text-3 mb-3">Chef's Notes</h3>
+                                        <h3 className="text-sm font-black italic uppercase tracking-tight text-text-3 mb-3">Nota Chef</h3>
                                         <ul className="space-y-2">{parsedNotes.map((note: string, i: number) => <li key={i} className="flex gap-2 text-sm text-text-3 leading-relaxed"><span className="text-accent shrink-0 mt-0.5">•</span>{note}</li>)}</ul>
                                     </div>
                                 )}
                             </div>
                             {parsedNotes.length > 0 && (
                                 <div className={`md:hidden col-span-full ${activeTab !== 'notes' ? 'hidden' : ''}`}>
-                                    <h3 className="text-sm font-black italic uppercase tracking-tight text-text-3 mb-4">Chef's Notes</h3>
+                                    <h3 className="text-sm font-black italic uppercase tracking-tight text-text-3 mb-4">Nota Chef</h3>
                                     <ul className="space-y-3">{parsedNotes.map((note: string, i: number) => <li key={i} className="flex gap-3 p-4 bg-glass-bg border border-glass-border rounded-2xl text-sm text-text-3 leading-relaxed"><span className="text-accent shrink-0 font-black mt-0.5">•</span>{note}</li>)}</ul>
                                 </div>
                             )}

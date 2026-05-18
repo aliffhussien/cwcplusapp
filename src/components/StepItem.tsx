@@ -15,17 +15,21 @@ export default function StepItem({ step, index, active, onClick }: StepItemProps
         <motion.div
             layout
             onClick={onClick}
-            className={`p-4 rounded-2xl border transition-all cursor-pointer ${
-                active ? 'bg-glass-bg border-accent/50 shadow-lg' : 'bg-transparent border-glass-border hover:border-border'
+            className={`p-4 rounded-2xl border transition-all duration-300 cursor-pointer ${
+                active 
+                    ? 'bg-glass-bg border-accent/50 shadow-2xl scale-[1.01]' 
+                    : 'bg-glass-bg/10 border-glass-border hover:bg-glass-bg/25 hover:border-glass-border-hover'
             }`}
         >
-            <div className="flex gap-3">
-                <div className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-[11px] font-black mt-0.5 ${
-                    active ? 'bg-accent text-text-1' : 'bg-glass-bg text-text-3'
+            <div className="flex gap-4">
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-black transition-all duration-300 shadow-md ${
+                    active ? 'bg-accent text-text-1 scale-110' : 'bg-glass-bg border border-glass-border text-text-3'
                 }`}>
                     {index + 1}
                 </div>
-                <p className={`text-sm leading-relaxed ${active ? 'text-text-1 font-semibold' : 'text-text-3'}`}>
+                <p className={`text-sm leading-relaxed transition-colors duration-300 mt-1 ${
+                    active ? 'text-text-1 font-semibold' : 'text-text-2'
+                }`}>
                     {text}
                 </p>
             </div>
