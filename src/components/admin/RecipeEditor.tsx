@@ -23,7 +23,7 @@ export default function RecipeEditor({ recipe, onSave, onCancel, onDelete }: any
         difficulty: recipe.difficulty || 'Beginner',
         status: recipe.status || 'published',
         author: recipe.author || '',
-        rating: recipe.rating || '',
+        rating: recipe.rating ?? 4.5,
         description: recipe.description || '',
         scheduled_post_date: recipe.scheduled_post_date || '',
     });
@@ -178,7 +178,13 @@ export default function RecipeEditor({ recipe, onSave, onCancel, onDelete }: any
             </div>
 
             <RecipeEditorIngredients ingredients={formData.ingredients} updateIngredient={updateIngredient} addIngredient={() => set('ingredients', [...(formData.ingredients || []), { name: '', amount: '', unit: '' }])} removeIngredient={(idx) => set('ingredients', formData.ingredients.filter((_: any, i: number) => i !== idx))} />
-            <RecipeEditorSteps steps={formData.steps} updateStep={updateStep} addStep={() => set('steps', [...(formData.steps || []), ''])} removeStep={(idx) => set('steps', formData.steps.filter((_: any, i: number) => i !== idx))} />
+            <RecipeEditorSteps
+                steps={formData.steps}
+                updateStep={updateStep}
+                addStep={() => set('steps', [...(formData.steps || []), ''])}
+                addSubtitle={() => set('steps', [...(formData.steps || []), '── Tajuk Seksyen ──'])}
+                removeStep={(idx) => set('steps', formData.steps.filter((_: any, i: number) => i !== idx))}
+            />
 
             <div className="pt-6 border-t border-glass-border">
                 <button type="button" onClick={() => onDelete(recipe.id)} className="w-full py-3 bg-danger/10 text-danger hover:bg-danger hover:text-text-1 rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all flex items-center justify-center gap-2"><Trash2 size={14} /> Delete Recipe Permanently</button>

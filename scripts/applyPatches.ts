@@ -94,16 +94,31 @@ async function patchVolume(volumeNum: number): Promise<void> {
   console.log(`    ✓  ${updated} updated, ${skipped} skipped, ${failed} failed`);
 }
 
+async function fixAuthorName(): Promise<void> {
+  console.log('  ▸ Fixing author name → Abid Nasa (all recipes)');
+  const { error } = await supabase
+    .from('recipes')
+    .update({ author: 'Abid Nasa' })
+    .or('author.neq.Abid Nasa,author.is.null');
+
+  if (error) {
+    console.error('    ✗  Author fix failed:', error.message);
+  } else {
+    console.log(`    ✓  Author updated`);
+  }
+}
+
 async function run() {
-  console.log('\n🍽  CWC+ Patch Applier — VOL 18 & 19\n');
+  console.log('\n🍽  CWC+ Patch Applier\n');
 
   const signedIn = await signIn();
   if (!signedIn) process.exit(1);
 
+  await fixAuthorName();
   await patchVolume(18);
   await patchVolume(19);
 
-  console.log('\n✅  Done! Refresh the app — steps and ingredients are now correct.\n');
+  console.log('\n✅  Done! Refresh the app.\n');
   process.exit(0);
 }
 

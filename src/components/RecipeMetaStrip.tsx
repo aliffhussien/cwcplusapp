@@ -1,4 +1,3 @@
-import React from 'react';
 import { Clock, Star } from 'lucide-react';
 
 interface RecipeMetaStripProps {
@@ -14,7 +13,7 @@ export default function RecipeMetaStrip({ recipe, tags }: RecipeMetaStripProps) 
                     <div className="flex items-center gap-1.5"><Clock size={13} className="text-accent" /><span className="text-[11px] font-black text-text-1">{recipe.time}</span></div>
                 )}
                 {recipe.time && <div className="w-1 h-1 bg-glass-border rounded-full" />}
-                <div className="flex items-center gap-1.5"><Star size={13} className="text-accent fill-accent" /><span className="text-[11px] font-black text-text-1">{recipe.rating || '4.9'}</span></div>
+                {recipe.rating && <div className="flex items-center gap-1.5"><Star size={13} className="text-accent fill-accent" /><span className="text-[11px] font-black text-text-1">{recipe.rating}</span></div>}
                 {recipe.author && <><div className="w-1 h-1 bg-glass-border rounded-full" /><span className="text-[11px] font-bold text-text-3">by {recipe.author}</span></>}
             </div>
             {recipe.description && <p className="text-sm text-text-3 leading-relaxed mb-3">{recipe.description}</p>}

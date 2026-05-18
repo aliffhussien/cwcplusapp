@@ -21,6 +21,7 @@ export interface NormalizedRecipe {
   volumeNum: number;     // 17
   videoUrl: string;
   image: string;         // relative path set after image matching
+  author: string;
   ingredients: ParsedIngredient[];
   steps: string[];
   notes: string[];
@@ -323,6 +324,7 @@ export function normalizeRecipe(raw: any, volumeNum: number): NormalizedRecipe {
     volume: volumeName,
     volumeNum,
     videoUrl,
+    author: raw.author || raw.instructor || 'Abid Nasa',
     image: raw.image || '',   // filled in later by image matcher
     ingredients,
     steps,

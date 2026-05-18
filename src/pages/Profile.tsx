@@ -62,7 +62,7 @@ export default function Profile() {
     const unlockedClasses = user?.unlockedClasses || [];
     const favoriteRecipes = (publicRecipes || []).filter((r: any) => (favorites || []).includes(r?.id));
 
-    const userName = user?.name || session?.user?.user_metadata?.full_name || 'Aliff Hussien';
+    const userName = user?.name || session?.user?.user_metadata?.full_name || 'Abid Nasa';
     const userTier = user?.subscriptionTier || 'Free';
     const avatarUrl = user?.avatarUrl || session?.user?.user_metadata?.avatar_url || null;
     const coverUrl = user?.coverUrl || '/profile-cover.webp';

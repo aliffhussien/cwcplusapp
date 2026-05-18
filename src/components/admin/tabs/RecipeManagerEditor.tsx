@@ -99,7 +99,11 @@ export default function RecipeManagerEditor({
             </div>
             <div className="space-y-3">
               <label className="text-[10px] font-black uppercase text-text-3 ml-4">Yield / Servings</label>
-              <input type="number" value={recipeForm.baseServings || 2} onChange={e => setRecipeForm({ ...recipeForm, baseServings: parseInt(e.target.value) })} className="w-full bg-surface border-2 border-glass-border rounded-3xl px-8 py-5 text-lg font-bold text-text-1 focus:border-accent outline-none" />
+              <input type="number" value={recipeForm.base_servings ?? 2} onChange={e => setRecipeForm({ ...recipeForm, base_servings: parseInt(e.target.value) })} className="w-full bg-surface border-2 border-glass-border rounded-3xl px-8 py-5 text-lg font-bold text-text-1 focus:border-accent outline-none" />
+            </div>
+            <div className="space-y-3">
+              <label className="text-[10px] font-black uppercase text-text-3 ml-4">Rating (0–5)</label>
+              <input type="number" min="0" max="5" step="0.1" value={recipeForm.rating ?? 4.5} onChange={e => setRecipeForm({ ...recipeForm, rating: parseFloat(e.target.value) })} className="w-full bg-surface border-2 border-glass-border rounded-3xl px-8 py-5 text-lg font-bold text-text-1 focus:border-accent outline-none" placeholder="4.5" />
             </div>
           </div>
 

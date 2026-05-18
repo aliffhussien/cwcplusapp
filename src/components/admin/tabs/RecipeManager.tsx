@@ -43,7 +43,7 @@ export default function RecipeManager({
   
   const [recipeForm, setRecipeForm] = useState({ 
     title: '', author: 'Abid Nasa', time: '30 min', image: null, video: '', 
-    category: 'Mains', difficulty: 'Beginner', baseServings: 2, 
+    category: 'Mains', difficulty: 'Beginner', base_servings: 2, rating: 4.5,
     ingredients: [{ name: '', amount: '' }], steps: [''], notes: [''], 
     tags: [], status: 'published', isFeatured: false, 
     volume: 'CWC Original', scheduled_post_date: '' 
@@ -161,7 +161,7 @@ export default function RecipeManager({
             onClick={() => {
               setRecipeForm({ 
                 title: '', author: 'Abid Nasa', time: '30 min', image: null, video: '', 
-                category: 'Mains', difficulty: 'Beginner', baseServings: 2, 
+                category: 'Mains', difficulty: 'Beginner', base_servings: 2, rating: 4.5,
                 ingredients: [{ name: '', amount: '' }], steps: [''], notes: [''], 
                 tags: [], status: 'published', isFeatured: false, 
                 volume: 'CWC Original', scheduled_post_date: '' 

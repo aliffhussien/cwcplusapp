@@ -15,6 +15,18 @@ import { OptimizedImage } from '../components/PerformanceUI';
 import { getMediaAssetUrl } from '../lib/mediaUtils';
 import { normalizeNotes } from '../lib/recipeUtils';
 
+function getYouTubeEmbed(url: string): string | null {
+    try {
+        const u = new URL(url);
+        let id = '';
+        if (u.hostname === 'youtu.be') id = u.pathname.slice(1).split('?')[0];
+        else if (u.pathname.includes('/shorts/')) id = u.pathname.split('/shorts/')[1].split('?')[0];
+        else id = u.searchParams.get('v') || '';
+        if (!id) return null;
+        return `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+    } catch { return null; }
+}
+
 import AccessDeniedModal from '../components/AccessDeniedModal';
 import RecipeEditor from '../components/admin/RecipeEditor';
 import RecipeMetaStrip from '../components/RecipeMetaStrip';
@@ -120,7 +132,13 @@ export default function RecipeView() {
     const ratio = recipe.base_servings ? servings / recipe.base_servings : 1;
     const priceDisplay = formatPrice(volumePriceMap[recipe.volume] || 29, settings.currency || 'MYR');
     const heroImage = getMediaAssetUrl(recipe.cover_image_id, media, recipe.image);
-    const heroVideo = getMediaAssetUrl(recipe.video_id, media, recipe.video_url || recipe.video);
+
+    // Video: `recipe.video` holds the raw URL (YouTube or direct mp4).
+    const rawVideo: string = recipe.video || '';
+    const isYouTube = /youtu\.?be/.test(rawVideo);
+    const youtubeEmbed = isYouTube ? getYouTubeEmbed(rawVideo) : null;
+    const heroVideo = isYouTube ? youtubeEmbed : (rawVideo || null);
+
     const ingredientCount = recipe.ingredients?.length || 0;
     const steps = recipe.steps || [];
     const stepCount = steps.length;
@@ -135,15 +153,23 @@ export default function RecipeView() {
             <div className="relative h-[52vh] md:h-[65vh] w-full overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     {heroImage ? <OptimizedImage src={heroImage} alt={recipe.title} className="w-full h-full object-cover" /> : <div className="w-full h-full bg-surface flex items-center justify-center"><ChefHat size={48} className="text-text-3" /></div>}
-                    {heroVideo && isPlaying && <motion.video key="hero-video" ref={videoRef} src={heroVideo} autoPlay loop muted={isMuted} playsInline initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }} className="absolute inset-0 w-full h-full object-cover" />}
-                    <div className="absolute inset-0 bg-gradient-to-t from-base via-base/30 to-transparent" />
+                    {/* YouTube embed — iframe replaces image when play is clicked */}
+                    {heroVideo && isYouTube && isPlaying && (
+                        <motion.iframe key="yt-embed" src={heroVideo} title={recipe.title} allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }} className="absolute inset-0 w-full h-full border-0" />
+                    )}
+                    {/* Direct video file */}
+                    {heroVideo && !isYouTube && isPlaying && (
+                        <motion.video key="hero-video" ref={videoRef} src={heroVideo} autoPlay loop muted={isMuted} playsInline initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }} className="absolute inset-0 w-full h-full object-cover" />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-base via-base/30 to-transparent" style={{ pointerEvents: isPlaying ? 'none' : undefined }} />
                 </div>
                 {heroVideo && !isPlaying && (
                     <button onClick={() => setIsPlaying(true)} className="absolute inset-0 z-10 flex items-center justify-center group">
                         <div className="relative flex items-center justify-center"><div className="absolute w-16 h-16 rounded-full bg-glass-border animate-ping" /><div className="w-14 h-14 rounded-full bg-base/50 backdrop-blur-md border border-glass-border flex items-center justify-center group-hover:bg-base/70 group-hover:scale-110 transition-all shadow-2xl"><PlayCircle size={26} className="text-text-1 ml-0.5" /></div></div>
                     </button>
                 )}
-                {heroVideo && isPlaying && (
+                {/* Mute button only for direct video files (not YouTube) */}
+                {heroVideo && !isYouTube && isPlaying && (
                     <button onClick={() => setIsMuted(m => !m)} className="absolute top-16 right-4 z-20 w-9 h-9 rounded-full bg-base/50 backdrop-blur-md border border-glass-border flex items-center justify-center text-text-3 hover:text-text-1 transition-colors">{isMuted ? <VolumeX size={15} /> : <Volume2 size={15} />}</button>
                 )}
                 <div className="absolute bottom-0 left-0 right-0 px-5 pb-6 pt-16 z-10">
