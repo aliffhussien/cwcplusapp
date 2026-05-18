@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { LayoutDashboard, ChefHat, Video, ShoppingBag, Film, Users, Bell, Settings, ShieldAlert, TrendingUp, FolderInput } from 'lucide-react';
+import { LayoutDashboard, ChefHat, Video, ShoppingBag, Film, Users, Bell, Settings, ShieldAlert, TrendingUp, FolderInput, ArrowLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface AdminSidebarProps {
     isMobileOpen: boolean;
@@ -42,8 +43,12 @@ export default function AdminSidebar({ isMobileOpen, activeTab, handleTabChange 
                         ))}
                     </nav>
                 </div>
-                <div className="mt-auto p-8 border-t border-glass-border bg-base/40">
-                    <div className="p-4 rounded-2xl bg-glass-bg border border-glass-border">
+                <div className="mt-auto p-6 border-t border-glass-border bg-base/40 space-y-4">
+                    <Link to="/" className="w-full flex items-center justify-center gap-2 py-3.5 bg-glass-bg hover:bg-elevated border border-glass-border hover:border-accent/50 rounded-2xl text-text-3 hover:text-text-1 transition-all group shadow-lg active:scale-95">
+                        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform text-accent" />
+                        <span className="text-[10px] font-black uppercase tracking-widest">Back to App</span>
+                    </Link>
+                    <div className="p-4 rounded-2xl bg-glass-bg border border-glass-border hidden sm:block">
                         <div className="flex items-center gap-3 mb-3">
                             <div className="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center text-accent"><TrendingUp size={16} /></div>
                             <p className="text-[10px] font-black uppercase text-text-3 tracking-widest">Platform Pulse</p>
