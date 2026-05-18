@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="ms">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooking With Cattitude 19</title>
+    <link rel="icon" href="CWC.svg" type="image/svg+xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+        
+        // Check saved theme or system preference immediately to avoid FOUC
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+
+        }
+
+        .recipe-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .tab-active {
+            color: #0ea5e9;
+            /* sky-500 */
+            border-bottom: 3px solid #0ea5e9;
+        }
+
+        .modal-open {
+            overflow: hidden;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+    </style>
+</head>
+
+<body
+    class="text-gray-900 dark:text-gray-100 bg-[#fafafa] dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- Header -->
+    <header
+        class="sticky top-0 z-40 bg-white dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-4 md:py-6 flex flex-col gap-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 flex items-center justify-center">
+                        <img id="main-logo" src="CWC.svg" alt="CWC" class="w-full h-full object-contain"
+                            onerror="this.outerHTML='<div class=\'w-10 h-10 bg-sky-500 rounded-full flex items-center justify-center text-white font-bold\'>CWC</div>'">
+                    </div>
+                    <h1
+                        class="text-xl md:text-2xl font-black bg-gradient-to-br from-sky-600 to-cyan-600 bg-clip-text text-transparent tracking-tight">
+                        Cooking With Cattitude 19
+                    </h1>
+                </div>
+                <button id="theme-toggle"
+                    class="p-2.5 rounded-full bg-sky-50 dark:bg-gray-800 text-sky-600 dark:text-sky-400 hover:bg-sky-100 dark:hover:bg-gray-700 transition-colors shadow-sm">
+                    <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                </button>
+            </div>
+
+            <div class="relative group">
+                <i data-lucide="search"
+                    class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 group-focus-within:text-sky-500 transition-colors w-5 h-5"></i>
+                <input type="text" id="search-input" placeholder="Cari resepi atau bahan-bahan..."
+                    class="w-full pl-12 pr-4 py-3.5 bg-gray-100 dark:bg-gray-800/80 dark:bg-gray-800/80 border-2 border-transparent focus:border-sky-400 focus:bg-white dark:bg-gray-900 rounded-2xl transition-all outline-none text-gray-700 dark:text-gray-300 font-medium">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-8 md:py-12">
+        <div id="recipe-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+            <!-- Cards will be injected here -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state"
+            class="hidden text-center py-32 bg-white dark:bg-gray-900 rounded-[3rem] border-2 border-dashed border-gray-100 dark:border-gray-800 shadow-inner">
+            <div
+                class="w-24 h-24 bg-gray-50 dark:bg-gray-800/50 rounded-full flex items-center justify-center mx-auto mb-6 text-gray-200 dark:text-gray-700">
+                <i data-lucide="search-x" class="w-12 h-12"></i>
+            </div>
+            <h3 class="text-2xl font-black text-gray-800 dark:text-gray-200">Alamak, tiada resepi!</h3>
+            <p class="text-gray-400 dark:text-gray-500 mt-2 font-medium">Cuba cari kata kunci lain.</p>
+        </div>
+    </main>
+
+    <!-- Modal Detail -->
+    <div id="recipe-modal" class="fixed inset-0 z-50 bg-white dark:bg-gray-950 dark:bg-gray-900 overflow-y-auto hidden">
+        <div id="modal-content">
+            <!-- Modal details injected here -->
+        </div>
+    </div>
+
+    <!-- Decoration -->
+    <div class="py-20 text-center">
+        <div
+            class="inline-flex items-center gap-3 px-8 py-3 bg-white dark:bg-gray-900 rounded-full shadow-lg border border-gray-100 dark:border-gray-800 group">
+            <i data-lucide="utensils-crossed"
+                class="w-5 h-5 text-sky-500 group-hover:rotate-12 transition-transform"></i>
+            <span class="font-black text-sm tracking-widest text-gray-400 dark:text-gray-500 uppercase italic">By Abid
+                Nasa</span>
+        </div>
+    </div>
+
+    <script>
+        const RECIPES_DATA = [
+            {
+                "title": "KEBAB GULUNG TORTILLA",
+                "slug": "kebab-gulung-tortilla",
+                "time": "1j 15m",
+                "video_link": "https://youtu.be/WpvFwp0mrBI?si=R_f2rWEgYJMNGi_Y",
+                "ingredients": [
+                    {
+                        "section": "Bahan-Bahan Utama",
+                        "items": [
+                            "500gm daging lembu/kambing/ayam kisar",
+                            "1 biji bawang besar (dicincang halus)",
+                            "1 ikat kecil daun pasli (parsley) segar (dicincang)",
+                            "150g keju mozzarella (parut atau kepingan)",
+                            "3 keping tortilla gandum",
+                            "Minyak zaitun secukupnya"
+                        ]
+                    },
+                    {
+                        "section": "Bahan Campuran Rempah",
+                        "items": [
+                            "½ sudu kecik Serbuk Paprika",
+                            "½ sudu kecik Kayu manis",
+                            "½ sudu kecik Serbuk halia/segar",
+                            "½ sudu kecik Buah pala (nutmeg)",
+                            "½ sudu kecik Bunga cengkih (serbuk)",
+                            "½ sudu kecik Serbuk Ketumbar",
+                            "Garam & lada sulah secukup rasa"
+                        ]
+                    },
+                    {
+                        "section": "Bahan Sos Yogurt",
+                        "items": [
+                            "250g yogurt Greek",
+                            "1 ulas bawang putih (ditumbuk halus)",
+                            "Perahan ½ biji lemon",
+                            "Garam & lada sulah secukup rasa"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Memasak",
+                        "steps": [
+                            "Langkah 1: Perap Daging - Campurkan daging kisar bersama bawang merah, daun pasli, dan semua campuran rempah. Gaul rata dan rehatkan 15-30 minit di dalam peti sejuk.",
+                            "Langkah 2: Sediakan Tortilla - Sapukan tortilla dengan minyak zaitun. Ratakan adunan daging secara nipis ke seluruh permukaan tortilla dan taburkan keju mozzarella. Panaskan oven pada suhu 180°C (api atas bawah, tanpa kipas).",
+                            "Langkah 3: Gulung & Cucuk Lidi - Gulung tortilla dengan kemas. Susun rapat dan cucuk 3-4 batang lidi panjang menembusi semua gulungan dengan jarak yang sama.",
+                            "Langkah 4: Potong & Bakar - Potong tortilla di antara celah lidi. Susun di atas tray beralas kertas minyak. Bakar selama 45 minit pada suhu 180°C.",
+                            "Langkah 5: Sos & Hidangan - Campurkan semua bahan sos yogurt. Hidangkan kebab panas bersama sos dan taburan pasli."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Rendam lidi kayu dalam air sekejap supaya tidak mudah terbakar di dalam oven."
+                ],
+                "notes": [
+                    "Pastikan daging diratakan nipis supaya masak sekata dalam tempoh pembakaran."
+                ]
+            },
+            {
+                "title": "EASY MANGO MOUSSE",
+                "slug": "easy-mango-mousse",
+                "time": "2j 15m",
+                "video_link": "https://youtu.be/WpvFwp0mrBI?si=R_f2rWEgYJMNGi_Y",
+                "ingredients": [
+                    {
+                        "section": "Bahan Utama",
+                        "items": [
+                            "2 biji mangga masak (blend halus)",
+                            "1 cawan whipping cream (non dairy/dairy sejuk)",
+                            "3 sudu besar susu pekat manis",
+                            "2 sudu besar cream cheese (optional tapi recommended)",
+                            "2–3 sudu besar susu segar",
+                            "1/4 cawan isi mangga potong kiub (untuk topping)"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Penyediaan",
+                        "steps": [
+                            "Blend mangga sehingga halus menjadi puree.",
+                            "Campurkan mangga purée, susu pekat dan susu segar dalam mangkuk. Kacau sebati.",
+                            "Pukul whipping cream bersama cream cheese sehingga mencapai soft ke medium peak.",
+                            "Masukkan whipped cream ke dalam bancuhan mangga secara berperingkat (2-3 kali). Gunakan kaedah kaup balik perlahan-lahan.",
+                            "Pindahkan ke dalam bekas dan tambah topping mangga dadu jika suka.",
+                            "Simpan dalam peti ais minimum 2 jam atau semalaman sebelum dihidang."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Gunakan kaedah kaup balik perlahan untuk mengelakkan adunan menjadi cair."
+                ],
+                "notes": [
+                    "Jangan letak terlalu banyak susu segar untuk mengekalkan tekstur mousse yang pekat."
+                ]
+            },
+            {
+                "title": "EXPRESS CHICK-PEAS SALAD",
+                "slug": "express-chick-peas-salad",
+                "time": "10m",
+                "video_link": "",
+                "ingredients": [
+                    {
+                        "section": "Bahan Utama",
+                        "items": [
+                            "Salad pilihan (butterhead/romaine)",
+                            "Timun jepun",
+                            "Tomato ceri",
+                            "1 kotak/tin chick-peas (ready to eat)",
+                            "Sos pilihan"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Penyediaan",
+                        "steps": [
+                            "Cuci bersih semua sayuran dan keringkan.",
+                            "Bilas chick-peas dengan air paip dan toskan.",
+                            "Potong sayuran mengikut citarasa.",
+                            "Campurkan semua sayur, chick-peas dan sos ke dalam mangkuk. Gaul sebati."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Pastikan sayur benar-benar kering selepas dicuci supaya salad tidak berair."
+                ],
+                "notes": []
+            },
+            {
+                "title": "NASI SERAI SPECIAL (BERAS BASMATHI)",
+                "slug": "nasi-serai-special",
+                "time": "45m",
+                "video_link": "https://youtu.be/eEUAlSJCq0I?si=XBWsCTzyKqhWbz6T",
+                "ingredients": [
+                    {
+                        "section": "Bahan Utama",
+                        "items": [
+                            "4 cawan beras basmathi (basuh & rendam 15-20 minit)",
+                            "3 batang serai (dititik)",
+                            "3 sudu besar minyak sapi",
+                            "4 helai daun pandan (simpul)",
+                            "1 kiub pati ayam",
+                            "4 cawan air",
+                            "2 cawan susu cair",
+                            "Garam secukupnya"
+                        ]
+                    },
+                    {
+                        "section": "Bahan Kisar Halus",
+                        "items": [
+                            "1 batang serai",
+                            "4 ulas bawang putih",
+                            "1 biji bawang besar",
+                            "3 biji bawang merah kecil",
+                            "1 inci halia"
+                        ]
+                    },
+                    {
+                        "section": "Rempah 4 Sekawan",
+                        "items": [
+                            "1 kayu manis",
+                            "1 bunga lawang",
+                            "2 buah pelaga",
+                            "3 bunga cengkih"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Memasak",
+                        "steps": [
+                            "Kisar halus bahan kisar dan ketepikan.",
+                            "Panaskan minyak sapi dan tumis rempah 4 sekawan sehingga wangi.",
+                            "Masukkan bahan kisar. Tumis sehingga kekuningan, harum dan pecah minyak.",
+                            "Masukkan serai titik dan daun pandan. Kacau aromanya.",
+                            "Masukkan beras dan gaul rata dengan bahan tumis selama 2-3 minit supaya nasi cantik berderai.",
+                            "Masukkan air, susu cair, kiub ayam dan garam. Gaul sebati.",
+                            "Pindahkan ke rice cooker dan masak seperti biasa. Setelah 'keep warm', gemburkan nasi perlahan-lahan.",
+                            "Biarkan dalam mode 'keep warm' selama 10 minit sebelum dihidang."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Menumis beras seketika dengan bahan tumisan membantu nasi menjadi lebih cantik dan tidak patah."
+                ],
+                "notes": [
+                    "Nisbah beras dan cecair adalah 1:1.5."
+                ]
+            },
+            {
+                "title": "AYAM KUZI ISTIMEWA",
+                "slug": "ayam-kuzi-istimewa",
+                "time": "1j",
+                "video_link": "https://youtu.be/eEUAlSJCq0I?si=XBWsCTzyKqhWbz6T",
+                "ingredients": [
+                    {
+                        "section": "Perapan Ayam",
+                        "items": [
+                            "1 ekor ayam (potong 12)",
+                            "3 ulas bawang putih",
+                            "Sedikit garam"
+                        ]
+                    },
+                    {
+                        "section": "Bahan Kisar",
+                        "items": [
+                            "Bahan A: 6 biji bawang merah, 4 ulas bawang putih, 1 inci halia",
+                            "Bahan B: 4 biji cili hijau, 5 tangkai daun ketumbar"
+                        ]
+                    },
+                    {
+                        "section": "Bahan Goreng & Kuah",
+                        "items": [
+                            "6 biji bawang merah kecil (hiris untuk bawang goreng)",
+                            "1 biji bawang besar (potong dadu)",
+                            "½ mangkuk kismis & ½ mangkuk badam/gajus",
+                            "3 sudu besar rempah briyani & 2 sudu besar minyak sapi",
+                            "1 batang serai (titik) & 2 helai daun pandan (simpul)",
+                            "2-3 sudu besar cili kisar & 2 sudu besar tomato puri",
+                            "1 mangkuk kecil susu cair (120ml)",
+                            "2 sudu besar plain yoghurt / jus lemon",
+                            "Garam & air secukupnya"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Memasak",
+                        "steps": [
+                            "Perap ayam dengan bawang putih tumbuk dan garam selama 15-30 minit.",
+                            "Kisar Bahan A dan Bahan B secara berasingan.",
+                            "Goreng bawang hiris (bawang goreng), badam, dan kismis. Ketepikan.",
+                            "Goreng bawang besar dadu sehingga layu, masukkan ayam dan goreng separuh masak. Angkat.",
+                            "Tumis bahan kisar A dengan minyak sapi, serai, dan daun pandan. Masukkan rempah briyani, cili kisar, dan tomato puri sehingga pecah minyak.",
+                            "Masukkan ayam, bawang goreng, kismis, badam, susu cair, dan bahan kisar B. Masak api perlahan selama 10-15 minit sehingga kuah pekat.",
+                            "Akhir sekali, masukkan yoghurt/jus lemon dan garam. Kacau sebati."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Jika tiada rempah briyani, boleh buat pes sendiri menggunakan campuran serbuk kari, jintan manis, jintan putih, ketumbar, dan lada hitam."
+                ],
+                "notes": []
+            },
+            {
+                "title": "EASY CHOCOLATE CAKE",
+                "slug": "easy-chocolate-cake",
+                "time": "1j 20m",
+                "video_link": "https://youtu.be/TxFj8nB3g1U?si=YU_7VHJ4i1V2uDTl",
+                "ingredients": [
+                    {
+                        "section": "Bahan Kering",
+                        "items": [
+                            "160g tepung gandum",
+                            "40g serbuk koko",
+                            "1 1/4 tsp baking powder"
+                        ]
+                    },
+                    {
+                        "section": "Bahan Basah",
+                        "items": [
+                            "200g butter lembut",
+                            "200g gula",
+                            "3 biji telur (Gred A/B)",
+                            "1 tsp vanilla extract"
+                        ]
+                    },
+                    {
+                        "section": "Tambahan",
+                        "items": [
+                            "175–200g chocolate cincang"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Memasak",
+                        "steps": [
+                            "Panaskan oven 180°C (api atas bawah, off kipas).",
+                            "Campur dan sebati bahan kering dalam satu mangkuk.",
+                            "Dalam mangkuk lain, pukul butter dan gula sehingga sebati.",
+                            "Masukkan vanila dan telur satu persatu (selang 15 saat).",
+                            "Masukkan bahan kering ke adunan basah. Gaul sebati (jangan overmix).",
+                            "Masukkan chocolate cincang, kacau rata.",
+                            "Tuang dalam loyang loaf atau loyang bulat 8 inci.",
+                            "Bakar 60-70 minit. Periksa dengan lidi pada minit ke-60.",
+                            "Rehatkan 10 minit sebelum dikeluarkan dari loyang."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Jangan overmix adunan selepas masuk tepung supaya kek tidak keras dan kenyal."
+                ],
+                "notes": [
+                    "Loyang besar = kek nipis (cepat masak). Loyang kecil/dalam = kek tebal (lambat masak)."
+                ]
+            },
+            {
+                "title": "EASY CHOCOLATE GANACHE",
+                "slug": "easy-chocolate-ganache",
+                "time": "5m",
+                "video_link": "https://youtu.be/TxFj8nB3g1U?si=YU_7VHJ4i1V2uDTl",
+                "ingredients": [
+                    {
+                        "section": "Bahan Utama",
+                        "items": [
+                            "200g chocolate (potong kecil/cincang)",
+                            "150ml whipping cream"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Penyediaan",
+                        "steps": [
+                            "Panaskan whipping cream sehingga berwap (jangan mendidih).",
+                            "Tuang cream panas ke atas chocolate cincang.",
+                            "Biarkan 1-2 minit, kemudian kacau perlahan sehingga licin dan berkilat.",
+                            "Tuang ke atas kek semasa masih suam."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Gunakan semasa suam untuk kesan 'pouring ganache'. Biar sejuk sedikit jika mahu jadikan frosting."
+                ],
+                "notes": []
+            },
+            {
+                "title": "AIR ZAPPLE ASAM BOI",
+                "slug": "air-zapple-asam-boi",
+                "time": "5m",
+                "video_link": "https://youtu.be/TxFj8nB3g1U?si=YU_7VHJ4i1V2uDTl",
+                "ingredients": [
+                    {
+                        "section": "Bahan Utama",
+                        "items": [
+                            "1 botol besar air Zapple",
+                            "4 biji limau kasturi (belah & perah)",
+                            "4 biji asam boi",
+                            "Daun pudina secukupnya",
+                            "1 tin laici atau longan (bersama sedikit airnya)",
+                            "Ais secukupnya"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Penyediaan",
+                        "steps": [
+                            "Masukkan asam boi ke dalam jug dan tekan sedikit untuk keluar rasa.",
+                            "Masukkan perahan limau kasturi dan kulitnya sekali untuk aroma.",
+                            "Tuang kira-kira ½ cawan air laici/longan.",
+                            "Masukkan daun pudina (ramas ringan) dan ais secukupnya.",
+                            "Tuang air Zapple dan gaul perlahan (jangan kuat supaya gas tidak hilang)."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Ramas daun pudina sedikit untuk mengeluarkan bau segar yang lebih kuat."
+                ],
+                "notes": []
+            },
+            {
+                "title": "TUNA MELT CROISSANT",
+                "slug": "tuna-melt-croissant",
+                "time": "15m",
+                "video_link": "https://youtu.be/Li55caxXfrg?si=R6Q668Rqz2NuCUgb",
+                "ingredients": [
+                    {
+                        "section": "Inti Tuna",
+                        "items": [
+                            "1 tin tuna (toskan)",
+                            "2 sudu besar mayonis",
+                            "1 sudu kecil mustard Dijon/spicy sos",
+                            "Sedikit kulit lemon/oren parut (zest)",
+                            "Garam & lada hitam secukupnya",
+                            "Daun ketumbar & daun bawang (cincang)",
+                            "Serbuk cayenne (optional)"
+                        ]
+                    },
+                    {
+                        "section": "Bahan Lain",
+                        "items": [
+                            "Croissant (belah dua)",
+                            "Keju cheddar",
+                            "Kertas baking/parchment paper"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Penyediaan",
+                        "steps": [
+                            "Campurkan tuna, mayonis, mustard, dan lemon zest dalam mangkuk.",
+                            "Masukkan herba dan perasakan dengan garam, lada hitam, dan cayenne.",
+                            "Belah croissant dan letakkan campuran tuna di atasnya.",
+                            "Taburkan keju cheddar di atas inti.",
+                            "Bakar dalam oven/air fryer pada 180°C selama 8–10 minit sehingga keju cair dan croissant rangup."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Boleh juga menggunakan pan dan tutup dengan penutup untuk mencairkan keju."
+                ],
+                "notes": []
+            },
+            {
+                "title": "UDANG MASAK LEMAK PUCUK PAKU",
+                "slug": "udang-masak-lemak-pucuk-paku",
+                "time": "1j",
+                "video_link": "https://youtu.be/44F_q0ZdEjw?si=rNvp3znD82kOV9-0",
+                "ingredients": [
+                    {
+                        "section": "Bahan Utama",
+                        "items": [
+                            "10-15 ekor udang saiz sederhana",
+                            "2 ikat pucuk paku (ambil bahagian lembut)",
+                            "200ml santan pekat",
+                            "10 biji perahan limau kasturi",
+                            "1 asam keping",
+                            "Garam & air secukupnya"
+                        ]
+                    },
+                    {
+                        "section": "Bahan Kisar",
+                        "items": [
+                            "1 biji bawang besar",
+                            "5-10 biji cili padi",
+                            "1 inci kunyit hidup",
+                            "1/2 inci belacan"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Memasak",
+                        "steps": [
+                            "Kisar halus semua bahan kisar dengan sedikit air.",
+                            "Masukkan bahan kisar ke dalam periuk, tambah air jika perlu dan biarkan mendidih.",
+                            "Masukkan pucuk paku. Apabila sedikit layu, masukkan santan dan asam keping.",
+                            "Gaul sebati dan masukkan udang.",
+                            "Apabila udang hampir masak, masukkan perahan limau kasturi dan garam. Sesuaikan rasa."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Masukkan udang di waktu akhir supaya udang tidak terlebih masak (overcooked) dan kekal manis."
+                ],
+                "notes": []
+            },
+            {
+                "title": "IKAN GORENG MAMAK STYLE",
+                "slug": "ikan-goreng-mamak-style",
+                "time": "25m",
+                "video_link": "https://youtu.be/44F_q0ZdEjw?si=rNvp3znD82kOV9-0",
+                "ingredients": [
+                    {
+                        "section": "Bahan Utama",
+                        "items": [
+                            "3 keping ikan (tenggiri/bawal/kembung)",
+                            "1 sudu besar jus limau",
+                            "1 tangkai daun kari",
+                            "Minyak untuk menggoreng"
+                        ]
+                    },
+                    {
+                        "section": "Bahan Perapan",
+                        "items": [
+                            "1 sudu kecil pes halia & 1 sudu kecil pes bawang putih",
+                            "1 sudu besar serbuk rempah ikan",
+                            "1 sudu kecil serbuk cili & ½ sudu kecil serbuk kunyit",
+                            "½ sudu kecil garam",
+                            "1 sudu besar tepung jagung"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Memasak",
+                        "steps": [
+                            "Campurkan semua bahan perapan kecuali ikan dan jus limau dalam mangkuk. Gaul sebati.",
+                            "Lumurkan ikan dengan bancuhan rempah tersebut.",
+                            "Perahkan jus limau ke atas ikan dan perap selama 15 minit.",
+                            "Panaskan minyak dan goreng ikan bersama daun kari sehingga garing."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Penambahan tepung jagung membantu rempah melekat pada ikan dan menjadikannya lebih garing."
+                ],
+                "notes": []
+            },
+            {
+                "title": "BIHUN SUP PALING MUDAH",
+                "slug": "bihun-sup-paling-mudah",
+                "time": "45m",
+                "video_link": "https://youtu.be/1jAiWz8y_0E?si=069k334Ck4a1cyNP",
+                "ingredients": [
+                    {
+                        "section": "Bahan Sup",
+                        "items": [
+                            "500gm Ayam (isi + tulang)",
+                            "1 sup bunjut & 1 kiub pati ayam",
+                            "1-2 keping asam keping",
+                            "Garam & air secukupnya"
+                        ]
+                    },
+                    {
+                        "section": "Bahan Bihun",
+                        "items": [
+                            "Bihun secukupnya",
+                            "Sedikit serbuk kunyit (untuk warna kuning)"
+                        ]
+                    },
+                    {
+                        "section": "Sambal Kicap Express",
+                        "items": [
+                            "5 ulas bawang putih & Cili padi",
+                            "Gula, garam & kicap secukupnya"
+                        ]
+                    },
+                    {
+                        "section": "Bahan Sampingan",
+                        "items": [
+                            "Bawang goreng, Daun sup/bawang, Sawi & Taugeh (celur), Tauhu goreng, Limau nipis"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Penyediaan Sup",
+                        "steps": [
+                            "Rebus ayam bersama air sehingga empuk.",
+                            "Masukkan sup bunjut, asam keping dan kiub ayam. Reneh 20-30 minit.",
+                            "Perasakan dengan garam. Carikkan isi ayam untuk hidangan."
+                        ]
+                    },
+                    {
+                        "section": "Penyediaan Bihun",
+                        "steps": [
+                            "Didihkan air bersama serbuk kunyit.",
+                            "Celur bihun 2-3 minit (jangan terlalu lama).",
+                            "Angkat dan bilas dengan air paip supaya bihun tidak melekat."
+                        ]
+                    },
+                    {
+                        "section": "Penyediaan Sambal Kicap",
+                        "steps": [
+                            "Tumbuk bawang putih dan cili padi.",
+                            "Campurkan kicap, gula, dan garam. Gaul sebati."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Bilas bihun dengan air paip selepas dicelur untuk menghentikan proses memasak supaya tidak lembek."
+                ],
+                "notes": [
+                    "Lagi lama sup direneh, lagi sedap rasanya."
+                ]
+            },
+            {
+                "title": "KETUPAT SOTONG",
+                "slug": "ketupat-sotong",
+                "time": "1j 15m",
+                "video_link": "https://youtu.be/Lv27NEt6llQ?si=sre-BG5NvvXFA9IT",
+                "ingredients": [
+                    {
+                        "section": "Bahan Utama",
+                        "items": [
+                            "6 ekor sotong besar (bersihkan)",
+                            "1 cawan pulut (cuci & rendam 30 minit)",
+                            "200ml santan pekat",
+                            "2 keping gula melaka (±200g)",
+                            "2 helai daun pandan (simpul)",
+                            "2 kuntum bunga cengkih",
+                            "Garam, gula pasir & air secukupnya",
+                            "Lidi"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Memasak",
+                        "steps": [
+                            "Masukkan pulut ke dalam sotong (isi separuh sahaja). Tutup bahagian atas dengan lidi.",
+                            "Masukkan sotong ke dalam periuk, tuang air hingga hampir paras sotong.",
+                            "Masukkan santan, gula melaka, gula pasir, garam, daun pandan dan cengkih.",
+                            "Reneh dengan api kecil selama 40–60 minit sehingga pulut masak dan kuah pekat/kilat."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Jangan isi pulut penuh dalam sotong kerana pulut akan mengembang dan boleh menyebabkan sotong pecah."
+                ],
+                "notes": [
+                    "Rahsia kuah cantik: Jangan kacau terlalu kerap bila kuah mula pekat supaya ia 'reduce' sendiri dengan efek berkilat."
+                ]
+            },
+            {
+                "title": "KUAH ROJAK PADU",
+                "slug": "kuah-rojak-padu",
+                "time": "20m",
+                "video_link": "https://youtu.be/Lv27NEt6llQ?si=sre-BG5NvvXFA9IT",
+                "ingredients": [
+                    {
+                        "section": "Bahan Utama",
+                        "items": [
+                            "2 keping gula melaka (±200g)",
+                            "6 sudu besar gula pasir",
+                            "4 sudu besar cuka / 2 sudu besar pes asam jawa",
+                            "Kicap manis secukupnya",
+                            "200ml air",
+                            "Garam secukup rasa"
+                        ]
+                    },
+                    {
+                        "section": "Bahan Kisar",
+                        "items": [
+                            "10 biji cili padi",
+                            "2 inci belacan",
+                            "1/2 cawan udang kering (rendam sekejap)"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Penyediaan",
+                        "steps": [
+                            "Kisar halus cili padi, belacan, udang kering bersama sedikit air.",
+                            "Dalam kuali, campurkan bahan kisar dengan gula melaka, gula pasir, kicap, cuka, dan garam.",
+                            "Masak atas api sederhana sehingga kuah menjadi likat dan berkilat.",
+                            "Sejukkan dan tabur bijan putih jika suka semasa menghidang."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Masak sehingga betul-betul likat untuk mendapatkan tekstur kuah rojak yang sempurna."
+                ],
+                "notes": []
+            },
+            {
+                "title": "PUDING TRIFLE MUDAH",
+                "slug": "puding-trifle-mudah",
+                "time": "1j",
+                "video_link": "https://youtu.be/wCaRa0eCKWw?si=sZKGFkk2V4FrkSv2",
+                "ingredients": [
+                    {
+                        "section": "Lapisan 1 (Kek)",
+                        "items": [
+                            "Kek gulung (pandan/coklat/vanila)"
+                        ]
+                    },
+                    {
+                        "section": "Lapisan 2 (Kastad)",
+                        "items": [
+                            "1 cawan tepung kastad",
+                            "½ cawan gula pasir",
+                            "1 tin susu cair",
+                            "1 ½ - 2 cawan air"
+                        ]
+                    },
+                    {
+                        "section": "Lapisan 3 (Buah)",
+                        "items": [
+                            "1 tin buah koktel (tos air) atau buah segar"
+                        ]
+                    },
+                    {
+                        "section": "Lapisan 4 (Jeli)",
+                        "items": [
+                            "1 kotak serbuk jeli kristal",
+                            "2 cawan air"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Penyediaan",
+                        "steps": [
+                            "Susun potongan kek dalam bekas secara padat.",
+                            "Masak bahan kastad atas api sederhana sehingga pekat dan licin. Tuang atas kek.",
+                            "Susun buah koktel (yang telah ditos kering) di atas lapisan kastad.",
+                            "Masak serbuk jeli dengan air sehingga larut. Tuangkan perlahan-lahan di atas lapisan buah.",
+                            "Simpan dalam peti sejuk 2-4 jam sehingga set sepenuhnya."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Buah koktel wajib ditos kering untuk mengelakkan lapisan jeli menjadi berair."
+                ],
+                "notes": []
+            },
+            {
+                "title": "KEK PISANG GEBU",
+                "slug": "kek-pisang-gebu",
+                "time": "1j",
+                "video_link": "https://youtu.be/es6-hgxhjBg?si=sSw3uXHPDn0nPxBp",
+                "ingredients": [
+                    {
+                        "section": "Bahan A (Basah)",
+                        "items": [
+                            "3 biji telur (Gred A)",
+                            "1/4 cawan gula",
+                            "1 sudu kecil garam",
+                            "1 sudu kecil esen pisang/vanila"
+                        ]
+                    },
+                    {
+                        "section": "Bahan B (Kering)",
+                        "items": [
+                            "2 cawan tepung gandum",
+                            "1 sudu kecil soda bikarbonat"
+                        ]
+                    },
+                    {
+                        "section": "Bahan C (Campuran)",
+                        "items": [
+                            "300gm pisang berangan (lenyek halus)",
+                            "1/2 cawan minyak masak/jagung"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Memasak",
+                        "steps": [
+                            "Panaskan oven 150-160°C (api atas bawah, off kipas).",
+                            "Pukul Bahan A sehingga sebati dan kembang sedikit.",
+                            "Ayak Bahan B ke dalam adunan A. Gaul rata.",
+                            "Masukkan pisang lenyek, kacau sebati.",
+                            "Tuang minyak dan gunakan teknik kaup balik perlahan-lahan.",
+                            "Tuang dalam loyang loaf 9 inci. Bakar 40-45 minit."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Gunakan teknik kaup balik semasa memasukkan minyak supaya kek kekal lembut dan tidak mendap."
+                ],
+                "notes": []
+            },
+            {
+                "title": "TOMYAM AYAM EXPRESS",
+                "slug": "tomyam-ayam-express",
+                "time": "30m",
+                "video_link": "https://youtu.be/es6-hgxhjBg?si=sSw3uXHPDn0nPxBp",
+                "ingredients": [
+                    {
+                        "section": "Bahan Dasar & Aromatik",
+                        "items": [
+                            "10 cawan air",
+                            "1 ekor ayam (potong kecil)",
+                            "4 batang serai (titik), 3 inci lengkuas (hiris)",
+                            "8 helai daun limau purut, 4 akar ketumbar"
+                        ]
+                    },
+                    {
+                        "section": "Perasa & Sayur",
+                        "items": [
+                            "6 sudu besar pes tomyam & 6 sudu besar sos ikan",
+                            "1 kiub ayam & Garam secukupnya",
+                            "2 senduk susu cair",
+                            "Bawang holland, Kubis bunga, Tomato, Cendawan, Lobak merah",
+                            "8-10 cili padi (ketuk)",
+                            "Jus limau nipis & Daun ketumbar"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Memasak",
+                        "steps": [
+                            "Didihkan air bersama serai, lengkuas, daun limau purut dan akar ketumbar.",
+                            "Masukkan ayam, pes tomyam, kiub ayam dan sos ikan. Biarkan mendidih.",
+                            "Masukkan sayur-sayuran dan masak sehingga lembut.",
+                            "Masukkan tomato, cili padi dan susu cair. Perasakan dengan garam.",
+                            "Tutup api, kemudian masukkan jus limau nipis dan daun ketumbar."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Masukkan jus limau selepas api ditutup untuk mengekalkan rasa masam yang segar dan tidak pahit."
+                ],
+                "notes": []
+            },
+            {
+                "title": "CUCUR KENTANG RANGUP",
+                "slug": "cucur-kentang-rangup",
+                "time": "20m",
+                "video_link": "https://youtu.be/54oc6yXexIo?si=prTNbJ4nkoVoxX2z",
+                "ingredients": [
+                    {
+                        "section": "Bahan Utama",
+                        "items": [
+                            "500g kentang (potong dadu kecil/kasar)",
+                            "Daun bawang, Bawang merah, Cili merah (hiris)",
+                            "1 batang lobak merah (parut)",
+                            "1 genggam ikan bilis (tumbuk kasar)"
+                        ]
+                    },
+                    {
+                        "section": "Bahan Adunan",
+                        "items": [
+                            "1 1/2 cawan tepung gandum",
+                            "3 sudu besar tepung beras",
+                            "1 biji telur",
+                            "Garam & gula secukup rasa",
+                            "1 cawan air sejuk"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Penyediaan",
+                        "steps": [
+                            "Rendam kentang yang dipotong dalam air selama 5 minit untuk buang kanji, kemudian toskan.",
+                            "Campurkan kentang, bahan hiris, lobak dan ikan bilis dalam mangkuk besar.",
+                            "Masukkan tepung gandum dan tepung beras. Gaul rata.",
+                            "Masukkan telur, garam, gula dan tuang air sejuk sedikit demi sedikit sehingga menjadi adunan pekat.",
+                            "Goreng dalam minyak panas sehingga keemasan dan rangup."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Gunakan air sejuk untuk hasil cucur yang lebih crispy."
+                ],
+                "notes": [
+                    "Minyak mestilah cukup panas sebelum mula menggoreng."
+                ]
+            },
+            {
+                "title": "BIHUN GORENG TAUCU",
+                "slug": "bihun-goreng-taucu",
+                "time": "30m",
+                "video_link": "https://youtu.be/Of2DC0Y_Fq8?si=PidEdDYk1JNo59qD",
+                "ingredients": [
+                    {
+                        "section": "Bahan Utama",
+                        "items": [
+                            "1 bungkus bihun (rendam air biasa, toskan)",
+                            "3 sudu besar taucu (bilas sedikit)",
+                            "10 ekor udang",
+                            "1-2 keping tauhu (goreng & potong)",
+                            "Kucai & Taugeh secukupnya"
+                        ]
+                    },
+                    {
+                        "section": "Bahan Kisar & Sos",
+                        "items": [
+                            "Bahan Kisar: 2 bawang besar, 5 ulas bawang putih, segenggam udang kering",
+                            "Bahan Sos: 3 sudu besar cili kisar, sos cili, sos tiram, kicap manis, kicap cair, gula"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Memasak",
+                        "steps": [
+                            "Tumis bahan kisar sehingga pecah minyak.",
+                            "Masukkan bahan sos dan taucu. Tumis sehingga wangi.",
+                            "Masukkan udang dan masak sehingga bertukar warna.",
+                            "Masukkan bihun dan air sedikit demi sedikit sambil digaul rata.",
+                            "Masukkan tauhu goreng, taugeh dan kucai. Gaul sebati sehingga bihun lembut."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Bilas taucu sedikit jika tidak mahu masakan terlalu masin."
+                ],
+                "notes": []
+            },
+            {
+                "title": "SAMBAL PENYET PADU",
+                "slug": "sambal-penyet-padu",
+                "time": "30m",
+                "video_link": "https://youtu.be/bo5xNnnS7yc?si=xrsp7541yyb0iq_k",
+                "ingredients": [
+                    {
+                        "section": "Bahan Utama",
+                        "items": [
+                            "20-24 biji cili merah besar",
+                            "48 biji cili padi merah",
+                            "4 biji bawang merah & 10 ulas bawang putih",
+                            "3 biji tomato",
+                            "2 1/2 inci belacan",
+                            "Gula, garam & serbuk perasa secukupnya"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Penyediaan",
+                        "steps": [
+                            "Goreng cili, bawang, dan tomato sehingga layu dan lembut.",
+                            "Tumbuk atau kisar kasar semua bahan yang telah digoreng.",
+                            "Tumis semula bahan tersebut menggunakan minyak gorengan tadi sehingga pecah minyak.",
+                            "Masukkan gula, garam dan perasa. Masak sehingga sebati dan warna menjadi gelap sedikit."
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Memasak",
+                        "steps": [
+                            "Panaskan minyak, goreng cili merah, cili padi, bawang merah, bawang putih, dan tomato sehingga layu.",
+                            "Toskan bahan goreng, kemudian kisar kasar atau tumbuk menggunakan lesung.",
+                            "Tumis semula bahan kisar menggunakan minyak yang sama sehingga pecah minyak.",
+                            "Perasakan dengan gula, garam, dan serbuk perasa. Gaul sebati.",
+                            "Sejukkan sepenuhnya sebelum disimpan dalam bekas kedap udara."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Gunakan sudu kering setiap kali mengambil sambal untuk memastikan ia tahan lama."
+                ],
+                "notes": [
+                    "Sambal tahan lebih lama jika dimasak sehingga betul-betul pecah minyak dan tidak berair."
+                ]
+            },
+            {
+                "title": "TEMPE NYET",
+                "slug": "tempe-nyet",
+                "time": "20m",
+                "video_link": "https://youtu.be/bo5xNnnS7yc?si=xrsp7541yyb0iq_k",
+                "ingredients": [
+                    {
+                        "section": "Bahan Utama",
+                        "items": [
+                            "2 keping tempe",
+                            "2 ulas bawang putih",
+                            "Garam & kunyit serbuk",
+                            "Sedikit air & minyak masak"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Penyediaan",
+                        "steps": [
+                            "Hiris tempe secara nipis.",
+                            "Tumbuk bawang putih dengan garam dan kunyit. Campur sedikit air dan lumurkan pada tempe. Perap 10-15 minit.",
+                            "Goreng tempe sehingga garing keemasan.",
+                            "Letakkan tempe di atas sambal penyet dan lenyekkan sedikit (penyet)."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Perah sedikit limau kasturi di atas tempe penyet untuk rasa yang lebih segar."
+                ],
+                "notes": []
+            },
+            {
+                "title": "KANGKUNG TUMIS SOTONG",
+                "slug": "kangkung-tumis-sotong",
+                "time": "10m",
+                "video_link": "https://youtu.be/bo5xNnnS7yc?si=xrsp7541yyb0iq_k",
+                "ingredients": [
+                    {
+                        "section": "Bahan Utama",
+                        "items": [
+                            "2 ikat kangkung",
+                            "300g cumi/sotong (hiris bulat)",
+                            "1 biji tomato",
+                            "2-3 sudu besar sambal penyet",
+                            "1 sudu besar sos tiram",
+                            "Garam, gula & air secukupnya"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Memasak",
+                        "steps": [
+                            "Masak sotong dalam kuali tanpa minyak sehingga airnya keluar (1-2 minit). Angkat dan toskan.",
+                            "Tumis sambal penyet bersama sos tiram dan sedikit air.",
+                            "Masukkan semula sotong, kacau seketika.",
+                            "Masukkan kangkung dan tomato. Gaul cepat sehingga kangkung layu.",
+                            "Perasakan dengan garam dan gula jika perlu. Terus tutup api."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Jangan masak sotong terlalu lama untuk mengelakkan tekstur yang liat."
+                ],
+                "notes": []
+            },
+            {
+                "title": "RED VELVET CHEESE FUDGY BROWNIES",
+                "slug": "red-velvet-cheese-fudgy-brownies",
+                "time": "50m",
+                "video_link": "https://youtu.be/6vuXoblhlFU?si=lThFNA89lburu3cg",
+                "ingredients": [
+                    {
+                        "section": "Bahan A (Brownies)",
+                        "items": [
+                            "80g tepung gandum & 22g tepung jagung",
+                            "25g serbuk koko & ¼ tsp garam",
+                            "150g gula & 2 biji telur",
+                            "53g minyak sayuran & 113g mentega cair",
+                            "Esen vanila, cuka putih & pewarna merah"
+                        ]
+                    },
+                    {
+                        "section": "Bahan B (Cheesecake)",
+                        "items": [
+                            "225g cream cheese (lembut)",
+                            "50g gula & 1 biji telur",
+                            "½ tsp vanila & 1 sudu besar tepung gandum"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Memasak",
+                        "steps": [
+                            "Panaskan oven 180°C. Sediakan loyang 8x8 inci beralas baking paper.",
+                            "Ayak semua bahan kering brownies. Ketepikan.",
+                            "Pukul gula dan telur sehingga kembang dan pucat (±3 minit).",
+                            "Campurkan minyak, mentega, vanila, cuka dan pewarna. Masukkan bahan kering dan kaup balik.",
+                            "Pukul semua bahan cheesecake sehingga licin.",
+                            "Tuang ⅔ adunan brownies dalam loyang, lapiskan dengan adunan cheese, kemudian baki adunan brownies di atas. Buat corak 'swirl' guna lidi.",
+                            "Bakar 25–28 minit. Biarkan sejuk sepenuhnya sebelum dipotong."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Gunakan 'natural cocoa' untuk warna merah yang lebih menyerlah."
+                ],
+                "notes": [
+                    "Tekstur fudgy terbaik didapati jika bahagian tengah masih sedikit lembap semasa dikeluarkan dari oven."
+                ]
+            },
+            {
+                "title": "NASI JAGUNG MUDAH",
+                "slug": "nasi-jagung-mudah",
+                "time": "45m",
+                "video_link": "https://youtu.be/l15_sDtzOkg?si=zdG0KoKIWC9AmhpW",
+                "ingredients": [
+                    {
+                        "section": "Bahan Utama",
+                        "items": [
+                            "4 cawan beras basmathi (rendam 15 minit)",
+                            "1 tin jagung manis (tos air)",
+                            "5 cawan air & 1 cawan susu cair",
+                            "3 sudu besar minyak sapi",
+                            "Bawang besar, bawang putih, halia, serai titik, daun pandan",
+                            "4 sekawan (kayu manis, bunga lawang, pelaga, cengkih)",
+                            "1 kiub pati ayam & garam"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Memasak",
+                        "steps": [
+                            "Tumis 4 sekawan, serai, daun pandan dan bahan hiris/tumbuk dengan minyak sapi sehingga wangi.",
+                            "Masukkan beras, kacau 1-2 minit untuk nasi berderai cantik.",
+                            "Tuang air, susu cair, kiub ayam, garam dan jagung. Gaul sebati.",
+                            "Pindahkan ke rice cooker dan masak seperti biasa.",
+                            "Setelah masak, gemburkan nasi perlahan-lahan dan biar dalam mode 'keep warm' 10 minit."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Menumis beras seketika dengan minyak sapi sebelum memasukkan air menjadikan nasi lebih harum dan berderai."
+                ],
+                "notes": []
+            },
+            {
+                "title": "AYAM MASAK MERAH MUDAH",
+                "slug": "ayam-masak-merah-mudah",
+                "time": "45m",
+                "video_link": "https://youtu.be/l15_sDtzOkg?si=zdG0KoKIWC9AmhpW",
+                "ingredients": [
+                    {
+                        "section": "Bahan Utama",
+                        "items": [
+                            "1 ekor ayam (goreng kunyit separuh masak)",
+                            "3 senduk cili kering kisar",
+                            "110g tomato puri",
+                            "Sos cili & sos tomato",
+                            "Serai titik, daun pandan & 4 sekawan",
+                            "2 sudu besar minyak sapi",
+                            "Garam & gula secukup rasa"
+                        ]
+                    },
+                    {
+                        "section": "Bahan Kisar",
+                        "items": [
+                            "4 biji bawang besar",
+                            "5 ulas bawang putih",
+                            "1 inci halia"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Memasak",
+                        "steps": [
+                            "Tumis 4 sekawan, serai dan daun pandan sehingga harum.",
+                            "Masukkan bahan kisar dan tumis sehingga pecah minyak.",
+                            "Masukkan cili kisar, masak api perlahan sehingga benar-benar pecah minyak.",
+                            "Masukkan sos cili, sos tomato dan tomato puri. Perasakan dengan garam dan gula.",
+                            "Masukkan ayam goreng, gaul rata. Tambah minyak sapi di akhir masakan."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Pastikan cili kisar dimasak lama sehingga pecah minyak untuk mengelakkan rasa cili mentah."
+                ],
+                "notes": []
+            },
+            {
+                "title": "PUDING TUTTI FRUTTI",
+                "slug": "puding-tutti-frutti",
+                "time": "45m",
+                "video_link": "https://youtu.be/hpcObrarhiQ?si=BzjSq0OyB17S3xuD",
+                "ingredients": [
+                    {
+                        "section": "Bahan Puding",
+                        "items": [
+                            "5 cawan air",
+                            "1 tin susu cair & ½ cawan susu pekat",
+                            "½ cawan gula & ½ tsp garam",
+                            "2 sudu besar tepung kastard",
+                            "1 paket serbuk agar-agar (10g)",
+                            "1 sudu kecil esen vanila"
+                        ]
+                    },
+                    {
+                        "section": "Filling",
+                        "items": [
+                            "Kiwi, mangga, strawberi, cocktail buah atau nata de coco"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Penyediaan",
+                        "steps": [
+                            "Campurkan semua bahan puding dalam periuk (kecuali vanila). Kacau sebati sebelum buka api.",
+                            "Masak sehingga mendidih sambil terus mengacau supaya tepung tidak berketul. Masukkan vanila.",
+                            "Sediakan bekas dengan calitan filling buah di tepi bekas.",
+                            "Tuang adunan puding yang sudah suam ke dalam bekas.",
+                            "Sejukkan pada suhu bilik sebelum disimpan dalam peti sejuk."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Gunakan cocktail dalam tin untuk warna yang lebih menarik dan tekstur yang konsisten."
+                ],
+                "notes": [
+                    "Jangan tinggalkan bancuhan semasa memasak kerana tepung kastard cepat berketul."
+                ]
+            },
+            {
+                "title": "HOMEMADE JEM",
+                "slug": "homemade-jem",
+                "time": "20m",
+                "video_link": "https://youtu.be/hpcObrarhiQ?si=BzjSq0OyB17S3xuD",
+                "ingredients": [
+                    {
+                        "section": "Bahan Utama",
+                        "items": [
+                            "5 biji kiwi atau 250g strawberi",
+                            "¾ - 1 cawan gula",
+                            "1 sudu besar perahan lemon",
+                            "Sedikit pewarna (optional)"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Penyediaan",
+                        "steps": [
+                            "Masak buah bersama gula dan lemon sehingga mendidih dan lembut.",
+                            "Tekan buah sedikit supaya hancur tetapi kekalkan sedikit tekstur/biji.",
+                            "Masukkan pewarna jika perlu. Masak sehingga sedikit pekat.",
+                            "Sejukkan sepenuhnya sebelum digunakan."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Jangan masak sehingga terlalu likat kerana jem akan bertambah pekat setelah sejuk."
+                ],
+                "notes": []
+            },
+            {
+                "title": "ASAM REBUS IKAN BERSAMA NENAS",
+                "slug": "asam-rebus-ikan-bersama-nenas",
+                "time": "30m",
+                "video_link": "https://youtu.be/hpcObrarhiQ?si=BzjSq0OyB17S3xuD",
+                "ingredients": [
+                    {
+                        "section": "Bahan Utama",
+                        "items": [
+                            "4 ekor ikan kembung",
+                            "1/2 biji nenas (potong kecil)",
+                            "1 batang serai (titik) & 2-3 asam keping",
+                            "Segenggam daun kesum",
+                            "Garam & sedikit gula"
+                        ]
+                    },
+                    {
+                        "section": "Bahan Kisar",
+                        "items": [
+                            "4 biji cili merah & 4 biji cili padi",
+                            "4 inci kunyit hidup",
+                            "2 biji bawang besar & 3 ulas bawang putih",
+                            "1/2 inci belacan"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Memasak",
+                        "steps": [
+                            "Kisar halus semua bahan kisar dengan sedikit air.",
+                            "Tuang ke dalam periuk, masukkan serai, asam keping dan air secukupnya. Didihkan.",
+                            "Masukkan potongan nenas dan reneh 5-7 minit untuk keluarkan rasa masam manis.",
+                            "Masukkan ikan dan masak dengan api sederhana.",
+                            "Masukkan daun kesum, garam dan sedikit gula. Sesuaikan rasa."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Reneh nenas terlebih dahulu supaya kuah mendapat rasa manis semula jadi daripada buah tersebut."
+                ],
+                "notes": []
+            },
+            {
+                "title": "KUIH KERIA PALING MUDAH",
+                "slug": "kuih-keria-paling-mudah",
+                "time": "40m",
+                "video_link": "https://youtu.be/g2K4HwtN99c?si=FilYED1m-Z6HHOi9",
+                "ingredients": [
+                    {
+                        "section": "Bahan Utama",
+                        "items": [
+                            "Ubi keledek",
+                            "Tepung gandum",
+                            "Gula putih/gula melaka & sedikit air"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Memasak",
+                        "steps": [
+                            "Rebus keledek sehingga empuk. Lenyek halus semasa masih panas.",
+                            "Bila sudah sejuk sedikit, masukkan tepung gandum sedikit demi sedikit sehingga doh tidak melekat di tangan.",
+                            "Bentukkan kuih keria dan goreng sehingga keemasan.",
+                            "Masak gula dengan sedikit air sehingga berbuih pekat/bertali.",
+                            "Masukkan keria, tutup api dan kacau pantas sehingga gula mengeras menyelaputi kuih."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Jangan masukkan tepung semasa keledek masih terlalu panas supaya tekstur kuih tidak menjadi keras."
+                ],
+                "notes": []
+            },
+            {
+                "title": "AISKRIM COKLAT LEGEND",
+                "slug": "aiskrim-coklat-legend",
+                "time": "6j (termasuk masa beku)",
+                "video_link": "https://youtu.be/g2K4HwtN99c?si=FilYED1m-Z6HHOi9",
+                "ingredients": [
+                    {
+                        "section": "Bahan Utama",
+                        "items": [
+                            "250g coklat coin/bar (compound)",
+                            "250ml whipping cream (sejuk)",
+                            "80g susu pekat manis",
+                            "1 sudu kecil esen vanila"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Penyediaan",
+                        "steps": [
+                            "Cairkan coklat dalam plastik tahan panas dengan merendamnya dalam air panas.",
+                            "Ratakan lapisan coklat nipis ke seluruh permukaan dalam plastik. Ketepikan.",
+                            "Pukul whipping cream sehingga soft peak. Campurkan susu pekat dan vanila.",
+                            "Masukkan adunan cream ke dalam plastik coklat sehingga hampir penuh.",
+                            "Ikat kemas dan bekukan dalam freezer selama 4-6 jam."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Pastikan whipping cream benar-benar sejuk sebelum dipukul untuk hasil yang gebu."
+                ],
+                "notes": []
+            },
+            {
+                "title": "CAKOI CWC (TANPA YIS)",
+                "slug": "cakoi-cwc-tanpa-yis",
+                "time": "30m",
+                "video_link": "https://youtu.be/3cbVLceKhPo?si=pqDjExHhFlC2yqag",
+                "ingredients": [
+                    {
+                        "section": "Bahan Kering",
+                        "items": [
+                            "300g tepung gandum",
+                            "6g baking powder & 2g baking soda",
+                            "3g garam"
+                        ]
+                    },
+                    {
+                        "section": "Bahan Basah",
+                        "items": [
+                            "1 biji telur",
+                            "15g mentega/margarin",
+                            "130g air sejuk"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Memasak",
+                        "steps": [
+                            "Satukan bahan kering, kemudian masukkan bahan basah. Gaul sehingga menjadi doh.",
+                            "Rehatkan doh selama 20 minit, kemudian uli sehingga licin.",
+                            "Rehatkan doh selama 4 jam pada suhu bilik (atau semalaman dalam chiller).",
+                            "Canai memanjang dan potong selebar 2.5-3cm.",
+                            "Tindih dua lapis doh, tekan tengahnya dengan chopstick lembap.",
+                            "Goreng dalam minyak panas (190°C) sehingga kembang dan keemasan."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Gunakan air sejuk dan rehatkan doh secukupnya untuk mendapatkan tekstur yang lembut di dalam dan rangup di luar."
+                ],
+                "notes": []
+            },
+            {
+                "title": "SOS PANDAN KASTARD MUDAH",
+                "slug": "sos-pandan-kastard-mudah",
+                "time": "15m",
+                "video_link": "https://youtu.be/3cbVLceKhPo?si=pqDjExHhFlC2yqag",
+                "ingredients": [
+                    {
+                        "section": "Bahan Utama",
+                        "items": [
+                            "1 cawan susu full cream",
+                            "½ cawan santan",
+                            "2 sudu besar tepung kastard",
+                            "1 sudu kecil perasa pandan",
+                            "½ sudu kecil pewarna hijau",
+                            "2-3 sudu besar gula & secubit garam"
+                        ]
+                    }
+                ],
+                "instructions": [
+                    {
+                        "section": "Cara Penyediaan",
+                        "steps": [
+                            "Campurkan semua bahan dalam periuk dan kacau sehingga sebati sebelum menghidupkan api.",
+                            "Masak sehingga sos menjadi likat dan berkilat.",
+                            "Kacau sentiasa untuk mengelakkan ketulan.",
+                            "Jika terlalu pekat, tambah sedikit susu dan kacau semula sehingga halus."
+                        ]
+                    }
+                ],
+                "tips": [
+                    "Sentiasa kacau adunan semasa memasak untuk memastikan sos kastard halus dan tidak berketul."
+                ],
+                "notes": []
+            }
+        ];
+
+        let activeRecipe = null;
+        let activeTab = 'ingredients';
+
+        const recipeGrid = document.getElementById('recipe-grid');
+        const emptyState = document.getElementById('empty-state');
+        const searchInput = document.getElementById('search-input');
+        const modal = document.getElementById('recipe-modal');
+        const modalContent = document.getElementById('modal-content');
+
+        function renderRecipes(recipes) {
+            recipeGrid.innerHTML = '';
+            if (recipes.length === 0) {
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+                recipes.forEach((recipe, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'animate-fade-in group bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 cursor-pointer border border-gray-100 dark:border-gray-800 flex flex-col h-full';
+                    card.onclick = () => openModal(recipe);
+
+                    const imageUrl = `./image of CWC 19/${recipe.slug}.jpeg`;
+
+                    card.innerHTML = `
+                        <div class="relative aspect-[4/3] overflow-hidden bg-gray-200 dark:bg-gray-800">
+                            <img src="${imageUrl}" alt="${recipe.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" onerror="this.src='https://via.placeholder.com/400x300/f3f4f6/059669?text=${encodeURIComponent(recipe.title)}'">
+                            ${recipe.video_link ? `
+                            <div class="absolute top-3 right-3 bg-cyan-500 text-white p-2 rounded-full shadow-lg">
+                                <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+                            </div>` : ''}
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
+                                <span class="text-white text-sm font-bold tracking-wide uppercase">Buka Resepi</span>
+                            </div>
+                        </div>
+                        <div class="p-3 md:p-4 flex-grow flex flex-col justify-between">
+                            <h3 class="font-extrabold text-gray-800 dark:text-gray-200 text-[13px] md:text-lg line-clamp-2 leading-tight group-hover:text-sky-600 transition-colors">
+                                ${recipe.title}
+                            </h3>
+                            <div class="mt-2 md:mt-3 pt-2 md:pt-3 border-t border-gray-50 dark:border-gray-700/50 flex flex-wrap gap-1.5 md:gap-3 text-[10px] md:text-xs text-gray-500">
+                                <span class="inline-flex items-center gap-1 bg-gray-100 dark:bg-gray-800 px-1.5 py-1 md:px-2 md:py-1 rounded-md shrink-0">
+                                    <i data-lucide="clock" class="w-3 h-3 md:w-3.5 md:h-3.5 text-sky-500"></i> ${recipe.time || '30m'}
+                                </span>
+                                <span class="inline-flex items-center gap-1 bg-sky-50/80 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 px-1.5 py-1 md:px-2 md:py-1 rounded-md shrink-0">
+                                    <i data-lucide="star" class="w-3 h-3 md:w-3.5 md:h-3.5 text-sky-500 fill-sky-500"></i> Pilihan
+                                </span>
+                            </div>
+                        </div>
+                    `;
+                    recipeGrid.appendChild(card);
+                });
+            }
+            lucide.createIcons();
+        }
+
+        function openModal(recipe) {
+            activeRecipe = recipe;
+            activeTab = 'ingredients';
+            document.body.classList.add('modal-open');
+            modal.classList.remove('hidden');
+            renderModal();
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            document.body.classList.remove('modal-open');
+            modalContent.innerHTML = '';
+        }
+
+        function setTab(tab) {
+            activeTab = tab;
+            const container = document.getElementById('tab-container');
+            if (container) {
+                container.innerHTML = getTabHTML(activeRecipe, activeTab);
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.className = btn.dataset.tab === activeTab
+                        ? "tab-btn flex-1 py-4 text-sm font-bold flex items-center justify-center gap-2 tab-active"
+                        : "tab-btn flex-1 py-4 text-sm font-bold flex items-center justify-center gap-2 text-gray-400";
+                });
+                lucide.createIcons();
+            } else {
+                renderModal();
+            }
+        }
+
+        function getTabHTML(activeRecipe, activeTab) {
+            let tabContent = '';
+            if (activeTab === 'ingredients') {
+                tabContent = activeRecipe.ingredients.map(sec => `
+                    <div class="bg-sky-50/50 p-4 md:p-8 rounded-3xl md:rounded-[2rem] border border-sky-100/50 mb-4 md:mb-6">
+                        <h4 class="font-black text-sky-600 uppercase text-[10px] md:text-xs tracking-[0.2em] mb-4 md:mb-6 flex items-center gap-2 md:gap-3">
+                            <span class="w-4 md:w-8 h-px bg-sky-200"></span>${sec.section}<span class="flex-grow h-px bg-sky-200"></span>
+                        </h4>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                            ${sec.items.map(item => `
+                                <li class="flex gap-3 md:gap-4 text-gray-700 dark:text-gray-300 font-medium text-xs md:text-sm bg-white dark:bg-gray-900 p-3 md:p-4 rounded-xl md:rounded-2xl shadow-sm border border-sky-100/30">
+                                    <div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-sky-500 rounded-full mt-1.5 flex-shrink-0"></div>
+                                    ${item}
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `).join('');
+            } else if (activeTab === 'steps') {
+                tabContent = activeRecipe.instructions.map(sec => `
+                    <div class="mb-8 md:mb-10">
+                        <h4 class="text-[10px] md:text-sm font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.3em] mb-6 md:mb-8 text-center flex items-center gap-3 md:gap-4">
+                            <span class="flex-grow h-px bg-gray-100 dark:bg-gray-800"></span>${sec.section}<span class="flex-grow h-px bg-gray-100 dark:bg-gray-800"></span>
+                        </h4>
+                        <div class="space-y-4 md:space-y-6">
+                            ${sec.steps.map((step, i) => `
+                                <div class="flex gap-3 md:gap-6 group">
+                                    <div class="flex-shrink-0 w-8 h-8 md:w-12 md:h-12 bg-gray-50 dark:bg-gray-800/50 border-2 border-gray-100 dark:border-gray-800 rounded-xl md:rounded-2xl flex items-center justify-center font-black text-gray-300 dark:text-gray-600 md:text-base text-xs group-hover:bg-sky-600 group-hover:text-white transition-all duration-500">
+                                        ${i + 1}
+                                    </div>
+                                    <div class="pt-1 md:pt-2 flex-grow border-b border-gray-50 dark:border-gray-700/50 pb-6 md:pb-8 last:border-0">
+                                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed font-medium text-xs md:text-base">${step}</p>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('');
+            } else if (activeTab === 'tips') {
+                tabContent = `
+                    <div class="space-y-4 md:space-y-6">
+                        ${activeRecipe.tips.length > 0 ? `
+                        <div class="bg-blue-50/50 p-6 md:p-8 rounded-3xl md:rounded-[2rem] border border-blue-100">
+                            <h4 class="flex items-center gap-2 text-blue-800 font-black mb-4 uppercase text-[10px] md:text-xs tracking-widest">
+                                <i data-lucide="lightbulb" class="w-4 h-4 md:w-5 md:h-5"></i> Tip Masakan
+                            </h4>
+                            <ul class="space-y-3">
+                                ${activeRecipe.tips.map(tip => `<li class="text-blue-700 font-medium text-xs md:text-sm">• ${tip}</li>`).join('')}
+                            </ul>
+                        </div>` : ''}
+                        ${activeRecipe.notes.length > 0 ? `
+                        <div class="bg-amber-50/50 p-6 md:p-8 rounded-3xl md:rounded-[2rem] border border-amber-100">
+                            <h4 class="flex items-center gap-2 text-amber-800 font-black mb-4 uppercase text-[10px] md:text-xs tracking-widest">
+                                <i data-lucide="info" class="w-4 h-4 md:w-5 md:h-5"></i> Nota Penting
+                            </h4>
+                            <ul class="space-y-3">
+                                ${activeRecipe.notes.map(note => `<li class="text-amber-700 font-medium text-xs md:text-sm">• ${note}</li>`).join('')}
+                            </ul>
+                        </div>` : ''}
+                    </div>
+                `;
+            }
+            return tabContent;
+        }
+
+        function renderModal() {
+            if (!activeRecipe) return;
+
+            const hasTips = activeRecipe.tips.length > 0 || activeRecipe.notes.length > 0;
+            let videoEmbed = null;
+            if (activeRecipe.video_link) {
+                let videoId = '';
+                if (activeRecipe.video_link.includes('youtu.be/')) {
+                    videoId = activeRecipe.video_link.split('youtu.be/')[1].split('?')[0];
+                } else if (activeRecipe.video_link.includes('watch?v=')) {
+                    videoId = activeRecipe.video_link.split('watch?v=')[1].split('&')[0];
+                }
+                videoEmbed = videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+            }
+
+            let tabContent = getTabHTML(activeRecipe, activeTab);
+
+            modalContent.innerHTML = `
+                <div class="relative h-[35vh] md:h-[60vh] bg-black">
+                    ${videoEmbed ? `
+                        <iframe src="${videoEmbed}" class="w-full h-full border-none" allowfullscreen></iframe>
+                    ` : `
+                        <img src="./image of CWC 19/${activeRecipe.slug}.jpeg" class="w-full h-full object-cover opacity-70" onerror="this.src='https://via.placeholder.com/1200x800/111827/ffffff?text=${encodeURIComponent(activeRecipe.title)}'">
+                        <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/80 flex items-center justify-center p-6 md:p-8">
+                            <h2 class="text-3xl md:text-6xl font-black text-white text-center uppercase tracking-tight md:tracking-tighter leading-none">${activeRecipe.title}</h2>
+                        </div>
+                    `}
+                    <button onclick="closeModal()" class="absolute top-4 left-4 md:top-6 md:left-6 p-2 md:p-3 bg-white dark:bg-gray-900/90 backdrop-blur-xl text-gray-900 dark:text-gray-100 rounded-xl md:rounded-2xl shadow-2xl hover:scale-110 transition-all z-20">
+                        <i data-lucide="chevron-left" class="w-5 h-5 md:w-6 md:h-6"></i>
+                    </button>
+                </div>
+
+                <div class="max-w-4xl mx-auto ${videoEmbed ? 'mt-0' : '-mt-6 md:-mt-8'} relative z-10 w-full mb-10">
+                    <div class="bg-white dark:bg-gray-900 ${videoEmbed ? '' : 'rounded-t-3xl md:rounded-t-[3rem]'} shadow-2xl px-4 py-8 md:p-12 min-h-screen">
+                        <div class="flex border-b border-gray-100 dark:border-gray-800 mb-6 md:mb-8 sticky top-0 bg-white dark:bg-gray-900/95 backdrop-blur-sm z-30 pt-2 -mx-4 px-4 md:mx-0 md:px-0 shadow-sm md:shadow-none">
+                            <button data-tab="ingredients" onclick="setTab('ingredients')" class="tab-btn flex-1 py-3 md:py-4 text-[11px] md:text-sm font-extrabold flex items-center justify-center gap-1.5 md:gap-2 ${activeTab === 'ingredients' ? 'tab-active' : 'text-gray-400 dark:text-gray-500'} transition-all">
+                                <i data-lucide="book-open" class="w-3.5 h-3.5 md:w-4 md:h-4"></i> Bahan
+                            </button>
+                            <button data-tab="steps" onclick="setTab('steps')" class="tab-btn flex-1 py-3 md:py-4 text-[11px] md:text-sm font-extrabold flex items-center justify-center gap-1.5 md:gap-2 ${activeTab === 'steps' ? 'tab-active' : 'text-gray-400 dark:text-gray-500'} transition-all">
+                                <i data-lucide="chef-hat" class="w-3.5 h-3.5 md:w-4 md:h-4"></i> Cara
+                            </button>
+                            ${hasTips ? `
+                            <button data-tab="tips" onclick="setTab('tips')" class="tab-btn flex-1 py-3 md:py-4 text-[11px] md:text-sm font-extrabold flex items-center justify-center gap-1.5 md:gap-2 ${activeTab === 'tips' ? 'tab-active' : 'text-gray-400 dark:text-gray-500'} transition-all">
+                                <i data-lucide="lightbulb" class="w-3.5 h-3.5 md:w-4 md:h-4"></i> Tips
+                            </button>` : ''}
+                        </div>
+                        <div id="tab-container" class="animate-fade-in">${tabContent}</div>
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        searchInput.oninput = (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = RECIPES_DATA.filter(r =>
+                r.title.toLowerCase().includes(term) ||
+                r.ingredients.some(s => s.items.some(i => i.toLowerCase().includes(term)))
+            );
+            renderRecipes(filtered);
+        };
+
+        // Initialize
+        window.onload = () => {
+            renderRecipes(RECIPES_DATA);
+        };
+    </script>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const root = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            root.classList.toggle('dark');
+            if (root.classList.contains('dark')) {
+                localStorage.theme = 'dark';
+            } else {
+                localStorage.theme = 'light';
+            }
+        });
+    </script>
+</body>
+
+</html>

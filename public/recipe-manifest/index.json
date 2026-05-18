@@ -1,0 +1,53 @@
+{
+  "generated": "2026-05-18T08:41:01.071Z",
+  "volumes": [
+    {
+      "volumeNum": 14,
+      "volumeName": "VOL 14",
+      "recipeCount": 34,
+      "imagesMatched": 17,
+      "manifestFile": "/recipe-manifest/vol-14.json",
+      "sqlFile": "import-sources\\generated\\VOL_14_RECIPES.sql"
+    },
+    {
+      "volumeNum": 15,
+      "volumeName": "VOL 15",
+      "recipeCount": 32,
+      "imagesMatched": 32,
+      "manifestFile": "/recipe-manifest/vol-15.json",
+      "sqlFile": "import-sources\\generated\\VOL_15_RECIPES.sql"
+    },
+    {
+      "volumeNum": 16,
+      "volumeName": "VOL 16",
+      "recipeCount": 32,
+      "imagesMatched": 32,
+      "manifestFile": "/recipe-manifest/vol-16.json",
+      "sqlFile": "import-sources\\generated\\VOL_16_RECIPES.sql"
+    },
+    {
+      "volumeNum": 17,
+      "volumeName": "VOL 17",
+      "recipeCount": 28,
+      "imagesMatched": 28,
+      "manifestFile": "/recipe-manifest/vol-17.json",
+      "sqlFile": "import-sources\\generated\\VOL_17_RECIPES.sql"
+    },
+    {
+      "volumeNum": 18,
+      "volumeName": "VOL 18",
+      "recipeCount": 21,
+      "imagesMatched": 0,
+      "manifestFile": "/recipe-manifest/vol-18.json",
+      "sqlFile": "import-sources\\generated\\VOL_18_RECIPES.sql"
+    },
+    {
+      "volumeNum": 19,
+      "volumeName": "VOL 19",
+      "recipeCount": 32,
+      "imagesMatched": 0,
+      "manifestFile": "/recipe-manifest/vol-19.json",
+      "sqlFile": "import-sources\\generated\\VOL_19_RECIPES.sql"
+    }
+  ]
+}

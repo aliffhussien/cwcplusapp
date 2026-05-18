@@ -18,6 +18,7 @@ import ClassStudio from '../components/admin/tabs/ClassStudio';
 import MemberDirectory from '../components/admin/tabs/MemberDirectory';
 import PlatformSettings from '../components/admin/tabs/PlatformSettings';
 import BroadcastCenter from '../components/admin/tabs/BroadcastCenter';
+import RecipeImporter from '../components/admin/tabs/RecipeImporter';
 
 import AdminSidebar from '../components/admin/AdminSidebar';
 import AdminHeader from '../components/admin/AdminHeader';
@@ -155,7 +156,7 @@ export default function CWCPlusCommandCenter() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const tab = params.get('tab');
-    if (tab && ['dashboard', 'recipes', 'classes', 'media', 'people', 'broadcasts', 'settings', 'orders'].includes(tab)) setActiveTab(tab);
+    if (tab && ['dashboard', 'recipes', 'import', 'classes', 'media', 'people', 'broadcasts', 'settings', 'orders'].includes(tab)) setActiveTab(tab);
   }, []);
 
   return (
@@ -195,6 +196,7 @@ export default function CWCPlusCommandCenter() {
             // @ts-expect-error Ignoring legacy prop mismatch from JSX component
             <BroadcastCenter adminBroadcasts={adminBroadcasts} recipes={recipes} classes={classes} people={people} sendBroadcast={sendBroadcast} requestDelete={requestDelete} showToast={showToast} godMode={godMode} selectedItems={selectedItems} toggleSelection={toggleSelection} />
           )}
+          {activeTab === 'import' && <RecipeImporter showToast={showToast} />}
           {activeTab === 'settings' && <PlatformSettings settings={settings} updateSettings={updateSettings} generateApiKey={generateApiKey} removeApiKey={removeApiKey} showToast={showToast} />}
         </main>
 

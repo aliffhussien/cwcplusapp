@@ -5,6 +5,7 @@ interface IngredientLineProps {
     amount?: number | string;
     unit?: string;
     ratio: number;
+    isSection?: boolean;
 }
 
 function parseFraction(str: string): number {
@@ -93,17 +94,46 @@ function scaleAmount(amount: number | string | undefined, ratio: number): string
     return amountStr;
 }
 
-export default function IngredientLine({ name, amount, unit, ratio }: IngredientLineProps) {
+// Detect legacy section headers stored as regular ingredients (pre-engine imports).
+// These are ALL CAPS names with no digits, no unit, and a non-numeric amount
+// e.g. { name: "BAHAN UTAMA", amount: "secukupnya", unit: "" }
+const NON_NUMERIC_AMOUNTS = /^(secukupnya|secukup\s+rasa|ikut\s+(?:citarasa|selera)|sedikit|pilihan|optional)$/i;
+
+function isLegacySection(name: string, amount: number | string | undefined, unit: string | undefined): boolean {
+    if (unit) return false;                              // real ingredients have units
+    if (!/[A-Z]/.test(name)) return false;              // must have uppercase
+    if (name !== name.toUpperCase()) return false;       // must be ALL CAPS
+    if (/\d/.test(name)) return false;                  // no digits in section names
+    if (name.trim().length < 3) return false;
+    // Amount must be absent or a non-numeric qualifier
+    const amtStr = String(amount ?? '').trim();
+    if (amtStr && !NON_NUMERIC_AMOUNTS.test(amtStr)) return false;
+    return true;
+}
+
+export default function IngredientLine({ name, amount, unit, ratio, isSection }: IngredientLineProps) {
+    // Explicit section flag (new engine data) OR legacy ALL-CAPS section (old data)
+    if (isSection || isLegacySection(name, amount, unit)) {
+        return (
+            <div className="pt-4 pb-1 first:pt-0">
+                <p className="text-[9px] font-black uppercase tracking-[0.2em] text-text-3">{name}</p>
+            </div>
+        );
+    }
+
     const calcAmount = scaleAmount(amount, ratio);
-    const hasAmount = calcAmount && calcAmount !== '0';
+    const hasAmount  = calcAmount && calcAmount !== '0';
+    const showBadge  = hasAmount || !!unit;
 
     return (
         <div className="flex justify-between items-center py-3 border-b border-glass-border last:border-0 hover:bg-glass-bg/10 px-2 transition-all duration-300 rounded-lg">
             <span className="text-sm font-medium text-text-1 capitalize tracking-wide leading-relaxed">{name}</span>
-            <div className="flex items-baseline gap-1 shrink-0 ml-4 bg-glass-bg/30 px-2.5 py-1 rounded-lg border border-glass-border/30 shadow-sm">
-                {hasAmount && <span className="text-xs font-black text-accent">{calcAmount}</span>}
-                {unit && <span className="text-[9px] font-black uppercase tracking-widest text-text-3">{unit}</span>}
-            </div>
+            {showBadge && (
+                <div className="flex items-baseline gap-1 shrink-0 ml-4 bg-glass-bg/30 px-2.5 py-1 rounded-lg border border-glass-border/30 shadow-sm">
+                    {hasAmount && <span className="text-xs font-black text-accent">{calcAmount}</span>}
+                    {unit && <span className="text-[9px] font-black uppercase tracking-widest text-text-3">{unit}</span>}
+                </div>
+            )}
         </div>
     );
 }

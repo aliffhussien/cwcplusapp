@@ -8,4 +8,12 @@ export default defineConfig({
     tailwindcss(),
     react()
   ],
+  build: {
+    rollupOptions: {
+      // pdfjs-dist is an optional dependency loaded at runtime only when
+      // the admin uploads a PDF. The try/catch in RecipeImporter.tsx
+      // handles the case where it isn't installed yet.
+      external: ['pdfjs-dist'],
+    },
+  },
 })

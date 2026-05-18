@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { LayoutDashboard, ChefHat, Video, ShoppingBag, Film, Users, Bell, Settings, ShieldAlert, TrendingUp } from 'lucide-react';
+import { LayoutDashboard, ChefHat, Video, ShoppingBag, Film, Users, Bell, Settings, ShieldAlert, TrendingUp, FolderInput } from 'lucide-react';
 
 interface AdminSidebarProps {
     isMobileOpen: boolean;
@@ -12,6 +12,7 @@ export default function AdminSidebar({ isMobileOpen, activeTab, handleTabChange 
     const navItems = [
         { id: 'dashboard', icon: LayoutDashboard, label: 'Command HQ' },
         { id: 'recipes', icon: ChefHat, label: 'Recipe Library' },
+        { id: 'import', icon: FolderInput, label: 'Recipe Importer' },
         { id: 'classes', icon: Video, label: 'Studio Classes' },
         { id: 'orders', icon: ShoppingBag, label: 'Order Pipeline' },
         { id: 'media', icon: Film, label: 'Media Vault' },

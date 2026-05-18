@@ -1,0 +1,2714 @@
+{
+  "volumeNum": 18,
+  "volumeName": "VOL 18",
+  "recipeCount": 21,
+  "imagesMatched": 0,
+  "generated": "2026-05-18T08:41:01.067Z",
+  "recipes": [
+    {
+      "title": "QUESADILLA MUDAH",
+      "slug": "quesadilla-mudah",
+      "category": "Mains",
+      "image": "",
+      "videoUrl": "https://youtu.be/RDZIG9lY55I?si=ot_KTsHwgybTbhPH",
+      "ingredientCount": 32,
+      "stepCount": 31,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "name": "Bahan Tortilla",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "tepung gandum",
+          "amount": "350",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "air panas (didihkan air, ketepikan ±2 minit baru guna)",
+          "amount": "200",
+          "unit": "ml",
+          "isSection": false
+        },
+        {
+          "name": "garam (rata)",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "minyak sayuran (olive oil, conola etc)",
+          "amount": "2",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "Creamy Spicy Sauce",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "mayonis",
+          "amount": "½",
+          "unit": "cawan",
+          "isSection": false
+        },
+        {
+          "name": "sour cream (boleh ganti yogurt plain atau mayonis extra)",
+          "amount": "¼",
+          "unit": "cawan",
+          "isSection": false
+        },
+        {
+          "name": "cili jeruk / jalapeño cincang/2 biji cili padi cincang (boleh ganti cili hijau jeruk atau cili padi jeruk – guna sikit dulu)",
+          "amount": "2",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "air jeruk timun (jika tiada, ganti jus limau nipis)",
+          "amount": "2",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "sos cili / chili oil",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "serbuk paprika",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "serbuk cili (cayenne / cili biasa)",
+          "amount": "½",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "serbuk bawang putih",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "serbuk bawang besar",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "gula",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "garam (atau ikut rasa)",
+          "amount": "½",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "Chicken Quesadillas (Bahan Perap)",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "ayam (peha atau dada)",
+          "amount": "500",
+          "unit": "gm",
+          "isSection": false
+        },
+        {
+          "name": "serbuk cayenne",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "paprika",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "serbuk jintan putih (cumin)",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "serbuk bawang putih",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "serbuk bawang besar",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "lada hitam",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "perasa tambahan (optional)",
+          "amount": "½",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "garam",
+          "amount": "½",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "Jus 1 biji limau nipis/lemon",
+          "amount": "",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Bahan Inti Quesadilla",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "bawang merah/holland (hiris)",
+          "amount": "1",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "capsicum hijau (hiris)",
+          "amount": "1",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "capsicum merah (hiris)",
+          "amount": "1",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "bawang putih (cincang)",
+          "amount": "4",
+          "unit": "ulas",
+          "isSection": false
+        },
+        {
+          "name": "keju cheddar (parut)",
+          "amount": "100",
+          "unit": "gm",
+          "isSection": false
+        },
+        {
+          "name": "mozarella /red cheese (parut)",
+          "amount": "100",
+          "unit": "gm",
+          "isSection": false
+        },
+        {
+          "name": "tortilla wrap",
+          "amount": "8",
+          "unit": "keping",
+          "isSection": false
+        }
+      ],
+      "steps": [
+        "── Cara Tortilla ──",
+        "Uli doh. Masukkan tepung, garam dan minyak dalam mangkuk.",
+        "Tuang air panas sedikit demi sedikit sambil gaul guna sudu. Bila doh dah suam, uli dengan tangan ±3 minit hingga licin, lembut & tak melekat.",
+        "Bulatkan doh, sapu nipis minyak. Tutup rapat (plastik / bekas bertutup). Rehatkan 20 minit supaya gluten relaks & mudah canai.",
+        "Selesai rehat, uli doh sekejap. Bahagikan kepada 8 bahagian sama besar.",
+        "Bulatkan, leperkan dan canai nipis sederhana (jangan terlalu nipis, jangan tebal).",
+        "Panaskan kuali leper tanpa minyak dengan api sederhana. Masak setiap keping 30–60 saat setiap sisi sehingga muncul tompok coklat. Angkat dan susun bertindih.",
+        "Renjis sedikit air pada setiap keping. Tutup dengan kain. Rehatkan 10–15 minit tortilla lembut, lentur & tak pecah.",
+        "── Cara Creamy Spicy Sauce ──",
+        "Campurkan semua bahan dalam mangkuk.",
+        "Kacau hingga sebati dan licin. Rasa and sesuaikan dengan citarasa.",
+        "Tambah limau untuk lebih masam. Tambah gula untuk seimbang dan tambah serbuk cili untuk rasa lebih pedas.",
+        "── Perap & Masak Ayam ──",
+        "Ratakan permukaan dada ayam. Masukkan ayam dalam ziplock.",
+        "Masukkan semua bahan perapan ayam. Gaul hingga sebati and perap minimum 30 minit (lagi sedap jika perap 2-4 jam).",
+        "Panaskan sedikit minyak dalam kuali.",
+        "Masukkan ayam and masak api sederhana hingga ayam masak dan sedikit garing. Anggaran 5-6 minit setiap bahagian.",
+        "Angkat and rehatkan seketika. Kemudian potong ayam nipis atau kecil memanjang.",
+        "── Sediakan Inti Sayur & Buat Quesadilla ──",
+        "Dalam kuali yang sama, masukkan bawang putih. Tumis hingga wangi.",
+        "Masukkan bawang merah and capsicum. Masak sekejap sahaja (sayur masih rangup).",
+        "Panaskan kuali leper. Masukkan sedikit minyak. Set api perlahan.",
+        "Letakkan sekeping tortilla. Sapu CREAMY SPICY SAUCE.",
+        "Tabur keju. Masakkan seketika. Tutup kuali jika boleh.",
+        "Masukkan inti ayam and sayur.",
+        "Tambah sedikit CREAMY SPICY SAUCE (jangan terlalu banyak).",
+        "Tabur lagi keju di atas.",
+        "Tutup dengan sekeping tortilla. Atau boleh lipat sahaja.",
+        "Masak api perlahan hingga bahagian bawah garing & keju cair.",
+        "Terbalikkan and masak bahagian satu lagi.",
+        "Angkat and kemudian potong 4 atau 6 bahagian."
+      ],
+      "notes": [],
+      "tags": [
+        "Mains"
+      ],
+      "difficulty": "Easy",
+      "base_servings": 4,
+      "rating": 4.8,
+      "volume": "VOL 18",
+      "volumeNum": 18,
+      "status": "published"
+    },
+    {
+      "title": "ASAM PEDAS AYAM",
+      "slug": "asam-pedas-ayam",
+      "category": "Mains",
+      "image": "",
+      "videoUrl": "https://youtu.be/snjS1FNBcXI?si=FyJ-_4wDnLoFTRgX",
+      "ingredientCount": 16,
+      "stepCount": 9,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "name": "Bahan Utama",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "/2 ekor ayam",
+          "amount": "1",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "minyak masak",
+          "amount": "1½",
+          "unit": "cawan",
+          "isSection": false
+        },
+        {
+          "name": "serai (diketuk)",
+          "amount": "1",
+          "unit": "batang",
+          "isSection": false
+        },
+        {
+          "name": "kuntum bunga kantan (belah dua)",
+          "amount": "1",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "tomato (belah 4)",
+          "amount": "2",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "daun kesum",
+          "amount": "1",
+          "unit": "ikat",
+          "isSection": false
+        },
+        {
+          "name": "Air pati asam jawa (ikut tahap masam)",
+          "amount": "",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Garam",
+          "amount": "secukup rasa",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Air",
+          "amount": "secukupnya untuk kuah",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Bahan Kisar",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "cili kering (rendam air panas, buang biji jika nak kurang pedas)",
+          "amount": "15",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "bawang merah kecil / 3 biji bawang besar (sederhana)",
+          "amount": "7",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "bawang putih",
+          "amount": "4",
+          "unit": "ulas",
+          "isSection": false
+        },
+        {
+          "name": "halia",
+          "amount": "1",
+          "unit": "inci",
+          "isSection": false
+        },
+        {
+          "name": "lengkuas",
+          "amount": "1",
+          "unit": "inci",
+          "isSection": false
+        },
+        {
+          "name": "kunyit hidup (besar ibu jari)",
+          "amount": "1",
+          "unit": "ketul",
+          "isSection": false
+        },
+        {
+          "name": "/2 inci belacan (jika suka)",
+          "amount": "1",
+          "unit": "",
+          "isSection": false
+        }
+      ],
+      "steps": [
+        "── Cara Memasak ──",
+        "Kisar halus semua bahan kisar.",
+        "Panaskan minyak dalam periuk/kuali. Masukkan bahan kisar and serai.",
+        "Tumis api sederhana hingga betul-betul pecah minyak and bau cili masak (±10–15 minit). Tambah 2-3 kali air untuk pastikan cili masak sempurna. Sambal lebih garing.",
+        "Kemudian, Masukkan ayam, gaul rata dengan tumisan. Masak 3–5 minit hingga ayam sedikit kecut.",
+        "Masukkan air secukupnya (ikut kepekatan kuah). Masukkan air pati asam jawa sedikit demi sedikit. Masukkan bunga kantan and daun kesum. Reneh hingga ayam empuk. Kuah pekat.",
+        "Masukkan garam and serbuk perasa. Kacau and rasa (adjust masam & masin).",
+        "Bila kuah semakin pekat, masukkan tomato. Sambung reneh seketika. Boleh tutup api bila kuah merah cantik dan minyak naik.",
+        "Rehatkan kuah seketika sebelum di hidang."
+      ],
+      "notes": [],
+      "tags": [
+        "Mains"
+      ],
+      "difficulty": "Easy",
+      "base_servings": 4,
+      "rating": 4.8,
+      "volume": "VOL 18",
+      "volumeNum": 18,
+      "status": "published"
+    },
+    {
+      "title": "RENDANG AYAM MUDAH",
+      "slug": "rendang-ayam-mudah",
+      "category": "Mains",
+      "image": "",
+      "videoUrl": "https://youtu.be/mPgeIo4ekPA?si=a8b03F2qiuSx04hB",
+      "ingredientCount": 22,
+      "stepCount": 10,
+      "hasNotes": true,
+      "ingredients": [
+        {
+          "name": "Bahan Kisar",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "cili kering (rebus/rendam hingga lembut & toskan)",
+          "amount": "20-30",
+          "unit": "tangkai",
+          "isSection": false
+        },
+        {
+          "name": "bawang besar",
+          "amount": "1",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "bawang merah",
+          "amount": "7",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "bawang putih",
+          "amount": "10",
+          "unit": "ulas",
+          "isSection": false
+        },
+        {
+          "name": "serai",
+          "amount": "2",
+          "unit": "batang",
+          "isSection": false
+        },
+        {
+          "name": "halia",
+          "amount": "1",
+          "unit": "inci",
+          "isSection": false
+        },
+        {
+          "name": "lengkuas",
+          "amount": "1",
+          "unit": "inci",
+          "isSection": false
+        },
+        {
+          "name": "kunyit hidup",
+          "amount": "2",
+          "unit": "ketul",
+          "isSection": false
+        },
+        {
+          "name": "Air",
+          "amount": "secukupnya (untuk kisar)",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Bahan lain",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "ayam (±1.5kg-1.8kg) – potong sederhana",
+          "amount": "1",
+          "unit": "ekor",
+          "isSection": false
+        },
+        {
+          "name": "daun kunyit – diracik halus",
+          "amount": "1",
+          "unit": "helai",
+          "isSection": false
+        },
+        {
+          "name": "daun limau purut (dihiris halus)",
+          "amount": "5",
+          "unit": "helai",
+          "isSection": false
+        },
+        {
+          "name": "serai – dihiris halus",
+          "amount": "2",
+          "unit": "batang",
+          "isSection": false
+        },
+        {
+          "name": "serai - dititik",
+          "amount": "1",
+          "unit": "batang",
+          "isSection": false
+        },
+        {
+          "name": "asam gelugur / asam keping (ikut citarasa)",
+          "amount": "3-4",
+          "unit": "keping",
+          "isSection": false
+        },
+        {
+          "name": "kerisik",
+          "amount": "2",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "santan pekat (±2 cawan)",
+          "amount": "500",
+          "unit": "ml",
+          "isSection": false
+        },
+        {
+          "name": "air (jika perlu)",
+          "amount": "1",
+          "unit": "cawan",
+          "isSection": false
+        },
+        {
+          "name": "gula melaka (secukup rasa)",
+          "amount": "50",
+          "unit": "g",
+          "isSection": false
+        },
+        {
+          "name": "Gula pasir",
+          "amount": "secukup rasa",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Garam",
+          "amount": "secukup rasa",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Minyak masak",
+          "amount": "secukupnya untuk menumis",
+          "unit": "",
+          "isSection": false
+        }
+      ],
+      "steps": [
+        "── Cara Memasak ──",
+        "Kisar semua bahan kisar bersama air secukupnya hingga halus and licin.",
+        "Panaskan minyak secukupnya dalam kuali/periuk. Masukkan 1 batang serai yang dititk bersama bahan kisar and tumis dengan api sederhana hingga bahan kisar mula sebati, nampak sedikit kering and naik bau wangi.",
+        "Kemudian, masukkan ayam and gaul hingga ayam bersalut rata with bahan rendang. Boleh tutup periuk ±10–15 minit hingga ayam keluarkan air sendiri. Sesekali kacau untuk elak hangus.",
+        "Seterusnya, masukkan santan pekat and terus masak sehingga kuah mendidih.",
+        "Sudah mendidih, masukkan serai, kunyit, daun limau yang dihiris, gula melaka, gula and garam secukup rasa. Kacau sehingga semua bahan sebati. Jika ayam belum empuk atau suka lebih berkuah, boleh tambah 1 cawan air.",
+        "Kemudian, masukkan kerisik and asam keping. Kacau sehingga sebati.",
+        "Rasa and sesuaikan with citarasa. Terus masak sehingga kuah pekat. Reneh sehingga mendapat kepekatan kuah yang di sukai. Pastikan seimbang masin, manis and lemak.",
+        "Masak rendang with api kecil sambil kacau sekali-sekala sehingga ayam empuk, kuah pekat melekat pada ayam and minyak naik cantik.",
+        "Tutup api and biarkan rendang rehat seketika sebelum dihidang."
+      ],
+      "notes": [
+        "Lebih sedap dimakan selepas beberapa jam atau keesokan hari."
+      ],
+      "tags": [
+        "Mains"
+      ],
+      "difficulty": "Easy",
+      "base_servings": 4,
+      "rating": 4.8,
+      "volume": "VOL 18",
+      "volumeNum": 18,
+      "status": "published"
+    },
+    {
+      "title": "PULUT KUNING MUDAH",
+      "slug": "pulut-kuning-mudah",
+      "category": "Mains",
+      "image": "",
+      "videoUrl": "https://youtu.be/mPgeIo4ekPA?si=a8b03F2qiuSx04hB",
+      "ingredientCount": 7,
+      "stepCount": 15,
+      "hasNotes": true,
+      "ingredients": [
+        {
+          "name": "Bahan Utama",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "beras pulut",
+          "amount": "1",
+          "unit": "kg",
+          "isSection": false
+        },
+        {
+          "name": "Air secukupnya (paras ±1",
+          "amount": "1½",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "serbuk kunyit ATAU kunyit hidup (ditumbuk & diperah)",
+          "amount": "1½ – 2",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "garam (secukup rasa)",
+          "amount": "1¼",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "kotak kecil santan (±200 ml)",
+          "amount": "1",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "daun pandan (disimpul)",
+          "amount": "3",
+          "unit": "helai",
+          "isSection": false
+        },
+        {
+          "name": "minyak masak (opsyenal – bagi pulut berkilat)",
+          "amount": "1",
+          "unit": "sudu besar",
+          "isSection": false
+        }
+      ],
+      "steps": [
+        "── Cara Masak Guna Periuk Nasi ──",
+        "Basuh pulut 2–3 kali hingga air jernih.",
+        "Rendam 30 minit (boleh skip kalau rush, tapi rendam buat pulut lagi lembut) Toskan.",
+        "Masukkan pulut ke dalam periuk nasi. Masukkan air (paras ±1–1½ cm atas pulut)",
+        "Masukkan kunyit garam, daun pandan and gaul rata.",
+        "Tekan “Cook”",
+        "Bila nasi hampir kering / separuh masak, periuk akan auto ke “Warm” Masukkan santan and minyak masak. Gaul perlahan dari bawah ke atas.",
+        "Tutup periuk & tekan “Cook” sekali lagi",
+        "Masak ±10–15 minit hingga pulut betul-betul masak & berkilat.",
+        "── Cara Masak Guna Pressure Cooker ──",
+        "Basuh pulut 2–3 kali hingga air jernih. Rendam 30 minit (boleh skip kalau rush, tapi rendam buat pulut lagi lembut) Toskan.",
+        "Masukkan pulut, air, kunyit, garam and daun pandan. Tutup pressure cooker. Set masak (setting Low Pressure) 5 minit sahaja. Tombol arah pressure.",
+        "Tutup suis and lepaskan tekanan sendiri (jangan buka terus) Masa ni pulut 90% masak.",
+        "Buka penutup. Masukkan santan and minyak. Gaul perlahan dari bawah ke atas.",
+        "Tutup semula periuk, and setkan - Keep Warm 5–8 minit sahaja. Tutup periuk tanpa pressure."
+      ],
+      "notes": [
+        "Nisbah: 1 cawan pulut : 1 cawan cecair"
+      ],
+      "tags": [
+        "Mains"
+      ],
+      "difficulty": "Easy",
+      "base_servings": 4,
+      "rating": 4.8,
+      "volume": "VOL 18",
+      "volumeNum": 18,
+      "status": "published"
+    },
+    {
+      "title": "EASY DELICIOUS BREAKFAST",
+      "slug": "easy-delicious-breakfast",
+      "category": "Mains",
+      "image": "",
+      "videoUrl": "https://youtu.be/v2ybLrZehGA?si=mlil2bGlTly3j8oC",
+      "ingredientCount": 11,
+      "stepCount": 9,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "name": "Bahan Utama",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "tortilla",
+          "amount": "1",
+          "unit": "keping",
+          "isSection": false
+        },
+        {
+          "name": "telur",
+          "amount": "2",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "tomato (dadu kecil)",
+          "amount": "1",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "mozzarella/cheddar (parut / hiris)",
+          "amount": "3",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "daun bawang (hiris halus)",
+          "amount": "1",
+          "unit": "batang",
+          "isSection": false
+        },
+        {
+          "name": "butter/minyak",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "Garam",
+          "amount": "secukup rasa",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Serbuk lada hitam",
+          "amount": "secukup rasa",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Oregano",
+          "amount": "secukup rasa - jika ada",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Basil kering",
+          "amount": "secukup rasa -jika ada",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Serbuk bawang putih kering (dried garlic)",
+          "amount": "secukup rasa",
+          "unit": "",
+          "isSection": false
+        }
+      ],
+      "steps": [
+        "── Cara Memasak ──",
+        "Pecahkan telur ke dalam mangkuk, pukul ringan hingga sebati.",
+        "Panaskan kuali non-stick with api sederhana, masukkan butter and biarkan cair.",
+        "Tuang telur ke dalam kuali. Taburkan garam, lada hitam and oregano. Masukkan daun bawang di atas telur.",
+        "Letakkan tortilla di atas telur yang masih lembut. Tekan perlahan supaya tortilla melekat with telur. Masak hingga bahagian telur hampir set.",
+        "Terbalikkan tortilla (bahagian tortilla di bawah).",
+        "Letak cheese, basil kering and serbuk bawang putih and tomato.",
+        "Lipat tortilla, tekan sedikit. Masak 1–2 minit sehingga cheese cair and tortilla sedikit rangup.",
+        "Angkat, potong dua jika suka and hidangkan panas-panas."
+      ],
+      "notes": [],
+      "tags": [
+        "Mains"
+      ],
+      "difficulty": "Easy",
+      "base_servings": 4,
+      "rating": 4.8,
+      "volume": "VOL 18",
+      "volumeNum": 18,
+      "status": "published"
+    },
+    {
+      "title": "DAGING MASAK MERAH ALA THAI",
+      "slug": "daging-masak-merah-ala-thai",
+      "category": "Mains",
+      "image": "",
+      "videoUrl": "https://youtu.be/MUOanUrNbOY?si=fLN0S6aUbQsp4Jz2",
+      "ingredientCount": 22,
+      "stepCount": 13,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "name": "Bahan Utama",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "daging lembu (rebus- hiris nipis lawan urat)",
+          "amount": "½",
+          "unit": "kg",
+          "isSection": false
+        },
+        {
+          "name": "Air rebusan daging (secukupnya)",
+          "amount": "",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "garam",
+          "amount": "Secubit",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "pewarna merah (optional)",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "serai (dititik)",
+          "amount": "1",
+          "unit": "batang",
+          "isSection": false
+        },
+        {
+          "name": "daun limau purut (buang urat, carik)",
+          "amount": "8",
+          "unit": "helai",
+          "isSection": false
+        },
+        {
+          "name": "I biji tomato (belah 4)",
+          "amount": "",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "o tangkai cili padi (belah/ketuk)",
+          "amount": "1",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "lobak merah (hiris nipis)",
+          "amount": "½",
+          "unit": "batang",
+          "isSection": false
+        },
+        {
+          "name": "bawang holland (potong wedges)",
+          "amount": "½",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "gula nisan Thai/gula melaka",
+          "amount": "1",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "½ sudu besar sos tiram",
+          "amount": "1",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "sos tomato",
+          "amount": "2",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "sos cili",
+          "amount": "2",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "sos ikan",
+          "amount": "3",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "kicap cair",
+          "amount": "½",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "limau nipis (perahan)",
+          "amount": "1",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "daun ketumbar (tabur- akar masuk dalam kuah)",
+          "amount": "1",
+          "unit": "tangkai",
+          "isSection": false
+        },
+        {
+          "name": "rebus daging (secukupnya)",
+          "amount": "1",
+          "unit": "cawan",
+          "isSection": false
+        },
+        {
+          "name": "Bahan tumis",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "bawang putih (cincang)",
+          "amount": "4",
+          "unit": "ulas",
+          "isSection": false
+        },
+        {
+          "name": "halia (cincang)",
+          "amount": "1",
+          "unit": "inci",
+          "isSection": false
+        },
+        {
+          "name": "cili kering (ikut citarasa)",
+          "amount": "2-3",
+          "unit": "sudu besar",
+          "isSection": false
+        }
+      ],
+      "steps": [
+        "── Cara Memasak ──",
+        "Masukkan daging ke dalam periuk. Tambah air hingga tenggelam daging. Masukkan secubit garam and pewarna jika suka.",
+        "Rebus api sederhana hingga mendidih. Bila mendidih, kecilkan api and reneh 30 minit hingga daging empuk. Daging empuk bila dicucuk garpu tembus senang.",
+        "Tutup api, angkat daging and simpan air rebusan.",
+        "Hiris nipis daging, panaskan minyak secukupnya.",
+        "Goreng daging rebus 1–2 minit sahaja sapai naik warna keperangan. Angkat and ketepikan.",
+        "Dalam kuali yang sama goreng daging. Masukkan serai and bahan tumis. Tumis sehingga pecah minyak and wangi.",
+        "Kemudian, masukkan daging goreng, gaul hingga bersalut pes.",
+        "Seterusnya, masukkan gula nisan Thai, Sos tiram, Sos tomato, Sos cili, Sos ikan and daun limau. Kacau sehingga sebati.",
+        "Masukkan air rebusan daging secukupnya.",
+        "Bila sudah mendidih, masukkan lobak merah, cili padi and akar ketumbar. Reneh api kecil ±5-8 minit hingga kuah pekat. Rasa and suaikan with citarasa.",
+        "Masukkan tomato and bawang holland. Gaul sehingga sebati anggaran 1-2 minti sehingga bawang sedikit layu.",
+        "Akhir sekali, tutup api, tabur daun ketumbar and masukkan perahan limau nipis. Kacau sebatikan semua bahan."
+      ],
+      "notes": [],
+      "tags": [
+        "Mains"
+      ],
+      "difficulty": "Easy",
+      "base_servings": 4,
+      "rating": 4.8,
+      "volume": "VOL 18",
+      "volumeNum": 18,
+      "status": "published"
+    },
+    {
+      "title": "BANANA OATMEAL MUFFIN",
+      "slug": "banana-oatmeal-muffin",
+      "category": "Mains",
+      "image": "",
+      "videoUrl": "https://youtu.be/vaKwckfDQy0?si=XkwXvg3mOrcyxsiG",
+      "ingredientCount": 11,
+      "stepCount": 8,
+      "hasNotes": true,
+      "ingredients": [
+        {
+          "name": "Bahan Utama",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "oat (±200 g) – kisar jadi tepung oat",
+          "amount": "2",
+          "unit": "cawan",
+          "isSection": false
+        },
+        {
+          "name": "serbuk penaik (baking powder)",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "soda bikarbonat",
+          "amount": "½",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "garam",
+          "amount": "¼",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "serbuk kayu manis",
+          "amount": "½",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "pisang masak ranum (300gm) – lenyek",
+          "amount": "3",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "minyak (120 ml)",
+          "amount": "½",
+          "unit": "cawan",
+          "isSection": false
+        },
+        {
+          "name": "gula atau madu (±100 g) - boleh kurangkan gula atau tak letak",
+          "amount": "½",
+          "unit": "cawan",
+          "isSection": false
+        },
+        {
+          "name": "esen vanila",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "telur (gred A/B)",
+          "amount": "2",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "(120gm) campuran kismis / coklat cip / walnut etc",
+          "amount": "1",
+          "unit": "cawan",
+          "isSection": false
+        }
+      ],
+      "steps": [
+        "── Cara Memasak ──",
+        "Panaskan oven pada suhu 375°F (190°C). Alas loyang muffin with kertas cawan.",
+        "Sediakan tepung oat. Jika guna oat biasa, kisar oat menggunakan blender atau food processor sehingga halus.",
+        "Dalam satu mangkuk, campurkan tepung oat, serbuk penaik, soda bikarbonat, garam and serbuk kayu manis. Ketepikan.",
+        "Dalam mangkuk lain, lenyekkan pisang hingga halus. Masukkan gula atau madu, telur, minyak, esen vanila and bahan tambahan (kismis / walnut). Gaul hingga sebati.",
+        "Masukkan bahan kering ke dalam adunan basah. Gaul perlahan sehingga sebati (jangan terlebih gaul).",
+        "Tuangkan adunan ke dalam loyang muffin. Paras 3/4 paper cup. Bakar selama 22–24 minit. Jika tidak guna kismis atau kekacang, bakar sekitar 20-22minit sahaja.",
+        "Sejukkan & sedia dihidang. Biarkan sejuk sedikit sebelum dihidangkan."
+      ],
+      "notes": [
+        "Pastikan pisang betul-betul masak (kulit hitam bertompok) manis semula jadi lebih kuat.",
+        "Masa bakar: Biasanya sama (20–24 minit). Buat ujian lidi pada minit ke-20."
+      ],
+      "tags": [
+        "Mains"
+      ],
+      "difficulty": "Easy",
+      "base_servings": 4,
+      "rating": 4.8,
+      "volume": "VOL 18",
+      "volumeNum": 18,
+      "status": "published"
+    },
+    {
+      "title": "KERABU IKAN BILIS MUDAH",
+      "slug": "kerabu-ikan-bilis-mudah",
+      "category": "Mains",
+      "image": "",
+      "videoUrl": "https://youtu.be/vaKwckfDQy0?si=XkwXvg3mOrcyxsiG",
+      "ingredientCount": 11,
+      "stepCount": 6,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "name": "Bahan Utama",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "ikan bilis (ikut citarasa)",
+          "amount": "2",
+          "unit": "genggam",
+          "isSection": false
+        },
+        {
+          "name": "kuntum bunga kantan – hiris halus",
+          "amount": "2",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "serai – hiris halus",
+          "amount": "1",
+          "unit": "batang",
+          "isSection": false
+        },
+        {
+          "name": "Daun kesum – hiris halus (jika suka)",
+          "amount": "",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "cili padi hijau – hiris",
+          "amount": "3",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "cili padi merah – hiris",
+          "amount": "3",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "/2 biji tomato – potong dadu kecil (jika suka)",
+          "amount": "1",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "kacang panjang - potong halus",
+          "amount": "2",
+          "unit": "tangkai",
+          "isSection": false
+        },
+        {
+          "name": "gula perang (secukup rasa)",
+          "amount": "1",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "/2 sudu besar sos ikan",
+          "amount": "1",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "jus perahan limau nipis (secukup rasa)",
+          "amount": "1½",
+          "unit": "sudu besar",
+          "isSection": false
+        }
+      ],
+      "steps": [
+        "── Cara Memasak ──",
+        "Goreng ikan bilis with api sederhana hingga garing. Angkat, toskan minyak and biarkan sejuk.",
+        "Dalam mangkuk besar, satukan bunga kantan, serai, daun kesum, cili padi, tomato and daun ketumbar.",
+        "Masukkan gula perang, sos ikan and jus limau nipis. Gaul hingga gula larut.",
+        "Masukkan ikan bilis goreng tadi. Gaul perlahan supaya ikan bilis kekal rangup. Pastikan gaul bila dah nak makan. Jangan gaul awal-awal. Nanti soggy.",
+        "Boleh tambah limau / sos ikan ikut citarasa."
+      ],
+      "notes": [],
+      "tags": [
+        "Mains"
+      ],
+      "difficulty": "Easy",
+      "base_servings": 4,
+      "rating": 4.8,
+      "volume": "VOL 18",
+      "volumeNum": 18,
+      "status": "published"
+    },
+    {
+      "title": "HOMEMADE BAGELS",
+      "slug": "homemade-bagels",
+      "category": "Mains",
+      "image": "",
+      "videoUrl": "https://youtu.be/xf6HvLNYDTY?si=Mu94PrPSPPjIv9oy",
+      "ingredientCount": 6,
+      "stepCount": 26,
+      "hasNotes": true,
+      "ingredients": [
+        {
+          "name": "Bahan Doh Bagel",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "Tepung Gandum/roti",
+          "amount": "390",
+          "unit": "g",
+          "isSection": false
+        },
+        {
+          "name": "Air suam",
+          "amount": "270",
+          "unit": "ml",
+          "isSection": false
+        },
+        {
+          "name": "Garam",
+          "amount": "6",
+          "unit": "g",
+          "isSection": false
+        },
+        {
+          "name": "Gula",
+          "amount": "12",
+          "unit": "g",
+          "isSection": false
+        },
+        {
+          "name": "Yis",
+          "amount": "3",
+          "unit": "g",
+          "isSection": false
+        },
+        {
+          "name": "Untuk taburan atas bagel",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "Bijan, garam flakey, bawang putih cincang, biji poppy, dsb.",
+          "amount": "",
+          "unit": "",
+          "isSection": false
+        }
+      ],
+      "steps": [
+        "── A. Sediakan doh bagel ──",
+        "Dalam mangkuk, masukkan air suam (suhu ~35–37°C).",
+        "Tambah gula, garam, and yis. Kacau hingga larut.",
+        "Masukkan tepung and gaul hingga menjadi doh kasar.",
+        "Alih doh ke permukaan bersih, uli hingga doh lembut and kenyal. Uli anggaran 8-10minit. Doh licin and kenyal, tidak melekat pada tangan.",
+        "Bila diregang, doh tidak mudah koyak (windowpane test: tarik doh nipis, boleh nampak bayang tanpa koyak).",
+        "── B. Bahagikan & bentuk doh ──",
+        "Bahagikan doh kepada 8 bahagian sama rata (≈80-83 g setiap satu).",
+        "Bentuk setiap bahagian menjadi bulat kecil, tekan sedikit supaya leper sedikit.",
+        "Taburkan sedikit tepung di atas doh, kemudian tekan ibu jari di tengah untuk buat lubang.",
+        "Regangkan lubang hingga diameter 3–5 cm, pastikan ketebalan doh sekata.",
+        "Susun bagel di atas dulang bersalut kertas minyak atau disapu sedikit minyak.",
+        "Taburkan sedikit tepung atas doh sebelum tutup with plastik cling film.",
+        "── C. Proof doh ──",
+        "Letak doh di tempat hangat 10–15 minit (doh naik ~30%).",
+        "Masukkan dulang ke dalam freezer 15 minit untuk menguatkan struktur doh. Jika letak dalam chiller 30–45 minit (bukan 15 minit).",
+        "Tujuan, perlahankan fermentasi & bagi doh lebih firm supaya senang direbus and bentuk tak lari",
+        "── D. Rebus bagel ──",
+        "Didihkan air dalam periuk besar. Sediakan sudu berlubang.",
+        "Masukkan beberapa bagel sahaja supaya muat and boleh terapung.",
+        "Rebus 1 minit setiap sisi (boleh 2 minit jika nak lebih kenyal).",
+        "Tabur topping pilihan semasa masih basah.",
+        "── E. Bakar bagel ──",
+        "Panaskan oven 220°C (425°F).",
+        "Bakar bagel selama 25 minit atau hingga perang keemasan.",
+        "Alih ke rak penyejuk, biar sejuk sekurang-kurangnya 10 minit."
+      ],
+      "notes": [
+        "Doh yang diuli with baik hasilkan bagel yang gebu and lembut. Kalau guna mixer with hook doh, uli doh pada kelajuan sederhana 5–6 minit sudah memadai."
+      ],
+      "tags": [
+        "Mains"
+      ],
+      "difficulty": "Easy",
+      "base_servings": 4,
+      "rating": 4.8,
+      "volume": "VOL 18",
+      "volumeNum": 18,
+      "status": "published"
+    },
+    {
+      "title": "UDANG MASAK ALA DI RAJA",
+      "slug": "udang-masak-ala-di-raja",
+      "category": "Mains",
+      "image": "",
+      "videoUrl": "https://youtu.be/xf6HvLNYDTY?si=Mu94PrPSPPjIv9oy",
+      "ingredientCount": 17,
+      "stepCount": 11,
+      "hasNotes": true,
+      "ingredients": [
+        {
+          "name": "Bahan Utama",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "udang saiz besar (buang urat, potong misai)",
+          "amount": "1",
+          "unit": "kg",
+          "isSection": false
+        },
+        {
+          "name": "serai (di ketuk)",
+          "amount": "2",
+          "unit": "batang",
+          "isSection": false
+        },
+        {
+          "name": "daun kunyit (hiris halus)",
+          "amount": "3",
+          "unit": "helai",
+          "isSection": false
+        },
+        {
+          "name": "daun pandan simpul (optional)",
+          "amount": "1",
+          "unit": "helai",
+          "isSection": false
+        },
+        {
+          "name": "gula (secukup rasa)",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "serbuk perasa (optional)",
+          "amount": "Sedikit",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "asam keping (secukup rasa)",
+          "amount": "2-3",
+          "unit": "keping",
+          "isSection": false
+        },
+        {
+          "name": "kotak kecil santan / 200ml santan segar (pekat)",
+          "amount": "1",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "air (secukupnya)",
+          "amount": "Sedikit",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Minyak masak (secukupnya)",
+          "amount": "",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Bahan kisar",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "bawang besar (saiz sederhana)",
+          "amount": "5",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "bawang putih",
+          "amount": "5",
+          "unit": "ulas",
+          "isSection": false
+        },
+        {
+          "name": "halia",
+          "amount": "1",
+          "unit": "inci",
+          "isSection": false
+        },
+        {
+          "name": "kunyit hidup",
+          "amount": "1",
+          "unit": "inci",
+          "isSection": false
+        },
+        {
+          "name": "lengkuas",
+          "amount": "1",
+          "unit": "inci",
+          "isSection": false
+        },
+        {
+          "name": "cili hidup merah",
+          "amount": "3",
+          "unit": "batang",
+          "isSection": false
+        },
+        {
+          "name": "cili padi hijau",
+          "amount": "10-15",
+          "unit": "biji",
+          "isSection": false
+        }
+      ],
+      "steps": [
+        "── Cara Memasak ──",
+        "Kisar halus semua bahan kisar.",
+        "Dalam kuali, panaskan minyak masak (lebihkan sedikit).",
+        "Kemudian, tumis bahan kisar, serai and daun pandan. hingga pecah minyak & betul-betul naik bau.",
+        "Pastikan kuah semakin pekat and betul betul pecah minyak.",
+        "Masukkan santan and sedikit air. Kacau perlahan, guna api sederhana kecil (elak santan pecah).",
+        "Kemudian masukkan asam keping. Kacau and renehkan seketika.",
+        "Masukkan gula, garam & serbuk perasa. Rasa dulu kuah pastikan rasa lemak pedas seimbang.",
+        "Seterusnya, masukkan udang, gaul rata. Masak 3–5 minit sahaja (udang cepat masak).",
+        "Akhir sekali, masukkan daun kunyit (hiris halus).",
+        "Tutup api bila udang bertukar merah & kuah pekat berkilat."
+      ],
+      "notes": [
+        "Boleh tambah sedikit minyak kelapa atau ½ sudu kecil minyak sapi masa akhir (optional, tapi naik seri)."
+      ],
+      "tags": [
+        "Mains"
+      ],
+      "difficulty": "Easy",
+      "base_servings": 4,
+      "rating": 4.8,
+      "volume": "VOL 18",
+      "volumeNum": 18,
+      "status": "published"
+    },
+    {
+      "title": "SUP AYAM BERSANTAN ALA THAI (TOM KHA GAI)",
+      "slug": "sup-ayam-bersantan-ala-thai-tom-kha-gai",
+      "category": "Mains",
+      "image": "",
+      "videoUrl": "https://youtu.be/cE3MK0yqEh4?si=xr7a-3PRq9Rgc_9E",
+      "ingredientCount": 14,
+      "stepCount": 6,
+      "hasNotes": true,
+      "ingredients": [
+        {
+          "name": "Bahan Utama",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "stok ayam (tanpa garam Atau Air sahaja)",
+          "amount": "2",
+          "unit": "cawan",
+          "isSection": false
+        },
+        {
+          "name": "santan (250ml) / 1 santan kotak (kecil)",
+          "amount": "1½",
+          "unit": "cawan",
+          "isSection": false
+        },
+        {
+          "name": "garam",
+          "amount": "½",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "±450g isi ayam peha tanpa tulang & kulit – potong kiub ±1 inci",
+          "amount": "",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "serai – bahagian bawah sahaja, diketuk & potong 2 inci",
+          "amount": "1",
+          "unit": "batang",
+          "isSection": false
+        },
+        {
+          "name": "hiris nipis lengkuas",
+          "amount": "12",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "daun limau purut – disiat & diramas",
+          "amount": "5",
+          "unit": "helai",
+          "isSection": false
+        },
+        {
+          "name": "cili padi Thai – diketuk (ikut tahap pedas)",
+          "amount": "1–3",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "sos ikan",
+          "amount": "2",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "gula melaka cincang / gula pasir",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "cendawan tiram – disiat sederhana",
+          "amount": "100",
+          "unit": "g",
+          "isSection": false
+        },
+        {
+          "name": "jus limau nipis",
+          "amount": "2½",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "Daun ketumbar – untuk hiasan",
+          "amount": "",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Nasi jasmine – optional (untuk hidangan)",
+          "amount": "",
+          "unit": "",
+          "isSection": false
+        }
+      ],
+      "steps": [
+        "── Cara Memasak ──",
+        "Didihkan stok ayam. Masukkan garam and ayam. Reneh perlahan ±15 minit sehingga ayam empuk.",
+        "Masukkan santan, serai, lengkuas, daun limau purut, cili padi, cendawan, ½ dari sos ikan and gula. Reneh ±5 minit supaya aroma herba keluar.",
+        "Rasa sup. Tambah baki sos ikan jika perlu. Tutup api.",
+        "Masukkan ±2 sudu besar jus limau nipis. Rasa and laraskan masam/ masin ikut selera.",
+        "Tabur daun ketumbar sebelum hidang."
+      ],
+      "notes": [
+        "Jika guna dada ayam: Potong nipis (½ inci), gaul with 1 sudu besar sos ikan, masukkan ayam paling akhir bersama cendawan, masak sekejap saja (2–3 minit) supaya ayam tak keras, tak perlu garam di awal."
+      ],
+      "tags": [
+        "Mains"
+      ],
+      "difficulty": "Easy",
+      "base_servings": 4,
+      "rating": 4.8,
+      "volume": "VOL 18",
+      "volumeNum": 18,
+      "status": "published"
+    },
+    {
+      "title": "TAUHU BERLAUK CWC",
+      "slug": "tauhu-berlauk-cwc",
+      "category": "Mains",
+      "image": "",
+      "videoUrl": "https://youtu.be/ScjUa5_dW98?si=8roOWpR-oVoaCO2A",
+      "ingredientCount": 13,
+      "stepCount": 13,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "name": "Bahan Utama",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "pcs tauhu telur",
+          "amount": "4",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "pcs tauhu putih (4 ketul jika nak adunan sedikit pekat)",
+          "amount": "3",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "isi ayam",
+          "amount": "200-250",
+          "unit": "gm",
+          "isSection": false
+        },
+        {
+          "name": "pokok daun sup/daun ketumbar – hiris halus",
+          "amount": "1",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "bawang besar – cincang halus",
+          "amount": "1",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "cili padi – hiris halus",
+          "amount": "2",
+          "unit": "tangkai",
+          "isSection": false
+        },
+        {
+          "name": "lobak merah – parut halus",
+          "amount": "½",
+          "unit": "batang",
+          "isSection": false
+        },
+        {
+          "name": "telur",
+          "amount": "3",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "kiub pati ayam",
+          "amount": "1",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "serbuk lada sulah",
+          "amount": "2",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "garam (ikut rasa -boleh skip)",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "Bahan salutan goreng",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "telur",
+          "amount": "2",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "tepung jagung",
+          "amount": "1",
+          "unit": "sudu besar",
+          "isSection": false
+        }
+      ],
+      "steps": [
+        "── Cara Memasak ──",
+        "Sediakan and panaskan kukusan.",
+        "Potong tauhu putih and tauhu telur kecil-kecil.",
+        "Kisar halus tauhu putih, tauhu telur, isi ayam, telur and kiub pati ayam.",
+        "Pindahkan adunan ke dalam mangkuk.",
+        "Masukkan bawang besar, cili padi, lobak merah, daun sup, lada sulah and garam. Gaul sebati.",
+        "Kemudian tuang adunan ke dalam acuan atau loyang",
+        "Kukus selama 15–20 minit sehingga masak with api sederhana.",
+        "Bila dah selesai kukus, ketepikan and sejukkan dahulu sebelum dipotong atau keluarkan dari acuan.",
+        "Untuk bahan salutan, Pukul 2 biji telur bersama sedikit tepung jagung sehingga sebati.",
+        "Panaskan minyak untuk menggoreng secukupnya.",
+        "Celup tauhu yang telah dikukus ke dalam telur, kemudian goreng hingga keperangan.",
+        "Angkat and toskan minyak."
+      ],
+      "notes": [],
+      "tags": [
+        "Mains"
+      ],
+      "difficulty": "Easy",
+      "base_servings": 4,
+      "rating": 4.8,
+      "volume": "VOL 18",
+      "volumeNum": 18,
+      "status": "published"
+    },
+    {
+      "title": "SAMBAL KICAP PADU",
+      "slug": "sambal-kicap-padu",
+      "category": "Sides",
+      "image": "",
+      "videoUrl": "https://youtu.be/ScjUa5_dW98?si=8roOWpR-oVoaCO2A",
+      "ingredientCount": 7,
+      "stepCount": 5,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "name": "Bahan Utama",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "bawang putih",
+          "amount": "4",
+          "unit": "ulas",
+          "isSection": false
+        },
+        {
+          "name": "bawang besar",
+          "amount": "½",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "cili padi (ikut tahap kepedasan)",
+          "amount": "8",
+          "unit": "tangkai",
+          "isSection": false
+        },
+        {
+          "name": "/4 cawan kicap manis",
+          "amount": "3",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "garam",
+          "amount": "½",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "gula",
+          "amount": "1",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "minyak masak",
+          "amount": "Sedikit",
+          "unit": "",
+          "isSection": false
+        }
+      ],
+      "steps": [
+        "── Cara Memasak ──",
+        "Potong kasar bawang putih and bawang besar. Patahkan cili padi.",
+        "Panaskan sedikit minyak, tumis bawang putih, bawang besar and cili padi hingga layu.",
+        "Masukkan bahan tumisan, kicap manis, garam and gula ke dalam blender.",
+        "Kisar kasar. Rasa and sesuaikan with citarasa."
+      ],
+      "notes": [],
+      "tags": [
+        "Sides"
+      ],
+      "difficulty": "Easy",
+      "base_servings": 4,
+      "rating": 4.8,
+      "volume": "VOL 18",
+      "volumeNum": 18,
+      "status": "published"
+    },
+    {
+      "title": "CRAZY NUTTY COOKIES",
+      "slug": "crazy-nutty-cookies",
+      "category": "Desserts",
+      "image": "",
+      "videoUrl": "https://youtu.be/Ey_rHS5S37Y?si=hGlYFNDn-uz4Krh9",
+      "ingredientCount": 3,
+      "stepCount": 8,
+      "hasNotes": true,
+      "ingredients": [
+        {
+          "name": "Bahan Utama",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "Tepung florentin (Bienetta) 500 gram",
+          "amount": "1",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "1/2 cawan kekacang pilihan (di panggang)",
+          "amount": "3",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Paper cup/acuan",
+          "amount": "secukupnya",
+          "unit": "",
+          "isSection": false
+        }
+      ],
+      "steps": [
+        "── Cara Memasak ──",
+        "Panaskan oven pada suhu 180°C – 200°C. Api atas & bawah, kipas OFF.",
+        "Dalam mangkuk yang bersesuaian, masukkan tepung florentine bersama kekacang panggang.",
+        "Gaul sehingga semua bahan sebati.",
+        "Ambil paper cup, masukkan bancuhan tepung and kekacang sehingga menutupi bahagian bawah paper cup (nipis sahaja).",
+        "Susun dalam loyang and bakar selama 10–12 minit atau sehingga cookies kelihatan keperangan.",
+        "Keluarkan dari oven and biarkan sejuk seketika, kemudian barulah keluarkan cookies dari paper cup.",
+        "Simpan dalam bekas kedap udara untuk kekal rangup."
+      ],
+      "notes": [
+        "Jangan letak adunan terlalu tebal nanti tak rangup.",
+        "Kekacang boleh campur almond, bijan, kuaci, pumpkin seed, dll.",
+        "Pastikan cookies betul-betul sejuk sebelum simpan."
+      ],
+      "tags": [
+        "Desserts"
+      ],
+      "difficulty": "Easy",
+      "base_servings": 4,
+      "rating": 4.8,
+      "volume": "VOL 18",
+      "volumeNum": 18,
+      "status": "published"
+    },
+    {
+      "title": "DAGING BERLADO ALA PADANG",
+      "slug": "daging-berlado-ala-padang",
+      "category": "Mains",
+      "image": "",
+      "videoUrl": "https://youtu.be/Ey_rHS5S37Y?si=hGlYFNDn-uz4Krh9",
+      "ingredientCount": 16,
+      "stepCount": 16,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "name": "Bahan Utama",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "daging lembu (bahagian pejal – batang pinang / topside)",
+          "amount": "500",
+          "unit": "gm",
+          "isSection": false
+        },
+        {
+          "name": "halia - kisar kasar",
+          "amount": "1",
+          "unit": "inci",
+          "isSection": false
+        },
+        {
+          "name": "serai - kisar kasar",
+          "amount": "1",
+          "unit": "batang",
+          "isSection": false
+        },
+        {
+          "name": "bawang putih - kisar kasar",
+          "amount": "2",
+          "unit": "ulas",
+          "isSection": false
+        },
+        {
+          "name": "daun salam (kering atau fresh)",
+          "amount": "3",
+          "unit": "helai",
+          "isSection": false
+        },
+        {
+          "name": "serbuk ketumbar",
+          "amount": "1",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "Garam",
+          "amount": "secukup rasa",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Gula",
+          "amount": "secukup rasa",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Minyak",
+          "amount": "secukupnya",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Air",
+          "amount": "secukupnya (untuk rebus)",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Bahan Tumisan",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "cili merah besar",
+          "amount": "5",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "cili padi merah (ikut tahap pedas)",
+          "amount": "8-10",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "tomato merah masak",
+          "amount": "1",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "bawang merah kecil/ 3 biji bawang besar",
+          "amount": "6",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "bawang putih",
+          "amount": "3",
+          "unit": "ulas",
+          "isSection": false
+        },
+        {
+          "name": "Goreng seketika. Kisar kasar semua bahan di atas tanpa air, jangan terlalu halus.",
+          "amount": "",
+          "unit": "",
+          "isSection": false
+        }
+      ],
+      "steps": [
+        "── Cara Memasak ──",
+        "Potong daging nipis melawan urat.",
+        "Masukkan daging ke dalam periuk bersama, Halia, Serai, Bawang putih, Daun salam, Serbuk ketumbar and Sedikit garam.",
+        "Masukkan air hingga menutup daging.",
+        "Rebus api sederhana 30-40 minit hingga daging hampir empuk.",
+        "Bila empuk, asingkan daging & simpan ±½ cawan air rebusan. Sejukkan daging seketika.",
+        "Kemudian, ketukkan daging sehingga leper, jangan sampai pecah.",
+        "Panaskan minyak sederhana banyak. Goreng daging rebus tadi hingga permukaan garing keperangan. Jangan terlalu kering. Angkat & ketepikan.",
+        "Dalam minyak yang sama, masukkan semua bahan tumis yang di potong kasar, gorengkan seketika sehingga bawang and cili lembut. Angkat and sejukkan seketika.",
+        "Kemudian, boleh kisar kasar atau lenyek with cobek.",
+        "Seterusnya, guna minyak yang sama, masak bahan tumis hingga sambal kering and bau cili mentah hilang. Minyak mula naik.",
+        "Tambah sedikit air rebusan daging jika terlalu kering.",
+        "Perasakan with garam secukup rasa and gula untuk imbang rasa pedas.",
+        "Rasa and suaikan with citarasa. Masukkan daging goreng ke dalam sambal.",
+        "Gaul rata hingga sambal melekat pada daging. Masak api perlahan selama 5 minit.",
+        "Bila semua rasa and sesuai with citarasa, boleh tutup api and rehatkan selama 10–15 minit sebelum hidang untuk rasa yang lebih sebati."
+      ],
+      "notes": [],
+      "tags": [
+        "Mains"
+      ],
+      "difficulty": "Easy",
+      "base_servings": 4,
+      "rating": 4.8,
+      "volume": "VOL 18",
+      "volumeNum": 18,
+      "status": "published"
+    },
+    {
+      "title": "SAMBAL IKAN BILIS GARING",
+      "slug": "sambal-ikan-bilis-garing",
+      "category": "Sides",
+      "image": "",
+      "videoUrl": "https://youtu.be/JHDt2wbmmG4?si=CuylFvlxXZMZvAHB",
+      "ingredientCount": 6,
+      "stepCount": 19,
+      "hasNotes": true,
+      "ingredients": [
+        {
+          "name": "Bahan Utama",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "bawang merah",
+          "amount": "150",
+          "unit": "g",
+          "isSection": false
+        },
+        {
+          "name": "ikan bilis",
+          "amount": "100",
+          "unit": "g",
+          "isSection": false
+        },
+        {
+          "name": "cili kering (ikut citarasa)",
+          "amount": "10-15",
+          "unit": "tangkai",
+          "isSection": false
+        },
+        {
+          "name": "gula",
+          "amount": "1",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "Garam",
+          "amount": "secukupnya",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Minyak masak",
+          "amount": "secukupnya untuk menggoreng",
+          "unit": "",
+          "isSection": false
+        }
+      ],
+      "steps": [
+        "── A. Bawang Goreng ──",
+        "Gaul bawang yang dihiris with ½ sudu kecil garam.",
+        "Panaskan minyak yang banyak.",
+        "Goreng bawang hingga keemasan & rangup.",
+        "Angkat and toskan. Ketepikan.",
+        "── B. Ikan Bilis Garing ──",
+        "Pastikan bilis betul-betul kering.",
+        "Goreng hingga garing & keperangan.",
+        "Angkat and toskan minyak.",
+        "── C. Goreng Cili & Kisar Halus ──",
+        "Gunakan minyak lebihan gorengan tadi.",
+        "Goreng cili with api sederhana kecil.",
+        "Goreng anggaran 1-2minit sahaja. Kemudian angkat and toskan minyak.",
+        "Masukkan cili yang telah di goreng ke dalam chopper atau pengisar kering bersama gula and garam.",
+        "Kemudian, kisar sehingga semua bahan sebati and halus.",
+        "── D. Campurkan ──",
+        "Dalam mangkuk yang bersesuaian, campurkan semua bahan yang telah di toskan.",
+        "Kacau sebati.",
+        "Rasa and sesuaikan with citarasa."
+      ],
+      "notes": [
+        "Pastikan semua bahan betul-betul kering sebelum gaul.",
+        "Jangan gaul masa sambal masih terlalu panas (nanti lemau).",
+        "Simpan dalam bekas kedap udara bila dah sejuk sepenuhnya."
+      ],
+      "tags": [
+        "Sides"
+      ],
+      "difficulty": "Easy",
+      "base_servings": 4,
+      "rating": 4.8,
+      "volume": "VOL 18",
+      "volumeNum": 18,
+      "status": "published"
+    },
+    {
+      "title": "CREAMY TOMYAM PASTA 2.0",
+      "slug": "creamy-tomyam-pasta-2-0",
+      "category": "Mains",
+      "image": "",
+      "videoUrl": "https://youtu.be/hqUkBPKV3Vk?si=l4SbhfLPyPSvoMwH",
+      "ingredientCount": 18,
+      "stepCount": 18,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "name": "Bahan Utama",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "spaghetti (rebus bersama sedikit garam hingga al dente)",
+          "amount": "500",
+          "unit": "g",
+          "isSection": false
+        },
+        {
+          "name": "bawang Holland (potong dadu)",
+          "amount": "1",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "bawang putih (potong dadu)",
+          "amount": "4",
+          "unit": "ulas",
+          "isSection": false
+        },
+        {
+          "name": "udang (buang kulit & bersihkan)",
+          "amount": "150",
+          "unit": "g",
+          "isSection": false
+        },
+        {
+          "name": "mentega (±2 sudu besar, optional)",
+          "amount": "20",
+          "unit": "g",
+          "isSection": false
+        },
+        {
+          "name": "minyak zaitun",
+          "amount": "20",
+          "unit": "g",
+          "isSection": false
+        },
+        {
+          "name": "daun limau purut (carik dan buang tulang tengah)",
+          "amount": "3",
+          "unit": "helai",
+          "isSection": false
+        },
+        {
+          "name": "kiub tomyam atau 2 sudu besar pes tomyam",
+          "amount": "2",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "tomato (potong dadu)",
+          "amount": "1",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "garam",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "serbuk pati ayam / 1 kiub ayam",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "chilli flakes",
+          "amount": "1",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "cili padi (hiris halus, optional)",
+          "amount": "3",
+          "unit": "batang",
+          "isSection": false
+        },
+        {
+          "name": "baby spinach",
+          "amount": "Segenggam",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "cooking cream atau santan",
+          "amount": "200",
+          "unit": "g",
+          "isSection": false
+        },
+        {
+          "name": "air",
+          "amount": "500",
+          "unit": "ml",
+          "isSection": false
+        },
+        {
+          "name": "air rebusan pasta",
+          "amount": "5",
+          "unit": "sudu makan",
+          "isSection": false
+        },
+        {
+          "name": "Perahan air limau nipis (optional)",
+          "amount": "",
+          "unit": "",
+          "isSection": false
+        }
+      ],
+      "steps": [
+        "── Cara Memasak ──",
+        "Panaskan minyak zaitun and mentega (jika guna) dalam kuali.",
+        "Tumis bawang putih and bawang Holland hingga naik bau and layu.",
+        "Masukkan daun limau purut and pes/kiub tomyam. Tumis hingga sebati and pes mula pecah minyak.",
+        "Masukkan 500ml air, tomato and pati ayam. Kacau rata.",
+        "Masukkan cooking cream atau santan. Biarkan kuah mendidih perlahan.",
+        "Masukkan udang and garam. Masak hingga udang bertukar warna and masak sempurna.",
+        "Bila kuah mula memekat, masukkan pasta yang telah direbus bersama 5 sudu makan air rebusan pasta. Gaul hingga pasta bersalut rata with kuah. Jika terlalu pekat, boleh tambah sedikit air.",
+        "Masukkan cili padi atau chilli flakes (ikut tahap kepedasan).",
+        "Akhir sekali, masukkan baby spinach and gaul hingga layu.",
+        "Tutup api and perahkan sedikit air limau nipis jika suka untuk rasa lebih segar.",
+        "── Cara Buat Kuah Dulu (Asing Pasta) ──",
+        "Ikut langkah asal sampai kuah siap: Tumis bawang putih & bawang Holland. Masukkan daun limau purut & pes tomyam. Masukkan air, tomato, pati ayam, cooking cream, udang & garam.",
+        "Berhenti setakat ini. Jangan masuk pasta lagi.",
+        "Panaskan semula kuah.",
+        "Tambah sedikit air rebusan pasta jika kuah terlalu pekat.",
+        "Masukkan pasta yang sudah direbus. Gaul hingga sebati and biar 1–2 minit supaya pasta serap kuah.",
+        "Akhir sekali baru masuk spinach & perahan limau."
+      ],
+      "notes": [],
+      "tags": [
+        "Mains"
+      ],
+      "difficulty": "Easy",
+      "base_servings": 4,
+      "rating": 4.8,
+      "volume": "VOL 18",
+      "volumeNum": 18,
+      "status": "published"
+    },
+    {
+      "title": "EASY LOVE COOKIES",
+      "slug": "easy-love-cookies",
+      "category": "Desserts",
+      "image": "",
+      "videoUrl": "https://youtu.be/RBKMbV5XvGw?si=t97xysKizKZ1u6mj",
+      "ingredientCount": 4,
+      "stepCount": 11,
+      "hasNotes": true,
+      "ingredients": [
+        {
+          "name": "Bahan Utama",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "butter/ mentega (½ cup), lembutkan",
+          "amount": "113",
+          "unit": "g",
+          "isSection": false
+        },
+        {
+          "name": "gula (¼ cup + 1 tbsp)",
+          "amount": "67",
+          "unit": "g",
+          "isSection": false
+        },
+        {
+          "name": "tepung gandum (1 cup + 2 tbsp)",
+          "amount": "146",
+          "unit": "g",
+          "isSection": false
+        },
+        {
+          "name": "jem (±2 tbsp – strawberry, raspberry, apricot atau ikut suka)",
+          "amount": "40",
+          "unit": "g",
+          "isSection": false
+        }
+      ],
+      "steps": [
+        "── Cara Memasak ──",
+        "Panaskan oven pada suhu 170-175°C selama 10minit. Api atas bawah. Off kipas.",
+        "Sediakan Doh. Dalam mangkuk, pukul butter lembut and gula menggunakan whisk hingga warna jadi lebih cerah and tekstur berkrim.",
+        "Masukkan tepung and gaul perlahan menggunakan spatula sehingga menjadi doh lembut. Doh mungkin nampak sedikit berderai (crumbly), itu normal.",
+        "Ambil doh lebih kurang ½ sudu besar setiap satu. Akan dapat anggaran ±20 biji cookies.",
+        "Bulatkan doh and susun atas dulang pembakar.",
+        "Gunakan ibu jari atau belakang sudu untuk tekan bentuk hati di tengah doh.",
+        "Letakkan sedikit jem di tengah setiap cookies.",
+        "Bakar pada suhu 170-175°C (350°F) selama 18–20 minit, atau sehingga bahagian tepi bertukar keperangan ringan.",
+        "Selepas bakar. Biarkan cookies atas dulang selama 2 minit.",
+        "Alihkan ke cooling rack and biarkan sejuk sepenuhnya. Cookies akan menjadi lebih rangup selepas sejuk."
+      ],
+      "notes": [
+        "Gunakan butter lembut, bukan butter cair.",
+        "Jangan overmix doh.",
+        "Jika doh terlalu lembut, sejukkan dalam peti ais selama 10 minit.",
+        "Jangan isi jem terlalu banyak.",
+        "Kacau and tapis jem supaya tekstur lebih halus and mudah diisi.",
+        "Selepas bakar, boleh tambah sedikit jem di tengah jika bentuk hati kurang jelas."
+      ],
+      "tags": [
+        "Desserts"
+      ],
+      "difficulty": "Easy",
+      "base_servings": 4,
+      "rating": 4.8,
+      "volume": "VOL 18",
+      "volumeNum": 18,
+      "status": "published"
+    },
+    {
+      "title": "SOTONG KAM HEONG",
+      "slug": "sotong-kam-heong",
+      "category": "Mains",
+      "image": "",
+      "videoUrl": "",
+      "ingredientCount": 16,
+      "stepCount": 10,
+      "hasNotes": true,
+      "ingredients": [
+        {
+          "name": "Bahan Utama",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "sotong (bersihkan & potong cincin)",
+          "amount": "350",
+          "unit": "g",
+          "isSection": false
+        },
+        {
+          "name": "tepung jagung",
+          "amount": "½",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "bawang putih (cincang)",
+          "amount": "4",
+          "unit": "ulas",
+          "isSection": false
+        },
+        {
+          "name": "bawang merah (hiris)",
+          "amount": "6",
+          "unit": "ulas",
+          "isSection": false
+        },
+        {
+          "name": "udang kering (rendam & tumbuk kasar)",
+          "amount": "1",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "serai (titik)",
+          "amount": "1",
+          "unit": "batang",
+          "isSection": false
+        },
+        {
+          "name": "cili padi (hiris)",
+          "amount": "3-5",
+          "unit": "tangkai",
+          "isSection": false
+        },
+        {
+          "name": "serbuk kari daging/Ayam",
+          "amount": "1½",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "daun kari",
+          "amount": "5",
+          "unit": "tangkai",
+          "isSection": false
+        },
+        {
+          "name": "cili kisar",
+          "amount": "1",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "kicap pekat",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "light soy sauce (kicap cair)",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "gula",
+          "amount": "1",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "sos tiram",
+          "amount": "1",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "air",
+          "amount": "25",
+          "unit": "ml",
+          "isSection": false
+        },
+        {
+          "name": "Minyak masak",
+          "amount": "secukupnya",
+          "unit": "",
+          "isSection": false
+        }
+      ],
+      "steps": [
+        "── Cara Memasak ──",
+        "Sediakan sotong. Cuci bersih and gaulkan with tepung jagung. Ketepikan seketika.",
+        "Kemudian, sediakan bahan tumis. Cincang halus bawang merah and bawang putih. Ketepikan.",
+        "Hiris halus cili padi.",
+        "Seterusnya, ambil mangkuk yang bersesuaian campurkan, serbuk kari, air, sos tiram, kicap cair and kicap pekat.",
+        "Panaskan minyak. Goreng sotong sekejap (±1 minit sahaja) with api besar. Jangan lama. Angkat & ketepikan.",
+        "Guna minyak yang sama, tumis bawang putih, bawang merah, udang kering, serai and daun kari sampai garing & naik bau.",
+        "Masukkan cili padi and cili kisar. Tumis sampai pecah minyak.",
+        "Masukkan bancuhan serbuk kari and bahan sos tadi. Kacau sebati supaya tak hangus.",
+        "Akhir sekali masukkan sotong. Gaul rata and masak lebih kurang 2 minit sahaja with api besar."
+      ],
+      "notes": [
+        "Total masa sotong atas api tak lebih 3–4 minit (1 minit goreng + 2 minit akhir). Lagi cepat, lagi lembut & juicy.",
+        "Kalau nak lebih “kick”, boleh tambah lagi cili padi.",
+        "Sedap makan panas-panas with nasi putih."
+      ],
+      "tags": [
+        "Mains"
+      ],
+      "difficulty": "Easy",
+      "base_servings": 4,
+      "rating": 4.8,
+      "volume": "VOL 18",
+      "volumeNum": 18,
+      "status": "published"
+    },
+    {
+      "title": "SAYUR KAILAN TUMIS SEMPOI",
+      "slug": "sayur-kailan-tumis-sempoi",
+      "category": "Sides",
+      "image": "",
+      "videoUrl": "",
+      "ingredientCount": 10,
+      "stepCount": 6,
+      "hasNotes": true,
+      "ingredients": [
+        {
+          "name": "Bahan Utama",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "baby kailan (potong 2–3 inci, cuci & toskan betul-betul)",
+          "amount": "1",
+          "unit": "ikat",
+          "isSection": false
+        },
+        {
+          "name": "/2 batang lobak merah (potong ikut citarasa)",
+          "amount": "1",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "cili hidup (hiris)",
+          "amount": "1",
+          "unit": "batang",
+          "isSection": false
+        },
+        {
+          "name": "bawang putih (cincang kasar)",
+          "amount": "4",
+          "unit": "ulas",
+          "isSection": false
+        },
+        {
+          "name": "sos tiram",
+          "amount": "2",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "kicap cair",
+          "amount": "2",
+          "unit": "sudu kecil",
+          "isSection": false
+        },
+        {
+          "name": "Air",
+          "amount": "secukupnya",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Garam",
+          "amount": "secukup rasa",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "lada sulah",
+          "amount": "Sedikit",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "minyak masak",
+          "amount": "2",
+          "unit": "sudu besar",
+          "isSection": false
+        }
+      ],
+      "steps": [
+        "── Cara Memasak ──",
+        "Panaskan minyak, tumis bawang putih sampai naik bau.",
+        "Masukkan lobak merah dahulu. Kemudian, masukkan sos tiram, kicap cair and air.",
+        "Biarkan mereneh seketika. Seterusnya masukkan kailan and cili hidup. Set api besar, gaul sebati.",
+        "Perasakan garam & lada sulah.",
+        "Masak 1–2 minit sahaja supaya sayur kekal rangup and hijau cantik."
+      ],
+      "notes": [
+        "Jangan tutup kuali lama-lama, nanti keluar air & sayur jadi lembik. Kalau boleh terus hidangkan."
+      ],
+      "tags": [
+        "Sides"
+      ],
+      "difficulty": "Easy",
+      "base_servings": 4,
+      "rating": 4.8,
+      "volume": "VOL 18",
+      "volumeNum": 18,
+      "status": "published"
+    },
+    {
+      "title": "SAMBAL GORENG JAWA VERSI SIMPLE",
+      "slug": "sambal-goreng-jawa-versi-simple",
+      "category": "Sides",
+      "image": "",
+      "videoUrl": "https://youtu.be/jHwU4x9dSgw?si=x3tiYL4s6ZyrDyJq",
+      "ingredientCount": 23,
+      "stepCount": 9,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "name": "Bahan Kisar",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "bawang merah/ 1 biji bawang besar",
+          "amount": "3",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "bawang putih",
+          "amount": "3",
+          "unit": "ulas",
+          "isSection": false
+        },
+        {
+          "name": "halia",
+          "amount": "1",
+          "unit": "inci",
+          "isSection": false
+        },
+        {
+          "name": "lengkuas",
+          "amount": "1",
+          "unit": "inci",
+          "isSection": false
+        },
+        {
+          "name": "cili padi",
+          "amount": "4",
+          "unit": "tangkai",
+          "isSection": false
+        },
+        {
+          "name": "/2 cawan ikan bilis",
+          "amount": "1",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "/2 cawan air",
+          "amount": "1",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Bahan digoreng",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "tauhu (potong kiub)",
+          "amount": "2",
+          "unit": "ketul",
+          "isSection": false
+        },
+        {
+          "name": "kentang (potong kiub)",
+          "amount": "2",
+          "unit": "biji",
+          "isSection": false
+        },
+        {
+          "name": "tempe (potong kiub)",
+          "amount": "2",
+          "unit": "keping",
+          "isSection": false
+        },
+        {
+          "name": "/2 sudu kecil garam",
+          "amount": "1",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "/2 sudu kecil serbuk kunyit",
+          "amount": "1",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Bahan lain",
+          "amount": "",
+          "unit": "",
+          "isSection": true
+        },
+        {
+          "name": "serai (dititik)",
+          "amount": "1",
+          "unit": "batang",
+          "isSection": false
+        },
+        {
+          "name": "kacang panjang (potong 2 inci)",
+          "amount": "6",
+          "unit": "batang",
+          "isSection": false
+        },
+        {
+          "name": "cili merah (hiris)",
+          "amount": "2",
+          "unit": "tangkai",
+          "isSection": false
+        },
+        {
+          "name": "fucuk (rendam lembut)",
+          "amount": "1",
+          "unit": "genggam",
+          "isSection": false
+        },
+        {
+          "name": "suhun (rendam lembut)",
+          "amount": "1",
+          "unit": "genggam",
+          "isSection": false
+        },
+        {
+          "name": "air asam jawa",
+          "amount": "4",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "udang (saiz sederhana)",
+          "amount": "5",
+          "unit": "ekor",
+          "isSection": false
+        },
+        {
+          "name": "santan pekat (1 mangkuk)",
+          "amount": "100",
+          "unit": "ml",
+          "isSection": false
+        },
+        {
+          "name": "kicap manis",
+          "amount": "2-3",
+          "unit": "sudu besar",
+          "isSection": false
+        },
+        {
+          "name": "Garam",
+          "amount": "secukupnya",
+          "unit": "",
+          "isSection": false
+        },
+        {
+          "name": "Gula melaka (kurangkan sebab ada kicap)",
+          "amount": "",
+          "unit": "",
+          "isSection": false
+        }
+      ],
+      "steps": [
+        "── Cara Memasak ──",
+        "Gaul tauhu, kentang & tempe dengan garam dan kunyit.",
+        "Panaskan minyak, goreng hingga keperangan. Angkat & toskan.",
+        "Panaskan sedikit minyak. Tumis bahan kisar sehingga garing & pecah minyak (±5–7 minit).",
+        "Masukkan serai, kacau sampai wangi.",
+        "Masukkan tauhu, kentang, tempe goreng, fucuk & suhun. Masukkan air asam dan gaul rata.",
+        "Masukkan kicap. Gaul sampai semua bahan bersalut dan warna jadi cantik.",
+        "Masukkan kacang panjang, santan, udang, dan cili merah. Perasakan dengan garam & sedikit gula.",
+        "Masak hingga udang masak dan kuah jadi sedikit pekat & berlemak. Siap untuk dihidang."
+      ],
+      "notes": [],
+      "tags": [
+        "Sides"
+      ],
+      "difficulty": "Easy",
+      "base_servings": 4,
+      "rating": 4.8,
+      "volume": "VOL 18",
+      "volumeNum": 18,
+      "status": "published"
+    }
+  ]
+}

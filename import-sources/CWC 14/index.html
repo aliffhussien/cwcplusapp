@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cooking With Cattitude — Volume 14 (Gallery)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="logo">
+        <img src="image/CWC-icon.svg" alt="Cooking With Cattitude logo" />
+      </div>
+    </div>
+  </div>
+  <header class="top">
+    <h1>Cooking With Cattitude — Volume 14</h1>
+    <div class="controls">
+      <input id="search" placeholder="Search title or tag..." />
+      <select id="category">
+        <option value="all">All categories</option>
+      </select>
+    </div>
+  </header>
+
+  <main>
+    <section id="grid" class="grid" aria-live="polite"></section>
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-inner">
+      <button id="modal-close" class="close">×</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+
+  <script src="scripts.js"></script>
+</body>
+</html>
