@@ -113,7 +113,7 @@ function useRecipesState(user) {
 
         const fetch = async () => {
             setIsLoading(true);
-            const { data, error } = await supabase.from('recipes').select(cols).order('created_at', { ascending: false }).limit(200);
+            const { data, error } = await supabase.from('recipes').select(cols).order('created_at', { ascending: false }).limit(500);
             if (cancelled) return;
             if (error) {
                 try { 

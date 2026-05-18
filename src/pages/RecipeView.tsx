@@ -56,9 +56,24 @@ export default function RecipeView() {
         if (recipesLoading) return;
         setLoading(true);
         const found = (publicRecipes || []).find((r: any) => r.id?.toString() === id?.toString());
-        setRecipe(found || null);
-        setHasAccess(hasAccessToRecipe(found));
-        setLoading(false);
+        if (found) {
+            setRecipe(found);
+            setHasAccess(hasAccessToRecipe(found));
+            setLoading(false);
+        } else {
+            // Fallback: recipe not in cached list — fetch directly by ID
+            supabase
+                .from('recipes')
+                .select('*')
+                .eq('id', id)
+                .eq('status', 'published')
+                .maybeSingle()
+                .then(({ data }) => {
+                    setRecipe(data || null);
+                    setHasAccess(hasAccessToRecipe(data));
+                    setLoading(false);
+                });
+        }
     }, [id, publicRecipes, recipesLoading]);
 
     useEffect(() => {
