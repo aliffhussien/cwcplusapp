@@ -432,7 +432,7 @@ function useNotificationsState(session) {
         sync();
         const target = notifications.find(n => n.id === id);
         if (target?.user_id) {
-            try { await supabase.from('notifications').update({ read_status: true }).eq(id); } catch { /* Ignore */ }
+            try { await supabase.from('notifications').update({ read_status: true }).eq('id', id); } catch { /* Ignore */ }
         }
     };
 

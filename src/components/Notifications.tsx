@@ -67,10 +67,10 @@ export default function Notifications() {
     const unreadCount = (notifications || []).filter((n: any) => !n.read_status).length;
 
     useEffect(() => {
-        if (unreadCount === 0) return;
+        if (loading || unreadCount === 0) return;
         const timer = setTimeout(() => markAllAsRead(), 2000);
         return () => clearTimeout(timer);
-    }, []); 
+    }, [loading, unreadCount, markAllAsRead]); 
 
     if (loading) return <div className="min-h-screen bg-base flex items-center justify-center"><div className="w-8 h-8 border-2 border-accent/30 border-t-accent rounded-full animate-spin" /></div>;
 

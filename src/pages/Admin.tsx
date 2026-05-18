@@ -104,7 +104,13 @@ export default function CWCPlusCommandCenter() {
   };
 
   const sendBroadcast = async (data: any) => {
-    const { error } = await supabase.from('notifications').insert([{ ...data, user_id: null, created_at: new Date().toISOString() }]);
+    const payload = { ...data };
+    if (!payload.scheduled_post_date) {
+      delete payload.scheduled_post_date;
+    } else {
+      payload.scheduled_post_date = new Date(payload.scheduled_post_date).toISOString();
+    }
+    const { error } = await supabase.from('notifications').insert([{ ...payload, user_id: null, created_at: new Date().toISOString() }]);
     if (error) throw error;
     fetchBroadcasts();
   };
