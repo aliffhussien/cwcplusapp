@@ -138,7 +138,8 @@ function useRecipesState(user) {
     }, []);
 
     const addRecipe = async (newRecipe) => {
-        const { data, error } = await supabase.from('recipes').insert([newRecipe]).select();
+        const { cover, hero, tierRequired, isFeatured, ...cleanRecipe } = newRecipe;
+        const { data, error } = await supabase.from('recipes').insert([cleanRecipe]).select();
         if (error) throw error;
         if (data?.[0]) {
             setRecipes(prev => {
@@ -151,7 +152,8 @@ function useRecipesState(user) {
     };
 
     const updateRecipe = async (id, updates) => {
-        const { error } = await supabase.from('recipes').update(updates).eq('id', id);
+        const { cover, hero, tierRequired, isFeatured, ...cleanUpdates } = updates;
+        const { error } = await supabase.from('recipes').update(cleanUpdates).eq('id', id);
         if (error) throw error;
         setRecipes(prev => {
             const u = prev.map(r => r.id === id ? { ...r, ...updates, isFeatured: updates.is_featured ?? r.isFeatured, tierRequired: updates.tier_required ?? r.tierRequired } : r);
