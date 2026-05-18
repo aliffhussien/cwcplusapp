@@ -42,6 +42,9 @@ function toRow(recipe: NormalizedRecipe) {
     base_servings: recipe.base_servings,
     rating:        recipe.rating,
     is_featured:   false,
+    cover_image_id: (recipe as any).cover_image_id || (recipe as any).coverImageId || null,
+    hero_image:     recipe.image || null,
+    hero_image_id:  (recipe as any).cover_image_id || (recipe as any).coverImageId || null,
   };
 }
 

@@ -140,7 +140,12 @@ export default function RecipeEditor({ recipe, onSave, onCancel, onDelete }: any
             </div>
 
             <MediaPickerModal isOpen={isPickerOpen} onClose={() => setIsPickerOpen(false)} onSelect={(sel: any) => {
-                if (pickerTarget === 'cover') { set('cover_image_id', sel.id); set('image', sel.hero_url || sel.url); } 
+                if (pickerTarget === 'cover') { 
+                    set('cover_image_id', sel.id); 
+                    set('hero_image_id', sel.id); 
+                    set('image', sel.hero_url || sel.url); 
+                    set('hero_image', sel.hero_url || sel.url); 
+                } 
                 else { set('video_id', sel.id); set('video_url', sel.url); set('video', sel.url); }
                 setIsPickerOpen(false);
             }} contentId={recipe.id} contentType={pickerTarget === 'cover' ? 'image' : 'video'} />
