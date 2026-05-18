@@ -152,7 +152,7 @@ function useRecipesState(user) {
     };
 
     const updateRecipe = async (id, updates) => {
-        const { cover, hero, tierRequired, isFeatured, ...cleanUpdates } = updates;
+        const { id: _, cover, hero, tierRequired, isFeatured, ...cleanUpdates } = updates;
         const { error } = await supabase.from('recipes').update(cleanUpdates).eq('id', id);
         if (error) throw error;
         setRecipes(prev => {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PlayCircle, Image as ImageIcon, Save, X, Eye, EyeOff, Star, Tag, Loader2, Trash2, Plus } from 'lucide-react';
+import { PlayCircle, Image as ImageIcon, Save, X, XCircle, Eye, EyeOff, Star, Tag, Loader2, Trash2, Plus } from 'lucide-react';
 import { getMediaAssetUrl } from '../../lib/mediaUtils';
 import MediaPickerModal from './MediaPickerModal';
 import RecipeEditorIngredients from './RecipeEditorIngredients';
@@ -30,25 +30,60 @@ export default function RecipeEditor({ recipe, onSave, onCancel, onDelete }: any
     const [isSaving, setIsSaving] = useState(false);
     const [isPickerOpen, setIsPickerOpen] = useState(false);
     const [pickerTarget, setPickerTarget] = useState<string | null>(null);
+    const [error, setError] = useState<string | null>(null);
 
     const set = (key: string, val: any) => setFormData((prev: any) => ({ ...prev, [key]: val }));
 
     const handleSubmit = async () => {
         setIsSaving(true);
-        const data = {
-            ...formData,
-            ingredients: (formData.ingredients || []).filter((i: any) => i?.name?.trim()),
-            steps: (formData.steps || []).filter((s: string) => s?.trim()),
-            notes: JSON.stringify(normalizeNotes(formData.notes.join ? formData.notes : [formData.notes]).filter((s: string) => s?.trim())),
-            tags: (formData.tags || '').split(',').map((t: string) => t.trim()).filter(Boolean),
-            is_featured: formData.isFeatured ?? false,
-            base_servings: parseInt(formData.base_servings) || 2,
-            scheduled_post_date: formData.scheduled_post_date || null,
-            rating: formData.rating ? parseFloat(formData.rating) : null,
-        };
-        delete data.isFeatured;
-        await onSave(data);
-        setIsSaving(false);
+        setError(null);
+        try {
+            // Construct payload with strictly whitelisted database columns
+            const payload: Record<string, any> = {
+                title: formData.title,
+                author: formData.author,
+                time: formData.time,
+                image: formData.image,
+                category: formData.category,
+                difficulty: formData.difficulty,
+                status: formData.status,
+                volume: formData.volume,
+                cover_image_id: formData.cover_image_id || null,
+                hero_image: formData.hero_image || null,
+                hero_image_id: formData.hero_image_id || null,
+
+                // Fix video — save video URL into existing column "video"
+                video: formData.video_url || formData.video || null,
+
+                // Computed/normalized JSONB columns
+                ingredients: (formData.ingredients || []).filter((i: any) => i?.name?.trim()),
+                steps: (formData.steps || []).filter((s: string) => s?.trim()),
+                tags: (formData.tags || '').split(',').map((t: string) => t.trim()).filter(Boolean),
+                
+                // Remap fields to snake_case database columns
+                is_featured: formData.isFeatured ?? false,
+                tier_required: formData.tier_required || formData.tierRequired || 'Free',
+                
+                // Notes column (text format with stringified array)
+                notes: JSON.stringify(normalizeNotes(formData.notes.join ? formData.notes : [formData.notes]).filter((s: string) => s?.trim())),
+                
+                // Numeric and type casting
+                base_servings: parseInt(formData.base_servings) || 2,
+                scheduled_post_date: formData.scheduled_post_date || null,
+                rating: formData.rating ? parseFloat(formData.rating) : null,
+            };
+
+            // Call context save function, passing the ID alongside the whitelisted payload
+            await onSave({
+                id: formData.id,
+                ...payload
+            });
+        } catch (err: any) {
+            console.error('Error saving recipe:', err);
+            setError(err?.message || String(err));
+        } finally {
+            setIsSaving(false);
+        }
     };
 
     const addNote = () => set('notes', [...(formData.notes || []), '']);
@@ -72,6 +107,16 @@ export default function RecipeEditor({ recipe, onSave, onCancel, onDelete }: any
                     </button>
                 </div>
             </div>
+
+            {error && (
+                <div className="bg-danger/10 border border-danger/30 rounded-2xl p-4 flex items-center justify-between gap-3 text-danger text-xs font-semibold animate-pulse">
+                    <div className="flex items-center gap-2">
+                        <XCircle size={16} className="shrink-0 animate-bounce" />
+                        <span>{error}</span>
+                    </div>
+                    <button onClick={() => setError(null)} className="hover:opacity-80 transition-opacity"><X size={14} /></button>
+                </div>
+            )}
 
             <div className="flex items-center gap-3 bg-glass-bg border border-glass-border rounded-2xl p-3">
                 <div className="flex bg-glass-bg rounded-xl p-1 gap-1">
