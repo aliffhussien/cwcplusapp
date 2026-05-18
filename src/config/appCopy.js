@@ -4,89 +4,89 @@
 
 export const APP_COPY = {
   branding: {
-    name: "Cooking With Cattitude",
+    name: "Cooking With Cattitude Plus",
     shortName: "CWC+",
-    persona: "Author-led, Expert, Professional",
-    tone: "Professional and Fresh"
+    persona: "Friendly, Approachable, Home Cook",
+    tone: "Warm, Encouraging, and Simple"
   },
   navigation: {
-    home: "The Kitchen",
-    library: "Recipe Vault",
-    classes: "Masterclasses",
-    planner: "Meal Prep",
+    home: "Home Kitchen",
+    library: "Recipe Box",
+    classes: "Cooking Classes",
+    planner: "Meal Planner",
     shop: "The Shop",
-    notifications: "Meal Planner",
-    profile: "Author Profile",
+    notifications: "Updates",
+    profile: "My Profile",
   },
   hero: {
-    eyebrow: "",
-    title: "Master the Method",
-    subtitle: "Professional culinary techniques, curated recipe vaults, and signature kitchen planning.",
-    searchPlaceholder: "Find a dish, ingredient, or method...",
-    ctaPrimary: "Find Now",
+    eyebrow: "Easy Home Cooking",
+    title: "Love Every Bite",
+    subtitle: "Delicious recipes, simple meal plans, and fun cooking classes for the whole family.",
+    searchPlaceholder: "Search for a recipe, ingredient, or meal...",
+    ctaPrimary: "Browse Recipes",
   },
   bentoGrid: {
     recipes: {
-      title: "Recipe Vault",
-      subtitle: "CWC+ Signature Method",
+      title: "Recipe Box",
+      subtitle: "Your Favorite Dishes",
     },
-    masterclasses: {
-      title: "Masterclasses",
-      subtitle: "Professional Skill Sessions",
+    cookingClasses: {
+      title: "Cooking Classes",
+      subtitle: "Learn New Skills",
     },
     logistics: {
       title: "Meal Planner",
-      subtitle: "Meal Prep Strategy",
+      subtitle: "Plan Your Week",
     }
   },
   trending: {
-    title: "Signature Selection",
-    subtitle: "Expertly sourced favorites from the CWC+ kitchen",
-    cta: "Explore Method",
+    title: "Family Favorites",
+    subtitle: "Our most-loved recipes from our kitchen to yours",
+    cta: "See Recipe",
   },
-  masterclassesPage: {
-    badge: "Professional Masterclass",
-    title: "Master the Technique",
-    subtitle: "Learn the signature methods of Cooking With Cattitude through expert-led production classes.",
-    ctaPrimary: "Start Masterclass",
-    ctaSecondary: "View All Methods",
+  classesPage: {
+    badge: "Cooking Class",
+    title: "Learn to Cook",
+    subtitle: "Simple step-by-step videos to help you become a more confident home cook.",
+    ctaPrimary: "Start Class",
+    ctaSecondary: "Browse All",
   },
   uiElements: {
-    searchButton: "Find",
-    save: "Add to Vault",
+    searchButton: "Search",
+    save: "Save Recipe",
     delete: "Remove",
-    login: "Enter Kitchen",
-    signup: "Join CWC+",
-    confirm: "Confirmed",
-    emptySearch: "No results sourced from the vault. Refine your query.",
+    login: "Log In",
+    signup: "Join the Family",
+    confirm: "Done!",
+    emptySearch: "We couldn't find that recipe. Try searching for something else!",
   },
   recipeView: {
-    protocol: "Recipe Protocol",
+    protocol: "Recipe Steps",
     tabs: {
-      execution: "Execution",
-      sourcing: "Sourcing",
-      intel: "Intel"
+      execution: "How to Cook",
+      sourcing: "Ingredients",
+      intel: "Chef's Tips"
     },
     labels: {
-      sequence: "Sequence",
-      inventory: "Inventory",
-      servings: "Servings",
-      complexity: "Complexity Level",
-      duration: "Target Duration",
-      classification: "Classification",
-      notes: "Author Notes",
-      syncActive: "Sync Active",
-      share: "Share Method",
-      startMode: "Launch Pro-Mode"
+      sequence: "Steps",
+      inventory: "Shopping List",
+      servings: "Makes",
+      complexity: "Difficulty",
+      duration: "Time",
+      classification: "Type",
+      notes: "My Notes",
+      syncActive: "Connected",
+      share: "Share Recipe",
+      startMode: "Start Cooking"
     },
     status: {
-      syncing: "Accessing Source Archive...",
-      locked: "Archive Restricted",
-      unlock: "Unlock Volume for"
+      syncing: "Preparing the kitchen...",
+      locked: "Members Only",
+      unlock: "Unlock Recipe"
     }
   },
   footer: {
     copyright: `© ${new Date().getFullYear()} Cooking With Cattitude. All Rights Reserved.`,
-    motto: "Professional Method. Signature Results."
+    motto: "Happy Cooking. Happy Family."
   }
 };

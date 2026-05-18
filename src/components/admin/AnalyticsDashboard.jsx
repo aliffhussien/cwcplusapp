@@ -75,7 +75,7 @@ export default function AnalyticsDashboard({ recipes = [], classes = [], people 
             <div className="flex justify-between items-center mb-6">
                 <div>
                     <h2 className="text-3xl font-black text-white flex items-center gap-3">
-                        <TrendingUp className="text-indigo-400" size={32} />
+                        <TrendingUp className="text-accent" size={32} />
                         Analytics Engine
                     </h2>
                     <p className="text-slate-400">Deep insights into your CWC+ platform's performance based on real-time data.</p>
@@ -129,10 +129,10 @@ export default function AnalyticsDashboard({ recipes = [], classes = [], people 
 
             {/* Quick KPI Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-                <div className="bg-gradient-to-br from-indigo-500/20 to-indigo-900/40 border-2 border-indigo-500/30 rounded-[32px] p-8 flex flex-col justify-center text-center">
-                    <Users size={32} className="mx-auto text-indigo-400 mb-2" />
-                    <span className="text-4xl font-black text-white">{activeSubs}</span>
-                    <span className="text-indigo-300 font-bold tracking-widest uppercase text-xs mt-1">Active Subscribers</span>
+                <div className="bg-gradient-to-br from-accent/20 to-slate-900/40 border-2 border-accent/30 rounded-[32px] p-8 flex flex-col justify-center text-center">
+                    <Users size={32} className="mx-auto text-accent mb-2" />
+                    <h3 className="text-4xl font-black text-white leading-none">{activeSubs}</h3>
+                    <span className="text-accent/70 font-bold tracking-widest uppercase text-xs mt-1">Active Subscribers</span>
                 </div>
                 <div className="bg-gradient-to-br from-emerald-500/20 to-emerald-900/40 border-2 border-emerald-500/30 rounded-[32px] p-8 flex flex-col justify-center text-center">
                     <DollarSign size={32} className="mx-auto text-emerald-400 mb-2" />

@@ -3,9 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Package, Search, DollarSign, ExternalLink, RefreshCw, CheckCircle2, XCircle, Truck, Phone, MapPin, ChevronDown, ChevronUp, Loader2 } from 'lucide-react';
 import { useOrders } from '../../hooks/useOrders';
 
-export default function OrdersManager() {
+export default function OrdersManager({ searchQuery = '' }) {
     const { orders, isLoading, updateOrder } = useOrders();
-    const [search, setSearch] = useState('');
     const [loadingId, setLoadingId] = useState(null);
     const [expandedId, setExpandedId] = useState(null);
 
@@ -27,9 +26,9 @@ export default function OrdersManager() {
     };
 
     const filtered = orders.filter(o => 
-        o.id.toLowerCase().includes(search.toLowerCase()) || 
-        (o.customer || '').toLowerCase().includes(search.toLowerCase()) || 
-        (o.email || '').toLowerCase().includes(search.toLowerCase())
+        (o.id || '').toLowerCase().includes(searchQuery.toLowerCase()) || 
+        (o.customer || '').toLowerCase().includes(searchQuery.toLowerCase()) || 
+        (o.email || '').toLowerCase().includes(searchQuery.toLowerCase())
     );
 
     const getStatusColor = (status) => {
@@ -43,7 +42,7 @@ export default function OrdersManager() {
     const getFulfillmentColor = (status) => {
         switch(status) {
             case 'pending': return 'bg-amber-500/20 text-amber-400 border-amber-500/30';
-            case 'shipped': return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
+            case 'shipped': return 'bg-accent/20 text-accent border-accent/30';
             case 'delivered': return 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
             default: return 'bg-slate-800 text-slate-300 border-slate-700';
         }
@@ -54,27 +53,17 @@ export default function OrdersManager() {
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                     <h2 className="text-3xl font-black text-white flex items-center gap-3">
-                        <DollarSign className="text-emerald-400" size={32} />
+                        <DollarSign className="text-accent" size={32} />
                         Payments & Orders
                     </h2>
                     <p className="text-slate-400">Manage Stripe payments, issue refunds, and track shipments.</p>
-                </div>
-                <div className="relative w-full md:w-auto">
-                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={20} />
-                    <input 
-                        type="text" 
-                        placeholder="Search orders, emails..." 
-                        value={search}
-                        onChange={e => setSearch(e.target.value)}
-                        className="w-full md:w-80 bg-slate-900 border-2 border-slate-800 rounded-full pl-12 pr-6 py-3 text-white font-bold outline-none focus:border-emerald-500 transition-colors"
-                    />
                 </div>
             </div>
 
             <div className="bg-slate-900 border-2 border-slate-800 rounded-[32px] overflow-hidden shadow-2xl relative min-h-[400px]">
                 {isLoading && (
                     <div className="absolute inset-0 z-10 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center">
-                        <Loader2 className="w-10 h-10 text-emerald-500 animate-spin" />
+                        <Loader2 className="w-10 h-10 text-accent animate-spin" />
                     </div>
                 )}
                 <div className="overflow-x-auto custom-scrollbar">
@@ -102,14 +91,14 @@ export default function OrdersManager() {
                                             <div className="text-xs text-slate-400">{order.email}</div>
                                             <button 
                                                 onClick={() => setExpandedId(expandedId === order.id ? null : order.id)}
-                                                className="flex items-center gap-1 text-[10px] font-bold text-indigo-400 uppercase tracking-wider mt-2 hover:text-indigo-300 transition-colors"
+                                                className="flex items-center gap-1 text-[10px] font-bold text-accent uppercase tracking-wider mt-2 hover:text-accent-sec transition-colors"
                                             >
                                                 {expandedId === order.id ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
                                                 {expandedId === order.id ? 'Hide Details' : 'Show Details'}
                                             </button>
                                         </td>
                                         <td className="px-6 py-5">
-                                            <div className="font-bold text-indigo-400 line-clamp-1">{order.product}</div>
+                                            <div className="font-bold text-accent line-clamp-1">{order.product}</div>
                                             <div className="text-sm font-black text-white">${parseFloat(order.amount || 0).toFixed(2)}</div>
                                         </td>
                                         <td className="px-6 py-5">
@@ -138,7 +127,7 @@ export default function OrdersManager() {
                                                     <button 
                                                         onClick={() => handleAction(order.id, 'ship')}
                                                         disabled={loadingId === order.id}
-                                                        className="p-2 bg-slate-800 hover:bg-blue-500/20 text-blue-400 rounded-xl transition-colors disabled:opacity-50"
+                                                        className="p-2 bg-slate-800 hover:bg-accent/20 text-accent rounded-xl transition-colors disabled:opacity-50"
                                                         title="Mark as Shipped"
                                                     >
                                                         {loadingId === order.id ? <RefreshCw size={18} className="animate-spin" /> : <Truck size={18} />}
@@ -173,14 +162,14 @@ export default function OrdersManager() {
                                                         <div className="space-y-2">
                                                             <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Contact Phone</div>
                                                             <div className="flex items-center gap-2 text-sm font-bold text-white">
-                                                                <Phone size={16} className="text-indigo-400" />
-                                                                {order.phone}
+                                                                <Phone size={16} className="text-accent" />
+                                                                {order.phone || 'No phone provided'}
                                                             </div>
                                                         </div>
                                                         <div className="space-y-2">
                                                             <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Shipping Address (Alamat)</div>
                                                             <div className="flex items-start gap-2 text-sm font-bold text-white max-w-sm">
-                                                                <MapPin size={16} className="text-indigo-400 shrink-0 mt-0.5" />
+                                                                <MapPin size={16} className="text-accent shrink-0 mt-0.5" />
                                                                 {order.address}
                                                             </div>
                                                         </div>

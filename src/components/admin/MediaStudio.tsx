@@ -53,15 +53,19 @@ export interface MediaPayload {
   images: MediaImage[];
   videos: MediaVideo[];
   files: MediaFile[];
+  contentId?: string;
+  contentType?: 'recipe' | 'class' | 'merch';
 }
 
 export interface MediaStudioProps {
   onSync?: (payload: MediaPayload) => Promise<void> | void;
   isSyncing?: boolean;
+  contentId?: string;
+  contentType?: 'recipe' | 'class' | 'merch';
 }
 
-export default function MediaStudio({ onSync, isSyncing = false }: MediaStudioProps) {
-  const { media, deleteMedia, updateMediaName, isLoading } = useMedia();
+export default function MediaStudio({ onSync, isSyncing = false, contentId, contentType }: MediaStudioProps) {
+  const { media, deleteMedia, updateMediaName, togglePrimary, isLoading } = useMedia();
   const [images, setImages] = useState<MediaImage[]>([]);
   const [videos, setVideos] = useState<MediaVideo[]>([]);
   
@@ -214,7 +218,13 @@ export default function MediaStudio({ onSync, isSyncing = false }: MediaStudioPr
     }
 
     if ((results.length > 0 || fileResults.length > 0) && onSync) {
-      await onSync({ images: results, videos: [], files: fileResults });
+      await onSync({ 
+        images: results, 
+        videos: [], 
+        files: fileResults,
+        contentId,
+        contentType
+      });
     }
     setIsProcessing(false);
   };
@@ -289,7 +299,13 @@ export default function MediaStudio({ onSync, isSyncing = false }: MediaStudioPr
     
     
     if (onSync) {
-        await onSync({ images: [], videos: [newVideo], files: [] });
+        await onSync({ 
+          images: [], 
+          videos: [newVideo], 
+          files: [],
+          contentId,
+          contentType
+        });
     }
     setYtUrl('');
   };
@@ -370,7 +386,13 @@ export default function MediaStudio({ onSync, isSyncing = false }: MediaStudioPr
            const syncedIds = new Set(media.map((m: any) => m.yt_id).filter(Boolean));
            const uniqueNew = newVideos.filter(v => !syncedIds.has(v.yt_id));
            if (onSync && uniqueNew.length > 0) {
-               await onSync({ images: [], videos: uniqueNew, files: [] });
+               await onSync({ 
+                 images: [], 
+                 videos: uniqueNew, 
+                 files: [],
+                 contentId,
+                 contentType
+               });
                alert(`Success! Auto-saved ${uniqueNew.length} videos from the channel.`);
            } else {
                alert('All videos from this channel are already in the library.');
@@ -440,7 +462,7 @@ export default function MediaStudio({ onSync, isSyncing = false }: MediaStudioPr
             onChange={(e) => setValue(e.target.value)}
             onBlur={handleSave}
             onKeyDown={handleKeyDown}
-            className="w-full max-w-[200px] bg-white/10 border border-white/30 text-white rounded px-2 py-1 outline-none focus:ring-2 focus:ring-emerald-500 backdrop-blur-md text-sm text-center shadow-lg"
+            className="w-full max-w-[200px] bg-white/10 border border-white/30 text-white rounded px-2 py-1 outline-none focus:ring-2 focus:ring-accent backdrop-blur-md text-sm text-center shadow-lg"
           />
         ) : (
           <motion.div
@@ -457,30 +479,30 @@ export default function MediaStudio({ onSync, isSyncing = false }: MediaStudioPr
   };
 
   return (
-    <div className="w-full bg-slate-900/50 rounded-3xl text-white p-8 font-['Poppins',_sans-serif]">
+    <div className="w-full bg-base rounded-3xl text-text-1 p-8 font-['Poppins',_sans-serif]">
       <div className="max-w-6xl mx-auto space-y-8">
         
         <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10">
           <div className="flex flex-col gap-2">
-            <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400">
+            <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-accent to-accent-sec">
               Media Command Center
             </h1>
-            <p className="text-white/60">Upload, manage, and automatically sync your high-end media assets.</p>
+            <p className="text-text-3">Upload, manage, and automatically sync your high-end media assets.</p>
           </div>
           
           {isSyncing && (
-             <div className="flex items-center gap-2 px-6 py-3 bg-emerald-500/20 text-emerald-400 rounded-xl shadow-[0_0_20px_rgba(52,211,153,0.3)]">
+             <div className="flex items-center gap-2 px-6 py-3 bg-accent/20 text-accent rounded-xl shadow-[0_0_20px_rgba(16,185,129,0.3)]">
                  <Loader2 className="w-5 h-5 animate-spin" />
-                 <span className="font-medium">Auto-Saving to Empire CMS...</span>
+                 <span className="font-medium">Auto-Saving to CWC+ CMS...</span>
              </div>
           )}
         </header>
 
         {/* Component A: Multi-Media Upload */}
-        <section className="p-6 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+        <section className="p-6 rounded-2xl bg-surface backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
           <div className="flex items-center gap-3 mb-6">
-            <ImageIcon className="text-emerald-400 w-6 h-6" />
-            <h2 className="text-2xl font-semibold text-white/90">Image Assets</h2>
+            <ImageIcon className="text-accent w-6 h-6" />
+            <h2 className="text-2xl font-semibold text-text-1">Image Assets</h2>
           </div>
 
           <div
@@ -488,17 +510,17 @@ export default function MediaStudio({ onSync, isSyncing = false }: MediaStudioPr
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
             onClick={() => !isProcessing && fileInputRef.current?.click()}
-            className={`border-2 border-dashed rounded-xl p-12 flex flex-col items-center justify-center transition-all duration-300 ${isProcessing ? 'cursor-not-allowed border-white/20 opacity-70' : 'cursor-pointer'} ${isDragging && !isProcessing ? 'border-emerald-400 bg-emerald-400/10' : 'border-white/20 hover:border-white/40 hover:bg-white/5'}`}
+            className={`border-2 border-dashed rounded-xl p-12 flex flex-col items-center justify-center transition-all duration-300 ${isProcessing ? 'cursor-not-allowed border-white/20 opacity-70' : 'cursor-pointer'} ${isDragging && !isProcessing ? 'border-accent bg-accent/10' : 'border-white/20 hover:border-white/40 hover:bg-white/5'}`}
           >
             {isProcessing ? (
-               <Loader2 className="w-12 h-12 mb-4 text-emerald-400 animate-spin" />
+               <Loader2 className="w-12 h-12 mb-4 text-accent animate-spin" />
             ) : (
-               <Upload className={`w-12 h-12 mb-4 transition-colors ${isDragging ? 'text-emerald-400' : 'text-white/40'}`} />
+               <Upload className={`w-12 h-12 mb-4 transition-colors ${isDragging ? 'text-accent' : 'text-text-3'}`} />
             )}
-            <p className="text-lg font-medium text-white/80">
+            <p className="text-lg font-medium text-text-2">
               {isProcessing ? 'Processing files (Optimizing & Syncing)...' : 'Drag & Drop massive files here'}
             </p>
-            {!isProcessing && <p className="text-sm text-white/40 mt-2">Supports Images, PDFs, and Documents (Optimized for performance)</p>}
+            {!isProcessing && <p className="text-sm text-text-3 mt-2">Supports Images, PDFs, and Documents (Optimized for performance)</p>}
             <input 
               type="file" 
               multiple 
@@ -511,10 +533,10 @@ export default function MediaStudio({ onSync, isSyncing = false }: MediaStudioPr
         </section>
 
         {/* Component B: YouTube Bridge */}
-        <section className="p-6 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+        <section className="p-6 rounded-2xl bg-surface backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
           <div className="flex items-center gap-3 mb-6">
-            <Video className="text-cyan-400 w-6 h-6" />
-            <h2 className="text-2xl font-semibold text-white/90">YouTube Bridge</h2>
+            <Video className="text-accent-sec w-6 h-6" />
+            <h2 className="text-2xl font-semibold text-text-1">YouTube Bridge</h2>
           </div>
 
           <div className="flex flex-col gap-4">
@@ -529,12 +551,12 @@ export default function MediaStudio({ onSync, isSyncing = false }: MediaStudioPr
                   value={ytUrl}
                   onChange={(e) => setYtUrl(e.target.value)}
                   placeholder="Paste magic YouTube video link here..."
-                  className="w-full bg-white/5 border border-white/20 rounded-xl py-3 pl-12 pr-4 text-white placeholder-white/30 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all backdrop-blur-sm shadow-inner"
+                  className="w-full bg-base border border-white/20 rounded-xl py-3 pl-12 pr-4 text-text-1 placeholder-text-3 focus:outline-none focus:border-accent-sec focus:ring-1 focus:ring-accent-sec transition-all backdrop-blur-sm shadow-inner"
                 />
               </div>
               <button 
                 type="submit"
-                className="bg-cyan-500 hover:bg-cyan-600 text-white font-medium py-3 px-6 rounded-xl transition-colors shadow-[0_0_15px_rgba(6,182,212,0.3)] w-40"
+                className="bg-accent-sec hover:bg-accent text-white font-medium py-3 px-6 rounded-xl transition-colors shadow-[0_0_15px_rgba(6,182,212,0.3)] w-40"
               >
                 Extract Video
               </button>
@@ -551,13 +573,13 @@ export default function MediaStudio({ onSync, isSyncing = false }: MediaStudioPr
                   value={channelUrl}
                   onChange={(e) => setChannelUrl(e.target.value)}
                   placeholder="Or paste a channel link (e.g. youtube.com/@cwcplus) to sync latest 10 videos..."
-                  className="w-full bg-white/5 border border-white/20 rounded-xl py-3 pl-12 pr-4 text-white placeholder-white/30 focus:outline-none focus:border-purple-400 focus:ring-1 focus:ring-purple-400 transition-all backdrop-blur-sm shadow-inner"
+                  className="w-full bg-base border border-white/20 rounded-xl py-3 pl-12 pr-4 text-text-1 placeholder-text-3 focus:outline-none focus:border-premium focus:ring-1 focus:ring-premium transition-all backdrop-blur-sm shadow-inner"
                 />
               </div>
               <button 
                 type="submit"
                 disabled={isSyncingChannel}
-                className="bg-purple-500 hover:bg-purple-600 text-white font-medium py-3 px-6 rounded-xl transition-colors shadow-[0_0_15px_rgba(168,85,247,0.3)] w-40 flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-premium hover:bg-premium-dim text-white font-medium py-3 px-6 rounded-xl transition-colors shadow-[0_0_15px_rgba(168,85,247,0.3)] w-40 flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSyncingChannel ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Sync Channel'}
               </button>
@@ -565,32 +587,32 @@ export default function MediaStudio({ onSync, isSyncing = false }: MediaStudioPr
           </div>
         </section>
 
-        {/* Component C: Empire Media Library */}
-        <section className="p-6 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+        {/* Component C: CWC+ Media Library */}
+        <section className="p-6 rounded-2xl bg-surface backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
-              <Library className="text-emerald-400 w-6 h-6" />
-              <h2 className="text-2xl font-semibold text-white/90">Empire Media Library</h2>
+              <Library className="text-accent w-6 h-6" />
+              <h2 className="text-2xl font-semibold text-text-1">CWC+ Media Library</h2>
             </div>
             <div className="flex gap-4 items-center">
-              <input type="text" placeholder="Search media..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="bg-black/30 border border-white/10 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-emerald-500 text-white" />
-              <span className="text-sm text-white/50">{filteredMedia.length} items</span>
+              <input type="text" placeholder="Search media..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="bg-base border border-white/10 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-accent text-text-1" />
+              <span className="text-sm text-text-3">{filteredMedia.length} items</span>
             </div>
           </div>
           
           {isLoading ? (
             <div className="flex justify-center p-12">
-               <Loader2 className="w-8 h-8 text-emerald-500 animate-spin" />
+               <Loader2 className="w-8 h-8 text-accent animate-spin" />
             </div>
           ) : filteredMedia.length === 0 ? (
             <div className="text-center p-12 border-2 border-dashed border-white/10 rounded-xl">
-               <ImageIcon className="w-12 h-12 text-white/20 mx-auto mb-4" />
-               <p className="text-white/50">{media.length === 0 ? 'Your library is empty. Sync some assets to see them here.' : 'No items match your search.'}</p>
+               <ImageIcon className="w-12 h-12 text-text-3 mx-auto mb-4" />
+               <p className="text-text-3">{media.length === 0 ? 'Your library is empty. Sync some assets to see them here.' : 'No items match your search.'}</p>
             </div>
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
               {filteredMedia.map((m: any) => (
-                <div key={m.id} className="relative aspect-square group rounded-xl overflow-hidden bg-black/40 border border-white/10">
+                <div key={m.id} className="relative aspect-square group rounded-xl overflow-hidden bg-base border border-white/10">
                    <img src={m.thumb_url || m.hero_url} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                    
                    {m.type === 'video' && (
@@ -614,7 +636,7 @@ export default function MediaStudio({ onSync, isSyncing = false }: MediaStudioPr
                       {/* Name placeholder to push gradient up */}
                    </div>
                    
-                   <div className="absolute bottom-0 left-0 right-0 p-2 bg-black/60 backdrop-blur-md border-t border-white/10 transition-opacity">
+                   <div className="absolute bottom-0 left-0 right-0 p-2 bg-base/60 backdrop-blur-md border-t border-white/10 transition-opacity">
                       <InlineRename 
                         initialName={m.filename}
                         onSave={async (newName) => {
@@ -625,11 +647,18 @@ export default function MediaStudio({ onSync, isSyncing = false }: MediaStudioPr
                       />
                    </div>
                    
+                   <button 
+                      onClick={() => togglePrimary(m.id)}
+                      className={`absolute top-2 left-2 p-2 rounded-full transition-all z-[20] ${m.is_primary ? 'bg-warning text-white shadow-[0_0_15px_rgba(245,158,11,0.5)] opacity-100' : 'bg-base/40 text-text-3 opacity-0 group-hover:opacity-100 hover:bg-base/60 hover:text-text-1'}`}
+                   >
+                      <Star className={`w-4 h-4 ${m.is_primary ? 'fill-white' : ''}`} />
+                   </button>
+
                    <button onClick={async () => {
                       if (window.confirm('Are you sure you want to delete this asset?')) {
                           await deleteMedia(m.id);
                       }
-                   }} className="absolute top-2 right-2 p-2 bg-red-500/80 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-500 z-10">
+                   }} className="absolute top-2 right-2 p-2 bg-danger/80 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-danger z-10">
                       <Trash2 className="w-4 h-4" />
                    </button>
 

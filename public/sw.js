@@ -61,7 +61,12 @@ self.addEventListener('fetch', (e) => {
 
     // Default: network with offline fallback
     e.respondWith(
-        fetch(request).catch(() => caches.match(request))
+        fetch(request).catch(async () => {
+            const cached = await caches.match(request);
+            if (cached) return cached;
+            // SHIELD: Return a network error response instead of undefined
+            return new Response('Offline and not in cache', { status: 503, statusText: 'Service Unavailable' });
+        })
     );
 });
 

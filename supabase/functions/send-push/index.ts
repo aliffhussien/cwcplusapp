@@ -12,8 +12,10 @@ const VAPID_PRIVATE_KEY = Deno.env.get('VAPID_PRIVATE_KEY')!
 const SUPABASE_URL = Deno.env.get('SUPABASE_URL')!
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
 
+const CONTACT_EMAIL = Deno.env.get('CONTACT_EMAIL') || 'admin@cwcplus.com'
+
 webpush.setVapidDetails(
-  'mailto:your-email@example.com',
+  `mailto:${CONTACT_EMAIL}`,
   VAPID_PUBLIC_KEY,
   VAPID_PRIVATE_KEY
 )
@@ -32,8 +34,8 @@ serve(async (req: Request) => {
 
   if (!users || users.length === 0) return new Response('No subscribers')
 
-  // 3. Send Push to each device
-  const notifications = users.map((user: any) => {
+  // 3. Send Push to each device — remove expired/invalid subscriptions automatically
+  const notifications = users.map(async (user: any) => {
     const payload = JSON.stringify({
       title: record.title,
       body: record.message,
@@ -43,9 +45,19 @@ serve(async (req: Request) => {
       }
     })
 
-    return webpush.sendNotification(user.push_subscription, payload).catch((err: any) => {
-      console.error('Failed to send to device:', err)
-    })
+    try {
+      await webpush.sendNotification(user.push_subscription, payload)
+    } catch (err: any) {
+      console.error('Failed to send to device:', err?.statusCode, err?.message)
+      // 410 Gone = subscription expired/unsubscribed — clean it up from DB
+      if (err?.statusCode === 410 || err?.statusCode === 404) {
+        const sub = user.push_subscription
+        await supabase
+          .from('people')
+          .update({ push_subscription: null })
+          .eq('push_subscription', sub)
+      }
+    }
   })
 
   await Promise.all(notifications)
