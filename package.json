@@ -11,7 +11,7 @@
     "import:volumes": "tsx --tsconfig tsconfig.node.json scripts/importAllVolumes.ts"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.105.3",
+    "@supabase/supabase-js": "^2.110.6",
     "dotenv": "^17.4.2",
     "framer-motion": "^12.38.0",
     "lucide-react": "^1.14.0",
