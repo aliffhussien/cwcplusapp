@@ -101,6 +101,13 @@ const NON_NUMERIC_AMOUNTS = /^(secukupnya|secukup\s+rasa|ikut\s+(?:citarasa|sele
 
 function isLegacySection(name: string, amount: number | string | undefined, unit: string | undefined): boolean {
     if (unit) return false;                              // real ingredients have units
+
+    // Dash-wrapped headers, any case, e.g. "-- Bahan Utama --", "- Bahan Kisar -"
+    const trimmed = name.trim();
+    if (/^[—–-]\s*.+\s*[—–-]$/.test(trimmed) && !/\d/.test(trimmed)) {
+        return true;
+    }
+
     if (!/[A-Z]/.test(name)) return false;              // must have uppercase
     if (name !== name.toUpperCase()) return false;       // must be ALL CAPS
     if (/\d/.test(name)) return false;                  // no digits in section names
