@@ -22,6 +22,7 @@ import InstallPWA from './components/InstallPWA';
 import { OfflineSentry } from './components/PerformanceUI';
 import { AppDataProvider } from './context/AppDataProvider';
 import ErrorBoundary from './components/ErrorBoundary';
+import ComingSoonOverlay from './components/ComingSoonOverlay';
 
 const lazyWithRetry = (componentImport) =>
   lazy(async () => {
@@ -67,6 +68,7 @@ function App() {
     return (
         <ErrorBoundary>
         <BrowserRouter>
+            <ComingSoonOverlay />
             <Routes>
                 <Route path="/auth/callback" element={<AuthCallback />} />
                 <Route path="/*" element={
