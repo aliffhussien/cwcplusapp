@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cwc-plus-v1';
+const CACHE_NAME = 'cwc-plus-__BUILD_ID__';
 const STATIC_ASSETS = ['/', '/manifest.json', '/icon.png'];
 
 self.addEventListener('install', (e) => {
