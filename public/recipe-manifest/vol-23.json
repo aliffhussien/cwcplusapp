@@ -1,0 +1,1903 @@
+{
+  "volumeNum": 23,
+  "volumeName": "VOL 23",
+  "recipeCount": 31,
+  "imagesMatched": 31,
+  "generated": "2026-08-08T21:34:00.000Z",
+  "recipes": [
+    {
+      "title": "ASAM PEDAS BEREMPAH IKAN TIN",
+      "slug": "00_01_asam_pedas_berempah_ikan_tin",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_01_asam_pedas_berempah_ikan_tin.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=IDpa7UwVOQs",
+      "ingredientCount": 3,
+      "stepCount": 1,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "section": "Bahan:",
+          "items": [
+            "2 tin besar sardin atau makarel dalam sos tomato (guna isi dan sos sekali)",
+            "3 sudu besar kerisik (kelapa bakar) ½ biji kobis (secukupnya) – potong kasar",
+            "2 sudu besar pes asam jawa (secukup rasa)",
+            "600ml air (laraskan mengikut kepekatan kuah yang diingini) Garam secukupnya (masukkan sedikit dahulu kerana sardin tin sudah masin)",
+            "1–2 sudu kecil gula (atau secukup rasa) Minyak masak secukupnya"
+          ]
+        },
+        {
+          "section": "Bahan A:",
+          "items": [
+            "1 biji bawang besar",
+            "2 inci halia",
+            "4 ulas bawang putih"
+          ]
+        },
+        {
+          "section": "Bahan B (kisar) :",
+          "items": [
+            "15-20 tangkai cili kering (rendam/rebus sehingaa lembut)",
+            "4 ulas bawang putih",
+            "2 biji bawang besar",
+            "2 inci halia",
+            "2 inci kunyit hidup",
+            "1½ inci belacan",
+            "2 sudu besar jintan manis (sangai)",
+            "1 sudu besar jintan putih (sangai)",
+            "1 sudu kecil lada hitam (sangai)"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Panaskan minyak dan tumiskan Bahan A hingga naik bau.",
+            "Masukkan Bahan B dan masak sehingga bahan kisar pecah minyak dan rempah betul-betul masak. Masukkan sedikit air (3 kali) semasa menggaringkan rempah dan cili.",
+            "Kemudian, masukkan kerisik kacau sehingga sebati",
+            "Masukkan sos daripada tin sardin/makarel bersama pes asam jawa. Kacau hingga sebati.",
+            "Tuangkan air mengikut kepekatan kuah yang diingini dan biarkan mendidih seketika.",
+            "Perasakan dengan sedikit garam dan gula. Rasa dahulu sebelum menambah garam kerana sos sardin sudah mempunyai rasa masin.",
+            "Masukkan kobis dan masak selama 2–3 minit sehingga sedikit layu tetapi masih rangup.",
+            "Akhir sekali, masukkan isi sardin atau makarel. Gaul perlahan supaya ikan tidak hancur.",
+            "Renehkan selama 2–3 minit sahaja sehingga ikan panas dan kuah sebati.",
+            "Tutup api dan rehatkan seketika sebelum dihidangkan. Siap."
+          ]
+        }
+      ],
+      "notes": null,
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "ASAM PEDAS IKAN LEGEND",
+      "slug": "00_02_asam_pedas_ikan_legend",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_02_asam_pedas_ikan_legend.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=o2VjA4L4zcg",
+      "ingredientCount": 2,
+      "stepCount": 1,
+      "hasNotes": true,
+      "ingredients": [
+        {
+          "section": "Bahan:",
+          "items": [
+            "1 ekor ikan merah/ikan pilihan (1-1.2kg)",
+            "1 batang serai – diketuk",
+            "1 sudu besar serbuk cili (pilihan)",
+            "1 mangkuk air asam jawa / 2 sudu besar pes asam jawa",
+            "2 kuntum bunga kantan – dibelah dua",
+            "1 cekak daun kesum",
+            "3 biji tomato – dibelah dua",
+            "10 batang bendi Garam secukup rasa",
+            "Sedikit serbuk perasa, jika suka",
+            "6 sudu besar minyak untuk menumis",
+            "800ml air"
+          ]
+        },
+        {
+          "section": "Bahan Kisar:",
+          "items": [
+            "5 ulas bawang putih",
+            "5 biji bawang merah kecil",
+            "1 biji bawang besar",
+            "1 inci halia",
+            "2 inci kunyit hidup",
+            "3 biji buah keras (untuk pekatkan kuah)",
+            "1 inci belacan – dibakar",
+            "1 sudu besar lada hitam",
+            "20–30 tangkai cili kering – direndam hingga lembut (ikut citarasa)"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Kisar bahan kisar dengan sedikit air sehingga halus. Jangan terlalu banyak air supaya mudah ditumis.",
+            "Panaskan minyak yang sedikit banyak. Masukkan bahan kisar dan serbuk cili jika suka.",
+            "Masukkan serai dan tumis sehingga pecah minyak dan bahan kisar benar- benar masak. Ini penting supaya asam pedas tidak berbau mentah.",
+            "Dalam proses ini masukkan sedikit air supaya cili garing dan masak dengan sempurna. Ulang langkah ini 3x.",
+            "Bila bahan tumis pecah minyak, masukkan air dan biarkan kuah mendidih selama 10–15 minit.",
+            "Kemudian, masukkan air asam jawa, bunga kantan dan daun kesum. Kacau dan biarkan mendidih lagi.",
+            "Masukkan ikan. Masak dengan api sederhana selama kira-kira 6–10 minit, bergantung pada saiz ikan. Elakkan terlalu kerap mengacau supaya ikan tidak hancur.",
+            "Masukkan tomato dan bendi. Masak sehingga sayur lembut tetapi masih elok bentuknya.",
+            "Perasakan dengan garam dan sedikit serbuk perasa jika digunakan.",
+            "Rasa kuah. Asam pedas yang sedap sepatutnya ada keseimbangan pedas, masam, masin sedikit manis semula jadi daripada bawang.",
+            "Tutup api dan rehatkan 30 minit sebelum dihidangkan. Siap."
+          ]
+        }
+      ],
+      "notes": "Tip untuk kuah lebih padu: Jangan terus masukkan semua air asam jawa.\nMasukkan dahulu kira-kira ¾ mangkuk, kemudian tambah sedikit demi\nsedikit selepas ikan masak. Senang nak kawal tahap masam dan kuah tak\nterlebih masam.",
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "AYAM MASAK KICAP PALING SENANG",
+      "slug": "00_03_ayam_masak_kicap_paling_senang",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_03_ayam_masak_kicap_paling_senang.jpg",
+      "videoUrl": null,
+      "ingredientCount": 3,
+      "stepCount": 1,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "section": "Bahan Salutan Ayam:",
+          "items": [
+            "1 ekor ayam – potong sederhana",
+            "4 sudu besar tepung gandum",
+            "1/2 sudu kecil lada sulah",
+            "1/2 sudu kecil lada hitam Garam secukup rasa"
+          ]
+        },
+        {
+          "section": "Bahan lain:",
+          "items": [
+            "6 ulas bawang putih – hiris",
+            "2 biji bawang besar– potong bulat",
+            "10 biji cili padi",
+            "2 biji cili hijau – hiris",
+            "2 biji cili merah – hiris",
+            "Daun sup secukupnya (potong kasar & halus)",
+            "Daun bawang secukupnya (potong kasar & halus) Minyak untuk menggoreng",
+            "Sedikit perahan limau nipis Air secukupnya"
+          ]
+        },
+        {
+          "section": "Bahan Sos:",
+          "items": [
+            "3 sudu besar cili kering kisar",
+            "2 sudu besar sos cili",
+            "2 sudu besar sos tiram",
+            "2 sudu besar kicap cair",
+            "2 sudu kecil kicap pekat",
+            "3 sudu besar kicap manis atau kicap biasa",
+            "1 sudu besar gula",
+            "1/2 sudu kecil garam (secukup rasa)",
+            "1 sudu kecil pati ikan bilis atau pati ayam"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Keringkan ayam. Gaulkan ayam bersama tepung gandum, lada sulah dan garam hingga bersalut nipis.",
+            "Dalam Mangkuk, masukkan semua bahan sos. Kacau sehingga sebati.",
+            "Goreng ayam sehingga masak  separuh masak sahaja. Angkat serta toskan.",
+            "Tinggalkan sedikit minyak di dalam kuali, kemudian tumis bawang putih hingga naik bau.",
+            "Masukkan bawang merah, cili padi, cili hijau dan cili merah.",
+            "Tuangkan semua bahan sos. Jika suka lebih berkuah, tambah 50–80 ml air (secukupnya) dan kacau rata.",
+            "Masukkan ayam goreng, daun sup dan daun bawang  gaul sehingga semua ketulan ayam bersalut rata dengan sos.",
+            "Biarkan sos mendidih sehingga sedikit pekat Anggaran 10minit. Sehingga ayam masak sepenuhnya.",
+            "Akhir sekali, masukkan daun sup dan daun bawang yang di potong halus. Gaul sebentar, kemudian tutup api.",
+            "Perahkan limau nipis. Biarkan lauk rehat seketika dan sedia untuk dihidangkan."
+          ]
+        }
+      ],
+      "notes": null,
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "AYAM SWEET SOUR MUDAH",
+      "slug": "00_04_ayam_sweet_sour_mudah",
+      "category": "Chicken",
+      "image": "/images/recipes/vol-23/00_04_ayam_sweet_sour_mudah.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=F629VbXkdB8",
+      "ingredientCount": 4,
+      "stepCount": 3,
+      "hasNotes": true,
+      "ingredients": [
+        {
+          "section": "Bahan Ayam",
+          "items": [
+            "300g isi ayam (± potong kiub sederhana)",
+            "1/2 sudu kecil garam"
+          ]
+        },
+        {
+          "section": "Bahan Adunan Tepung",
+          "items": [
+            "4 sudu besar Tepung gandum",
+            "3 sudu kecil tepung jagung",
+            "1/4 sudu kecil baking powder",
+            "1/4 sudu kecil garam",
+            "1 biji telur (gred A/B)",
+            "5 sudu besar air"
+          ]
+        },
+        {
+          "section": "Bahan Sos Masam Manis",
+          "items": [
+            "5 sudu besar sos tomato",
+            "5 sudu besar gula",
+            "5 sudu besar gula perang",
+            "5 sudu besar cuka (boleh guna cuka putih atau cuka epal)",
+            "1 sudu kecil kicap cair"
+          ]
+        },
+        {
+          "section": "Bahan Lain",
+          "items": [
+            "1 biji bawang Holland, potong kasar",
+            "1/4 biji capsicum hijau, potong empat segi",
+            "1/4 biji capsicum merah, potong empat segi",
+            "1/4 biji capsicum kuning, potong empat segi",
+            "1/4 biji nanas (±200g), potong ketul (jika ada)",
+            "Minyak masak secukupnya"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara Sediakan Ayam",
+          "items": [
+            "Gaul ayam dengan garam dan ketepikan 15 minit.",
+            "Campurkan semua bahan adunan tepung dalam mangkuk.",
+            "Kacau sehingga sebati dan mendapat bancuhan yang licin (smooth). Kepekatan bancuhan tidak terlalu pekat dan tidak terlalu cair.",
+            "Kemudian, masukkan bancuhan ke dalam ayam dan gaul rata."
+          ]
+        },
+        {
+          "section": "Cara Sediakan Sos",
+          "items": [
+            "Masukkan semua bahan sos masam manis di dalam mangkuk.",
+            "Gaul sehingga semua bahan sebati. Ketepikan."
+          ]
+        },
+        {
+          "section": "Cara Masak",
+          "items": [
+            "Panaskan minyak secukupnya pada suhu 170-180°C.",
+            "Goreng ayam selama 4-5 minit sehingga masak dan keemasan. Angkat dan toskan.",
+            "Panaskan 4 sudu besar minyak masak. Masukkan bawang Holland dan semua capsicum. Set api besar.",
+            "Kacau selama 30-60 saat sahaja supaya sayur kekal rangup.",
+            "Masukkan bancuhan sos. Kacau selama 15saat. Kemudian, biarkan sehingga mendidih. Masukkan nanas dan gaul sebentar.",
+            "Seterusnya, masukkan ayam yang telah digoreng awal tadi.",
+            "Gaul pantas sehingga semua ayam bersalut sos.",
+            "Tutup api dan hidangkan segera. Siap."
+          ]
+        }
+      ],
+      "notes": "Tips: Jika suka sos lebih berkilat, tambah 1 sudu kecil minyak bijan pada akhir masakan. Sangat sedap dihidangkan bersama nasi putih panas atau nasi goreng.",
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "BIHUN GORENG STREET STYLE",
+      "slug": "00_05_bihun_goreng_street_style",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_05_bihun_goreng_street_style.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=kUpbBAgnO4g",
+      "ingredientCount": 3,
+      "stepCount": 1,
+      "hasNotes": true,
+      "ingredients": [
+        {
+          "section": "Bahan:",
+          "items": [
+            "400g bihun (rendam hingga lembut, toskan)",
+            "4 sudu besar minyak masak",
+            "50ml kicap manis",
+            "2 biji telur",
+            "1/2 kubis, dihiris",
+            "1 batang lobak merah, dipotong halus memanjang",
+            "2 batang daun bawang, dipotong Minyak masak secukupnya untuk menumis"
+          ]
+        },
+        {
+          "section": "Bahan Tumis:",
+          "items": [
+            "1 biji bawang besar (hiris)",
+            "6 ulas bawang merah (hiris)",
+            "4 ulas bawang putih (hiris)",
+            "4 biji cili merah kerinting (ikut tahap kepedasan) (hiris)",
+            "4-8 biji cili padi merah (ikut tahap kepedasan) (hiris)"
+          ]
+        },
+        {
+          "section": "Bahan Perasa:",
+          "items": [
+            "1 sudu besar sos tiram",
+            "2 sudu besar kicap manis Garam secukup rasa Serbuk perasa secukup rasa (jika suka)"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Rendam bihun anggaran 20-30minit dengan air suhu bilik sahaja, kemudian toskan.",
+            "Gaulkan bihun dengan 4 sudu besar minyak masak dan 50ml kicap manis. Ketepikan.",
+            "Hiris halus semua bahan tumis.",
+            "Panaskan sedikit minyak dan tumis bawang merah, bawang putih sehingga garing dan naik bau.",
+            "Masukkan cili. Tumis sehingga naik bau.",
+            "Masukkan telur, kacau hingga hancur dan masak.",
+            "Masukkan kubis dan lobak merah. Goreng selama 1–2 minit sehingga sedikit layu tetapi masih rangup.",
+            "Masukkan bahan perasa sos tiram, kicap manis, garam dan serbuk perasa jika suka. Kacau rata.",
+            "Masukkan bihun yang telah digaul tadi. Gaul sehingga semua bahan bersalut rata dengan bahan tumis. Rasa dan sesuaikan dengan citarasa.",
+            "Jika bihun agak kering semasa menggoreng, renjiskan 2–3 sudu besar air dan gaul segera.",
+            "Akhir sekali masukkan daun bawang dan gaul sebentar.",
+            "Angkat dan hidangkan panas. Siap."
+          ]
+        }
+      ],
+      "notes": "Nota : Selepas bihun ditoskan, gaulkan bersama 4 sudu besar minyak\nmasak dan 50ml kicap manis supaya bihun tidak melekat dan warnanya\nlebih sekata.\nTip\nJika suka lebih pedas, tambah cili padi.\nBoleh tambah isi ayam, udang, sotong atau hirisan daging untuk rasa\nyang lebih mewah.",
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "CEKODOK PISANG RANGUP VIRAL",
+      "slug": "00_06_cekodok_pisang_rangup_viral",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_06_cekodok_pisang_rangup_viral.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=Gy0CuqTw5EI",
+      "ingredientCount": 1,
+      "stepCount": 1,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "section": "Bahan:",
+          "items": [
+            "350g isi pisang ranum, dilenyek (± 5–6 biji pisang berangan (saiz sederhana) atau ± 10–12 biji pisang emas)",
+            "160g tepung gandum (1¼ cawan)",
+            "20g tepung beras (2 sudu besar)",
+            "25g gula perang (2 sudu besar)",
+            "3g garam halus (½ sudu kecil)",
+            "4g baking powder (1 sudu kecil)",
+            "2g baking soda (½ sudu kecil) Minyak masak secukupnya untuk menggoreng"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Lenyek pisang hingga hancur tetapi masih berbaki sedikit tekstur jika suka.",
+            "Masukkan gula perang dan garam, gaul hingga gula larut.",
+            "Masukkan tepung gandum, tepung beras, baking powder dan baking soda ke dalam adunan pisang.",
+            "Gaul perlahan sehingga sebati. Rehatkan adunan selama 10–15 minit supaya tepung menyerap kelembapan.",
+            "Panaskan minyak dengan api sederhana. Jemput adunan menggunakan jari atau sudu dan goreng hingga keemasan. Guna api sederhana.",
+            "Angkat dan toskan. Siap."
+          ]
+        }
+      ],
+      "notes": null,
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "CHICKPEA BUTTER MASALA",
+      "slug": "00_07_chickpea_butter_masala",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_07_chickpea_butter_masala.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=dfbepsfjNw8",
+      "ingredientCount": 4,
+      "stepCount": 1,
+      "hasNotes": true,
+      "ingredients": [
+        {
+          "section": "Bahan A : Special Puri",
+          "items": [
+            "Tomato",
+            "350g tomato (±3 biji sederhana)",
+            "4 ulas bawang putih (11g)",
+            "1 inci halia (15g)"
+          ]
+        },
+        {
+          "section": "Bahan B : Kuah Masala",
+          "items": [
+            "1 sudu besar minyak masak/ghee",
+            "2–3 sudu besar mentega",
+            "185g bawang besar Holland (1 biji besar), dicincang halus ½ sudu besar pes tomato (pilihan – untuk rasa lebih pekat dan berkrim) ½ sudu kecil serbuk kunyit",
+            "1 sudu kecil penuh serbuk cili (atau paprika manis + sedikit serbuk cili biasa)",
+            "2 sudu kecil serbuk ketumbar",
+            "1 sudu kecil serbuk jintan putih",
+            "2¼ sudu kecil garam (atau secukup rasa)",
+            "2 sudu kecil gula",
+            "1 sudu kecil serbuk garam masala ¼ sudu kecil serbuk lada hitam"
+          ]
+        },
+        {
+          "section": "Bahan C : Kacang Kuda",
+          "items": [
+            "2 tin kacang kuda (±800g termasuk air, kira-kira 400g selepas ditos dan dibilas) - Asingkan ⅓ cawan kacang kuda untuk dikisar.",
+            "1 cawan air panas ½ cawan air (untuk mengisar kacang kuda) ⅓ cawan krim putar tenusu (heavy/whipping/cooking cream) - Boleh diganti santan pekat atau krim kelapa.",
+            "2 sudu besar daun ketumbar segar, dicincang"
+          ]
+        },
+        {
+          "section": "Bahan D : Kemasan Akhir",
+          "items": [
+            "1 sudu besar mentega",
+            "1 titis minyak masak",
+            "1 sudu kecil paprika manis atau serbuk cili",
+            "Sedikit daun ketumbar segar",
+            "Sedikit krim untuk hiasan (pilihan)"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Sediakan Special Puri Tomato. Masukkan tomato, bawang putih dan halia ke dalam pengisar. Kisar sehingga halus. Ketepikan.",
+            "Panaskan minyak dan mentega di dalam periuk. Masukkan bawang besar bersama ¼ sudu kecil garam. Tumis sehingga bawang menjadi perang keemasan.",
+            "Masukkan pes tomato dan tumis selama 1 minit.",
+            "Masukkan serbuk kunyit, serbuk cili, serbuk ketumbar dan serbuk jintan.",
+            "Kacau selama beberapa saat sehingga naik bau.",
+            "Tuangkan bancuhan special puri tomato (yang di kisar awal tadi), kemudian tutup periuk dan masak selama 5 minit.",
+            "Buka penutup dan teruskan memasak sehingga kuah sedikit pekat.",
+            "Masukkan garam, gula, garam masala. Kacau sehingga sebati.",
+            "Masukkan kacang kuda yang telah ditos dan gaul rata. Tuangkan 1 cawan air panas. Biarkan mendidih perlahan supaya semua rasa sebati.",
+            "Kisar baki ⅓ cawan kacang kuda bersama ½ cawan air sehingga halus. Tuangkan semula ke dalam periuk.",
+            "Masukkan serbuk lada hitam. Reneh dengan api perlahan selama 15 minit, sambil dikacau sekali-sekala. Tutup periuk sepanjang proses ini.",
+            "Sentuhan Akhir, perasakan semula jika perlu. Masukkan daun ketumbar cincang dan heavy cream. Kacau rata dan reneh lagi selama 5 minit.",
+            "Dalam kuali kecil, panaskan mentega bersama setitik minyak menggunakan api kecil.",
+            "Apabila mentega cair, tutup api dan masukkan paprika manis atau serbuk cili. Kacau dan curahkan ke atas kuah Chickpea Butter Masala sebelum dihidangkan.",
+            "Sedap dihidangkan bersama, Naan, Roti canai atau chapati, Paratha, Nasi putih dan Nasi basmati."
+          ]
+        }
+      ],
+      "notes": "Tips\nMengisar sedikit kacang kuda menjadikan kuah lebih pekat dan berkrim\ntanpa perlu menambah tepung.\nBoleh disimpan di dalam peti sejuk beku sehingga 2 bulan. Untuk rasa\nterbaik, sediakan mentega paprika (langkah 14) hanya ketika hendak\nmenghidang.",
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "CHOCOLATE MOCHA ICE",
+      "slug": "00_08_chocolate_mocha_ice",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_08_chocolate_mocha_ice.jpg",
+      "videoUrl": null,
+      "ingredientCount": 2,
+      "stepCount": 1,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "section": "Bahan:",
+          "items": [
+            "20ml homemade chocolate syrup",
+            "2 tsp instant coffee",
+            "30ml air panas",
+            "180ml susu segar Ais secukupnya"
+          ]
+        },
+        {
+          "section": "Bahan Cold Foam",
+          "items": [
+            "60ml whipping cream",
+            "45ml susu segar",
+            "15ml chocolate syrup Secubit garam"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Masukkan 2 tsp instant coffee + 30ml air panas dan chocolate syrup pukul dengan frother hingga larut. Ketepikan.",
+            "Isi gelas dengan ais.",
+            "Tuangkan susu segar",
+            "Tuangkan bancuhan coffee chocolate tadi.",
+            "Dalam gelas lain, sediakan cold foam. Pukul/blend hingga berbuih dan sedikit pekat, kemudian tuang di atas mocha. Kacau dan selamat menikmati."
+          ]
+        }
+      ],
+      "notes": null,
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "CILI KICAP SERBAGUNA",
+      "slug": "00_09_cili_kicap_serbaguna",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_09_cili_kicap_serbaguna.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=DVF50mc-1Ww",
+      "ingredientCount": 1,
+      "stepCount": 1,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "section": "Bahan:",
+          "items": [
+            "2-3 batang cili merah – dihiris",
+            "4 batang cili padi merah/hijau – dihiris",
+            "6–8 biji limau kasturi/lemon/cuka (ikut tahap kemasaman yang disukai)",
+            "5 sudu besar kicap manis (atau secukup rasa)"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Hiris cili merah dan cili padi mengikut ketebalan yang diingini.",
+            "Masukkan semua hirisan cili ke dalam mangkuk.",
+            "Perahkan jus limau kasturi ke dalam mangkuk. Tapis untuk mengasingkan bijinya.",
+            "Masukkan kicap manis.",
+            "Gaul sehingga semua bahan sebati.",
+            "Rasa dan laraskan mengikut citarasa. Jika mahu lebih pedas, tambah cili padi. Jika mahu lebih masam, tambah limau kasturi. Jika mahu lebih manis, tambah sedikit lagi kicap manis. Siap."
+          ]
+        }
+      ],
+      "notes": null,
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "EASY GRILLED CHICKEN",
+      "slug": "00_10_easy_grilled_chicken",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_10_easy_grilled_chicken.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=8qMEAuSCvfY",
+      "ingredientCount": 1,
+      "stepCount": 1,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "section": "Bahan:",
+          "items": [
+            "2 pcs dada ayam/peha tanpa tulang (±250–300g)",
+            "2 sudu besar minyak zaitun",
+            "1 sudu kecil bawang putih cincang atau ½ sudu kecil serbuk bawang putih",
+            "1 sudu kecil Italian herbs (atau oregano) ½ sudu kecil paprika (manis atau smoked) ½ sudu kecil garam ¼ sudu kecil lada hitam ½ sudu kecil serbuk bawang (pilihan)",
+            "1 sudu kecil jus lemon (pilihan, untuk rasa lebih segar)"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Jika dada ayam tebal, belah dua atau ketuk sedikit supaya ketebalannya sekata.",
+            "Gaulkan ayam dengan semua bahan perapan.",
+            "Perap sekurang-kurangnya 30 minit. Untuk rasa lebih sedap, perap 2–8 jam di dalam peti sejuk.",
+            "Panaskan grill pan atau kuali dengan api sederhana.",
+            "Panggang ayam selama 5–7 minit setiap bahagian (bergantung pada ketebalan) sehingga masak dan keperangan.",
+            "Angkat dan rehatkan ayam selama 5 minit sebelum di hidang. Siap."
+          ]
+        }
+      ],
+      "notes": null,
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "FLUFFY MASHED POTATOES",
+      "slug": "00_11_fluffy_mashed_potatoes",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_11_fluffy_mashed_potatoes.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=8qMEAuSCvfY",
+      "ingredientCount": 2,
+      "stepCount": 1,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "section": "Bahan:",
+          "items": [
+            "500g kentang Yukon Gold atau Russet",
+            "1 sudu kecil garam (untuk merebus) + tambahan secukup rasa",
+            "1 ulas bawang putih, dikupas (pilihan)",
+            "30g mentega tanpa garam",
+            "50ml susu penuh (whole milk) atau krim masakan (cooking cream/fresh cream) Serbuk lada hitam secukup rasa"
+          ]
+        },
+        {
+          "section": "Bahan Tambahan:",
+          "items": [
+            "Sedikit mentega tambahan Lada hitam kisar kasar",
+            "Daun parsli dicincang halus"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Rebus kentang",
+            "Kupas kulit kentang jika mahu, kemudian potong kepada ketulan lebih kurang 2.5cm.",
+            "Masukkan kentang ke dalam periuk dan tuangkan air sehingga menutupi kentang kira-kira 2.5cm.",
+            "Masukkan garam dan bawang putih jika menggunakan.",
+            "Rebus selama 10–15 minit atau sehingga kentang empuk apabila dicucuk dengan garpu.",
+            "Sediakan campuran susu",
+            "Panaskan mentega dan susu dengan api sederhana selama 2–3 minit sehingga mentega cair.",
+            "Tutup api dan biarkan campuran kekal suam.",
+            "Keringkan kentang",
+            "Toskan kentang dan masukkan semula ke dalam periuk.",
+            "Panaskan atas api kecil selama 1 minit sambil digaul perlahan untuk mengeringkan lebihan air.",
+            "Lenyek kentang",
+            "Lenyek kentang sehingga halus menggunakan potato masher.",
+            "Tuangkan campuran susu panas sedikit demi sedikit sambil menggaul sehingga teksturnya lembut, gebu dan berkrim.",
+            "Perasakan & hidang",
+            "Tambahkan garam dan lada hitam secukup rasa.",
+            "Hidangkan panas bersama sedikit mentega di atasnya dan taburkan lada hitam kisar kasar atau daun parsli jika suka."
+          ]
+        }
+      ],
+      "notes": null,
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "HOMEMADE CHOCOLATE SYRUP",
+      "slug": "00_12_homemade_chocolate_syrup",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_12_homemade_chocolate_syrup.jpg",
+      "videoUrl": null,
+      "ingredientCount": 1,
+      "stepCount": 1,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "section": "Bahan:",
+          "items": [
+            "250g gula kastor",
+            "70g serbuk koko",
+            "150ml air panas",
+            "1 tsp vanilla esen Secubit garam (optional, tapi bagi rasa coklat lebih sedap)"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Masukkan gula dan serbuk koko ke dalam periuk. Gaul rata.",
+            "Tuangkan air panas sedikit demi sedikit sambil dikacau hingga sebati.",
+            "Masak atas api sederhana hingga mendidih.",
+            "Kecilkan api dan simmer selama 4 minit, kacau sekali-sekala.",
+            "Tutup api. Masukkan vanilla extract dan secubit garam.",
+            "Sejukkan sepenuhnya sebelum simpan dalam botol bersih.",
+            "Simpan dalam peti sejuk dan gunakan sudu/botol yang bersih setiap kali mengambil syrup."
+          ]
+        }
+      ],
+      "notes": null,
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "HOMEMADE LIME KORDIAL",
+      "slug": "00_13_homemade_lime_kordial",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_13_homemade_lime_kordial.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=NUXx3FMmqU0",
+      "ingredientCount": 2,
+      "stepCount": 2,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "section": "Bahan:",
+          "items": [
+            "300g gula pasir",
+            "150ml air panas",
+            "65ml jus limau nipis (lebih kurang 4-5 biji limau) Kulit limau nipis daripada 3-4 biji limau (parut bahagian hijau sahaja) Secubit garam",
+            "10g asid sitrik (citric acid-jika ada)"
+          ]
+        },
+        {
+          "section": "Bahan",
+          "items": [
+            "70ml kordial",
+            "350ml air sejuk Ais secukupnya"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Basuh limau sehingga bersih dan lap kering.",
+            "Parut nipis bahagian hijau kulit limau sahaja.",
+            "Perahkan jus limau dan tapis bijinya.",
+            "Masukkan gula dengan air panas dalam pengisar.",
+            "Masukkan parutan limau.",
+            "Masukkan asid sitrik (Jika tiada abaikan sahaja) kisar sehingga sebati. Anggaran 30saat.",
+            "Tapis dan simpan dalam botol.",
+            "Simpan dalam peti sejuk untuk jangka hayat yang lebih panjang."
+          ]
+        },
+        {
+          "section": "Cara:",
+          "items": [
+            "Dalam cawan, masukkan ais anggaran paras 1/2 ke 2/3 cawan. Tuangkan air dan masukkan kordial.",
+            "Kacau sehingga sebati.",
+            "Tambah hirisan limau nipis untuk aroma dan penampilan yang lebih menarik. Siap."
+          ]
+        }
+      ],
+      "notes": null,
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "HOMEMADE PESTO PASTA",
+      "slug": "00_14_homemade_pesto_pasta",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_14_homemade_pesto_pasta.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=M_AEUEycLMI",
+      "ingredientCount": 1,
+      "stepCount": 1,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "section": "Bahan:",
+          "items": [
+            "2 ulas bawang putih",
+            "15g keju Parmesan, diparut halus",
+            "15g kacang pine (pine nuts), tidak dipanggang*",
+            "45g daun basil segar (lebih kurang 1 ikat)",
+            "3 sudu besar minyak zaitun extra virgin",
+            "1½ sudu besar garam ½ sudu besar untuk pesto",
+            "1 sudu besar untuk air rebusan pasta (lebihkan sedikit) ¼ sudu kecil serbuk lada hitam",
+            "250g spageti atau pasta pilihan Tambahan Keju Parmesan parut dan daun basil segar untuk hiasan"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Didihkan air yang banyak di dalam periuk. Masukkan 1 sudu besar garam, kemudian rebus spageti mengikut masa yang disyorkan pada bungkusan sehingga al dente (masih sedikit kenyal).",
+            "Sementara pasta direbus, masukkan bawang putih, keju Parmesan, kacang pine, daun basil, minyak zaitun, ½ sudu besar garam dan lada hitam ke dalam pengisar atau food processor.",
+            "Kisar sehingga menjadi sos pesto yang halus. Jika terlalu pekat, tambahkan sedikit minyak zaitun atau 1–2 sudu besar air rebusan pasta.",
+            "Sebelum menapis pasta, simpan kira-kira ½ cawan air rebusan pasta.",
+            "Toskan pasta, kemudian masukkan ke dalam mangkuk bersama sos pesto. Gaulkan rata.",
+            "Tambahkan sedikit demi sedikit air rebusan pasta sehingga sos menjadi berkrim dan menyaluti setiap helai pasta.",
+            "Hidangkan segera dengan taburan keju Parmesan parut dan beberapa helai daun basil segar. Sos pesto perlu disimpan dengan betul supaya kekal segar, warna hijau cantik dan tahan lebih lama.",
+            "Simpan dalam peti sejuk Masukkan sos pesto ke dalam bekas kaca atau bekas kedap udara yang bersih dan kering. Ratakan permukaan sos, kemudian tuangkan sedikit minyak zaitun di atasnya (lebih kurang ½ cm). Lapisan minyak ini membantu mengurangkan pendedahan kepada udara dan mengelakkan pesto bertukar gelap. Tutup rapat dan simpan di dalam peti sejuk. Tahan 5–7 hari.",
+            "Simpan dalam peti sejuk beku (Freezer) Bahagikan kepada bahagian kecil menggunakan acuan ais (ice cube tray) atau bekas kecil. Setelah beku, pindahkan ke dalam beg atau bekas kedap udara. Labelkan tarikh penyimpanan. Tahan sehingga 3 bulan. Nyahbeku di dalam peti sejuk semalaman atau pada suhu bilik selama 20– 30 minit."
+          ]
+        }
+      ],
+      "notes": null,
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "IKAN BELANDA MASAM MANIS",
+      "slug": "00_15_ikan_belanda_masam_manis",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_15_ikan_belanda_masam_manis.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=3TV6WYoyVqU",
+      "ingredientCount": 2,
+      "stepCount": 2,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "section": "Bahan Goreng Ikan:",
+          "items": [
+            "1–2 ekor ikan bawal (atau ikan pilihan), dibersihkan",
+            "Sedikit garam",
+            "Sedikit serbuk kunyit/ lada sulah",
+            "2–3 sudu besar tepung jagung (secukupnya)"
+          ]
+        },
+        {
+          "section": "Bahan Lain:",
+          "items": [
+            "4 biji bawang merah sederhana, dihiris nipis",
+            "6 ulas bawang putih, dihiris nipis",
+            "1 inci halia, dihiris nipis",
+            "2 biji cili hijau, dipotong serong",
+            "2 biji cili merah, dipotong serong",
+            "5 biji cili padi (pilihan)",
+            "1 inci kulit kayu manis",
+            "1 sudu besar pes asam jawa (dibancuh dengan ¼ cawan air) Minyak untuk menggoreng dan menumis",
+            "1–2 sudu kecil gula (atau secukup rasa) Garam secukup rasa",
+            "Daun bawang atau daun sup jika suka (tabur)"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara Goreng Ikan:",
+          "items": [
+            "Cuci bersih ikan pilihan dan keringkan menggunakan tisu dapur (kitchen towel). Langkah ini membantu menghasilkan kulit ikan yang lebih rangup ketika digoreng.",
+            "Kelarkan sedikit bahagian isi ikan pada kedua-dua belah supaya ikan lebih cepat masak dan perapan mudah meresap.",
+            "Lumurkan ikan dengan sedikit garam dan serbuk kunyit hingga rata.",
+            "Taburkan tepung jagung pada keseluruhan permukaan ikan dan salutkan secara nipis serta sekata.",
+            "Panaskan minyak yang mencukupi sehingga betul-betul panas, kemudian goreng ikan dengan api sederhana.",
+            "Goreng sehingga kedua-dua belah ikan bertukar keemasan dan kulitnya garing. Elakkan terlalu kerap membalikkan ikan supaya tidak hancur.",
+            "Angkat dan toskan minyak sebelum dihidangkan."
+          ]
+        },
+        {
+          "section": "Cara-cara",
+          "items": [
+            "Dalam minyak yang sama goreng ikan, masukkan bawang merah dan goreng sehingga garing. Angkat dan toskan.",
+            "Kemudian gorengkan bawang putih dan halia. Goreng sehingga warna bertukar golden brown. Angkat dan toskan.",
+            "Keluarkan lebihan minyak tinggalkan lebih kurang 2 sudu besar sahaja.",
+            "Kemudian, tumiskan kulit kayu manis hingga naik bau.",
+            "Seterusnya, tuangkan air asam jawa. Perasakan dengan garam dan gula, kemudian biarkan sos mendidih selama 2–3 minit sehingga sedikit pekat.",
+            "Masukkan bawang merah, bawang putih dan halia yang telah di goreng awal tadi.",
+            "Masukkan cili merah dan cili hijau bersama cili padi jika suka. Kacau sebentar.",
+            "Rasa dan seimbangkan kemasaman, kemanisan serta masinnya mengikut cita rasa. Biarkan reneh seketika.",
+            "Curahkan sos panas ke atas ikan goreng. Boleh tabur daun sup/daun bawang jika suka.",
+            "Hidangkan segera bersama nasi putih panas. Siap."
+          ]
+        }
+      ],
+      "notes": null,
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "IKAN GORENG MASAK LEMAK CILI PADI",
+      "slug": "00_16_ikan_goreng_masak_lemak_cili_padi",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_16_ikan_goreng_masak_lemak_cili_padi.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=4zqfaaDHzDU",
+      "ingredientCount": 2,
+      "stepCount": 2,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "section": "Bahan Kisar:",
+          "items": [
+            "10–15 biji cili padi merah & hijau (atau lebih jika suka pedas)",
+            "1 biji bawang besar",
+            "2 inci kunyit hidup",
+            "250ml air"
+          ]
+        },
+        {
+          "section": "Bahan lain:",
+          "items": [
+            "5-6 keping ikan tenggiri, cencaru, kembung, mabung dan sebagainya",
+            "250–300g kacang buncis/kacang panjang/pucuk ubi/ulam raja etc",
+            "2 kotak santan kecil (±400ml)",
+            "2  keping asam gelugor",
+            "15 biji limau kasturi (perah jus) Air secukupnya (untuk kuah) Garam secukup rasa Gula secukup rasa",
+            "Sedikit garam (untuk melumur ikan) Serbuk kunyit (untuk melumur ikan) Minyak untuk menggoreng"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Kisar semua bahan sehingga halus. Ketepikan."
+          ]
+        },
+        {
+          "section": "Cara:",
+          "items": [
+            "Bersihkan ikan dan lumurkan dengan sedikit garam serta serbuk kunyit.",
+            "Goreng ikan sehingga masak dan keemasan.",
+            "Angkat dan toskan minyak. Ketepikan.",
+            "Masukkan bahan kisar ke dalam periuk dan didihkan sehingga naik bau serta sedikit pekat.",
+            "Tambahkan sedikit air jika perlu, kemudian masukkan kacang buncis.",
+            "Reneh selama 3-4 minit sehingga kacang buncis hampir lembut.",
+            "Tuangkan santan dan kacau perlahan sehingga sebati.",
+            "Masukkan asam gelugor. Perasakan dengan garam dan sedikit gula.",
+            "Setelah kuah mendidih perlahan, masukkan ikan goreng dan biarkan mereneh 2–3 minit supaya kuah meresap ke dalam ikan. Rasa dan sesuaikan dengan citarasa.",
+            "Perlahankan api, kemudian masukkan perahan jus 15 biji limau kasturi. Kacau perlahan sehingga sebati dan terus tutup api.",
+            "Jangan biarkan kuah mendidih lama selepas jus limau dimasukkan supaya rasa segar dan aroma limau kekal.",
+            "Biarkan kuah rehat 30 minit jika suka sebelum dihidangkan. Siap."
+          ]
+        }
+      ],
+      "notes": null,
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "KUEY TEOW GORENG KEDAI STYLE",
+      "slug": "00_17_kuey_teow_goreng_kedai_style",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_17_kuey_teow_goreng_kedai_style.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=DVF50mc-1Ww",
+      "ingredientCount": 2,
+      "stepCount": 1,
+      "hasNotes": true,
+      "ingredients": [
+        {
+          "section": "Bahan Campuran Sos:",
+          "items": [
+            "2 sudu besar kicap cair",
+            "1 sudu besar sos tiram ½ sudu besar kicap pekat ¼ sudu besar sos ikan (pilihan) ¾ sudu kecil serbuk lada putih"
+          ]
+        },
+        {
+          "section": "Bahan Lain:",
+          "items": [
+            "400g kuey teow (1 pek)",
+            "2 biji telur",
+            "10-15 ekor udang sederhana",
+            "150g isi kerang (jika suka)",
+            "1 genggam besar taugeh",
+            "1 genggam besar kucai, dipotong 2–3 inci",
+            "5 ulas bawang putih, dicincang halus/ketuk",
+            "4 sudu besar minyak masak"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Satukan semua bahan sos dan gaul hingga sebati. Ketepikan.",
+            "Panaskan minyak dengan api besar, kemudian tumis bawang putih hingga naik bau.",
+            "Masukkan udang dan isi kerang. Goreng sehingga udang bertukar warna dan kerang masak.",
+            "Tolak bahan ke tepi kuali, pecahkan telur dan kacau hingga hancur.",
+            "Masukkan kuey teow, kemudian tuangkan campuran sos. Gaul hingga rata.",
+            "Akhir sekali masukkan taugeh dan kucai. Gaul selama 30–60 saat sahaja supaya kekal rangup.",
+            "Angkat dan hidangkan segera bersama hirisan cili merah atau cili jeruk jika suka."
+          ]
+        }
+      ],
+      "notes": "Tip ala kedai: Pastikan kuali benar-benar panas dan gunakan api besar\nsepanjang proses menggoreng. Jangan gaul terlalu lama selepas\nmemasukkan taugeh dan kucai supaya kuey teow tidak lembik dan kekal\nberaroma wok hei.",
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "KURMA TELUR",
+      "slug": "00_18_kurma_telur",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_18_kurma_telur.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=a_ZvjRebaIk",
+      "ingredientCount": 3,
+      "stepCount": 1,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "section": "Bahan:",
+          "items": [
+            "6 biji telur rebus & goreng",
+            "3 sudu besar rempah kurma",
+            "1 sudu kecil serbuk kunyit",
+            "1 cawan air",
+            "1 cawan santan pekat (1 kotak kecil santan)",
+            "2 biji kentang – potong sederhana",
+            "2 biji cili hijau atau cili merah – belah dua",
+            "1-2 biji tomato – belah 4",
+            "1–2 keping asam keping (secukupnya) Garam secukup rasa",
+            "Sedikit gula (pilihan, untuk seimbangkan rasa)"
+          ]
+        },
+        {
+          "section": "Bahan Tumis:",
+          "items": [
+            "1 biji bawang besar – dihiris",
+            "3 ulas bawang putih – dihiris",
+            "1 inci halia – dihiris nipis Rempah 4 sekawan (1 kayu manis, 2 bunga lawang, 2 kuntum cengkih, 2 biji pelaga)",
+            "1 senduk minyak masak"
+          ]
+        },
+        {
+          "section": "Bahan Tumbuk lumat/kisar:",
+          "items": [
+            "5 biji bawang merah (kecil)",
+            "3 ulas bawang putih"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Panaskan minyak. Goreng telur selama 2–3 minit dengan api sederhana sambil digolek-golekkan sehingga permukaannya bertukar keemasan.",
+            "Angkat dan toskan sebelum dimasukkan ke dalam kuah kurma..",
+            "Tumis rempah 4 sekawan hingga naik bau.",
+            "Masukkan bawang besar, bawang putih dan halia. Tumis hingga layu dan sedikit keperangan.",
+            "Masukkan bahan kisar/tumbuk dan tumis sehingga pecah minyak.",
+            "Bancuhkan rempah kurma bersama serbuk kunyit dengan sedikit air sehingga menjadi pes. Masukkan ke dalam tumisan dan masak sehingga rempah betul-betul pecah minyak.",
+            "Masukkan kentang dan gaul rata bersama rempah.",
+            "Tuangkan 1 cawan air, kemudian masukkan asam keping. Reneh sehingga ubi kentang hampir empuk.",
+            "Masukkan santan pekat dan kacau perlahan menggunakan api sederhana kecil supaya santan tidak pecah.",
+            "Masukkan telur, cili hijau atau merah, dan tomato.",
+            "Perasakan dengan garam (dan sedikit gula jika suka). Reneh 3–5 minit sehingga kuah sedikit pekat dan semua bahan sebati.",
+            "Tutup api dan biarkan seketika sebelum dihidangkan supaya rasa lebih meresap."
+          ]
+        }
+      ],
+      "notes": null,
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "ONDE ONDE COKLAT VIRAL",
+      "slug": "00_19_onde_onde_coklat_viral",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_19_onde_onde_coklat_viral.jpg",
+      "videoUrl": null,
+      "ingredientCount": 2,
+      "stepCount": 2,
+      "hasNotes": true,
+      "ingredients": [
+        {
+          "section": "Bahan Air Pandan:",
+          "items": [
+            "6 helai daun pandan",
+            "1 cawan air",
+            "Beberapa titis pewarna hijau (pilihan)"
+          ]
+        },
+        {
+          "section": "Bahan Lain:",
+          "items": [
+            "1 cawan tepung pulut",
+            "2 sudu besar tepung gandum / tepung beras Air pandan secukupnya Kiub coklat  secukupnya (dark chocolate, milk chocolate atau chocolate compound), dipotong kecil ½ biji kelapa parut (putih) ½ sudu kecil garam halus"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara buat air pandan:",
+          "items": [
+            "Kisar daun pandan bersama air hingga halus.",
+            "Tapis dan ambil air sahaja."
+          ]
+        },
+        {
+          "section": "Cara:",
+          "items": [
+            "Kukuskan kelapa parut yang di gaul garam selama 5 minit. Ketepikan.",
+            "Gaulkan tepung pulut dan tepung gandum.",
+            "Tuangkan air pandan sedikit demi sedikit sambil menguli hingga menjadi doh yang lembut dan tidak melekat di tangan. Berhenti letak air.",
+            "Ambil sedikit doh, leperkan dan masukkan 1 kiub coklat di tengah. Tutup kemas dan bulatkan.",
+            "Didihkan air di dalam periuk. Masukkan bebola onde-onde dan rebus sehingga semuanya timbul di permukaan air.",
+            "Angkat dan toskan seketika.",
+            "Gaulkan onde-onde yang masih suam dengan kelapa parut yang telah dicampur garam."
+          ]
+        }
+      ],
+      "notes": "Nota:\n1. Gunakan coklat compound atau dark chocolate supaya inti lebih\nmudah cair dan tidak terlalu manis.\n2. Potong coklat kepada kiub kecil (lebih kurang 1–1.5 cm) agar mudah\ndibungkus.\n3. Pastikan doh menutup coklat dengan rapat untuk mengelakkan\ncoklat keluar semasa direbus.\n4. Kukus kelapa parut bersama garam selama 5–10 minit supaya lebih\ntahan lama.\n5. Boleh menggunakan Nutella beku sebagai inti. Bekukan dahulu\nselama 1–2 jam sebelum dibalut dengan doh supaya lebih mudah\ndibentuk dan menghasilkan inti yang cair apabila dimakan.",
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "POTATO WEDGES",
+      "slug": "00_20_potato_wedges",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_20_potato_wedges.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=QpHqHEdpWaY",
+      "ingredientCount": 1,
+      "stepCount": 1,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "section": "Bahan:",
+          "items": [
+            "600g kentang (±3 biji besar)",
+            "5g garam (½ sudu besar)  (merebus kentang) Air secukupnya (merebus kentang) Minyak zaitun secukupnya Campuran Perasa",
+            "2g garam (±⅔ sudu kecil)",
+            "1g serbuk lada hitam (1 sudu kecil)",
+            "5g serbuk paprika (1 sudu besar)",
+            "5g serbuk bawang putih (1 sudu besar)/ 2 ulas bawang putih - parut",
+            "3g parsley kering (1 sudu besar)",
+            "1g oregano kering (½ sudu kecil)",
+            "15g serbuk roti (5 sudu besar)",
+            "20g tepung jagung (2 sudu besar)",
+            "30g keju Parmesan parut (6 sudu besar)"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Kupas kentang (jika suka) dan potong mengikut saiz kentang wedges yang diingini.",
+            "Masukkan kentang dan air secukupnya (kentang tenggelam) masukkan garam, kemudian rebus sehingga hampir empuk. Anggaran 8-10minit (sekitar 70–80% masak). Toskan.",
+            "Biarkan kentang kering seketika sehingga wap hilang.",
+            "Gaulkan kentang dengan minyak zaitun.",
+            "Dalam mangkuk lain, satukan semua bahan campuran perasa.",
+            "Masukkan kentang ke dalam campuran perasa dan gaul hingga setiap batang kentang bersalut rata. Boleh masukkan kentang dan bahan perasa dalam plastik. Kemudian goncangkan plastik sehingga semua bahan sebati.",
+            "Susun kentang di atas dulang pembakar atau bakul air fryer dalam satu lapisan. A. Bakar Guna Air Fryer",
+            "Panaskan airfryer seketika.",
+            "Masak pada 200°C selama 15–20 minit.",
+            "Goncang atau balikkan kentang separuh masa memasak supaya masak sekata.",
+            "Selepas masak, biarkan 2–3 minit sebelum dihidang untuk hasil yang lebih rangup. B. Bakar Guna Oven",
+            "Panaskan oven betul-betul dahulu (200–220°C).",
+            "Gunakan mode kipas / convection jika ada.",
+            "Susun satu lapisan sahaja, jangan bertindih. Bakar 20–30 minit.",
+            "Balikkan separuh masa (contoh selepas 12–15 minit). Naikkan ke 220°C 3–5 minit terakhir untuk efek “crisp”. C. Goreng Dalam Minyak Goreng dalam minyak panas pada suhu 170–180°C sehingga keemasan dan rangup. Angkat dan toskan atas rak atau tisu dapur."
+          ]
+        }
+      ],
+      "notes": null,
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "ROTI 3 KELOPAK",
+      "slug": "00_21_roti_3_kelopak",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_21_roti_3_kelopak.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=3TV6WYoyVqU",
+      "ingredientCount": 2,
+      "stepCount": 1,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "section": "Bahan:",
+          "items": [
+            "325g tepung roti (± 2½ cawan)",
+            "190ml susu suam atau air suam (± ¾ cawan + 2 sudu kecil)",
+            "50g mentega tanpa garam, dilembutkan",
+            "3g yis segera (Instant Yeast) (1 sudu kecil)",
+            "6g garam (1 sudu kecil)",
+            "30g gula kastor (2½ sudu besar)"
+          ]
+        },
+        {
+          "section": "Bahan lain:",
+          "items": [
+            "Sedikit mentega lembut Muffin tray 12 lubang / paper cup"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Sediakan Doh",
+            "Masukkan susu suam, gula, garam, yis, mentega dan tepung ke dalam mangkuk.",
+            "Gaul sehingga menjadi doh kasar.",
+            "Uli di atas permukaan kerja selama 6-8 minit sehingga doh menjadi licin, lembut dan anjal.Tip: Pastikan susu hanya suam (sekitar 35-40°C), bukan panas supaya yis dapat berfungsi dengan baik.",
+            "Bahagikan Doh",
+            "Bahagikan doh kepada 12 bahagian yang sama besar.",
+            "Setiap bahagian dibahagikan lagi kepada 3 bahagian kecil.",
+            "Setiap bebola kecil seberat kira-kira 16-17g.",
+            "Bulatkan setiap doh dengan menarik bahagian tepi ke bawah sehingga permukaannya licin.",
+            "Bentukkan 3 kelopak (Cloverleaf )",
+            "Sapukan sedikit mentega pada loyang muffin.",
+            "Letakkan 3 bebola doh ke dalam setiap ruang muffin.",
+            "Tutup dengan cling wrap atau kain lembap.",
+            "Proses Naik (Proofing) Biarkan doh naik selama 45-60 minit atau sehingga mengembang hampir dua kali ganda.",
+            "Membakar",
+            "Panaskan ketuhar kepada 180°C. Api atas bawah. OFF kipas.",
+            "Bakar selama 18-20 minit atau sehingga permukaan berwarna perang keemasan.",
+            "Setelah keluar dari oven, terus sapukan mentega cair pada permukaan roti supaya lebih lembut dan berkilat.",
+            "Alihkan ke atas rak penyejuk supaya bahagian bawah roti tidak menjadi lembap."
+          ]
+        }
+      ],
+      "notes": null,
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "S'MORES CHOCOLATE CHIP COOKIES",
+      "slug": "00_22_smores_chocolate_chip_cookies",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_22_smores_chocolate_chip_cookies.jpg",
+      "videoUrl": null,
+      "ingredientCount": 3,
+      "stepCount": 1,
+      "hasNotes": true,
+      "ingredients": [
+        {
+          "section": "Bahan Kering:",
+          "items": [
+            "180g tepung gandum (all-purpose flour) ½ sudu kecil baking powder ½ sudu kecil baking soda",
+            "1 sudu kecil tepung jagung (cornstarch) ¼ sudu kecil garam"
+          ]
+        },
+        {
+          "section": "Bahan Basah:",
+          "items": [
+            "140g mentega tanpa garam (unsalted butter), suhu bilik lembut",
+            "35g gula kastor",
+            "80g gula perang (light brown sugar)",
+            "1 biji telur gred A/B",
+            "1 sudu kecil esen vanila"
+          ]
+        },
+        {
+          "section": "Bahan Campuran:",
+          "items": [
+            "100g cip coklat semi manis",
+            "56g Graham Crackers/lotus cookies (lebih kurang 4 keping), dipatah- patahkan",
+            "100g marshmallow, dibelah kecil-kecil",
+            "1 bar Hershey's Milk Chocolate (43g)/coklat pilihan, dipotong kecil"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Sediakan bahan Potong kecil coklat Hershey’s atau coklat pilihan Patah-patahkan Graham Crackers/lotus cookies. Tidak perlu halus. Belah kecil marshmallow supaya tidak terlalu mengembang ketika dibakar.",
+            "Campurkan bahan kering. Satukan: Tepung gandum Baking powder Baking soda Tepung jagung Garam Gaul menggunakan whisk sehingga sebati.",
+            "Pukul mentega bersama gula kastor dan gula perang selama lebih kurang 2 minit sehingga ringan dan berkrim. Masukkan telur dan esen vanila, kemudian pukul sehingga sebati.",
+            "Masukkan campuran tepung sedikit demi sedikit sambil menggaul pada kelajuan rendah sehingga adunan baru sahaja sebati.Jangan terlebih menggaul.",
+            "Asingkan sedikit marshmallow dan coklat Hershey's untuk hiasan selepas dibakar. Masukkan ke dalam adunan. Gaul perlahan sehingga sekata. Cip coklat Graham Crackers/Lotus cookies Marshmallow",
+            "Sejukkan adunan. Tutup adunan dan simpan dalam peti sejuk sekurang- kurangnya 1 jam.",
+            "Bentukkan biskut. Panaskan oven kepada 175°C. Cedok lebih kurang 2 sudu besar adunan dan bulatkan. Susun di atas loyang yang dialas baking paper dengan jarak kira-kira 5cm antara setiap doh.",
+            "Bakar selama 8 minit. Keluarkan loyang, kemudian letakkan: Marshmallow yang telah diasingkan Potongan coklat Hershey's Bakar semula selama 2-3 minit sehingga bahagian tepi mula keperangan.",
+            "Biarkan biskut sejuk di atas loyang sehingga mengeras sedikit sebelum dipindahkan ke rak penyejuk."
+          ]
+        }
+      ],
+      "notes": "Tips Penyimpanan\n1. Simpan dalam bekas kedap udara: 3-4 hari pada suhu bilik.\n2. Doh boleh dibekukan sehingga 2 bulan. Bakar terus dari beku dengan\nmenambah 1-2 minit masa membakar.",
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "SAMBAL COLEK KICAP PADU",
+      "slug": "00_23_sambal_colek_kicap_padu",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_23_sambal_colek_kicap_padu.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=GLQJaqdwlwQ",
+      "ingredientCount": 1,
+      "stepCount": 1,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "section": "Bahan",
+          "items": [
+            "8 ulas bawang putih",
+            "1 biji bawang besar",
+            "20 tangkai cili padi",
+            "1 ketul kecil gula melaka (100gm)",
+            "1/2 - 1 cawan kicap lemak manis"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara",
+          "items": [
+            "Buang tangkai cili dan patah-patahkan. Kemudian, potong kasar bawang besar dan bawang putih. Ketepikan seketika.",
+            "Ketuk dan hancurkan sedikit gula melaka sebelum dikisar.",
+            "Panaskan sedikit minyak dalam kuali, kemudian masukkan bawang- bawang dan cili padi. Gorengkan sehingga layu dan lembut.",
+            "Angkat dan Toskan.",
+            "Dalam pengisar, masukkan bawang dan cili padi yang telah digoreng. Kemudian masukkan gula melaka dan kicap manis.",
+            "Kisar sehingga sedikit halus. Siap."
+          ]
+        }
+      ],
+      "notes": null,
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "SAMBAL GORENG DAGING MUDAH",
+      "slug": "00_24_sambal_goreng_daging_mudah",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_24_sambal_goreng_daging_mudah.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=Gy0CuqTw5EI",
+      "ingredientCount": 1,
+      "stepCount": 1,
+      "hasNotes": true,
+      "ingredients": [
+        {
+          "section": "Bahan",
+          "items": [
+            "1 kg daging batang pinang/topside/sirloin jika dihiris nipis melawan urat. Segenggam Cili kering (rendam/rebus sehingga lembut- kisar)",
+            "3 biji bawang besar (kisar)",
+            "4 ulas bawang putih (kisar)",
+            "1 biji bawang besar (potong bulat)",
+            "1-2 sudu besar air asam jawa (ikut citarasa) / cuka makan secukupnya Gula secukup rasa Garam secukup rasa",
+            "Sedikit kicap lemak manis Minyak secukupnya"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara",
+          "items": [
+            ":",
+            "Panaskan kuali tanpa minyak, kemudian masukkan hirisan daging. Set api sederhana.",
+            "Masak sehingga air dari daging keluar dan hampir kering.",
+            "Masukkan sedikit minyak dan goreng daging sehingga sedikit garing di bahagian luar. Jangan terlalu garing nanti keras. Angkat dan ketepikan.",
+            "Tambahkan minyak secukupnya untuk menumis bahan kisar.",
+            "Tumiskan bahan kisar, cili kering bawang besar dan bawang putih sehingga garing dan pecah minyak.",
+            "Masukkan sedikit air semasa proses menggaringkan sambal (3x)",
+            "Bila sambal dah mula garing dan pecah minyak, masukkan asam jawa dan masukkan semula daging bersama sedikit air. Biarkan daging reneh dengan api kecil selama 15 minit supaya daging menyerap kuah.",
+            "Perasakan dengan sedikit kicap manis, gula dan garam. Gaul sebati. Kemudian rasa dan sesuaikan dengan citarasa.",
+            "Biarkan sambal dan daging reneh perlahan, sehingga sambal sedikit kering dan pecah minyak.",
+            "Masukkan bawang besar yang di potong bulat. Gaul rata seketika. Renehkan sekejap lebih kurang 2-3min. Tutup api. Siap."
+          ]
+        }
+      ],
+      "notes": "Nota :\n1. Memasak daging tanpa minyak terlebih dahulu, air semula jadi daging\nakan keluar dan daging mula masak perlahan dalam jusnya sendiri.\n2. Menggoreng seketika selepas air hampir kering, bahagian luar daging\nmenjadi sedikit garing (seperti proses searing) tanpa terlebih masak.\n3. Mereneh semula dalam sambal atau kuah, daging menyerap perisa dan\nkekal lembut kerana tidak digoreng terlalu lama.\n4. Jika menggunakan daging pejal (contohnya bahagian paha atau urat),\nteknik ini sahaja mungkin tidak mencukupi. Lebih baik rebus atau pressure\ncook sehingga hampir empuk terlebih dahulu, kemudian barulah gunakan\nteknik goreng tanpa minyak dan sambal. Hasilnya akan lebih lembut dan\ntetap berjus.",
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "SAMBAL MATAH PADU",
+      "slug": "00_25_sambal_matah_padu",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_25_sambal_matah_padu.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=QTjq-ptsp_M",
+      "ingredientCount": 2,
+      "stepCount": 2,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "section": "Bahan:",
+          "items": [
+            "6 helai daun limau purut (buang tulang tengah, hiris nipis)",
+            "15-20 biji cili padi (ikut tahap kepedasan, hiris nipis)",
+            "20 ulas bawang merah kecil (hiris nipis)",
+            "2 ulas bawang putih (hiris nipis)",
+            "7g belacan (bakar seketika dan cincang halus)",
+            "2 batang serai (ambil bahagian putih sahaja, hiris sangat nipis)",
+            "1½ sudu kecil serbuk perasa cendawan / pati ayam / MSG",
+            "50ml minyak kelapa dara/minyak jagung/conola ½ sudu kecil garam",
+            "2 sudu kecil gula Jus daripada 1½ biji limau nipis/ limau kasturi secukupnya"
+          ]
+        },
+        {
+          "section": "Bahan Tambahan:",
+          "items": [
+            "100g ikan bilis – cuci, toskan dan goreng garing",
+            "150g tempe – potong dadu kecil, goreng garing",
+            "150g tauhu keras – potong dadu kecil, goreng garing"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Hiris nipis daun limau purut, cili padi, bawang merah, bawang putih dan serai. Ketepikan.",
+            "Panaskan minyak. Goreng ikan bilis sehingga garing. Angkat dan toskan.",
+            "Goreng tempe sehingga keemasan dan rangup. Angkat.",
+            "Goreng tauhu sehingga garing di luar. Angkat dan toskan.",
+            "Biarkan semua bahan sejuk supaya kekal rangup.",
+            "Cincang halus belacan yang telah dibakar.",
+            "Satukan semua bahan yang dihiris di dalam mangkuk.",
+            "Masukkan garam, gula, serbuk perasa dan belacan. Gaul sehingga rata.",
+            "Panaskan minyak kelapa sehingga benar-benar panas.",
+            "Tuangkan minyak panas ke atas campuran sambal. Kacau rata supaya aroma bawang dan serai lebih naik.",
+            "Tunggu 3-5minit. Masukkan jus limau dan gaul sekali lagi.",
+            "Bila minyak sedikit suam, masukkan ikan bilis, tempe dan tauhu yang telah sejuk.",
+            "Gaul perlahan supaya bahan goreng tidak hancur.",
+            "Biarkan selama 10–15 minit sebelum dihidangkan supaya rasa lebih sebati."
+          ]
+        },
+        {
+          "section": "Cara Simpan:",
+          "items": [
+            "Sambal Matah sahaja: Simpan dalam bekas kedap udara di dalam peti sejuk sehingga 5 hari atau lebih.",
+            "Jika telah dicampur ikan bilis, tempe dan tauhu: Sebaiknya habiskan dalam 1–2 hari untuk mengekalkan kerangupan.",
+            "Jika ingin dijual, simpan sambal matah dan bahan goreng secara berasingan, kemudian gaulkan sebelum dimakan untuk hasil yang paling sedap.",
+            ""
+          ]
+        }
+      ],
+      "notes": null,
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "SMASH BURGER (DOUBLE PATTY)",
+      "slug": "00_26_smash_burger_double_patty",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_26_smash_burger_double_patty.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=QpHqHEdpWaY",
+      "ingredientCount": 3,
+      "stepCount": 1,
+      "hasNotes": true,
+      "ingredients": [
+        {
+          "section": "Bahan Patty Burger:",
+          "items": [
+            "350g daging kisar (80/20 lemak) Garam secukupnya Serbuk lada hitam secukupnya"
+          ]
+        },
+        {
+          "section": "Bahan Lain:",
+          "items": [
+            "2 biji roti burger",
+            "2 keping keju Cheddar/mozarella",
+            "Sedikit mentega lembut (pilihan, untuk sapu roti)"
+          ]
+        },
+        {
+          "section": "Bahan Topping:",
+          "items": [
+            "Hirisan tomato",
+            "Hirisan bawang besar",
+            "Daun salad yang dihiris halus Mayonis Sos tomato Mustard Pickles"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Bahagikan daging kisar kepada 4 bahagian sama besar (lebih kurang 84g setiap satu).",
+            "Bulat-bulatkan menjadi bebola tanpa dipadatkan terlalu kuat.",
+            "Susun di atas pinggan, tutup dan simpan dalam peti sejuk sekurang- kurangnya 20 minit atau sehingga 6 jam.",
+            "Panaskan kuali besi (cast iron skillet) atau griddle di atas api sederhana tinggi. Jika mahu, sapukan sedikit mentega pada bahagian dalam roti burger dan bakar selama lebih kurang 1 minit sehingga keperangan. Ketepikan.",
+            "Besarkan api ke tahap tinggi. Letakkan 2-4 bebola daging di atas kuali panas (pastikan ada ruang di antara setiap satu).",
+            "Tekan bebola daging menggunakan masher/spatula/sudip sehingga menjadi patty yang sangat nipis. Jika daging melekat pada spatula, lapikkan dengan sekeping kertas pembakar (parchment paper) sebelum menekan.",
+            "Taburkan sedikit garam dan lada hitam di atas patty.",
+            "Masak selama kira-kira 2 minit sehingga bahagian bawah menjadi perang gelap dan garing.",
+            "Terbalikkan patty, taburkan sedikit lagi garam dan lada hitam, kemudian masak selama 1 minit lagi.",
+            "Letakkan sekeping keju di atas separuh daripada patty yang sedang dimasak. Tindihkan dengan satu lagi patty tanpa keju untuk menghasilkan double smash burger. Angkat.",
+            "Ulang langkah yang sama sehingga semua patty siap dimasak.",
+            "Susun burger dengan roti, sos pilihan, salad, tomato, bawang dan double patty.",
+            "Tutup dengan roti bahagian atas dan hidangkan segera."
+          ]
+        }
+      ],
+      "notes": "Tip Penting\nGunakan daging 80/20 (80% daging, 20% lemak) untuk mendapatkan\npatty yang lebih juicy dan berkerak rangup.\nJangan skip proses menyejukkan bebola daging. Daging yang sejuk\napabila bertemu permukaan yang sangat panas akan menghasilkan\nkerak (crust) yang lebih cantik, sementara bahagian dalam kekal\nberjus.\nPastikan kuali benar-benar panas sebelum menekan daging.\nTekan patty sekali sahaja dan jangan tekan lagi semasa memasak\nsupaya jus daging tidak keluar.\nJika menggunakan spatula berlubang atau daging melekat ketika\nmenekan, gunakan kertas parchment sebagai pelapik di antara\nspatula dan daging.",
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "SOFT PARATHA",
+      "slug": "00_27_soft_paratha",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_27_soft_paratha.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=NUXx3FMmqU0",
+      "ingredientCount": 1,
+      "stepCount": 1,
+      "hasNotes": true,
+      "ingredients": [
+        {
+          "section": "Bahan:",
+          "items": [
+            "250g tepung gandum serbaguna (± 2 cawan) ½ sudu kecil gula ¼ sudu kecil garam",
+            "120–140ml air suam  (masukkan sedikit demi sedikit)",
+            "1 sudu kecil minyak masak (untuk doh) ± 60ml (¼ cawan) minyak masak (untuk sapuan dan menggoreng)"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Dalam mangkuk besar, satukan tepung gandum, gula dan garam. Gaul hingga sebati.",
+            "Masukkan air sedikit demi sedikit sambil menguli sehingga menjadi doh yang lembut dan tidak melekat.",
+            "Tambahkan 1 sudu kecil minyak masak, kemudian uli lagi selama 5–8 minit sehingga doh licin dan anjal.",
+            "Bahagikan doh kepada 6 bahagian sama besar dan bulatkan.",
+            "Taburkan sedikit tepung di atas permukaan kerja. Canai setiap doh senipis yang boleh hingga menjadi kepingan yang agak panjang.",
+            "Sapukan sedikit minyak di seluruh permukaan doh dan tabur sedikit tepung. Gulung atau lipat memanjang, kemudian gulung seperti cinnamon roll (siput).",
+            "Susun semua doh yang telah digulung ke dalam bekas, sapukan sedikit minyak di atasnya, tutup dan rehatkan selama 30 minit.",
+            "Selepas direhatkan, canai setiap doh perlahan-lahan menjadi bulat setebal lebih kurang 2-3mm.",
+            "Panaskan kuali leper dengan api sederhana.",
+            "Letakkan paratha di atas kuali dan masak sehingga gelembung kecil mula terbentuk. Terbalikkan.",
+            "Titiskan sedikit minyak di sekeliling paratha. Masak hingga keemasan, kemudian terbalikkan sekali lagi dan masak sebelah lagi sambil menambah sedikit minyak jika perlu.",
+            "Angkat dan tepuk perlahan-lahan dengan kedua-dua tangan untuk menghasilkan lapisan yang lebih lembut dan gebu."
+          ]
+        }
+      ],
+      "notes": "Tips:\n1. Gunakan doh yang lembut untuk mendapatkan paratha yang lebih lembut.\n2. Jangan skip proses rehat selama 30minit kerana ia membantu gluten\nberehat dan memudahkan proses mencanai.\n3. Simpan paratha yang telah dimasak di dalam bekas bertutup atau balut\ndengan kain bersih supaya kekal lembut.",
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "SOS LADA HITAM MUDAH",
+      "slug": "00_28_sos_lada_hitam_mudah",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_28_sos_lada_hitam_mudah.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=8qMEAuSCvfY",
+      "ingredientCount": 2,
+      "stepCount": 1,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "section": "Bahan:",
+          "items": [
+            "3 sudu besar mentega ½ biji bawang Holland, dicincang halus",
+            "2 sudu besar bawang putih, dicincang halus ⅛ cawan lada hitam kisar",
+            "3 sudu besar kicap cair",
+            "2 sudu besar sos tomato (ketchup)",
+            "1 sudu besar sos Worcestershire atau sos tiram",
+            "1 sudu kecil garam ½ sudu kecil gula",
+            "1 cawan stok ayam"
+          ]
+        },
+        {
+          "section": "Bahan Campuran Tepung:",
+          "items": [
+            "2 sudu kecil tepung jagung",
+            "3 sudu besar air"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Cairkan mentega di dalam kuali dengan api sederhana.",
+            "Tumis bawang Holland sehingga layu dan sedikit keperangan.",
+            "Masukkan bawang putih dan tumis sehingga naik bau.",
+            "Masukkan lada hitam kisar dan kacau selama 30 saat.",
+            "Tambahkan kicap cair, sos tomato, sos Worcestershire (atau sos tiram) garam dan gula. Kacau sehingga sebati.",
+            "Tuangkan stok ayam dan biarkan sos mendidih selama 3–5 minit.",
+            "Kacau bancuhan tepung jagung, kemudian tuangkan sedikit demi sedikit ke dalam sos sambil terus mengacau.",
+            "Masak sehingga sos menjadi pekat dan berkilat. Jika terlalu pekat, tambah sedikit stok ayam atau air.",
+            "Hidangkan panas di atas stik, ayam, kambing atau sebagai sos untuk kentang putar."
+          ]
+        }
+      ],
+      "notes": null,
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "SPICY GARLIC PASTA",
+      "slug": "00_29_spicy_garlic_pasta",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_29_spicy_garlic_pasta.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=y9gfhh2WlN8",
+      "ingredientCount": 1,
+      "stepCount": 1,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "section": "Bahan:",
+          "items": [
+            "250g spaghetti/ pasta pilihan",
+            "1 sudu besar minyak zaitun atau minyak masak",
+            "20g bawang putih – cincang halus",
+            "15g bawang putih – hiris nipis (untuk digoreng garing)",
+            "60g mentega tanpa garam",
+            "1-2 sudu kecil chili flakes (atau ikut tahap kepedasan)",
+            "1 sudu besar kicap cair",
+            "1 sudu besar sos tiram Lada hitam secukup rasa Keju Parmesan parut secukupnya",
+            "Daun bawang hiris secukupnya"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Didihkan air dalam periuk bersama garam. Rebus pasta sehingga al dente mengikut arahan pada bungkusan.",
+            "Simpan (reserve) ½ cawan air rebusan pasta, kemudian toskan pasta.",
+            "Panaskan minyak, kemudian goreng bawang putih hiris sehingga nampak keemasan. Terus Angkat dan ketepikan. Bawang putih akan sambung masak dan garing.",
+            "Dalam kuali, masukkan mentega. Masukkan bawang putih cincang dan tumis hingga naik bau.",
+            "Masukkan chili flakes dan kacau selama 10–15 saat.",
+            "Masukkan kicap cair, sos tiram dan sedikit lada hitam. Masukkan pasta dan gaul rata.",
+            "Tuang sedikit demi sedikit ½ cawan air rebusan pasta sehingga sos menjadi berkilat dan menyaluti pasta. Tidak semestinya gunakan semuany, tambah mengikut kepekatan yang diingini.",
+            "Parutkan keju Parmesan dan tabur daun bawang.",
+            "Tutup api. Masukkan sebahagian bawang putih goreng dan gaul perlahan.",
+            "Hidangkan dengan taburan baki bawang putih goreng, keju Parmesan dan daun bawang. Boleh tambah protien:Ayam: 150g isi ayam dipotong dadu. Udang: 8-10 ekor udang sederhana. Cendawan: 100g cendawan butang atau shimeji. Daging salai: Sesuai jika mahukan rasa lebih smoky."
+          ]
+        }
+      ],
+      "notes": null,
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "SUP DAGING TUMIS DARAT",
+      "slug": "00_30_sup_daging_tumis_darat",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_30_sup_daging_tumis_darat.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=M_AEUEycLMI",
+      "ingredientCount": 1,
+      "stepCount": 1,
+      "hasNotes": true,
+      "ingredients": [
+        {
+          "section": "Bahan:",
+          "items": [
+            "1kg daging lembu (dipotong sederhana)",
+            "8 ulas bawang putih (dihiris)",
+            "4 biji bawang besar sederhana (dihiris)",
+            "7 inci halia (5 inci untuk rebusan, 2 inci untuk tumisan)",
+            "2 paket kecil rempah sup (25g setiap satu)",
+            "1 bunjut sup",
+            "1-2 sudu besar lada hitam (ditumbuk kasar",
+            "1 sudu besar serbuk ketumbar (pilihan)",
+            "5 biji ubi kentang (dipotong besar)",
+            "1 batang lobak merah (dipotong besar)",
+            "1 genggam daun sup (dihiris)",
+            "3 batang daun bawang (dihiris) Garam secukup rasa Minyak masak untuk menumis",
+            "2.5-3 liter air (secukupnya) Rempah 4 Sekawan :",
+            "2 batang kulit kayu manis (lebih kurang 3 inci setiap satu)",
+            "4 kuntum bunga lawang",
+            "6 biji buah pelaga",
+            "6 kuntum bunga cengkih"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Panaskan minyak secukupnya di dalam kuali. Tumiskan rempah 4 sekawan sehingga naik bau.",
+            "Masukkan hirisan halia, bawang putih dan bawang besar. Tumis sehingga layu dan kekuningan.",
+            "Masukkan rempah sup dan lada hitam. Kacau rata, kemudian tambah sedikit air supaya rempah tidak hangus. Tumis sehingga pecah minyak. Tutup api dan ketepikan.",
+            "Dalam periuk besar, masukkan air, hirisan halia dan bunjut sup. Masukkan daging dan rebus sehingga mendidih.",
+            "Setelah mendidih, tuangkan tumisan rempah ke dalam periuk. Kacau sebati dan teruskan mereneh sehingga daging benar-benar empuk.",
+            "Masukkan ubi kentang dan lobak merah masak sehingga empuk.",
+            "Perasakan dengan garam secukup rasa.",
+            "Akhir sekali, masukkan daun sup dan daun bawang. Tutup api dan boleh resting selama 30 minit sebelum dihidangkan",
+            "Jika suka boleh perahkan limau nipis/lemon untuk rasa yang lebih segar."
+          ]
+        }
+      ],
+      "notes": "Nota Tambahan:\n1. Jika menggunakan pressure cooker, masak daging selama 20–25 minit\nselepas tekanan penuh,\n2. kemudian masukkan tumisan rempah dan ubi kentang. Sambung masak\nsehingga kentang empuk.\n3. Hidangkan bersama nasi putih panas, sambal kicap atau roti.",
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    },
+    {
+      "title": "TAUHU POPCORN RANGUP",
+      "slug": "00_31_tauhu_popcorn_rangup",
+      "category": "Unknown",
+      "image": "/images/recipes/vol-23/00_31_tauhu_popcorn_rangup.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=GLQJaqdwlwQ",
+      "ingredientCount": 1,
+      "stepCount": 1,
+      "hasNotes": false,
+      "ingredients": [
+        {
+          "section": "Bahan:",
+          "items": [
+            "4 sudu makan tepung gandum",
+            "2 sudu makan tepung jagung",
+            "300ml air (suhu bilik)",
+            "1 sudu kecil Garam",
+            "1 sudu kecil Lada putih",
+            "1 sudu besar serbuk perasa (chicken kuib/perasa mashroom)",
+            "400g tauhu keras (potong kiub kecil) Minyak masak untuk menggoreng"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "section": "Cara:",
+          "items": [
+            "Dalam satu mangkuk, satukan tepung gandum, tepung jagung, air, garam dan lada putih. Kacau hingga sebati dan tidak berketul.",
+            "Masukkan tauhu yang telah dipotong kiub (kecil)  ke dalam bancuhan. Gaul perlahan supaya semua permukaan tauhu bersalut.",
+            "Perap selama 30 minit. Jika nak perap semalaman pun boleh.",
+            "Selepas diperap, keluarkan tauhu dan asingkan baki bancuhan perapan.",
+            "Panaskan minyak yang agak banyak menggunakan api sederhana.",
+            "Masukkan tauhu dan goreng sehingga permukaannya mula mengeras.",
+            "Kemudian, curahkan sedikit demi sedikit baki bancuhan perapan ke atas tauhu yang sedang digoreng. Jangan tuang sekaligus.",
+            "Kacau perlahan-lahan supaya salutan tepung melekat pada tauhu dan membentuk lapisan rangup.",
+            "Ulang proses ini 2-3 kali, dengan curahkan bancuhan perapan sambil terus menggaul dan menggoreng sehingga tauhu menjadi garing, rangup dan berwarna keemasan (golden brown).",
+            "Angkat dan toskan sebelum dihidangkan. Siap."
+          ]
+        }
+      ],
+      "notes": null,
+      "tags": [
+        "vol23"
+      ],
+      "difficulty": null,
+      "base_servings": 2,
+      "rating": null,
+      "volume": "VOL 23",
+      "volumeNum": 23,
+      "status": "published"
+    }
+  ],
+  "price": "9.90",
+  "currency": "MYR",
+  "tier_required": "Plus"
+}

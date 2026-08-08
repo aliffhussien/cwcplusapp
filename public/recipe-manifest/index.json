@@ -48,6 +48,16 @@
       "imagesMatched": 0,
       "manifestFile": "/recipe-manifest/vol-19.json",
       "sqlFile": "import-sources\\generated\\VOL_19_RECIPES.sql"
+    },
+    {
+      "volumeNum": 23,
+      "volumeName": "VOL 23",
+      "recipeCount": 31,
+      "imagesMatched": 31,
+      "manifestFile": "/recipe-manifest/vol-23.json",
+      "sqlFile": "database_imports/VOL_23_RECIPES.sql",
+      "price": "9.90",
+      "currency": "MYR"
     }
   ]
 }
